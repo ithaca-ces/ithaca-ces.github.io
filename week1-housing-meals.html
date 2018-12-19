@@ -290,7 +290,10 @@
             }
         }
         document.getElementById("payFormInputs").innerHTML = formInputs;
-        document.getElementById("payform").submit();
+        setTimeout(function(){
+            document.getElementById("payform").submit();
+        }, 2000);
+
     }
 
 </script>
