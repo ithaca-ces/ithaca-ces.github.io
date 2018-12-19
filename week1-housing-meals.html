@@ -176,9 +176,7 @@
             document.getElementById("housingList").innerText = housingList;
             document.getElementById("nameList").innerText = nameList;
             document.getElementById("priceList").innerText = priceList;
-        })
-
-        $( document ).ajaxComplete(function() {
+        }).done(function() {
             document.getElementById("container").style.display = "inherit";
             document.getElementById("container").style.visibility = "visible";
             document.getElementById("pre").style.display = "none";
