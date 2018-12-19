@@ -18,7 +18,7 @@
     <br>
     <h2>Select & Purchase Week 1 Housing & Meals</h2>
     <hr>
-<fo>
+
     <h3>Provide your personal & contact information:</h3>
     <br>
     <div class="form-row">
@@ -116,7 +116,7 @@
     <p>A meal plan costs $<span id="mealPrice"></span>.</p>
     <div class="form-group form-inline ">
         <label for="inputMealPlanCount">Number Of Meal Plans:</label> &nbsp;&nbsp;
-        <input style="max-width: 400px" type="number" class="form-control" id="inputMealPlanCount" value="0">
+        <input style="max-width: 400px" min="0" type="number" class="form-control" id="inputMealPlanCount" value="0">
     </div>
 
     <hr>
@@ -125,11 +125,21 @@
     <div id="housingInputs">
 
     </div>
+    <div id="housingList" style="visibility: hidden; display: none"></div>
+    <div id="nameList" style="visibility: hidden; display: none"></div>
+    <div id="priceList" style="visibility: hidden; display: none"></div>
 
     <hr>
 
-    <button type="submit" class="btn btn-success">Continue To Payment</button>
-</fo>
+    <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
+    <br><br>
+
+    <div id="paymentFormDiv" style="visibility: hidden; display: none">
+        <form id="payform" method="post" action="https://shoppingcartsecure.com/cart32.exe/6072743313-AddItem">
+            <div id="payFormInputs" style="visibility: hidden; display: none"></div>
+        </form>
+    </div>
+
 </div>
 <div id="hidden" style="display: none; visibility: hidden;"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -144,25 +154,37 @@
     });
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRmvtTepOd7KLF6QYjegI-wsp-ZDAuT-JOaykqhScyUEbS731qerv_AM6SNIQX84Evz_VtLut66rxGb/pubhtml?gid=256271385&single=true",
         function(data, status) {
-        var housingData = getTableData(data);
-        var housingInputs = "";
-        for (var i = 0; i < housingData.length; i ++) {
-            if (parseInt(housingData[i][4]) > 0) {
-                var firstLine = "<div class=\"form-group\">";
-                var secondLine = "<label for=\"input" + housingData[i][0].toLowerCase().replace(/ /g,'') + "\">" + housingData[i][0] + " - $" + housingData[i][1] + "</label> &nbsp;&nbsp;";
-                var thirdLine = "<input style=\"max-width: 400px\" type=\"number\" min=\"0\" max=\"" + housingData[i][4] + "\" class=\"form-control\" value='0' id=\"input\"" + housingData[i][0].toLowerCase().replace(/ /g,'') + "\">";
-                var fourthLine = "<small id=\"emailHelp\" class=\"form-text text-muted\">" + housingData[i][4] + " remaining </small>";
-                var fifthLine = "</div>";
-                housingInputs += firstLine + secondLine + thirdLine + fourthLine + fifthLine;
+            var housingData = getTableData(data);
+            var housingInputs = "";
+            var housingList = "";
+            var nameList = "";
+            var priceList = "";
+            for (var i = 1; i < housingData.length; i++) {
+                housingList += housingData[i][0].toLowerCase().replace(/ /g, '') + ";;;";
+                nameList += housingData[i][0] + ";;;";
+                priceList += housingData[i][1] + ";;;";
+                if (parseInt(housingData[i][4]) > 0) {
+                    var firstLine = "<div class=\"form-group\">";
+                    var secondLine = "<label for=\"input" + housingData[i][0].toLowerCase().replace(/ /g, '') + "\">" + housingData[i][0] + " - $" + housingData[i][1] + "</label> &nbsp;&nbsp;";
+                    var thirdLine = "<input style=\"max-width: 400px\" type=\"number\" min=\"0\" max=\"" + housingData[i][4] + "\" class=\"form-control\" value='0' id=\"input" + housingData[i][0].toLowerCase().replace(/ /g, '') + "\">";
+                    var fourthLine = "<small id=\"emailHelp\" class=\"form-text text-muted\">" + housingData[i][4] + " remaining </small>";
+                    var fifthLine = "</div>";
+                    housingInputs += firstLine + secondLine + thirdLine + fourthLine + fifthLine;
+                }
             }
-        }
-        document.getElementById("housingInputs").innerHTML = housingInputs;
+            document.getElementById("housingInputs").innerHTML = housingInputs;
+            document.getElementById("housingList").innerText = housingList;
+            document.getElementById("nameList").innerText = nameList;
+            document.getElementById("priceList").innerText = priceList;
+        })
 
-    });
-    document.getElementById("container").style.display = "inherit";
-    document.getElementById("container").style.visibility = "visible";
-    document.getElementById("pre").style.display = "none";
-    document.getElementById("pre").style.visibility = "hidden";
+        $( document ).ajaxComplete(function() {
+            document.getElementById("container").style.display = "inherit";
+            document.getElementById("container").style.visibility = "visible";
+            document.getElementById("pre").style.display = "none";
+            document.getElementById("pre").style.visibility = "hidden";
+        })
+
 
     function getTableData(inputData) {
         var array1 = inputData.toString().split("<table");
@@ -181,7 +203,95 @@
         return myTableArray;
     }
 
+    function getSelectData(name) {
+        var e = document.getElementById(name);
+        var value = e.options[e.selectedIndex].value;
+        return value;
+    }
 
+    function submit() {
+        document.getElementById("container").style.display = "none";
+        document.getElementById("container").style.visibility = "hidden";
+        document.getElementById("pre").style.display = "inherit";
+        document.getElementById("pre").style.visibility = "visible";
+        submitGoogleForm();
+        submitPaymentForm();
+    }
+
+    function submitGoogleForm() {
+        var housingString = document.getElementById("housingList").innerText;
+        var housingList = housingString.split(";;;");
+        var dataArray = "";
+        for (var i = 0; i < housingList.length - 1; i ++) {
+            dataArray += document.getElementById("input" + housingList[i]).value + ";;;";
+        }
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'entry.2039036389': $('input[id=inputFirstName]').val(),
+            'entry.305040084': $('input[id=inputLastName]').val(),
+            'entry.1583950870': $('input[id=inputAddress]').val(),
+            'entry.1741944776': $('input[id=inputCity]').val(),
+            'entry.1449597621': getSelectData("inputState"),
+            'entry.2043889500': $('input[id=inputZip]').val(),
+            'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
+            'entry.303292725': $('input[id=inputEmailAddress]').val(),
+            'entry.975589451': $('input[id=inputMealPlanCount]').val(),
+            'entry.616708405': dataArray
+        }
+        // process the form
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : 'https://docs.google.com/forms/d/e/1FAIpQLSdrotzMctO4vAOOtdsr16hHvL05yOif2tVb8Pgb8STiFlJHdQ/formResponse', // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode          : true
+        })
+        // using the done promise callback
+            .done(function(data) {
+                // log data to the console so we can see
+                console.log(data);
+                // here we will handle errors and validation messages
+            });
+    }
+
+    function submitPaymentForm() {
+        var formInputs = "";
+
+        var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
+        if (mealPlanCount > 0) {
+            var line0 = "<div id=\"" + "meal_plan" + "\">";
+            var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "Meal Plan" + "\">";
+            var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "Meal Plan" + "\">";
+            var line3 = "<input id=\"qty_meal_plan\" type=\"hidden\" name=\"Qty\" value=" + mealPlanCount + ">";
+            var line4 = "<input type=\"hidden\" name=\"Price\" value=" + document.getElementById("mealPrice").innerText + ">";
+            var line5 = "</div>";
+            formInputs = line0 + line1 + line2 + line3 + line4 + line5;
+        }
+
+        var housingString = document.getElementById("housingList").innerText;
+        var housingList = housingString.split(";;;");
+        var nameString = document.getElementById("nameList").innerText;
+        var nameList = nameString.split(";;;");
+        var priceString = document.getElementById("priceList").innerText;
+        var priceList = priceString.split(";;;");
+        for (var i = 0; i < housingList.length - 1; i ++) {
+            if (document.getElementById("input" + housingList[i]) != null) {
+                var count = parseInt(document.getElementById("input" + housingList[i]).value);
+                if (count > 0) {
+                    var line0 = "<div id=\"" + housingList[i] + "\">";
+                    var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + nameList[i] + "\">";
+                    var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + nameList[i] + "\">";
+                    var line3 = "<input id=\"qty_" + housingList[i] + "\" type=\"hidden\" name=\"Qty\" value=" + count + ">";
+                    var line4 = "<input type=\"hidden\" name=\"Price\" value=" + priceList[i] + ">";
+                    var line5 = "</div>";
+                    formInputs += line0 + line1 + line2 + line3 + line4 + line5;
+                }
+            }
+        }
+        document.getElementById("payFormInputs").innerHTML = formInputs;
+        document.getElementById("payform").submit();
+    }
 
 </script>
 </body>
