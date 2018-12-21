@@ -196,7 +196,7 @@
         document.getElementById("pre").style.display = "inherit";
         document.getElementById("pre").style.visibility = "visible";
         $('html,body').scrollTop(0);
-        parent.scrollPageTop();
+        window.parent.postMessage("scrollTop", '*');
         if (validate()) {
             submitGoogleForm();
             submitPaymentForm();
