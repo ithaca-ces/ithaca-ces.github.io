@@ -73,6 +73,14 @@
 
     <div id="noItemsErrorMessage"></div>
 
+
+    <h3>Housing</h3>
+    <div id="housingText"></div>
+    <div id="housingInputs">
+    </div>
+
+    <hr>
+
     <h3>Meal Plans</h3>
     <div id="mealPlanText"></div>
     <div class="form-group form-inline ">
@@ -80,11 +88,6 @@
         <input style="max-width: 400px" min="0" type="number" class="form-control" id="inputMealPlanCount" value="0">
     </div>
 
-    <hr>
-    <h3>Housing</h3>
-    <div id="housingText"></div>
-    <div id="housingInputs">
-    </div>
 
     <div id="housingList" style="visibility: hidden; display: none"></div>
     <div id="nameList" style="visibility: hidden; display: none"></div>
@@ -345,7 +348,7 @@
         }
 
         if (!hasMeals && !hasHousing) {
-            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please select a meal plan and/or housing to purchase!</h4><hr>";
+            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please select housing and/or a meal plan to purchase!</h4><hr>";
             valid = false;
         }
 
