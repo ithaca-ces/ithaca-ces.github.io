@@ -215,7 +215,12 @@
         var housingList = housingString.split(";;;");
         var dataArray = "";
         for (var i = 0; i < housingList.length - 1; i ++) {
-            dataArray += document.getElementById("input" + housingList[i]).value + ";;;";
+            if (document.getElementById("input" + housingList[i]) != null) {
+                dataArray += document.getElementById("input" + housingList[i]).value + ";;;";
+            }
+            else {
+                dataArray += "0;;;";
+            }
         }
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
