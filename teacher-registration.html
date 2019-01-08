@@ -154,6 +154,7 @@
             document.getElementById("registrationFee").innerText = getTableData(data)[1][1];
             document.getElementById("SAAFee").innerText = getTableData(data)[2][1];
         });
+
     function getTableData(inputData) {
         var array1 = inputData.toString().split("<table");
         var array2 = array1[1].split("</table>");
@@ -176,12 +177,6 @@
         var value = e.options[e.selectedIndex].value;
         return value;
     }
-
-
-
-
-
-
     function submit() {
         document.getElementById("container").style.display = "none";
         document.getElementById("container").style.visibility = "hidden";
@@ -203,15 +198,16 @@
     }
 
     function submitGoogleForm() {
-        var housingString = document.getElementById("coursesList").innerText;
-        var housingList = housingString.split(";;;");
+        var coursesString = document.getElementById("coursesList").innerText;
+        var coursesList = coursesString.split(";;;");
         var dataArray = "";
-        for (var i = 0; i < housingList.length - 1; i ++) {
-            if (document.getElementById("input" + housingList[i]) != null) {
-                dataArray += document.getElementById("input" + housingList[i]).value + ";;;";
+        for (var i = 0; i < coursesList.length - 1; i ++) {
+            if (document.getElementById("input" + coursesList[i]) != null) {
+                var selectValue = getSelectData("input" + coursesList[i]);
+                dataArray += selectValue + ";;;";
             }
             else {
-                dataArray += "0;;;";
+                dataArray += ";;;";
             }
         }
         // get the form data
@@ -225,13 +221,12 @@
             'entry.2043889500': $('input[id=inputZip]').val(),
             'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
             'entry.303292725': $('input[id=inputEmailAddress]').val(),
-            'entry.975589451': $('input[id=inputMealPlanCount]').val(),
             'entry.616708405': dataArray
         }
         // process the form
         $.ajax({
             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : 'https://docs.google.com/forms/d/e/1FAIpQLSdrotzMctO4vAOOtdsr16hHvL05yOif2tVb8Pgb8STiFlJHdQ/formResponse', // the url where we want to POST
+            url         : 'https://docs.google.com/forms/d/e/1FAIpQLScNZYR6vPubFntj1Mj9C2T77teW-HSduAjD1vvFtbQfPO-A1g/formResponse', // the url where we want to POST
             data        : formData, // our data object
             dataType    : 'json', // what type of data do we expect back from the server
             encode          : true
@@ -245,37 +240,45 @@
     function submitPaymentForm() {
         var formInputs = "";
 
-        var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
-        if (mealPlanCount > 0) {
-            var line0 = "<div id=\"" + "meal_plan" + "\">";
-            var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "Meal Plan" + "\">";
-            var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "Meal Plan" + "\">";
-            var line3 = "<input id=\"qty_meal_plan\" type=\"hidden\" name=\"Qty\" value=" + mealPlanCount + ">";
-            var line4 = "<input type=\"hidden\" name=\"Price\" value=" + document.getElementById("mealPrice").innerText + ">";
-            var line5 = "</div>";
-            formInputs = line0 + line1 + line2 + line3 + line4 + line5;
-        }
-
-        var housingString = document.getElementById("coursesList").innerText;
-        var housingList = housingString.split(";;;");
+        var coursesString = document.getElementById("coursesList").innerText;
+        var coursesList = coursesString.split(";;;");
         var nameString = document.getElementById("nameList").innerText;
         var nameList = nameString.split(";;;");
         var priceString = document.getElementById("priceList").innerText;
         var priceList = priceString.split(";;;");
-        for (var i = 0; i < housingList.length - 1; i ++) {
-            if (document.getElementById("input" + housingList[i]) != null) {
-                var count = parseInt(document.getElementById("input" + housingList[i]).value);
-                if (count > 0) {
-                    var line0 = "<div id=\"" + housingList[i] + "\">";
+        var count = 0;
+        for (var i = 0; i < coursesList.length - 1; i ++) {
+            if (document.getElementById("input" + coursesList[i]) != null) {
+                var selectValue = getSelectData("input" + coursesList[i]);
+                if (selectValue !== "none") {
+                    count ++;
+                    var line0 = "<div id=\"" + coursesList[i] + "\">";
                     var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + nameList[i] + "\">";
                     var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + nameList[i] + "\">";
-                    var line3 = "<input id=\"qty_" + housingList[i] + "\" type=\"hidden\" name=\"Qty\" value=" + count + ">";
+                    var line3 = "<input id=\"qty_" + coursesList[i] + "\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
                     var line4 = "<input type=\"hidden\" name=\"Price\" value=" + priceList[i] + ">";
                     var line5 = "</div>";
                     formInputs += line0 + line1 + line2 + line3 + line4 + line5;
                 }
             }
         }
+
+        var regFeeLine0 = "<div id=\"" + "registration_fee" + "\">";
+        var regFeeLine1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "Registration Fee" + "\">";
+        var regFeeLine2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "Registration Fee" + "\">";
+        var regFeeLine3 = "<input id=\"qty_registration_fee\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
+        var regFeeLine4 = "<input type=\"hidden\" name=\"Price\" value=" + document.getElementById("registrationFee").innerText + ">";
+        var regFeeLine5 = "</div>";
+        formInputs += regFeeLine0 + regFeeLine1 + regFeeLine2 + regFeeLine3 + regFeeLine4 + regFeeLine5;
+
+        var SAAFeeLine0 = "<div id=\"" + "SAA_fee" + "\">";
+        var SAAFeeLine1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "SAA Fee" + "\">";
+        var SAAFeeLine2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "SAA Fee" + "\">";
+        var SAAFeeLine3 = "<input id=\"qty_SAA_fee\" type=\"hidden\" name=\"Qty\" value=" + count + ">";
+        var SAAFeeLine4 = "<input type=\"hidden\" name=\"Price\" value=" + document.getElementById("SAAFee").innerText + ">";
+        var SAAFeeLine5 = "</div>";
+        formInputs += SAAFeeLine0 + SAAFeeLine1 + SAAFeeLine2 + SAAFeeLine3 + SAAFeeLine4 + SAAFeeLine5;
+
         document.getElementById("payFormInputs").innerHTML = formInputs;
         document.getElementById("payform").submit();
     }
@@ -315,28 +318,21 @@
             valid = false;
         }
 
+        var hasCourses = false;
 
-        var hasMeals = false;
-        var hasHousing = false;
-
-        var mealCount = $('input[id=inputMealPlanCount]').val();
-        if (mealCount > 0) {
-            hasMeals = true;
-        }
-
-        var housingString = document.getElementById("coursesList").innerText;
-        var housingList = housingString.split(";;;");
-        for (var i = 0; i < housingList.length - 1; i ++) {
-            if (document.getElementById("input" + housingList[i]) != null) {
-                var count = parseInt(document.getElementById("input" + housingList[i]).value);
-                if (count > 0) {
-                    hasHousing = true;
+        var coursesString = document.getElementById("coursesList").innerText;
+        var coursesList = coursesString.split(";;;");
+        for (var i = 0; i < coursesList.length - 1; i ++) {
+            if (document.getElementById("input" + coursesList[i]) != null) {
+                var selectValue = getSelectData("input" + coursesList[i]);
+                if (selectValue !== "none") {
+                    hasCourses = true;
                     break;
                 }
             }
         }
 
-        if (!hasMeals && !hasHousing) {
+        if (!hasCourses) {
             document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please register for a course!</h4><hr>";
             valid = false;
         }
