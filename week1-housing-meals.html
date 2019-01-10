@@ -10,10 +10,21 @@
         input[type=number]::-webkit-outer-spin-button {
             opacity: 1;
         }
+        .progress.active .progress-bar {
+            -webkit-transition: none !important;
+            transition: none !important;
+        }
     </style>
 </head>
-<body>
 <div id="pre" class="container"><br><br><br><br><center><i style="font-size: 8em" class="fas fa-sync fa-spin"></i></center></div>
+<div id="post" style="display: none; visibility: hidden" class="container"><br><br><br><br><center>
+    <i style="font-size: 8em" class="fas fa-sync fa-spin"></i>
+    <br><br>
+        <div class="progress progress-striped active" style="height: 35px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:0%"></div>
+        </div>
+</center></div>
+<body>
 <div  id="container" class="container" style="display:none;visibility:hidden">
     <br>
     <h1>Purchase Week 1 Housing & Meals</h1>
@@ -206,20 +217,25 @@
     function submit() {
         document.getElementById("container").style.display = "none";
         document.getElementById("container").style.visibility = "hidden";
-        document.getElementById("pre").style.display = "inherit";
-        document.getElementById("pre").style.visibility = "visible";
+        document.getElementById("post").style.display = "inherit";
+        document.getElementById("post").style.visibility = "visible";
         $('html,body').scrollTop(0);
         window.parent.postMessage("scrollTop", '*');
         if (validate()) {
+            $(".progress-bar").animate({
+                width: "100%"
+            }, 10000);
             submitGoogleForm();
-            submitPaymentForm();
+            setTimeout(function(){
+                submitPaymentForm();
+            }, 10000);
         }
         else {
             document.getElementById("errorMessage").innerHTML = "<h3 style='color:red'>Please correct the issue(s) indicated below in order to complete your form submission!</h3><hr>";
             document.getElementById("container").style.display = "inherit";
             document.getElementById("container").style.visibility = "visible";
-            document.getElementById("pre").style.display = "none";
-            document.getElementById("pre").style.visibility = "hidden"
+            document.getElementById("post").style.display = "none";
+            document.getElementById("post").style.visibility = "hidden"
         }
     }
 
@@ -418,6 +434,5 @@
 
     </script>
 
-</script>
 </body>
 </html>
