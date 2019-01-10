@@ -93,6 +93,7 @@
     <div id="nameList" style="visibility: hidden; display: none"></div>
     <div id="priceList" style="visibility: hidden; display: none"></div>
     <div id="mealPrice" style="visibility: hidden; display: none"></div>
+    <div id="quantityList" style="visibility: hidden; display: none"></div>
 
     <hr>
 
@@ -145,30 +146,35 @@
             var housingList = "";
             var nameList = "";
             var priceList = "";
+            var quantityList = "";
             for (var i = 1; i < housingData.length; i++) {
                 housingList += housingData[i][0].toLowerCase().replace(/ /g, '') + ";;;";
                 nameList += housingData[i][0] + ";;;";
                 priceList += housingData[i][1] + ";;;";
+                quantityList += housingData[i][4] + ";;;";
                 if (parseInt(housingData[i][4]) > 0) {
                     var firstLine = "<div class=\"form-group\">";
                     var secondLine = "<label for=\"input" + housingData[i][0].toLowerCase().replace(/ /g, '') + "\"><b>" + housingData[i][0] + " - $" + housingData[i][1] + "</b></label> &nbsp;&nbsp;";
                     var thirdLine = "<input style=\"max-width: 400px\" type=\"number\" min=\"0\" max=\"" + housingData[i][4] + "\" class=\"form-control\" value='0' id=\"input" + housingData[i][0].toLowerCase().replace(/ /g, '') + "\">";
                     var fourthLine = "<small id=\"emailHelp\" class=\"form-text text-muted\">" + housingData[i][4] + " remaining </small>";
-                    var fifthLine = "</div>";
-                    housingInputs += firstLine + secondLine + thirdLine + fourthLine + fifthLine;
+                    var fifthLine = "<div id=\"valid-feedback-input" + housingData[i][0].toLowerCase().replace(/ /g, '')  + "\"></div>";
+                    var sixthLine = "</div>";
+                    housingInputs += firstLine + secondLine + thirdLine + fourthLine + fifthLine + sixthLine;
                 }
             }
             document.getElementById("housingInputs").innerHTML = housingInputs;
             document.getElementById("housingList").innerText = housingList;
             document.getElementById("nameList").innerText = nameList;
             document.getElementById("priceList").innerText = priceList;
+            document.getElementById("quantityList").innerText = quantityList;
         }).done(function() {
             document.getElementById("container").style.display = "inherit";
             document.getElementById("container").style.visibility = "visible";
             document.getElementById("pre").style.display = "none";
             document.getElementById("pre").style.visibility = "hidden";
         })
-
+    </script>
+    <script>
 
     function getTableData(inputData) {
         var array1 = inputData.toString().split("<table");
@@ -187,11 +193,15 @@
         return myTableArray;
     }
 
+
     function getSelectData(name) {
         var e = document.getElementById(name);
         var value = e.options[e.selectedIndex].value;
         return value;
     }
+
+    </script>
+    <script>
 
     function submit() {
         document.getElementById("container").style.display = "none";
@@ -253,6 +263,9 @@
             });
     }
 
+    </script>
+    <script>
+
     function submitPaymentForm() {
         var formInputs = "";
 
@@ -290,6 +303,8 @@
         document.getElementById("payFormInputs").innerHTML = formInputs;
         document.getElementById("payform").submit();
     }
+    </script>
+    <script>
 
     function validate() {
         clearValidateFeedback();
@@ -310,14 +325,6 @@
             }
         }
 
-        var phoneField = document.getElementById("inputPhoneNumber");
-        var res = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(phoneField.value);
-        if (phoneField.value !== "" && !res) {
-            document.getElementById("valid-feedback-inputPhoneNumber").innerHTML = "<font color='red'>Please enter a valid phone number.</font>";
-            phoneField.classList.add("is-invalid");
-            valid = false;
-        }
-
         var emailField = document.getElementById("inputEmailAddress");
         var result = validateEmail(emailField.value);
         if(emailField.value !== "" && !result) {
@@ -329,6 +336,8 @@
 
         var hasMeals = false;
         var hasHousing = false;
+        var badHousing = false;
+        var badCount = 0;
 
         var mealCount = $('input[id=inputMealPlanCount]').val();
         if (mealCount > 0) {
@@ -337,13 +346,26 @@
 
         var housingString = document.getElementById("housingList").innerText;
         var housingList = housingString.split(";;;");
+        var quantityString = document.getElementById("quantityList").innerHTML;
+        var quantityList = quantityString.split(";;;");
         for (var i = 0; i < housingList.length - 1; i ++) {
-            if (document.getElementById("input" + housingList[i]) != null) {
-                var count = parseInt(document.getElementById("input" + housingList[i]).value);
+            var inputField = document.getElementById("input" + housingList[i]);
+            if (inputField != null) {
+                var count = parseInt(inputField.value);
                 if (count > 0) {
                     hasHousing = true;
-                    break;
+                    if (count > parseInt(quantityList[i])) {
+                        badHousing = true;
+                        badCount ++;
+                        inputField.classList.add("is-invalid");
+                        valid = false;
+                        document.getElementById("valid-feedback-input" + housingList[i]).innerHTML = "<font color='red'>Please enter a number below " + (parseInt(quantityList[i]) + 1) + ".</>";
+                    }
+                    else {
+                        inputField.classList.add("is-valid");
+                    }
                 }
+
             }
         }
 
@@ -351,9 +373,21 @@
             document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please select housing and/or a meal plan to purchase!</h4><hr>";
             valid = false;
         }
+        if (badHousing && badCount === 1) {
+            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix the issue indicated below with your housing choice!</h4><hr>";
+            valid = false;
+        }
+        if (badHousing && badCount > 1) {
+            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix the issues indicated below with your housing choice!</h4><hr>";
+            valid = false;
+        }
 
         return valid;
     }
+
+    </script>
+
+    <script>
 
     function clearValidateFeedback() {
         var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
@@ -363,6 +397,16 @@
             inputField.classList.remove("is-valid");
             document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
         }
+        var housingString = document.getElementById("housingList").innerText;
+        var housingList = housingString.split(";;;");
+        for (var i = 0; i < housingList.length - 1; i ++) {
+            var inputField = document.getElementById("input" + housingList[i]);
+            if (inputField != null) {
+            inputField.classList.remove("is-invalid");
+            inputField.classList.remove("is-valid");
+            document.getElementById("valid-feedback-input" + housingList[i]).innerHTML = "";
+            }
+        }
         document.getElementById("errorMessage").innerHTML = "";
         document.getElementById("noItemsErrorMessage").innerHTML = "";
     }
@@ -371,6 +415,8 @@
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
+
+    </script>
 
 </script>
 </body>
