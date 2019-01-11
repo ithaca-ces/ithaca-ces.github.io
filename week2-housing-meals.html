@@ -28,6 +28,7 @@
 <div  id="container" class="container" style="display:none;visibility:hidden">
     <br>
     <h1>Purchase Week 2 Housing & Meals</h1>
+    <div id="dateTitle"></div>
     <hr>
     <div id="errorMessage"></div>
 
@@ -124,6 +125,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+    // dates
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vREtU3aso5YQevwxYncCh60Cwn55X6PuCOuNv1UVHHsLr4G9TJevUa4lPjodkOBM3vUfllVyyEbhmRg/pubhtml?gid=0&single=true",
+        function (data, status) {
+            var textTable = getTableData(data);
+            var week2 = textTable[2][1];
+            document.getElementById("dateTitle").innerHTML = "<h2><i>" + week2 + "</i></h2>";
+        });
     // meal text
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-XKvdDAnnYB2WWZR5KG6ydySFyvc7cVLxc0osj2rSgXoQIVC9KuVfC1zl2fFhPgK80cGlN0fMeEde/pubhtml?gid=56981838&single=true",
         function(data, status) {
