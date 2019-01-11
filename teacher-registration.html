@@ -92,6 +92,7 @@
     <div id="coursesList" style="visibility: hidden; display: none"></div>
     <div id="nameList" style="visibility: hidden; display: none"></div>
     <div id="priceList" style="visibility: hidden; display: none"></div>
+    <div id="auditPriceList" style="visibility: hidden; display: none"></div>
     <div id="registrationFee" style="visibility: hidden; display: none"></div>
     <div id="SAAFee" style="visibility: hidden; display: none"></div>
 
@@ -139,16 +140,18 @@
             var coursesList = "";
             var nameList = "";
             var priceList = "";
+            var auditPriceList = "";
             for (var i = 1; i < coursesData.length; i++) {
                 coursesList += coursesData[i][0].toLowerCase().replace(/ /g, '') + ";;;";
                 nameList += coursesData[i][0] + ";;;";
                 priceList += coursesData[i][1] + ";;;";
+                auditPriceList += coursesData[i][2] + ";;;";
                 var firstLine = "<div class=\"form-group\">";
-                var secondLine = "<label for=\"input" + coursesData[i][0].toLowerCase().replace(/ /g, '') + "\"><b>" + coursesData[i][0] + " - $" + coursesData[i][1] + "</b></label> &nbsp;&nbsp;";
+                var secondLine = "<label for=\"input" + coursesData[i][0].toLowerCase().replace(/ /g, '') + "\"><b>" + coursesData[i][0] + " </b><br><span style='font-style: oblique'><b>Participant</b>: $" + coursesData[i][1] + "&nbsp&nbsp;<b>Auditor</b>: $" + coursesData[i][2] + "</span> " + "</label> &nbsp;&nbsp;";
                 var thirdLine = "<select class=\"form-control\" id=\"input" + coursesData[i][0].toLowerCase().replace(/ /g, '') + "\" style=\"max-width: 400px\">";
                 var fourthLine = "<option value=\"none\"></option>";
-                var fifthLine = "<option value=\"participant\">Participant</option>";
-                var sixthLine = "<option value=\"auditor\">Auditor</option>";
+                var fifthLine = "<option value=\"participant\">Participant - $" + coursesData[i][1] + "</option>";
+                var sixthLine = "<option value=\"auditor\">Auditor - $" + coursesData[i][2] + "</option>";
                 var seventhLine = "</select></div>";
                 coursesInputs += firstLine + secondLine + thirdLine + fourthLine + fifthLine + sixthLine + seventhLine;
             }
@@ -156,6 +159,7 @@
             document.getElementById("coursesList").innerText = coursesList;
             document.getElementById("nameList").innerText = nameList;
             document.getElementById("priceList").innerText = priceList;
+            document.getElementById("auditPriceList").innerText = auditPriceList;
         }).done(function() {
             document.getElementById("container").style.display = "inherit";
             document.getElementById("container").style.visibility = "visible";
@@ -265,6 +269,8 @@
         var nameList = nameString.split(";;;");
         var priceString = document.getElementById("priceList").innerText;
         var priceList = priceString.split(";;;");
+        var auditPriceString = document.getElementById("auditPriceList").innerText;
+        var auditPriceList = auditPriceString.split(";;;");
         var count = 0;
         for (var i = 0; i < coursesList.length - 1; i ++) {
             if (document.getElementById("input" + coursesList[i]) != null) {
@@ -272,17 +278,22 @@
                 if (selectValue !== "none") {
                     count ++;
                     var line0 = "<div id=\"" + coursesList[i] + "\">";
-                    var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + nameList[i] + "\">";
-                    var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + nameList[i] + "\">";
+                    var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + nameList[i] + " - Participant\">";
+                    var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + nameList[i] + " - Participant\">";
                     var line3 = "<input id=\"qty_" + coursesList[i] + "\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
                     var line4 = "<input type=\"hidden\" name=\"Price\" value=" + priceList[i] + ">";
+                    if (selectValue === "auditor") {
+                        line4 = "<input type=\"hidden\" name=\"Price\" value=" + auditPriceList[i] + ">";
+                        line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + nameList[i] + " - Auditor\">";
+                        line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + nameList[i] + " - Auditor\">";
+                    }
                     var line5 = "</div>";
                     formInputs += line0 + line1 + line2 + line3 + line4 + line5;
                 }
             }
         }
 
-        var regFeeLine0 = "<div id=\"" + "registration_fee" + "\">";
+        /*var regFeeLine0 = "<div id=\"" + "registration_fee" + "\">";
         var regFeeLine1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "Registration Fee" + "\">";
         var regFeeLine2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "Registration Fee" + "\">";
         var regFeeLine3 = "<input id=\"qty_registration_fee\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
@@ -296,7 +307,7 @@
         var SAAFeeLine3 = "<input id=\"qty_SAA_fee\" type=\"hidden\" name=\"Qty\" value=" + count + ">";
         var SAAFeeLine4 = "<input type=\"hidden\" name=\"Price\" value=" + document.getElementById("SAAFee").innerText + ">";
         var SAAFeeLine5 = "</div>";
-        formInputs += SAAFeeLine0 + SAAFeeLine1 + SAAFeeLine2 + SAAFeeLine3 + SAAFeeLine4 + SAAFeeLine5;
+        formInputs += SAAFeeLine0 + SAAFeeLine1 + SAAFeeLine2 + SAAFeeLine3 + SAAFeeLine4 + SAAFeeLine5;*/
 
         document.getElementById("payFormInputs").innerHTML = formInputs;
         document.getElementById("payform").submit();
