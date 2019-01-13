@@ -27,67 +27,260 @@
 <body>
 <div  id="container" class="container" style="display:none;visibility:hidden">
     <br>
-    <h1>Student Registration</h1>
+    <h1>Student Registration <span id="studentNumber"></span></h1>
     <hr>
     <div id="errorMessage"></div>
 
-    <h3>Contact Information</h3>
-    <br>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputFirstName">First Name <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputFirstName">
-            <div id="valid-feedback-inputFirstName"></div>
+    <div id="parentInformation">
+
+    <h3>Parent/Guardian Contact Information</h3>
+
+        <br>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFirstName">First Name <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputFirstName">
+                <div id="valid-feedback-inputFirstName"></div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputLastName">Last Name <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputLastName">
+                <div id="valid-feedback-inputLastName"></div>
+            </div>
         </div>
-        <div class="form-group col-md-6">
-            <label for="inputLastName">Last Name <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputLastName">
-            <div id="valid-feedback-inputLastName"></div>
+        <div class="form-group">
+            <label for="inputAddress">Address <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputAddress">
+            <div id="valid-feedback-inputAddress"></div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="inputAddress">Address <span style="color: red">*</span></label>
-        <input type="text" class="form-control" id="inputAddress">
-        <div id="valid-feedback-inputAddress"></div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-5">
-            <label for="inputCity">City <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputCity">
-            <div id="valid-feedback-inputCity"></div>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="inputCity">City <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputCity">
+                <div id="valid-feedback-inputCity"></div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">State/Province <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputState">
+                <div id="valid-feedback-inputState"></div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputZip">Zip Code <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputZip">
+                <div id="valid-feedback-inputZip"></div>
+            </div>
         </div>
-        <div class="form-group col-md-4">
-            <label for="inputState">State/Province <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputState">
-            <div id="valid-feedback-inputState"></div>
+        <div class="form-group">
+            <label for="inputPhoneNumber">Phone Number <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputPhoneNumber">
+            <div id="valid-feedback-inputPhoneNumber"></div>
         </div>
-        <div class="form-group col-md-3">
-            <label for="inputZip">Zip Code <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputZip">
-            <div id="valid-feedback-inputZip"></div>
+        <div class="form-group">
+            <label for="inputEmailAddress">Email Address <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputEmailAddress">
+            <div id="valid-feedback-inputEmailAddress"></div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="inputPhoneNumber">Phone Number <span style="color: red">*</span></label>
-        <input type="text" class="form-control" id="inputPhoneNumber">
-        <div id="valid-feedback-inputPhoneNumber"></div>
-    </div>
-    <div class="form-group">
-        <label for="inputEmailAddress">Email Address <span style="color: red">*</span></label>
-        <input type="text" class="form-control" id="inputEmailAddress">
-        <div id="valid-feedback-inputEmailAddress"></div>
-    </div>
+
+        <div class="form-group">
+            <label for="inputStudentCount">For how many students are you registering? <span style="color: red">*</span></label>
+            <select class="form-control" id="inputStudentCount" style="max-width: 200px">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <div id="valid-feedback-inputStudentCount"></div>
+        </div>
+        <button onclick="next()" class="btn btn-success">Next</button>
+
+    </div> <!-- END PARENT INFO -->
 
 
 
-    <hr>
+    <div id="student1Information" style="visibility: hidden;display:none">
 
-    <div id="noItemsErrorMessage"></div>
+        <h3>Student Information</h3>
+        <div id="studentInformationText-1"></div>
 
-    <h3>Course Selection</h3>
-    <div id="aboveText"></div>
-    <div id="coursesInputs"></div>
-    <div id="belowText"></div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputStudentFirstName">First Name <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputStudentFirstName">
+                <div id="valid-feedback-inputStudentFirstName"></div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputStudentLastName">Last Name <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputStudentLastName">
+                <div id="valid-feedback-inputStudentLastName"></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputGender">Gender </label>
+                <input type="text" class="form-control" id="inputGender">
+                <div id="valid-feedback-inputGender"></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAge">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputAge">
+                <div id="valid-feedback-inputAge"></div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputGraduation">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputGraduation">
+                <div id="valid-feedback-inputGraduation"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputAccompanied-1">Student will be accompanied by: <span style="color: red">*</span></label>
+            <select class="form-control" id="inputAccompanied-1" onchange="changeDesignatedAdult(1)">
+                <option value="oneParent">One Parent</option>
+                <option value="bothParents">Both Parents</option>
+                <option value="designatedAdult">Adult Designated By Parent</option>
+                <option value="noone">No One (student will be 13 by July 1, <script>document.write(new Date().getFullYear())</script> and will reside in the teen residence hall)</option>
+            </select>
+            <div id="valid-feedback-inputAccompanied-1"></div>
+        </div>
+
+        <div id="designatedAdultInfo-1" style="visibility:hidden;display: none;">
+            <h4>Provide the following information about the adult who will accompany the student:</h4></h4>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputDesignatedAdultFirstName-1">First Name <span style="color: red">*</span></label>
+                    <input type="text" class="form-control" id="inputDesignatedAdultFirstName-1">
+                    <div id="valid-feedback-inputDesignatedAdultFirstName-1"></div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputDesignatedAdultLastName-1">Last Name <span style="color: red">*</span></label>
+                    <input type="text" class="form-control" id="inputDesignatedAdultLastName-1">
+                    <div id="valid-feedback-inputDesignatedAdultLastName-1"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDesignatedAdultAddress-1">Address <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputDesignatedAdultAddress-1">
+                <div id="valid-feedback-inputDesignatedAdultAddress-1"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="inputDesignatedAdultCity-1">City <span style="color: red">*</span></label>
+                    <input type="text" class="form-control" id="inputDesignatedAdultCity-1">
+                    <div id="valid-feedback-inputDesignatedAdultCity-1"></div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputDesignatedAdultState-1">State/Province <span style="color: red">*</span></label>
+                    <input type="text" class="form-control" id="inputDesignatedAdultState-1">
+                    <div id="valid-feedback-inputDesignatedAdultState-1"></div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputDesignatedAdultZip-1">Zip Code <span style="color: red">*</span></label>
+                    <input type="text" class="form-control" id="inputDesignatedAdultZip-1">
+                    <div id="valid-feedback-inputDesignatedAdultZip-1"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDesignatedAdultPhoneNumber-1">Phone Number <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputDesignatedAdultPhoneNumber-1">
+                <div id="valid-feedback-inputDesignatedAdultPhoneNumber-1"></div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>Course Selection</h3>
+        <div id="courseText-1"></div>
+
+        <div class="form-group">
+            <label for="inputCourse-1">Select a course: <span style="color: red">*</span></label>
+            <select class="form-control" id="inputCourse-1">
+            </select>
+            <div id="valid-feedback-inputCourse-1"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputInstrument-1">Instrument <span style="color: red">*</span></label>
+                <select class="form-control" id="inputInstrument-1">
+                </select>
+                <div id="valid-feedback-inputInstrument-1"></div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputBookLevel-1">Current Book Level <span style="color: red">*</span></label>
+                <select class="form-control" id="inputBookLevel-1">
+                </select>
+                <div id="valid-feedback-inputBookLevel-1"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-9">
+            <label for="inputTitle-1">Title of Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputTitle-1">
+            <div id="valid-feedback-inputTitle-1"></div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="inputMovement-1">Movement </label>
+                <input type="text" class="form-control" id="inputMovement-1">
+                <div id="valid-feedback-inputMovement-1"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputComposer-1">Composer <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputComposer-1">
+            <div id="valid-feedback-inputComposer-1"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputTeacherFirstName-1">Teacher First Name <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputTeacherFirstName-1">
+                <div id="valid-feedback-inputTeacherFirstName-1"></div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputTeacherLastName-1">Teacher Last Name <span style="color: red">*</span></label>
+                <input type="text" class="form-control" id="inputTeacherLastName-1">
+                <div id="valid-feedback-inputTeacherLastName-1"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputTeacherPhoneNumber-1">Teacher Phone Number <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputTeacherPhoneNumber-1">
+            <div id="valid-feedback-inputTeacherPhoneNumber-1"></div>
+        </div>
+
+
+
+        <hr>
+
+        <h3>Enrichment Classes</h3>
+        <div id="enrichmentText-1"></div>
+
+        <div id="enrichmentSelects-1"></div>
+
+
+
+
+
+        <hr>
+
+        <div id="endText-1"></div>
+
+        <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
+        <button onclick="next()" class="btn btn-success">Next</button>
+
+    </div> <!-- END STUDENT INFO -->
+
+
+
+
 
     <hr>
 
@@ -111,7 +304,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-    // above text
+    var pageNumber = 1;
+    var MAX_PAGE_NUM = 1;
+
+    // student information text
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=56981838&single=true",
         function(data, status) {
             var textTable = getTableData(data);
@@ -119,9 +315,12 @@
             for (var i = 1; i < textTable.length; i ++) {
                 sumString += "<p>" + textTable[i][0] + "</p>";
             }
-            document.getElementById("aboveText").innerHTML = sumString;
+            for (var j = 1; j <= MAX_PAGE_NUM; j ++) {
+                document.getElementById("studentInformationText-" + j).innerHTML = sumString;
+            }
         });
-    // below text
+
+    // course text
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=869859262&single=true",
         function(data, status) {
             var textTable = getTableData(data);
@@ -129,9 +328,105 @@
             for (var i = 1; i < textTable.length; i ++) {
                 sumString += "<p>" + textTable[i][0] + "</p>";
             }
-            document.getElementById("belowText").innerHTML = sumString;
+            for (var j = 1; j <=  MAX_PAGE_NUM; j ++) {
+                document.getElementById("courseText-" + j).innerHTML = sumString;
+            }
         });
-    // course data
+    // enrichment class text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=1460038612&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            for (var j = 1; j <=  MAX_PAGE_NUM; j ++) {
+                document.getElementById("enrichmentText-" + j).innerHTML = sumString;
+            }
+        });
+    // end text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=755707586&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            for (var j = 1; j <=  MAX_PAGE_NUM; j ++) {
+                document.getElementById("endText-" + j).innerHTML = sumString;
+            }
+        });
+    // courses options
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=256271385&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            for (var j = 1; j <=  MAX_PAGE_NUM; j ++) {
+                var theSelect = document.getElementById("inputCourse-" + j);
+                for (var i = 1; i < coursesData.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                    option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                    theSelect.add(option);
+                }
+            }
+        });
+    // instrument options
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=1604383475&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            for (var j = 1; j <=  MAX_PAGE_NUM; j ++) {
+                var theSelect = document.getElementById("inputInstrument-" + j);
+                for (var i = 1; i < coursesData.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = coursesData[i][0];
+                    option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                    theSelect.add(option);
+                }
+            }
+        });
+    // book options
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=1224050231&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            for (var j = 1; j <=  MAX_PAGE_NUM; j ++) {
+                var theSelect = document.getElementById("inputBookLevel-" + j);
+                for (var i = 1; i < coursesData.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = coursesData[i][0];
+                    option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                    theSelect.add(option);
+                }
+            }
+        });
+    // enrichment classes options
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=189728833&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            for (var j = 1; j <=  MAX_PAGE_NUM; j ++) {
+                var stringToWrite = "";
+                for (var k = 1; k < coursesData.length; k ++) {
+                    var line1 = "<div class=\"form-group form-inline\">";
+                    var line2 = '<select class="form-control" id="' + coursesData[k][0].toLowerCase().replace(/ /g, '') + '-' + j + '" style="max-width: 200px">';
+                    var sumString = line1 + line2;
+                    sumString += '<option value=" "> </option>';
+                    for (var i = 1; i < coursesData.length; i++) {
+                        sumString += '<option value="' + i + '">' + i + '</option>';
+                    }
+                    sumString += "</select> &nbsp;&nbsp;&nbsp;"
+                    sumString += '<span style="font-size: 1.1em">' + coursesData[k][0] + '</span><br></div>';
+                    stringToWrite += sumString;
+                }
+                document.getElementById("enrichmentSelects-" + j).innerHTML = stringToWrite;
+
+            }
+        }).done(function() {
+        document.getElementById("container").style.display = "inherit";
+        document.getElementById("container").style.visibility = "visible";
+        document.getElementById("pre").style.display = "none";
+        document.getElementById("pre").style.visibility = "hidden";
+    });
+
+   /* // course data
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=256271385&single=true",
         function(data, status) {
             var coursesData = getTableData(data);
@@ -158,7 +453,7 @@
             document.getElementById("container").style.visibility = "visible";
             document.getElementById("pre").style.display = "none";
             document.getElementById("pre").style.visibility = "hidden";
-        })
+        })*/
     </script>
     <script>
 
@@ -186,6 +481,44 @@
         return value;
     }
 
+    </script>
+    <script>
+        function next() {
+            if (pageNumber === 1) {
+                document.getElementById("parentInformation").style.display = "none";
+                document.getElementById("parentInformation").style.visibility = "hidden";
+                document.getElementById("studentNumber").innerHTML = "&mdash; Student 1";
+                document.getElementById("student1Information").style.display = "inherit";
+                document.getElementById("student1Information").style.visibility = "visible";
+                pageNumber = 2;
+            }
+        }
+        function back() {
+            if (pageNumber === 2) {
+                document.getElementById("student1Information").style.display = "none";
+                document.getElementById("student1Information").style.visibility = "hidden";
+                document.getElementById("studentNumber").innerHTML = "";
+                document.getElementById("parentInformation").style.display = "inherit";
+                document.getElementById("parentInformation").style.visibility = "visible";
+                pageNumber = 1;
+            }
+        }
+        function changeDesignatedAdult(number) {
+            var selectedOption = getSelectData("inputAccompanied-" + number);
+            if (selectedOption === "designatedAdult") {
+                document.getElementById("designatedAdultInfo-" + number).style.display = "inherit";
+                document.getElementById("designatedAdultInfo-" + number).style.visibility = "visible";
+            }
+            else {
+                var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber"];
+                for (var i = 0; i < fields.length; i ++) {
+                    var inputField = document.getElementById("inputDesignatedAdult" + fields[i] + "-" + number);
+                    inputField.value = "";
+                }
+                document.getElementById("designatedAdultInfo-" + number).style.display = "none";
+                document.getElementById("designatedAdultInfo-" + number).style.visibility = "hidden";
+            }
+        }
     </script>
     <script>
 
