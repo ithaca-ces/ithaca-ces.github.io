@@ -2640,6 +2640,14 @@
             var bookLevelIndex = bookLevelValues.indexOf(bookLevelValue);
             var bookLevelName = bookLevelNames[bookLevelIndex];
             var enrichmentData = makeEnrichmentData(j);
+            /*var gender = "";
+            if ($('input[id=inputGender-' + j + ']').val() !== undefined) {
+                gender = $('input[id=inputGender-' + j + ']').val();
+            }
+            var movement = "";
+            if ($('input[id=inputMovement-' + j + ']').val() !== undefined) {
+                movement = $('input[id=inputMovement-' + j + ']').val();
+            }*/
             var formData = {
                 'entry.2039036389': $('input[id=inputFirstName]').val(),
                 'entry.305040084': $('input[id=inputLastName]').val(),
@@ -2656,7 +2664,7 @@
                 'entry.1849563826': $('input[id=inputGraduation-' + j + ']').val(),
                 'entry.786830166': accompaniedName,
                 'entry.1226946231': $('input[id=inputDesignatedAdultFirstName-' + j + ']').val(),
-                'entry.88700460': $('input[id=inputDesignatedAdultLastName' + j + ']').val(),
+                'entry.88700460': $('input[id=inputDesignatedAdultLastName-' + j + ']').val(),
                 'entry.25347046': $('input[id=inputDesignatedAdultAddress-' + j + ']').val(),
                 'entry.1930667891': $('input[id=inputDesignatedAdultCity-' + j + ']').val(),
                 'entry.937988041': $('input[id=inputDesignatedAdultState-' + j + ']').val(),
@@ -2665,7 +2673,7 @@
                 'entry.616708405': courseName,
                 'entry.429624467': instrumentName,
                 'entry.1295208958': bookLevelName,
-                'entry.1431622853': $('input[id=inputTitle' + j + ']').val(),
+                'entry.1431622853': $('input[id=inputTitle-' + j + ']').val(),
                 'entry.332529542': $('input[id=inputMovement-' + j + ']').val(),
                 'entry.943311597': $('input[id=inputComposer-' + j + ']').val(),
                 'entry.1581932096': $('input[id=inputTeacherFirstName-' + j + ']').val(),
@@ -2674,6 +2682,28 @@
                 'entry.650938505': enrichmentData,
                 'entry.624453744': $('input[id=inputOtherNames]').val()
             }
+                console.log(accompaniedName);
+            console.log($('input[id=inputDesignatedAdultFirstName-' + j + ']').val());
+                console.log($('input[id=inputDesignatedAdultLastName-' + j + ']').val());
+                    console.log($('input[id=inputDesignatedAdultAddress-' + j + ']').val());
+                        console.log($('input[id=inputDesignatedAdultCity-' + j + ']').val());
+                            console.log($('input[id=inputDesignatedAdultState-' + j + ']').val());
+                                console.log($('input[id=inputDesignatedAdultZip-' + j + ']').val());
+                console.log($('input[id=inputDesignatedAdultPhoneNumber-' + j + ']').val());
+            console.log(courseName);
+                console.log(instrumentName);
+                    console.log(bookLevelName);
+                        console.log($('input[id=inputTitle-' + j + ']').val());
+                console.log($('input[id=inputMovement-' + j + ']').val());
+                    console.log($('input[id=inputComposer-' + j + ']').val());
+                        console.log($('input[id=inputTeacherFirstName-' + j + ']').val());
+                            console.log($('input[id=inputTeacherLastName-' + j + ']').val());
+                                console.log($('input[id=inputTeacherPhoneNumber-' + j + ']').val());
+                                    console.log(enrichmentData);
+                                        console.log($('input[id=inputOtherNames]').val());
+
+
+
             $.ajax({
                 type: 'POST',
                 url: 'https://docs.google.com/forms/d/e/1FAIpQLSfKtOLno8ErYcY1khxYHZRkXSxcSTYDBzhBbsYRV8uJos6DAg/formResponse', // the url where we want to POST
@@ -2729,7 +2759,6 @@
                 var index = courseValues.indexOf(value);
                 var name = courseNames[index];
                 var price = coursePrices[index];
-                console.log(value + "\t" + name + "\t" + price);
                 var line0 = "<div id=\"payform_" + value + "\">";
                 var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + name + "\">";
                 var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + name + "\">";
