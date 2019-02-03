@@ -122,25 +122,26 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-1">
                 <div id="valid-feedback-inputGender-1"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputAge-1">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-1">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-1">
                 <div id="valid-feedback-inputAge-1"></div>
             </div>
-            <div class="form-group col-md-6">
+
+            <div class="form-group col-md-5">
                 <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-1">
                 <div id="valid-feedback-inputGraduation-1"></div>
             </div>
         </div>
-
         <div class="form-group">
             <label for="inputAccompanied-1">Student will be accompanied by: <span style="color: red">*</span></label>
             <select class="form-control" id="inputAccompanied-1" onchange="changeDesignatedAdult(1)">
@@ -276,7 +277,7 @@
         <div id="endText-1"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-1"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #1 -->
 
@@ -298,20 +299,22 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputGender-2">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-2">
                 <div id="valid-feedback-inputGender-2"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputAge-2">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-2">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-2">
                 <div id="valid-feedback-inputAge-2"></div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputGraduation-2">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-2">
                 <div id="valid-feedback-inputGraduation-2"></div>
             </div>
@@ -452,7 +455,7 @@
         <div id="endText-2"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-2"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #2 -->
 
@@ -474,20 +477,22 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputGender-3">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-3">
                 <div id="valid-feedback-inputGender-3"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputAge-3">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-3">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-3">
                 <div id="valid-feedback-inputAge-3"></div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputGraduation-3">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-3">
                 <div id="valid-feedback-inputGraduation-3"></div>
             </div>
@@ -628,7 +633,7 @@
         <div id="endText-3"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-3"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #3 -->
 
@@ -650,20 +655,22 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputGender-4">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-4">
                 <div id="valid-feedback-inputGender-4"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputAge-4">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-4">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-4">
                 <div id="valid-feedback-inputAge-4"></div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputGraduation-4">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-4">
                 <div id="valid-feedback-inputGraduation-4"></div>
             </div>
@@ -706,7 +713,7 @@
                     <input type="text" class="form-control" id="inputDesignatedAdultState-4">
                     <div id="valid-feedback-inputDesignatedAdultState-4"></div>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                     <label for="inputDesignatedAdultZip-4">Zip Code <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultZip-4">
                     <div id="valid-feedback-inputDesignatedAdultZip-4"></div>
@@ -754,7 +761,7 @@
                 <div id="valid-feedback-inputTitle-4"></div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="inputMovement-4">Movement </label>
                 <input type="text" class="form-control" id="inputMovement-4">
                 <div id="valid-feedback-inputMovement-4"></div>
@@ -804,7 +811,7 @@
         <div id="endText-4"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-4"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #4 -->
 
@@ -826,20 +833,22 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputGender-5">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-5">
                 <div id="valid-feedback-inputGender-5"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputAge-5">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-5">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-5">
                 <div id="valid-feedback-inputAge-5"></div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputGraduation-5">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-5">
                 <div id="valid-feedback-inputGraduation-5"></div>
             </div>
@@ -877,12 +886,12 @@
                     <input type="text" class="form-control" id="inputDesignatedAdultCity-5">
                     <div id="valid-feedback-inputDesignatedAdultCity-5"></div>
                 </div>
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-4">
                     <label for="inputDesignatedAdultState-5">State/Province <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultState-5">
                     <div id="valid-feedback-inputDesignatedAdultState-5"></div>
                 </div>
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-3">
                     <label for="inputDesignatedAdultZip-5">Zip Code <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultZip-5">
                     <div id="valid-feedback-inputDesignatedAdultZip-5"></div>
@@ -930,7 +939,7 @@
                 <div id="valid-feedback-inputTitle-5"></div>
             </div>
 
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-3">
                 <label for="inputMovement-5">Movement </label>
                 <input type="text" class="form-control" id="inputMovement-5">
                 <div id="valid-feedback-inputMovement-5"></div>
@@ -980,7 +989,7 @@
         <div id="endText-5"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-5"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #5 -->
 
@@ -1002,20 +1011,22 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputGender-6">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-6">
                 <div id="valid-feedback-inputGender-6"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputAge-6">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-6">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-6">
                 <div id="valid-feedback-inputAge-6"></div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputGraduation-6">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-6">
                 <div id="valid-feedback-inputGraduation-6"></div>
             </div>
@@ -1048,17 +1059,17 @@
                 <div id="valid-feedback-inputDesignatedAdultAddress-6"></div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-5">
                     <label for="inputDesignatedAdultCity-6">City <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultCity-6">
                     <div id="valid-feedback-inputDesignatedAdultCity-6"></div>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label for="inputDesignatedAdultState-6">State/Province <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultState-6">
                     <div id="valid-feedback-inputDesignatedAdultState-6"></div>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-3">
                     <label for="inputDesignatedAdultZip-6">Zip Code <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultZip-6">
                     <div id="valid-feedback-inputDesignatedAdultZip-6"></div>
@@ -1106,7 +1117,7 @@
                 <div id="valid-feedback-inputTitle-6"></div>
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label for="inputMovement-6">Movement </label>
                 <input type="text" class="form-control" id="inputMovement-6">
                 <div id="valid-feedback-inputMovement-6"></div>
@@ -1156,7 +1167,7 @@
         <div id="endText-6"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-6"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #6 -->
 
@@ -1166,32 +1177,34 @@
         <div id="studentInformationText-7"></div>
 
         <div class="form-row">
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-6">
                 <label for="inputStudentFirstName-7">First Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputStudentFirstName-7">
                 <div id="valid-feedback-inputStudentFirstName-7"></div>
             </div>
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-6">
                 <label for="inputStudentLastName-7">Last Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputStudentLastName-7">
                 <div id="valid-feedback-inputStudentLastName-7"></div>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-7">
-                <label for="inputGender-7">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-7">
                 <div id="valid-feedback-inputGender-7"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-7">
-                <label for="inputAge-7">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-7">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-7">
                 <div id="valid-feedback-inputAge-7"></div>
             </div>
-            <div class="form-group col-md-7">
-                <label for="inputGraduation-7">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-7">
                 <div id="valid-feedback-inputGraduation-7"></div>
             </div>
@@ -1207,12 +1220,12 @@
         <div id="designatedAdultInfo-7" style="visibility:hidden;display: none;">
             <h4>Provide the following information about the adult who will accompany the student:</h4></h4>
             <div class="form-row">
-                <div class="form-group col-md-7">
+                <div class="form-group col-md-6">
                     <label for="inputDesignatedAdultFirstName-7">First Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultFirstName-7">
                     <div id="valid-feedback-inputDesignatedAdultFirstName-7"></div>
                 </div>
-                <div class="form-group col-md-7">
+                <div class="form-group col-md-6">
                     <label for="inputDesignatedAdultLastName-7">Last Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultLastName-7">
                     <div id="valid-feedback-inputDesignatedAdultLastName-7"></div>
@@ -1224,17 +1237,17 @@
                 <div id="valid-feedback-inputDesignatedAdultAddress-7"></div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-7">
+                <div class="form-group col-md-5">
                     <label for="inputDesignatedAdultCity-7">City <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultCity-7">
                     <div id="valid-feedback-inputDesignatedAdultCity-7"></div>
                 </div>
-                <div class="form-group col-md-7">
+                <div class="form-group col-md-4">
                     <label for="inputDesignatedAdultState-7">State/Province <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultState-7">
                     <div id="valid-feedback-inputDesignatedAdultState-7"></div>
                 </div>
-                <div class="form-group col-md-7">
+                <div class="form-group col-md-3">
                     <label for="inputDesignatedAdultZip-7">Zip Code <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultZip-7">
                     <div id="valid-feedback-inputDesignatedAdultZip-7"></div>
@@ -1260,14 +1273,14 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-6">
                 <label for="inputInstrument-7">Instrument <span style="color: red">*</span></label>
                 <select class="form-control" id="inputInstrument-7">
                 </select>
                 <div id="valid-feedback-inputInstrument-7"></div>
             </div>
 
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-6">
                 <label for="inputBookLevel-7">Current Book Level <span style="color: red">*</span></label>
                 <select class="form-control" id="inputBookLevel-7">
                 </select>
@@ -1282,7 +1295,7 @@
                 <div id="valid-feedback-inputTitle-7"></div>
             </div>
 
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-3">
                 <label for="inputMovement-7">Movement </label>
                 <input type="text" class="form-control" id="inputMovement-7">
                 <div id="valid-feedback-inputMovement-7"></div>
@@ -1296,12 +1309,12 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-6">
                 <label for="inputTeacherFirstName-7">Teacher First Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-7">
                 <div id="valid-feedback-inputTeacherFirstName-7"></div>
             </div>
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-6">
                 <label for="inputTeacherLastName-7">Teacher Last Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTeacherLastName-7">
                 <div id="valid-feedback-inputTeacherLastName-7"></div>
@@ -1332,7 +1345,7 @@
         <div id="endText-7"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-7"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #7 -->
 
@@ -1342,32 +1355,34 @@
         <div id="studentInformationText-8"></div>
 
         <div class="form-row">
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-6">
                 <label for="inputStudentFirstName-8">First Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputStudentFirstName-8">
                 <div id="valid-feedback-inputStudentFirstName-8"></div>
             </div>
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-6">
                 <label for="inputStudentLastName-8">Last Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputStudentLastName-8">
                 <div id="valid-feedback-inputStudentLastName-8"></div>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-8">
-                <label for="inputGender-8">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-8">
                 <div id="valid-feedback-inputGender-8"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-8">
-                <label for="inputAge-8">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-8">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-8">
                 <div id="valid-feedback-inputAge-8"></div>
             </div>
-            <div class="form-group col-md-8">
-                <label for="inputGraduation-8">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-8">
                 <div id="valid-feedback-inputGraduation-8"></div>
             </div>
@@ -1383,12 +1398,12 @@
         <div id="designatedAdultInfo-8" style="visibility:hidden;display: none;">
             <h4>Provide the following information about the adult who will accompany the student:</h4></h4>
             <div class="form-row">
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-6">
                     <label for="inputDesignatedAdultFirstName-8">First Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultFirstName-8">
                     <div id="valid-feedback-inputDesignatedAdultFirstName-8"></div>
                 </div>
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-6">
                     <label for="inputDesignatedAdultLastName-8">Last Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultLastName-8">
                     <div id="valid-feedback-inputDesignatedAdultLastName-8"></div>
@@ -1400,17 +1415,17 @@
                 <div id="valid-feedback-inputDesignatedAdultAddress-8"></div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-5">
                     <label for="inputDesignatedAdultCity-8">City <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultCity-8">
                     <div id="valid-feedback-inputDesignatedAdultCity-8"></div>
                 </div>
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-4">
                     <label for="inputDesignatedAdultState-8">State/Province <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultState-8">
                     <div id="valid-feedback-inputDesignatedAdultState-8"></div>
                 </div>
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-3">
                     <label for="inputDesignatedAdultZip-8">Zip Code <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultZip-8">
                     <div id="valid-feedback-inputDesignatedAdultZip-8"></div>
@@ -1436,14 +1451,14 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-6">
                 <label for="inputInstrument-8">Instrument <span style="color: red">*</span></label>
                 <select class="form-control" id="inputInstrument-8">
                 </select>
                 <div id="valid-feedback-inputInstrument-8"></div>
             </div>
 
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-6">
                 <label for="inputBookLevel-8">Current Book Level <span style="color: red">*</span></label>
                 <select class="form-control" id="inputBookLevel-8">
                 </select>
@@ -1458,7 +1473,7 @@
                 <div id="valid-feedback-inputTitle-8"></div>
             </div>
 
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-3">
                 <label for="inputMovement-8">Movement </label>
                 <input type="text" class="form-control" id="inputMovement-8">
                 <div id="valid-feedback-inputMovement-8"></div>
@@ -1472,12 +1487,12 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-6">
                 <label for="inputTeacherFirstName-8">Teacher First Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-8">
                 <div id="valid-feedback-inputTeacherFirstName-8"></div>
             </div>
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-6">
                 <label for="inputTeacherLastName-8">Teacher Last Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTeacherLastName-8">
                 <div id="valid-feedback-inputTeacherLastName-8"></div>
@@ -1508,7 +1523,7 @@
         <div id="endText-8"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-8"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #8 -->
 
@@ -1518,32 +1533,34 @@
         <div id="studentInformationText-9"></div>
 
         <div class="form-row">
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-6">
                 <label for="inputStudentFirstName-9">First Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputStudentFirstName-9">
                 <div id="valid-feedback-inputStudentFirstName-9"></div>
             </div>
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-6">
                 <label for="inputStudentLastName-9">Last Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputStudentLastName-9">
                 <div id="valid-feedback-inputStudentLastName-9"></div>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-9">
-                <label for="inputGender-9">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-9">
                 <div id="valid-feedback-inputGender-9"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-9">
-                <label for="inputAge-9">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-9">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-9">
                 <div id="valid-feedback-inputAge-9"></div>
             </div>
-            <div class="form-group col-md-9">
-                <label for="inputGraduation-9">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-9">
                 <div id="valid-feedback-inputGraduation-9"></div>
             </div>
@@ -1559,12 +1576,12 @@
         <div id="designatedAdultInfo-9" style="visibility:hidden;display: none;">
             <h4>Provide the following information about the adult who will accompany the student:</h4></h4>
             <div class="form-row">
-                <div class="form-group col-md-9">
+                <div class="form-group col-md-6">
                     <label for="inputDesignatedAdultFirstName-9">First Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultFirstName-9">
                     <div id="valid-feedback-inputDesignatedAdultFirstName-9"></div>
                 </div>
-                <div class="form-group col-md-9">
+                <div class="form-group col-md-6">
                     <label for="inputDesignatedAdultLastName-9">Last Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultLastName-9">
                     <div id="valid-feedback-inputDesignatedAdultLastName-9"></div>
@@ -1576,17 +1593,17 @@
                 <div id="valid-feedback-inputDesignatedAdultAddress-9"></div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-9">
+                <div class="form-group col-md-5">
                     <label for="inputDesignatedAdultCity-9">City <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultCity-9">
                     <div id="valid-feedback-inputDesignatedAdultCity-9"></div>
                 </div>
-                <div class="form-group col-md-9">
+                <div class="form-group col-md-4">
                     <label for="inputDesignatedAdultState-9">State/Province <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultState-9">
                     <div id="valid-feedback-inputDesignatedAdultState-9"></div>
                 </div>
-                <div class="form-group col-md-9">
+                <div class="form-group col-md-3">
                     <label for="inputDesignatedAdultZip-9">Zip Code <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultZip-9">
                     <div id="valid-feedback-inputDesignatedAdultZip-9"></div>
@@ -1612,14 +1629,14 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-6">
                 <label for="inputInstrument-9">Instrument <span style="color: red">*</span></label>
                 <select class="form-control" id="inputInstrument-9">
                 </select>
                 <div id="valid-feedback-inputInstrument-9"></div>
             </div>
 
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-6">
                 <label for="inputBookLevel-9">Current Book Level <span style="color: red">*</span></label>
                 <select class="form-control" id="inputBookLevel-9">
                 </select>
@@ -1634,7 +1651,7 @@
                 <div id="valid-feedback-inputTitle-9"></div>
             </div>
 
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-3">
                 <label for="inputMovement-9">Movement </label>
                 <input type="text" class="form-control" id="inputMovement-9">
                 <div id="valid-feedback-inputMovement-9"></div>
@@ -1648,12 +1665,12 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-6">
                 <label for="inputTeacherFirstName-9">Teacher First Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-9">
                 <div id="valid-feedback-inputTeacherFirstName-9"></div>
             </div>
-            <div class="form-group col-md-9">
+            <div class="form-group col-md-6">
                 <label for="inputTeacherLastName-9">Teacher Last Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTeacherLastName-9">
                 <div id="valid-feedback-inputTeacherLastName-9"></div>
@@ -1684,7 +1701,7 @@
         <div id="endText-9"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-9"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #9 -->
 
@@ -1694,32 +1711,34 @@
         <div id="studentInformationText-10"></div>
 
         <div class="form-row">
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-6">
                 <label for="inputStudentFirstName-10">First Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputStudentFirstName-10">
                 <div id="valid-feedback-inputStudentFirstName-10"></div>
             </div>
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-6">
                 <label for="inputStudentLastName-10">Last Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputStudentLastName-10">
                 <div id="valid-feedback-inputStudentLastName-10"></div>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-10">
-                <label for="inputGender-10">Gender </label>
+            <div class="form-group col-md-4">
+                <label for="inputGender-1">Gender </label>
                 <input type="text" class="form-control" id="inputGender-10">
                 <div id="valid-feedback-inputGender-10"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-10">
-                <label for="inputAge-10">Age As Of July 1, <script>document.write(new Date().getFullYear())</script> <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputAge-10">
+
+            <div class="form-group col-md-3">
+                <label for="inputAge-1">Age As Of July 1,
+                    <script>document.write(new Date().getFullYear())</script>
+                    <span style="color: red">*</span></label>
+                <input type="number" min="0" class="form-control" id="inputAge-10">
                 <div id="valid-feedback-inputAge-10"></div>
             </div>
-            <div class="form-group col-md-10">
-                <label for="inputGraduation-10">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+
+            <div class="form-group col-md-5">
+                <label for="inputGraduation-1">Anticipated High School Graduation Date <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputGraduation-10">
                 <div id="valid-feedback-inputGraduation-10"></div>
             </div>
@@ -1735,12 +1754,12 @@
         <div id="designatedAdultInfo-10" style="visibility:hidden;display: none;">
             <h4>Provide the following information about the adult who will accompany the student:</h4></h4>
             <div class="form-row">
-                <div class="form-group col-md-10">
+                <div class="form-group col-md-6">
                     <label for="inputDesignatedAdultFirstName-10">First Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultFirstName-10">
                     <div id="valid-feedback-inputDesignatedAdultFirstName-10"></div>
                 </div>
-                <div class="form-group col-md-10">
+                <div class="form-group col-md-6">
                     <label for="inputDesignatedAdultLastName-10">Last Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultLastName-10">
                     <div id="valid-feedback-inputDesignatedAdultLastName-10"></div>
@@ -1752,17 +1771,17 @@
                 <div id="valid-feedback-inputDesignatedAdultAddress-10"></div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-10">
+                <div class="form-group col-md-5">
                     <label for="inputDesignatedAdultCity-10">City <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultCity-10">
                     <div id="valid-feedback-inputDesignatedAdultCity-10"></div>
                 </div>
-                <div class="form-group col-md-10">
+                <div class="form-group col-md-4">
                     <label for="inputDesignatedAdultState-10">State/Province <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultState-10">
                     <div id="valid-feedback-inputDesignatedAdultState-10"></div>
                 </div>
-                <div class="form-group col-md-10">
+                <div class="form-group col-md-3">
                     <label for="inputDesignatedAdultZip-10">Zip Code <span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="inputDesignatedAdultZip-10">
                     <div id="valid-feedback-inputDesignatedAdultZip-10"></div>
@@ -1788,14 +1807,14 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-6">
                 <label for="inputInstrument-10">Instrument <span style="color: red">*</span></label>
                 <select class="form-control" id="inputInstrument-10">
                 </select>
                 <div id="valid-feedback-inputInstrument-10"></div>
             </div>
 
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-6">
                 <label for="inputBookLevel-10">Current Book Level <span style="color: red">*</span></label>
                 <select class="form-control" id="inputBookLevel-10">
                 </select>
@@ -1804,13 +1823,13 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-9">
                 <label for="inputTitle-10">Title of Piece <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTitle-10">
                 <div id="valid-feedback-inputTitle-10"></div>
             </div>
 
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-3">
                 <label for="inputMovement-10">Movement </label>
                 <input type="text" class="form-control" id="inputMovement-10">
                 <div id="valid-feedback-inputMovement-10"></div>
@@ -1824,12 +1843,12 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-6">
                 <label for="inputTeacherFirstName-10">Teacher First Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-10">
                 <div id="valid-feedback-inputTeacherFirstName-10"></div>
             </div>
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-6">
                 <label for="inputTeacherLastName-10">Teacher Last Name <span style="color: red">*</span></label>
                 <input type="text" class="form-control" id="inputTeacherLastName-10">
                 <div id="valid-feedback-inputTeacherLastName-10"></div>
@@ -1860,7 +1879,7 @@
         <div id="endText-10"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="next()" class="btn btn-success">Next</button>
+        <span id="next-10"><button onclick="next()" class="btn btn-success">Next</button></span>
 
     </div> <!-- END STUDENT INFO #10 -->
 
@@ -1973,7 +1992,7 @@
     var accompanyNames = ["One Parent/Guardian", "Both Parents/Guardian", "Adult Designated by Parent/Guardian", "No One (student will be 13 by July 1, " +  new Date().getFullYear() + " and will reside in the teen residence hall)"];
     for (var j = 1; j <=  MAX_STUDENT_NUMBER; j ++) {
         var theSelect = document.getElementById("inputAccompanied-" + j);
-        for (var i = 0; i < accompanyNames.length; i++) {
+        for (var i = 0; i < accompanyNames.length - 1; i++) {
             var option = document.createElement("option");
             option.text = accompanyNames[i];
             option.value = accompanyValues[i];
@@ -2109,6 +2128,10 @@
                     document.getElementById("student1Information").style.display = "inherit";
                     document.getElementById("student1Information").style.visibility = "visible";
                     pageNumber = 2;
+                    if (parseInt(globalStudentCount) === 1) {
+                      document.getElementById("next-1").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                    }
+
                 }
                 goToTop();
             }
@@ -2122,9 +2145,12 @@
                         document.getElementById("student2Information").style.visibility = "visible";
                         showInputAccompanied(2);
                         pageNumber = 3;
+                        if (parseInt(globalStudentCount) === 2) {
+                            document.getElementById("next-2").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(1);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2139,9 +2165,12 @@
                         document.getElementById("student3Information").style.visibility = "visible";
                         showInputAccompanied(3);
                         pageNumber = 4;
+                        if (parseInt(globalStudentCount) === 3) {
+                            document.getElementById("next-3").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(2);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2156,9 +2185,12 @@
                         document.getElementById("student4Information").style.visibility = "visible";
                         showInputAccompanied(4);
                         pageNumber = 5;
+                        if (parseInt(globalStudentCount) === 4) {
+                            document.getElementById("next-4").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(3);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2173,9 +2205,12 @@
                         document.getElementById("student5Information").style.visibility = "visible";
                         showInputAccompanied(5);
                         pageNumber = 6;
+                        if (parseInt(globalStudentCount) === 5) {
+                            document.getElementById("next-5").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(4);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2190,9 +2225,12 @@
                         document.getElementById("student6Information").style.visibility = "visible";
                         showInputAccompanied(6);
                         pageNumber = 7;
+                        if (parseInt(globalStudentCount) === 6) {
+                            document.getElementById("next-6").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(5);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2207,9 +2245,12 @@
                         document.getElementById("student7Information").style.visibility = "visible";
                         showInputAccompanied(7);
                         pageNumber = 8;
+                        if (parseInt(globalStudentCount) === 7) {
+                            document.getElementById("next-7").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(6);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2224,9 +2265,12 @@
                         document.getElementById("student8Information").style.visibility = "visible";
                         showInputAccompanied(8);
                         pageNumber = 9;
+                        if (parseInt(globalStudentCount) === 8) {
+                            document.getElementById("next-8").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(7);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2241,9 +2285,12 @@
                         document.getElementById("student9Information").style.visibility = "visible";
                         showInputAccompanied(9);
                         pageNumber = 10;
+                        if (parseInt(globalStudentCount) === 9) {
+                            document.getElementById("next-9").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(8);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2253,23 +2300,24 @@
                     if (globalStudentCount > 9) {
                         document.getElementById("student9Information").style.display = "none";
                         document.getElementById("student9Information").style.visibility = "hidden";
-                        document.getElementById("studentNumber").innerHTML = "&mdash; Student 9";
+                        document.getElementById("studentNumber").innerHTML = "&mdash; Student 10";
                         document.getElementById("student10Information").style.display = "inherit";
                         document.getElementById("student10Information").style.visibility = "visible";
                         showInputAccompanied(10);
                         pageNumber = 11;
+                        if (parseInt(globalStudentCount) === 10) {
+                            document.getElementById("next-10").innerHTML = '<button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        }
                     }
                     else {
-                        goToLastPage(9);
+                        submit();
                     }
                 }
                 goToTop();
             }
             else if (pageNumber === 11) {
-                if (validateStudentInfo(10)) {
-                    goToLastPage(10);
-                }
                 goToTop();
+                submit();
             }
         }
         </script>
@@ -2373,16 +2421,6 @@
                 document.getElementById("student9Information").style.visibility = "visible";
                 showInputAccompanied(9);
                 pageNumber = 10;
-                goToTop();
-            }
-            else if (pageNumber === 12) {
-                document.getElementById("lastPage").style.display = "none";
-                document.getElementById("lastPage").style.visibility = "hidden";
-                document.getElementById("studentNumber").innerHTML = "&mdash; Student " + globalStudentCount;
-                document.getElementById("student" + globalStudentCount + "Information").style.display = "inherit";
-                document.getElementById("student" + globalStudentCount + "Information").style.visibility = "visible";
-                showInputAccompanied(globalStudentCount);
-                pageNumber = parseInt(globalStudentCount) + 1;
                 goToTop();
             }
         }
@@ -2546,26 +2584,6 @@
             }
 
 
-            var courseValue = getSelectData("inputCourse-" + number);
-
-            if (!courseValue.toLowerCase().includes("advanced")) {
-
-                var validEnrichment = validateEnrichmentCourses(number);
-                if (validEnrichment) {
-                    for (var i = 0; i < enrichmentIds.length; i++) {
-                        var field = document.getElementById("input" + enrichmentIds[i] + "-" + number);
-                        field.classList.add("is-valid");
-                    }
-                } else {
-                    for (var i = 0; i < enrichmentIds.length; i++) {
-                        var field = document.getElementById("input" + enrichmentIds[i] + "-" + number);
-                        field.classList.add("is-invalid");
-                    }
-                    document.getElementById("enrichmentError-" + number).innerHTML = "<h4 style='color:red'>Please select options for your enrichment courses.</h4>";
-                    valid = false;
-                }
-            }
-
             if (!valid) {
                 document.getElementById("errorMessage").innerHTML = "<h3 style='color:red'>Please correct the issue(s) indicated below in order to complete your form submission!</h3><hr>";
             }
@@ -2607,8 +2625,8 @@
         function validate() {
             var contactValidate = validateContactInfo();
             if (!contactValidate) {
-                document.getElementById("lastPage").style.display = "none";
-                document.getElementById("lastPage").style.visibility = "hidden";
+                document.getElementById("student" + globalStudentCount + "Information").style.display = "none";
+                document.getElementById("student" + globalStudentCount + "Information").style.visibility = "hidden";
                 document.getElementById("parentInformation").style.display = "inherit";
                 document.getElementById("parentInformation").style.visibility = "visible";
                 return false;
@@ -2616,8 +2634,8 @@
             for (var i = 1; i <= globalStudentCount; i ++) {
                 var studentValidate = validateStudentInfo(i);
                 if (!studentValidate) {
-                    document.getElementById("lastPage").style.display = "none";
-                    document.getElementById("lastPage").style.visibility = "hidden";
+                    document.getElementById("student" + globalStudentCount + "Information").style.display = "none";
+                    document.getElementById("student" + globalStudentCount + "Information").style.visibility = "hidden";
                     document.getElementById("studentNumber").innerHTML = "&mdash; Student " + i;
                     document.getElementById("student" + i + "Information").style.display = "inherit";
                     document.getElementById("student" + i + "Information").style.visibility = "visible";
@@ -2671,14 +2689,6 @@
             var bookLevelIndex = bookLevelValues.indexOf(bookLevelValue);
             var bookLevelName = bookLevelNames[bookLevelIndex];
             var enrichmentData = makeEnrichmentData(j);
-            /*var gender = "";
-            if ($('input[id=inputGender-' + j + ']').val() !== undefined) {
-                gender = $('input[id=inputGender-' + j + ']').val();
-            }
-            var movement = "";
-            if ($('input[id=inputMovement-' + j + ']').val() !== undefined) {
-                movement = $('input[id=inputMovement-' + j + ']').val();
-            }*/
             var formData = {
                 'entry.2039036389': $('input[id=inputFirstName]').val(),
                 'entry.305040084': $('input[id=inputLastName]').val(),
@@ -2710,8 +2720,7 @@
                 'entry.1581932096': $('input[id=inputTeacherFirstName-' + j + ']').val(),
                 'entry.1178481040': $('input[id=inputTeacherLastName-' + j + ']').val(),
                 'entry.846808053': $('input[id=inputTeacherPhoneNumber-' + j + ']').val(),
-                'entry.650938505': enrichmentData,
-                'entry.624453744': $('input[id=inputOtherNames]').val()
+                'entry.650938505': enrichmentData
             }
 
 
@@ -2830,6 +2839,58 @@
             document.getElementById("designatedAdultInfo-" + number).style.visibility = "visible";
         }
     }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#inputAge-1").change(function(){
+                updateAccompanyDropDown(1);
+            });
+            $("#inputAge-2").change(function(){
+                updateAccompanyDropDown(2);
+            });
+            $("#inputAge-3").change(function(){
+                updateAccompanyDropDown(3);
+            });
+            $("#inputAge-4").change(function(){
+                updateAccompanyDropDown(4);
+            });
+            $("#inputAge-5").change(function(){
+                updateAccompanyDropDown(5);
+            });
+            $("#inputAge-6").change(function(){
+                updateAccompanyDropDown(6);
+            });
+            $("#inputAge-7").change(function(){
+                updateAccompanyDropDown(7);
+            });
+            $("#inputAge-8").change(function(){
+                updateAccompanyDropDown(8);
+            });
+            $("#inputAge-9").change(function(){
+                updateAccompanyDropDown(9);
+            });
+            $("#inputAge-10").change(function(){
+                updateAccompanyDropDown(10);
+            });
+
+        });
+    </script>
+    <script>
+        function updateAccompanyDropDown(number) {
+            var value = document.getElementById("inputAge-" + number).value;
+            var select = document.getElementById("inputAccompanied-" + number);
+            if (value >= 13) {
+                if (select.length < 4) {
+                    var option = document.createElement("option");
+                    option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will reside in the teen residence hall)";
+                    option.value = "noone";
+                    select.add(option);
+                }
+            }
+            else {
+                select.remove(3);
+            }
+        }
     </script>
 
 </body>
