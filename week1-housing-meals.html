@@ -254,10 +254,10 @@
         var dataArray = "";
         for (var i = 0; i < housingList.length - 1; i ++) {
             if (document.getElementById("input" + housingList[i]) != null) {
-                dataArray += document.getElementById("input" + housingList[i]).value + ";;;";
+                dataArray += document.getElementById("input" + housingList[i]).value + ";;;;;;";
             }
             else {
-                dataArray += "0;;;";
+                dataArray += "0;;;;;;";
             }
         }
         // get the form data
@@ -280,7 +280,7 @@
             url         : 'https://docs.google.com/forms/d/e/1FAIpQLSdrotzMctO4vAOOtdsr16hHvL05yOif2tVb8Pgb8STiFlJHdQ/formResponse', // the url where we want to POST
             data        : formData, // our data object
             dataType    : 'json', // what type of data do we expect back from the server
-            encode          : true
+            encode          : true,
         })
         // using the done promise callback
             .done(function(data) {
