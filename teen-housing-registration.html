@@ -99,25 +99,24 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
             <label for="inputGender">Gender </label>
             <input type="text" class="form-control" id="inputGender">
             <div id="valid-feedback-inputGender"></div>
         </div>
 
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-6">
             <label for="inputAge">Age As Of July 1,
                 <script>document.write(new Date().getFullYear())</script>
                 <span style="color: red">*</span></label>
             <input type="number" min="0" class="form-control" id="inputAge">
             <div id="valid-feedback-inputAge"></div>
         </div>
-
-        <div class="form-group col-md-5">
+    </div>
+    <div class="form-row">
             <label for="inputGraduation">Anticipated High School Graduation Date <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputGraduation">
             <div id="valid-feedback-inputGraduation"></div>
-        </div>
     </div>
 
     <hr>
@@ -157,9 +156,6 @@
             var textTable = getTableData(data);
             price = textTable[1][1];
             count = textTable[1][4];
-            if (count < 1) {s
-                document.getElementById("container").innerHTML = "<br><br><h2>Teen residence hall rooms have sold out!</h2>";
-            }
         });
     // above text
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vS-FjJI5LsjIFJKEeNmcOlOfiy3EWVeN6My_sk6HpU-PZD66QQlI2eoMc-8ABBaMf9JiRV8RTp-X5J7/pubhtml?gid=869859262&single=true",
