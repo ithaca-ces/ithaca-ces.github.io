@@ -114,12 +114,12 @@
     </div>
 
     <div id="courseSelects">
-        <span><b>Select a week 1 course(<span id="week1DateSpan"></span>):</b></span> <span style="color: red">*</span>
+        <span><b>Select a week 1 course (<span id="week1DateSpan"></span>):</b></span> <span style="color: red">*</span>
         <select class="form-control" id="week1Courses" onchange="changeLogicCourses()">
             <option value=" "></option>
         </select>
         <br>
-        <span><b>Select a week 2 course(<span id="week2DateSpan"></span>):</b></span> <span style="color: red">*</span>
+        <span><b>Select a week 2 course (<span id="week2DateSpan"></span>):</b></span> <span style="color: red">*</span>
         <select class="form-control" id="week2Courses" onchange="changeLogicCourses()">
             <option value=" "></option>
         </select>
@@ -158,6 +158,7 @@
     var eccPrice = "";
     var violinUnit1Name = "";
     var violinUnit1Price = "";
+    var combinedPrice = "";
     var week1CoursesNames = [];
     var week1CoursesPrices = [];
     var week1CoursesIDs = [];
@@ -228,6 +229,13 @@
             violinUnit1Price = price;
             document.getElementById("violinUnit1Name").innerText = name;
             document.getElementById("violinUnit1Price").innerText = price;
+        });
+    // ecc and violin unit 1 combined
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1091158164&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var price = coursesData[1][1];
+            combinedPrice = price;
         });
     // week 1 courses
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=256271385&single=true",
@@ -426,12 +434,18 @@
 
         var formInputs = "";
 
-        if (eccValue === "yes") {
-            formInputs += makePayFormInputString("ecc", eccName, eccPrice);
+        if (eccValue === "yes" && violinUnit1Value === "yes") {
+            formInputs += makePayFormInputString("combined", eccName + " & " + violinUnit1Name, combinedPrice);
         }
-        if (violinUnit1Value === "yes") {
-            formInputs += makePayFormInputString("ecc", violinUnit1Name, violinUnit1Price);
+        else {
+            if (eccValue === "yes") {
+                formInputs += makePayFormInputString("ecc", eccName, eccPrice);
+            }
+            if (violinUnit1Value === "yes") {
+                formInputs += makePayFormInputString("ecc", violinUnit1Name, violinUnit1Price);
+            }
         }
+
         if (week1Course !== " ") {
             var index = week1CoursesIDs.indexOf(week1Course);
             var name = week1CoursesNames[index] + " (" + week1 + ")";
