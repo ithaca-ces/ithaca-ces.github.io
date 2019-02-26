@@ -338,6 +338,14 @@
         if (inputField.value !== "") {
             inputField.classList.add("is-valid");
         }
+        
+        var inputAge = document.getElementById("inputAge");
+        if (inputAge.value !== "" && inputAge.value < 13) {
+            valid = false;
+            document.getElementById("valid-feedback-inputAge").innerHTML = "<font color='red'>Your student must be at least 13 to be housed in the teen residence hall.</>";
+            inputAge.classList.remove("is-valid");
+            inputAge.classList.add("is-invalid");
+        }
 
 
 
