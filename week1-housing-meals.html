@@ -101,14 +101,20 @@
         <input style="max-width: 400px" min="0" type="number" class="form-control" id="inputMealPlanCount" value="0">
     </div>
 
+    <hr>
+
+    <div class="form-group">
+        <label for="inputAccommodations"><b>Individuals with disabilities requiring accommodations should list them below or contact us at (607) 274-3702. We ask that requests for accommodations be made as soon as possible.</b></label><br>
+        <textarea id="inputAccommodations" rows="4" style="width: 100%"></textarea>
+    </div>
+
+    <hr>
 
     <div id="housingList" style="visibility: hidden; display: none"></div>
     <div id="nameList" style="visibility: hidden; display: none"></div>
     <div id="priceList" style="visibility: hidden; display: none"></div>
     <div id="mealPrice" style="visibility: hidden; display: none"></div>
     <div id="quantityList" style="visibility: hidden; display: none"></div>
-
-    <hr>
 
     <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
     <br><br>
@@ -272,6 +278,7 @@
             'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
             'entry.303292725': $('input[id=inputEmailAddress]').val(),
             'entry.975589451': $('input[id=inputMealPlanCount]').val(),
+            'entry.2015316342': $('input[id=inputAccommodations]').val(),
             'entry.616708405': dataArray
         }
         // process the form
