@@ -2812,6 +2812,9 @@
             var bookLevelValue = getSelectData("inputBookLevel-" + j);
             var bookLevelIndex = bookLevelValues.indexOf(bookLevelValue);
             var bookLevelName = bookLevelNames[bookLevelIndex];
+            var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
+            var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
+            var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
             var formData = {
                 'entry.2039036389': $('input[id=inputFirstName]').val(),
                 'entry.305040084': $('input[id=inputLastName]').val(),
@@ -2843,9 +2846,9 @@
                 'entry.1581932096': $('input[id=inputTeacherFirstName-' + j + ']').val(),
                 'entry.1178481040': $('input[id=inputTeacherLastName-' + j + ']').val(),
                 'entry.846808053': $('input[id=inputTeacherPhoneNumber-' + j + ']').val(),
-                'entry.650938505': $('input[id=inputEnrichmentChoice1-' + j + ']').val(),
-                'entry.154989671': $('input[id=inputEnrichmentChoice2-' + j + ']').val(),
-                'entry.903246233': $('input[id=inputEnrichmentChoice3-' + j + ']').val()
+                'entry.650938505': enrichmentChoice1,
+                'entry.154989671': enrichmentChoice2,
+                'entry.903246233': enrichmentChoice3
             }
 
 
