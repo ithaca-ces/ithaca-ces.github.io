@@ -139,7 +139,7 @@
             document.getElementById("dateTitle").innerHTML = "<h2><i>" + weeks1and2 + "</i></h2>";
         });
     // meal text
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRP1TCsEaRrWic5id1jYZzTXQjvySQPrTrs_F0d3GvXvKacVCgPQCKNzxtm9PRAjIh38Rx1tLsSpZig/pubhtml?gid=56981838&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vSf-V3piBXMoBhIb9_ZpLpaik4j00dKgoUTKYeOzEwPOT3JVzYBnF2BJP4FMHFEFr5H1gjFbag_CAgr/pubhtml?gid=56981838&single=true",
         function(data, status) {
             var textTable = getTableData(data);
             var sumString = "";
@@ -149,12 +149,12 @@
             document.getElementById("mealPlanText").innerHTML = sumString;
         });
     // meal data
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRP1TCsEaRrWic5id1jYZzTXQjvySQPrTrs_F0d3GvXvKacVCgPQCKNzxtm9PRAjIh38Rx1tLsSpZig/pubhtml?gid=1223661694&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vSf-V3piBXMoBhIb9_ZpLpaik4j00dKgoUTKYeOzEwPOT3JVzYBnF2BJP4FMHFEFr5H1gjFbag_CAgr/pubhtml?gid=1223661694&single=true",
         function(data, status) {
         document.getElementById("mealPrice").innerText = getTableData(data)[1][1];
     });
     // housing text
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRP1TCsEaRrWic5id1jYZzTXQjvySQPrTrs_F0d3GvXvKacVCgPQCKNzxtm9PRAjIh38Rx1tLsSpZig/pubhtml?gid=869859262&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vSf-V3piBXMoBhIb9_ZpLpaik4j00dKgoUTKYeOzEwPOT3JVzYBnF2BJP4FMHFEFr5H1gjFbag_CAgr/pubhtml?gid=869859262&single=true",
         function(data, status) {
             var textTable = getTableData(data);
             var sumString = "";
@@ -164,7 +164,7 @@
             document.getElementById("housingText").innerHTML = sumString;
         });
     // housing data
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRP1TCsEaRrWic5id1jYZzTXQjvySQPrTrs_F0d3GvXvKacVCgPQCKNzxtm9PRAjIh38Rx1tLsSpZig/pubhtml?gid=256271385&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vSf-V3piBXMoBhIb9_ZpLpaik4j00dKgoUTKYeOzEwPOT3JVzYBnF2BJP4FMHFEFr5H1gjFbag_CAgr/pubhtml?gid=256271385&single=true",
         function(data, status) {
             var housingData = getTableData(data);
             var housingInputs = "";
@@ -283,7 +283,7 @@
         // process the form
         $.ajax({
             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : 'https://docs.google.com/forms/d/e/1FAIpQLScLzHbQ_hDhAYwxEsFmQZETmdbmsCDObyb_c4ekK_KDhqPMLg/formResponse', // the url where we want to POST
+            url         : 'https://docs.google.com/forms/d/e/1FAIpQLSdprLZmFgZ-rVDSkVSZPI0r5hEx_EFLO7eW7FhH2dQeU0csWw/formResponse', // the url where we want to POST
             data        : formData, // our data object
             dataType    : 'json', // what type of data do we expect back from the server
             encode          : true
