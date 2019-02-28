@@ -158,7 +158,6 @@
     var eccPrice = "";
     var violinUnit1Name = "";
     var violinUnit1Price = "";
-    var combinedPrice = "";
     var week1CoursesNames = [];
     var week1CoursesPrices = [];
     var week1CoursesIDs = [];
@@ -229,13 +228,6 @@
             violinUnit1Price = price;
             document.getElementById("violinUnit1Name").innerText = name;
             document.getElementById("violinUnit1Price").innerText = price;
-        });
-    // ecc and violin unit 1 combined
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1091158164&single=true",
-        function(data, status) {
-            var coursesData = getTableData(data);
-            var price = coursesData[1][1];
-            combinedPrice = price;
         });
     // week 1 courses
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=256271385&single=true",
@@ -434,16 +426,11 @@
 
         var formInputs = "";
 
-        if (eccValue === "yes" && violinUnit1Value === "yes") {
-            formInputs += makePayFormInputString("combined", eccName + " & " + violinUnit1Name, combinedPrice);
+        if (eccValue === "yes") {
+            formInputs += makePayFormInputString("ecc", eccName, eccPrice);
         }
-        else {
-            if (eccValue === "yes") {
-                formInputs += makePayFormInputString("ecc", eccName, eccPrice);
-            }
-            if (violinUnit1Value === "yes") {
-                formInputs += makePayFormInputString("ecc", violinUnit1Name, violinUnit1Price);
-            }
+        if (violinUnit1Value === "yes") {
+            formInputs += makePayFormInputString("ecc", violinUnit1Name, violinUnit1Price);
         }
 
         if (week1Course !== " ") {
@@ -518,7 +505,6 @@
         if (week1Course !== " " || week2Course !== " ") {
             if (eccValue != null || violinUnit1Value != null) {
                 validCourses = false;
-                alert("not valid there");
             }
         }
         else {
