@@ -139,7 +139,7 @@
             document.getElementById("dateTitle").innerHTML = "<h2><i>" + week2 + "</i></h2>";
         });
     // meal text
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-XKvdDAnnYB2WWZR5KG6ydySFyvc7cVLxc0osj2rSgXoQIVC9KuVfC1zl2fFhPgK80cGlN0fMeEde/pubhtml?gid=56981838&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRHG6-N01AF0rfyVkTGNWvLG4uztSIphcB_qDt8dztRc2jx1C4SMh4QvM_-7YjLCMbI-Z0xlt6JUL1t/pubhtml?gid=56981838&single=true",
         function(data, status) {
             var textTable = getTableData(data);
             var sumString = "";
@@ -149,12 +149,12 @@
             document.getElementById("mealPlanText").innerHTML = sumString;
         });
     // meal data
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-XKvdDAnnYB2WWZR5KG6ydySFyvc7cVLxc0osj2rSgXoQIVC9KuVfC1zl2fFhPgK80cGlN0fMeEde/pubhtml?gid=1223661694&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRHG6-N01AF0rfyVkTGNWvLG4uztSIphcB_qDt8dztRc2jx1C4SMh4QvM_-7YjLCMbI-Z0xlt6JUL1t/pubhtml?gid=1223661694&single=true",
         function(data, status) {
         document.getElementById("mealPrice").innerText = getTableData(data)[1][1];
     });
     // housing text
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-XKvdDAnnYB2WWZR5KG6ydySFyvc7cVLxc0osj2rSgXoQIVC9KuVfC1zl2fFhPgK80cGlN0fMeEde/pubhtml?gid=869859262&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRHG6-N01AF0rfyVkTGNWvLG4uztSIphcB_qDt8dztRc2jx1C4SMh4QvM_-7YjLCMbI-Z0xlt6JUL1t/pubhtml?gid=869859262&single=true",
         function(data, status) {
             var textTable = getTableData(data);
             var sumString = "";
@@ -164,7 +164,7 @@
             document.getElementById("housingText").innerHTML = sumString;
         });
     // housing data
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-XKvdDAnnYB2WWZR5KG6ydySFyvc7cVLxc0osj2rSgXoQIVC9KuVfC1zl2fFhPgK80cGlN0fMeEde/pubhtml?gid=256271385&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRHG6-N01AF0rfyVkTGNWvLG4uztSIphcB_qDt8dztRc2jx1C4SMh4QvM_-7YjLCMbI-Z0xlt6JUL1t/pubhtml?gid=256271385&single=true",
         function(data, status) {
             var housingData = getTableData(data);
             var housingInputs = "";
