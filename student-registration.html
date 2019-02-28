@@ -1892,7 +1892,7 @@
         <div id="finalText"></div>
         <br>
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
-        <button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>
+        <button onclick="submit()" class ="btn btn-success">Submit & Continue To Payment</button>
 
     </div>
 
@@ -2052,7 +2052,7 @@
                     var line2 = '<select class="form-control enrichment-select" id="input' + coursesData[k][0].toLowerCase().replace(/ /g, '') + '-' + j + '" style="max-width: 200px">';
                     var sumString = line1 + line2;
                     sumString += '<option value=" "> </option>';
-                    for (var i = 1; i < coursesData.length; i++) {
+                    for (var i = 1; i <= 3; i++) {
                         sumString += '<option value="' + i + '">' + i + '</option>';
                     }
                     sumString += "</select> &nbsp;&nbsp;&nbsp;";
