@@ -33,6 +33,7 @@
     <div id="errorMessage"></div>
 
     <h3>Parent/Guardian Contact Information</h3>
+
     <br>
     <div class="form-row">
         <div class="form-group col-md-6">
@@ -97,7 +98,11 @@
     <div id="mealPlanText"></div>
     <div class="form-group form-inline ">
         <label for="inputMealPlanCount"><b>Number Of Meal Plans:</b></label> &nbsp;&nbsp;
-        <input style="max-width: 400px" min="0" type="number" class="form-control" id="inputMealPlanCount" value="0">
+        <input style="max-width: 400px" min="0" type="number" class="form-control" id="inputMealPlanCount" value="0" onchange="changeMealPlanFields()">
+    </div>
+    <h5 id="mealPlanInputsTitle" style="visibility: hidden;display:none">Please list the names of all people who will be on a meal plan:</h5>
+    <div id="mealPlanInputs">
+
     </div>
 
     <hr>
@@ -130,6 +135,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function makeMealPlanInputs() {
+        var string = "";
+        for (var i = 1; i < MEAL_PLAN_MAX; i ++) {
+            string += '<div class="form-row" id="mealPlanName-' + i + '" style="display: none;visibility: hidden">';
+            string += '<div class="form-group col-md-6">';
+            string += '<label for="inputFirstNameMealPlan-' + i + '"><strong>Meal Plan #' + i + '</strong> - First Name <span style="color: red">*</span></label>';
+            string += ' <input type="text" class="form-control" id="inputFirstNameMealPlan-' + i + '">';
+            string += '<div id="valid-feedback-inputFirstNameMealPlan-' + i + '"></div>';
+            string += '</div>';
+            string += '<div class="form-group col-md-6">';
+            string += '<label for="inputLastNameMealPlan-' + i + '"><strong>Meal Plan #' + i + '</strong> - Last Name <span style="color: red">*</span></label>';
+            string += '<input type="text" class="form-control" id="inputLastNameMealPlan-' + i + '">';
+            string += '<div id="valid-feedback-inputLastNameMealPlan-' + i + '"></div>';
+            string += '</div></div>';
+        }
+        document.getElementById("mealPlanInputs").innerHTML = string;
+
+    }
+    var MEAL_PLAN_MAX = 50;
+    makeMealPlanInputs();
+</script>
 <script>
     // dates
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vREtU3aso5YQevwxYncCh60Cwn55X6PuCOuNv1UVHHsLr4G9TJevUa4lPjodkOBM3vUfllVyyEbhmRg/pubhtml?gid=0&single=true",
@@ -265,6 +292,11 @@
                 dataArray += "0;;;;;;";
             }
         }
+        var mealPlanCount = document.getElementById("inputMealPlanCount");
+        var mealPlanDataArray = "";
+        for (var i = 1; i <= mealPlanCount; i ++) {
+            mealPlanDataArray += document.getElementById("inputFirstNameMealPlan-" + i).value + " " + document.getElementById("inputLastNameMealPlan-" + i).value + ";";
+        }
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
         var formData = {
@@ -278,7 +310,8 @@
             'entry.303292725': $('input[id=inputEmailAddress]').val(),
             'entry.975589451': $('input[id=inputMealPlanCount]').val(),
             'entry.2015316342': document.getElementById('inputAccommodations').value,
-            'entry.616708405': dataArray
+            'entry.616708405': dataArray,
+            'entry.255990349': mealPlanDataArray
         }
         // process the form
         $.ajax({
@@ -337,88 +370,110 @@
     </script>
     <script>
 
-    function validate() {
-        clearValidateFeedback();
-        var valid = true;
+        function validate() {
+            clearValidateFeedback();
+            var valid = true;
 
-        // checks contact information
-        var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
-        var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address"];
-        for (var i = 0; i < fields.length; i ++) {
-            var inputField = document.getElementById("input" + fields[i]);
-            if (inputField.value === "") {
-                inputField.classList.add("is-invalid");
-                valid = false;
-                document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "<font color='red'>Please enter your " + names[i] + ".</>"
-            }
-            else {
-                inputField.classList.add("is-valid");
-            }
-        }
-
-        var emailField = document.getElementById("inputEmailAddress");
-        var result = validateEmail(emailField.value);
-        if(emailField.value !== "" && !result) {
-            document.getElementById("valid-feedback-inputEmailAddress").innerHTML = "<font color='red'>Please enter a valid email address.</font>";
-            emailField.classList.add("is-invalid");
-            valid = false;
-        }
-
-
-        var hasMeals = false;
-        var hasHousing = false;
-        var badHousing = false;
-        var badCount = 0;
-
-        var mealCount = $('input[id=inputMealPlanCount]').val();
-        if (mealCount > 0) {
-            hasMeals = true;
-        }
-
-        var housingString = document.getElementById("housingList").innerText;
-        var housingList = housingString.split(";;;");
-        var quantityString = document.getElementById("quantityList").innerHTML;
-        var quantityList = quantityString.split(";;;");
-        for (var i = 0; i < housingList.length - 1; i ++) {
-            var inputField = document.getElementById("input" + housingList[i]);
-            if (inputField != null) {
-                var count = parseInt(inputField.value);
-                if (count > 0) {
-                    hasHousing = true;
-                    if (count > parseInt(quantityList[i])) {
-                        badHousing = true;
-                        badCount ++;
-                        inputField.classList.add("is-invalid");
-                        valid = false;
-                        document.getElementById("valid-feedback-input" + housingList[i]).innerHTML = "<font color='red'>Please enter a number below " + (parseInt(quantityList[i]) + 1) + ".</>";
-                    }
-                    else {
-                        inputField.classList.add("is-valid");
-                    }
+            // checks contact information
+            var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+            var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address"];
+            for (var i = 0; i < fields.length; i ++) {
+                var inputField = document.getElementById("input" + fields[i]);
+                if (inputField.value === "") {
+                    inputField.classList.add("is-invalid");
+                    valid = false;
+                    document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "<font color='red'>Please enter your " + names[i] + ".</>"
                 }
-
+                else {
+                    inputField.classList.add("is-valid");
+                }
             }
-        }
 
-        if (!hasMeals && !hasHousing) {
-            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please select housing and/or a meal plan to purchase!</h4><hr>";
-            valid = false;
-        }
-        if (badHousing && badCount === 1) {
-            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix the issue indicated below with your housing choice!</h4><hr>";
-            valid = false;
-        }
-        if (badHousing && badCount > 1) {
-            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix the issues indicated below with your housing choice!</h4><hr>";
-            valid = false;
-        }
+            var emailField = document.getElementById("inputEmailAddress");
+            var result = validateEmail(emailField.value);
+            if(emailField.value !== "" && !result) {
+                document.getElementById("valid-feedback-inputEmailAddress").innerHTML = "<font color='red'>Please enter a valid email address.</font>";
+                emailField.classList.add("is-invalid");
+                valid = false;
+            }
 
-        return valid;
-    }
+
+            var hasMeals = false;
+            var hasHousing = false;
+            var badHousing = false;
+            var badCount = 0;
+
+            var mealCount = $('input[id=inputMealPlanCount]').val();
+            if (mealCount > 0) {
+                hasMeals = true;
+            }
+
+            for (var j = 1; j <= parseInt(mealCount); j ++) {
+                var firstName = document.getElementById("inputFirstNameMealPlan-" + j);
+                var lastName = document.getElementById("inputLastNameMealPlan-" + j);
+                if (firstName.value === "") {
+                    valid = false;
+                    firstName.classList.add("is-invalid");
+                    document.getElementById("valid-feedback-inputFirstNameMealPlan-" + j).innerHTML = "<font color='red'>Please enter a first name.</>";
+                }
+                else {
+                    firstName.classList.add("is-valid");
+                }
+                if (lastName.value === "") {
+                    valid = false;
+                    lastName.classList.add("is-invalid");
+                    document.getElementById("valid-feedback-inputLastNameMealPlan-" + j).innerHTML = "<font color='red'>Please enter a last name.</>";
+                }
+                else {
+                    lastName.classList.add("is-valid");
+                }
+            }
+
+            var housingString = document.getElementById("housingList").innerText;
+            var housingList = housingString.split(";;;");
+            var quantityString = document.getElementById("quantityList").innerHTML;
+            var quantityList = quantityString.split(";;;");
+            for (var i = 0; i < housingList.length - 1; i ++) {
+                var inputField = document.getElementById("input" + housingList[i]);
+                if (inputField != null) {
+                    var count = parseInt(inputField.value);
+                    if (count > 0) {
+                        hasHousing = true;
+                        if (count > parseInt(quantityList[i])) {
+                            badHousing = true;
+                            badCount ++;
+                            inputField.classList.add("is-invalid");
+                            valid = false;
+                            document.getElementById("valid-feedback-input" + housingList[i]).innerHTML = "<font color='red'>Please enter a number below " + (parseInt(quantityList[i]) + 1) + ".</>";
+                        }
+                        else {
+                            inputField.classList.add("is-valid");
+                        }
+                    }
+
+                }
+            }
+
+
+            if (!hasMeals && !hasHousing) {
+                document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please select housing and/or a meal plan to purchase!</h4><hr>";
+                valid = false;
+            }
+            if (badHousing && badCount === 1) {
+                document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix the issue indicated below with your housing choice!</h4><hr>";
+                valid = false;
+            }
+            if (badHousing && badCount > 1) {
+                document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix the issues indicated below with your housing choice!</h4><hr>";
+                valid = false;
+            }
+
+            return valid;
+        }
 
     </script>
 
-    <script>
+<script>
 
     function clearValidateFeedback() {
         var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
@@ -433,9 +488,23 @@
         for (var i = 0; i < housingList.length - 1; i ++) {
             var inputField = document.getElementById("input" + housingList[i]);
             if (inputField != null) {
-            inputField.classList.remove("is-invalid");
-            inputField.classList.remove("is-valid");
-            document.getElementById("valid-feedback-input" + housingList[i]).innerHTML = "";
+                inputField.classList.remove("is-invalid");
+                inputField.classList.remove("is-valid");
+                document.getElementById("valid-feedback-input" + housingList[i]).innerHTML = "";
+            }
+        }
+        for (var i = 1; i <= MEAL_PLAN_MAX; i ++) {
+            var inputFieldFirst = document.getElementById("inputFirstNameMealPlan-" + i);
+            var inputFieldLast = document.getElementById("inputLastNameMealPlan-" + i);
+            if (inputFieldFirst != null) {
+                inputFieldFirst.classList.remove("is-invalid");
+                inputFieldFirst.classList.remove("is-valid");
+                document.getElementById("valid-feedback-inputFirstNameMealPlan-" + i).innerHTML = "";
+            }
+            if (inputFieldLast != null) {
+                inputFieldLast.classList.remove("is-invalid");
+                inputFieldLast.classList.remove("is-valid");
+                document.getElementById("valid-feedback-inputLastNameMealPlan-" + i).innerHTML = "";
             }
         }
         document.getElementById("errorMessage").innerHTML = "";
@@ -447,7 +516,33 @@
         return re.test(String(email).toLowerCase());
     }
 
-    </script>
+</script>
+
+<script>
+    function changeMealPlanFields() {
+        var mealPlanCount = document.getElementById("inputMealPlanCount").value;
+        if (mealPlanCount >= 1) {
+            document.getElementById("mealPlanInputsTitle").style.visibility = "visible";
+            document.getElementById("mealPlanInputsTitle").style.display = "";
+        }
+        else {
+            document.getElementById("mealPlanInputsTitle").style.visibility = "hidden";
+            document.getElementById("mealPlanInputsTitle").style.display = "none";
+        }
+        for (var i = 1; i < MEAL_PLAN_MAX; i++) {
+            if (i <= mealPlanCount) {
+                document.getElementById("mealPlanName-" + i).style.visibility = "visible";
+                document.getElementById("mealPlanName-" + i).style.display = "";
+            }
+            else {
+                document.getElementById("mealPlanName-" + i).style.visibility = "hidden";
+                document.getElementById("mealPlanName-" + i).style.display = "none";
+            }
+        }
+
+    }
+</script>
+
 
 </body>
 </html>
