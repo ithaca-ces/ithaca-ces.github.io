@@ -2799,6 +2799,15 @@
         }
 
     function submitGoogleForm() {
+        var firstName = $('input[id=inputFirstName]').val();
+        var lastName = $('input[id=inputLastName]').val();
+        var address =  $('input[id=inputAddress]').val();
+        var city = $('input[id=inputCity]').val();
+        var state = $('input[id=inputState]').val();
+        var zip = $('input[id=inputZip]').val();
+        var phoneNumber = $('input[id=inputPhoneNumber]').val();
+        var emailAddress = $('input[id=inputEmailAddress]').val();
+        var uniqueID = makeUniqueID(firstName, lastName, address, city, state, zip, phoneNumber, emailAddress);
         for (var j = 1; j <= globalStudentCount; j++) {
             var accompaniedValue = getSelectData("inputAccompanied-" + j);
             var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
@@ -2816,14 +2825,14 @@
             var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
             var formData = {
-                'entry.2039036389': $('input[id=inputFirstName]').val(),
-                'entry.305040084': $('input[id=inputLastName]').val(),
-                'entry.1583950870': $('input[id=inputAddress]').val(),
-                'entry.1741944776': $('input[id=inputCity]').val(),
-                'entry.1449597621': $('input[id=inputState]').val(),
-                'entry.2043889500': $('input[id=inputZip]').val(),
-                'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
-                'entry.303292725': $('input[id=inputEmailAddress]').val(),
+                'entry.2039036389': firstName,
+                'entry.305040084': lastName,
+                'entry.1583950870': address,
+                'entry.1741944776': city,
+                'entry.1449597621': state,
+                'entry.2043889500': zip,
+                'entry.1770398499': phoneNumber,
+                'entry.303292725': emailAddress,
                 'entry.456678140': $('input[id=inputStudentFirstName-' + j + ']').val(),
                 'entry.1052902752': $('input[id=inputStudentLastName-' + j + ']').val(),
                 'entry.991750866': $('input[id=inputGender-' + j + ']').val(),
@@ -2848,7 +2857,8 @@
                 'entry.846808053': $('input[id=inputTeacherPhoneNumber-' + j + ']').val(),
                 'entry.650938505': enrichmentChoice1,
                 'entry.154989671': enrichmentChoice2,
-                'entry.903246233': enrichmentChoice3
+                'entry.903246233': enrichmentChoice3,
+                'entry.663733401': uniqueID
             }
 
 
@@ -2866,6 +2876,22 @@
         }
     }
 
+    </script>
+    <script>
+        String.prototype.hashCode = function() {
+            var hash = 0, i, chr;
+            if (this.length === 0) return hash;
+            for (i = 0; i < this.length; i++) {
+                chr   = this.charCodeAt(i);
+                hash  = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        };
+        function makeUniqueID(firstName, lastName, address, city, state, zip, phoneNumber, emailAddress) {
+            var string = new Date().toDateString() + new Date().toTimeString() + firstName + lastName + address + city + state + zip + phoneNumber + emailAddress;
+            return string.hashCode();
+        }
     </script>
     <script>
 
