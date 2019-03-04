@@ -292,7 +292,7 @@
                 dataArray += "0;;;;;;";
             }
         }
-        var mealPlanCount = document.getElementById("inputMealPlanCount");
+        var mealPlanCount = document.getElementById("inputMealPlanCount").value;
         var mealPlanDataArray = "";
         for (var i = 1; i <= mealPlanCount; i ++) {
             mealPlanDataArray += document.getElementById("inputFirstNameMealPlan-" + i).value + " " + document.getElementById("inputLastNameMealPlan-" + i).value + ";";
