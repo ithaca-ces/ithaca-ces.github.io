@@ -120,6 +120,10 @@
     <div id="mealPrice" style="visibility: hidden; display: none"></div>
     <div id="quantityList" style="visibility: hidden; display: none"></div>
 
+    <div style="visibility: hidden;display:none"><input id="inputID" type="text"></div>
+
+    <h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br>
+
     <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
     <br><br>
 
@@ -220,6 +224,7 @@
             document.getElementById("priceList").innerText = priceList;
             document.getElementById("quantityList").innerText = quantityList;
         }).done(function() {
+        makeID();
             document.getElementById("container").style.display = "inherit";
             document.getElementById("container").style.visibility = "visible";
             document.getElementById("pre").style.display = "none";
@@ -245,11 +250,11 @@
         return myTableArray;
     }
 
-
-    function getSelectData(name) {
-        var e = document.getElementById(name);
-        var value = e.options[e.selectedIndex].value;
-        return value;
+    function makeID() {
+        var value = document.getElementById("inputID").value;
+        if (value === "") {
+            document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
+        }
     }
 
     </script>
@@ -267,6 +272,7 @@
                 width: "100%"
             }, 10000);
             submitGoogleForm();
+            webHook();
             setTimeout(function(){
                 submitPaymentForm();
             }, 10000);
@@ -311,7 +317,8 @@
             'entry.975589451': $('input[id=inputMealPlanCount]').val(),
             'entry.2015316342': document.getElementById('inputAccommodations').value,
             'entry.616708405': dataArray,
-            'entry.2006159302': mealPlanDataArray
+            'entry.2006159302': mealPlanDataArray,
+            'entry.849343002': $('input[id=inputID]').val()
         }
         // process the form
         $.ajax({
@@ -328,6 +335,48 @@
     }
 
     </script>
+<script>
+    function webHook() {
+        var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+        var firstName = $('input[id=inputFirstName]').val();
+        var lastName = $('input[id=inputLastName]').val();
+        var id = $('input[id=inputID]').val();
+        var list = "";
+        var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
+        if (mealPlanCount > 0) {
+            list += "<li><b>Meal Plans ($" + document.getElementById("mealPrice").innerText + "):</b> " + mealPlanCount + "</li>";
+            var mealPlanDataArray = "";
+            for (var i = 1; i <= mealPlanCount; i ++) {
+                mealPlanDataArray += document.getElementById("inputFirstNameMealPlan-" + i).value + " " + document.getElementById("inputLastNameMealPlan-" + i).value + ", ";
+            }
+            mealPlanDataArray = mealPlanDataArray.substring(0, mealPlanDataArray.length - 2);
+            list += "<li><b>Meal Plan People:</b> " + mealPlanDataArray + "</li>";
+        }
+        var housingString = document.getElementById("housingList").innerText;
+        var housingList = housingString.split(";;;");
+        var nameString = document.getElementById("nameList").innerText;
+        var nameList = nameString.split(";;;");
+        var priceString = document.getElementById("priceList").innerText;
+        var priceList = priceString.split(";;;");
+        for (var i = 0; i < housingList.length - 1; i++) {
+            if (document.getElementById("input" + housingList[i]) != null) {
+                var count = parseInt(document.getElementById("input" + housingList[i]).value);
+                if (count > 0) {
+                    list += "<li><b>" + nameList[i] + " ($" + priceList[i] + ")</b>: " + count + "</li>";
+                }
+            }
+        }
+        var text = "<b>WEEK 2 HOUSING & MEALS SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a Week 2 Housing & Meals Form:<br><ul>" + list + "</ul><i>(ID # " + id + ")</i>";
+        $.ajax({
+            data: JSON.stringify({
+                "text": text
+            }),
+            dataType: 'json',
+            type: 'POST',
+            url: url
+        });
+    }
+</script>
     <script>
 
         function submitPaymentForm() {
