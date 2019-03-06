@@ -138,6 +138,10 @@
     <div id="registrationFee" style="visibility: hidden; display: none"></div>
     <div id="SAAFee" style="visibility: hidden; display: none"></div>
 
+    <div style="visibility: hidden;display:none"><input id="inputID" type="text"></div>
+
+    <h5>Please check that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br>
+
     <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
     <br><br>
 
@@ -259,6 +263,7 @@
                 week2CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
             }
         }).done(function() {
+            makeID();
             document.getElementById("container").style.display = "inherit";
             document.getElementById("container").style.visibility = "visible";
             document.getElementById("pre").style.display = "none";
@@ -289,6 +294,13 @@
         var e = document.getElementById(name);
         var value = e.options[e.selectedIndex].value;
         return value;
+    }
+
+    function makeID() {
+        var value = document.getElementById("inputID").value;
+        if (value === "") {
+            document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
+        }
     }
     </script>
     <script>
@@ -351,6 +363,7 @@
                 width: "100%"
             }, 10000);
             submitGoogleForm();
+            webHook();
             setTimeout(function(){
                 submitPaymentForm();
             }, 10000);
@@ -362,6 +375,49 @@
             document.getElementById("post").style.display = "none";
             document.getElementById("post").style.visibility = "hidden";
         }
+    }
+    </script>
+    <script>
+    function webHook() {
+        var eccValue = getRadioButtonValue("everyChildCan");
+        var violinUnit1Value = getRadioButtonValue("violinUnit1");
+        var week1Course = getSelectData("week1Courses");
+        var week2Course = getSelectData("week2Courses");
+        var nameArray = [];
+        if (eccValue === "yes") {
+            nameArray.push(eccName);
+        }
+        if (violinUnit1Value === "yes") {
+            nameArray.push(violinUnit1Name);
+        }
+        if (week1Course !== " ") {
+            var index = week1CoursesIDs.indexOf(week1Course);
+            var name = week1CoursesNames[index];
+            nameArray.push(name);
+        }
+        if (week2Course !== " ") {
+            var index = week2CoursesIDs.indexOf(week2Course);
+            var name = week2CoursesNames[index];
+            nameArray.push(name);
+        }
+        var text = nameArray[0];
+        if (nameArray.length > 1) {
+            text += " and " + nameArray[1];
+        }
+
+        var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+        var firstName = $('input[id=inputFirstName]').val();
+        var lastName = $('input[id=inputLastName]').val();
+        var id = document.getElementById("inputID").value;
+        var text = "<b>TEACHER REGISTRATION FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a teacher registration form for " + text + ".<br><i>(ID # " + id + ")</i>";
+        $.ajax({
+            data: JSON.stringify({
+                "text": text
+            }),
+            dataType: 'json',
+            type: 'POST',
+            url: url
+        });
     }
     </script>
     <script>
@@ -383,7 +439,8 @@
             'entry.1449597621': $('input[id=inputState]').val(),
             'entry.2043889500': $('input[id=inputZip]').val(),
             'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
-            'entry.303292725': $('input[id=inputEmailAddress]').val()
+            'entry.303292725': $('input[id=inputEmailAddress]').val(),
+            'entry.26805010': $('input[id=inputID]').val()
         }
         if (eccValue === "yes") {
             formData["entry.616708405"] = eccName;
