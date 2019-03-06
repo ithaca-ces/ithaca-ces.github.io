@@ -2066,7 +2066,7 @@
 
     </div>
 
-
+    <div style="visibility: hidden;display:none"><input id="inputID" type="text"></div>
 
     <br><br>
 
@@ -2229,6 +2229,7 @@
             }
 
         }).done(function() {
+        makeID();
         document.getElementById("container").style.display = "inherit";
         document.getElementById("container").style.visibility = "visible";
         document.getElementById("pre").style.display = "none";
@@ -2265,6 +2266,13 @@
     function goToTop() {
         $('html,body').scrollTop(0);
         window.parent.postMessage("scrollTop", '*');
+    }
+
+    function makeID() {
+        var value = document.getElementById("inputID").value;
+        if (value === "") {
+            document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
+        }
     }
 
     </script>
@@ -2770,11 +2778,11 @@
             }
             return true;
         }
-        function webHook(studentFirst, studentLast, id) {
+        function webHook(studentFirst, studentLast, course, instrument, bookLevel, id) {
             var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
             var firstName = $('input[id=inputFirstName]').val();
             var lastName = $('input[id=inputLastName]').val();
-            var text = "<b>STUDENT REGISTRATION FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a student registration form for " + studentFirst + " " + studentLast + "&nbsp;<i>(ID # " + id + ")</i>";
+            var text = "<b>STUDENT REGISTRATION FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a student registration form for " + studentFirst + " " + studentLast + " for " + course + " (" + instrument + ", " + bookLevel + ").<br><i>(ID # " + id + ")</i>";
             $.ajax({
                 data: JSON.stringify({
                     "text": text
@@ -2821,7 +2829,7 @@
         var zip = $('input[id=inputZip]').val();
         var phoneNumber = $('input[id=inputPhoneNumber]').val();
         var emailAddress = $('input[id=inputEmailAddress]').val();
-        var uniqueID = makeUniqueID(firstName, lastName, address, city, state, zip, phoneNumber, emailAddress);
+        var uniqueID = $('input[id=inputID]').val();
         for (var j = 1; j <= globalStudentCount; j++) {
             var accompaniedValue = getSelectData("inputAccompanied-" + j);
             var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
@@ -2872,7 +2880,7 @@
                 'entry.650938505': enrichmentChoice1,
                 'entry.154989671': enrichmentChoice2,
                 'entry.903246233': enrichmentChoice3,
-                'entry.663733401': uniqueID
+                'entry.663733401': $('input[id=inputID]').val()
             }
 
 
@@ -2887,7 +2895,7 @@
                 .done(function(data) {
 
                 });
-            webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), uniqueID);
+            webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
         }
     }
 
