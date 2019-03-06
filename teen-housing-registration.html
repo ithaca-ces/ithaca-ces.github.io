@@ -132,6 +132,10 @@
 
     <hr>
 
+    <div style="visibility: hidden;display:none"><input id="inputID" type="text"></div>
+
+    <h5>Please check that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br>
+
     <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
     <br><br>
 
@@ -184,6 +188,7 @@
             }
             document.getElementById("belowText").innerHTML = sumString;
         }).done(function() {
+        makeID();
         document.getElementById("container").style.display = "inherit";
         document.getElementById("container").style.visibility = "visible";
         document.getElementById("pre").style.display = "none";
@@ -208,7 +213,12 @@
         });
         return myTableArray;
     }
-
+    function makeID() {
+        var value = document.getElementById("inputID").value;
+        if (value === "") {
+            document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
+        }
+    }
     </script>
     <script>
 
@@ -244,7 +254,8 @@
         var lastName = $('input[id=inputLastName]').val();
         var studentFirst = $('input[id=inputStudentFirstName]').val();
         var studentLast = $('input[id=inputStudentLastName]').val();
-        var text = "<b>TEEN RESIDENCE HALL FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a teen housing registration form for " + studentFirst + " " + studentLast;
+        var id = $('input[id=inputID]').val();
+        var text = "<b>TEEN RESIDENCE HALL FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a teen housing registration form for " + studentFirst + " " + studentLast + ".<br><i>(ID # " + id + ")</i>";
         $.ajax({
             data: JSON.stringify({
                 "text": text
@@ -273,7 +284,8 @@
             'entry.1145530928': $('input[id=inputGender]').val(),
             'entry.507636254': $('input[id=inputAge]').val(),
             'entry.788277188': $('input[id=inputGraduation]').val(),
-            'entry.1448907684': document.getElementById('inputAccommodations').value
+            'entry.1448907684': document.getElementById('inputAccommodations').value,
+            'entry.310480582': $('input[id=inputID]').val()
 
 
         }
