@@ -296,6 +296,70 @@
 
             <hr>
 
+            <div class="form-group">
+                <label for="hasSiblings-1"><h5>QUESTION ABOUT SIBLINGS?</h5>Some helpful text here.</label><br>
+                <input type="radio" name="hasSiblings-1" value="yes"> &nbsp;Yes<br>
+                <input type="radio" name="hasSiblings-1" value="no"> &nbsp;No
+            </div>
+
+            <div class="form-group" id="siblings-entry-1">
+                <label style="font-weight: 700">Enter the names of the siblings below:</label><br>
+            </div>
+
+            <div class="form-row" id="siblings-1-1">
+                <div class="form-group col-md-6">
+                    <label for="inputSiblingFirstName-1-1">Sibling #1 First Name <span style="color: red">*</span></label>
+                    <input type="text" class="form-control" id="inputSiblingFirstName-1-1" oninput="inputDetect(1, 1)">
+                    <div id="valid-feedback-inputSiblingFirstName-1-1"></div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputSiblingLastName-1-1">Sibling #1 Last Name <span style="color: red">*</span></label>
+                    <input type="text" class="form-control" id="inputSiblingLastName-1-1" oninput="inputDetect(1, 1)">
+                    <div id="valid-feedback-inputSiblingLastName-1-1"></div>
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-1-2" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <label for="inputSiblingFirstName-1-2">Sibling #2 First Name</label>
+                    <input type="text" class="form-control" id="inputSiblingFirstName-1-2" oninput="inputDetect(1, 2)">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputSiblingLastName-1-2">Sibling #2 Last Name</label>
+                    <input type="text" class="form-control" id="inputSiblingLastName-1-2" oninput="inputDetect(1, 2)">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-1-3" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <label for="inputSiblingFirstName-1-3">Sibling #3 First Name</label>
+                    <input type="text" class="form-control" id="inputSiblingFirstName-1-3" oninput="inputDetect(1, 3)">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputSiblingLastName-1-3">Sibling #3 Last Name</label>
+                    <input type="text" class="form-control" id="inputSiblingLastName-1-3" oninput="inputDetect(1, 3)">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-1-4" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <label for="inputSiblingFirstName-1-4">Sibling #4 First Name</label>
+                    <input type="text" class="form-control" id="inputSiblingFirstName-1-4" oninput="inputDetect(1, 4)">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputSiblingLastName-1-4">Sibling #4 Last Name</label>
+                    <input type="text" class="form-control" id="inputSiblingLastName-1-4" oninput="inputDetect(1, 4)">
+                </div>
+            </div>
+
+
+
+            <hr>
+
+
+
+
+
 
         </div>
 
@@ -3117,6 +3181,23 @@
             else {
                 select.remove(3);
             }
+        }
+    </script>
+    <script>
+        function inputDetect(registrationNumber, siblingNumber) {
+            if (siblingNumber < 4) {
+                // number 4 needs to be updated to max number of siblings minus 1
+                var firstName = document.getElementById("inputSiblingFirstName-" + registrationNumber + "-" + siblingNumber).value;
+                var lastName = document.getElementById("inputSiblingLastName-" + registrationNumber + "-" + siblingNumber).value;
+                if (!isBlank(firstName) && !isBlank(lastName)) {
+                    var nextNumber = siblingNumber + 1;
+                    document.getElementById("siblings-" + registrationNumber + "-" + nextNumber).style.display = "";
+                    document.getElementById("siblings-" + registrationNumber + "-" + nextNumber).style.visibility = "visible";
+                }
+            }
+        }
+        function isBlank(str) {
+            return (!str || /^\s*$/.test(str));
         }
     </script>
 
