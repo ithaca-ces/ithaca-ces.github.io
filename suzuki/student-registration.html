@@ -3263,7 +3263,8 @@
             var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
             var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
-            var siblings = makeSiblings(j);
+            var siblings = makeSiblingsString(j);
+
             var formData = {
                 'entry.2039036389': firstName,
                 'entry.305040084': lastName,
@@ -3290,7 +3291,6 @@
                 'entry.429624467': instrumentName,
                 'entry.1295208958': bookLevelName,
                 'entry.1431622853': $('input[id=inputTitle-' + j + ']').val(),
-                //'entry.943311597': $('input[id=inputComposer-' + j + ']').val(),
                 'entry.1581932096': $('input[id=inputTeacherFirstName-' + j + ']').val(),
                 'entry.1178481040': $('input[id=inputTeacherLastName-' + j + ']').val(),
                 'entry.846808053': $('input[id=inputTeacherPhoneNumber-' + j + ']').val(),
@@ -3298,10 +3298,9 @@
                 'entry.154989671': enrichmentChoice2,
                 'entry.903246233': enrichmentChoice3,
                 'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
+                'entry.943311597': siblings,
                 'entry.663733401': $('input[id=inputID]').val()
             }
-
-
 
             $.ajax({
                 type: 'POST',
@@ -3314,6 +3313,7 @@
 
                 });
             webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
+
         }
     }
 
@@ -3332,11 +3332,6 @@
         function makeUniqueID(firstName, lastName, address, city, state, zip, phoneNumber, emailAddress) {
             var string = new Date().toDateString() + new Date().toTimeString() + firstName + lastName + address + city + state + zip + phoneNumber + emailAddress;
             return string.hashCode();
-        }
-        function makeSiblings(studentNumber) {
-            // if response is yes
-            // loop through all #s
-            // add/sum to string
         }
     </script>
     <script>
@@ -3504,6 +3499,23 @@
                 }
             }
             return null;
+        }
+    </script>
+    <script>
+        function makeSiblingsString(number) {
+            var siblingString = "";
+            var hasSiblings = getRadioButtonValue("hasSiblings-" + number);
+            if (hasSiblings === "yes") {
+                for (var i = 1; i <= 15; i++) {
+                    var firstName = document.getElementById("inputSiblingFirstName-" + number + "-" + i).value;
+                    var lastName = document.getElementById("inputSiblingLastName-" + number + "-" + i).value;
+                    if (!isBlank(firstName) && !isBlank(lastName)) {
+                        siblingString += firstName + " " + lastName + ", ";
+                    }
+                }
+            }
+            siblingString = siblingString.substring(0, siblingString.length - 2);
+            return siblingString;
         }
     </script>
 
