@@ -103,6 +103,7 @@
     </div> <!-- END PARENT INFO -->
 
 
+
     <div id="student1Information" style="visibility: hidden;display:none">
 
         <h3>Student Information</h3>
@@ -198,6 +199,7 @@
         <div class="form-group">
             <label for="inputCourse-1">Select a course: <span style="color: red">*</span></label>
             <select class="form-control" id="inputCourse-1" onchange="changeShowEnrichmentCourses(1)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-1"></div>
         </div>
@@ -205,14 +207,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-1">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-1">
+                <select class="form-control" id="inputInstrument-1" onchange="changeBookLevels(1)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-1"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-1">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-1">
+                <select class="form-control" id="inputBookLevel-1" onchange="changePieceCodes(1)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-1"></div>
             </div>
@@ -220,9 +224,11 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-            <label for="inputTitle-1">Title of Piece <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputTitle-1">
-            <div id="valid-feedback-inputTitle-1"></div>
+                <label for="inputTitle-1">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-1">
+                    <option style="display:none" disabled selected value></option>
+                </select>
+                <div id="valid-feedback-inputTitle-1"></div>
             </div>
 
             <div class="form-group col-md-3">
@@ -286,16 +292,8 @@
                 </select>
             </div>
 
+            <hr>
         </div>
-
-        <hr>
-
-        <div class="form-group">
-            <label for="inputTeacherRequests-1"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-            <textarea id="inputTeacherRequests-1" rows="2" style="width: 100%"></textarea>
-        </div>
-
-        <hr>
 
         <div id="endText-1"></div>
 
@@ -489,16 +487,8 @@
                 </select>
             </div>
 
+            <hr>
         </div>
-
-        <hr>
-
-        <div class="form-group">
-            <label for="inputTeacherRequests-2"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-            <textarea id="inputTeacherRequests-2" rows="2" style="width: 100%"></textarea>
-        </div>
-
-        <hr>
 
         <div id="endText-2"></div>
 
@@ -693,14 +683,6 @@
             </div>
 
             <hr>
-
-            <div class="form-group">
-                <label for="inputTeacherRequests-3"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-                <textarea id="inputTeacherRequests-3" rows="2" style="width: 100%"></textarea>
-            </div>
-
-            <hr>
-
         </div>
 
         <div id="endText-3"></div>
@@ -896,14 +878,6 @@
             </div>
 
             <hr>
-
-            <div class="form-group">
-                <label for="inputTeacherRequests-4"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-                <textarea id="inputTeacherRequests-4" rows="2" style="width: 100%"></textarea>
-            </div>
-
-            <hr>
-
         </div>
 
         <div id="endText-4"></div>
@@ -1099,14 +1073,6 @@
             </div>
 
             <hr>
-
-            <div class="form-group">
-                <label for="inputTeacherRequests-5"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-                <textarea id="inputTeacherRequests-5" rows="2" style="width: 100%"></textarea>
-            </div>
-
-            <hr>
-
         </div>
 
         <div id="endText-5"></div>
@@ -1302,14 +1268,6 @@
             </div>
 
             <hr>
-
-            <div class="form-group">
-                <label for="inputTeacherRequests-6"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-                <textarea id="inputTeacherRequests-6" rows="2" style="width: 100%"></textarea>
-            </div>
-
-            <hr>
-
         </div>
 
         <div id="endText-6"></div>
@@ -1505,14 +1463,6 @@
             </div>
 
             <hr>
-
-            <div class="form-group">
-                <label for="inputTeacherRequests-7"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-                <textarea id="inputTeacherRequests-7" rows="2" style="width: 100%"></textarea>
-            </div>
-
-            <hr>
-
         </div>
 
         <div id="endText-7"></div>
@@ -1708,14 +1658,6 @@
             </div>
 
             <hr>
-
-            <div class="form-group">
-                <label for="inputTeacherRequests-8"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-                <textarea id="inputTeacherRequests-8" rows="2" style="width: 100%"></textarea>
-            </div>
-
-            <hr>
-
         </div>
 
         <div id="endText-8"></div>
@@ -1911,14 +1853,6 @@
             </div>
 
             <hr>
-
-            <div class="form-group">
-                <label for="inputTeacherRequests-9"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-                <textarea id="inputTeacherRequests-9" rows="2" style="width: 100%"></textarea>
-            </div>
-
-            <hr>
-
         </div>
 
         <div id="endText-9"></div>
@@ -2114,14 +2048,6 @@
             </div>
 
             <hr>
-
-            <div class="form-group">
-                <label for="inputTeacherRequests-10"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-                <textarea id="inputTeacherRequests-10" rows="2" style="width: 100%"></textarea>
-            </div>
-
-            <hr>
-
         </div>
 
         <div id="endText-10"></div>
@@ -2133,159 +2059,10 @@
 
     <div id="lastPage" style="visibility: hidden;display: none">
 
-        <h5>You have entered information the following students:</h5>
-        <ol id="studentsRegisteredList"></ol>
         <div class="form-group">
-            <label for="hasSiblings"><h5>Are there any other people who will be attending the Suzuki Institute that you be registering for in the future or that you have registered for already?<span style="color: red">*</span></h5>Some helpful text here. The above sentence definitely need to be changed.</label><br>
-            <input type="radio" name="hasSiblings" value="yes" onclick="displaySiblingQuestion()"> &nbsp;Yes<br>
-            <input type="radio" name="hasSiblings" value="no" onclick="displaySiblingQuestion()"> &nbsp;No
+            <label for="inputOtherNames">Please supply the names of all additional people attending the institute. </label>
+            <input type="text" class="form-control" id="inputOtherNames">
         </div>
-
-        <div id="siblings" style="display: none; visibility: hidden">
-
-            <div class="form-group" id="siblings-entry">
-                <label style="font-weight: 700">Enter the names of the OTHER siblings below - REWRITE NEEDED:</label><br>
-            </div>
-
-            <div class="form-row" id="siblings-1">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1" oninput="inputDetect(1)" placeholder="First Name">
-                    <div id="valid-feedback-inputSiblingFirstName-1"></div>
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-1" oninput="inputDetect(1)" placeholder="Last Name">
-                    <div id="valid-feedback-inputSiblingLastName-1"></div>
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2" oninput="inputDetect(2)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2" oninput="inputDetect(2)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-3" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-3" oninput="inputDetect(3)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-3" oninput="inputDetect(3)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-4" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-4" oninput="inputDetect(4)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-4" oninput="inputDetect(4)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-5" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-5" oninput="inputDetect(5)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-5" oninput="inputDetect(5)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-6" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-6" oninput="inputDetect(6)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-6" oninput="inputDetect(6)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-7" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-7" oninput="inputDetect(7)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-7" oninput="inputDetect(7)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-8" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-8" oninput="inputDetect(8)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-8" oninput="inputDetect(8)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-9" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-9" oninput="inputDetect(9)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-9" oninput="inputDetect(9)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-10" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-10" oninput="inputDetect(10)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-10" oninput="inputDetect(10)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-11" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-11" oninput="inputDetect(11)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-11" oninput="inputDetect(11)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-12" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-12" oninput="inputDetect(12)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-12" oninput="inputDetect(12)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-13" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-13" oninput="inputDetect(13)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-13" oninput="inputDetect(13)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-14" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-14" oninput="inputDetect(14)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-14" oninput="inputDetect(14)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-15" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-15" oninput="inputDetect(15)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-15" oninput="inputDetect(15)" placeholder="Last Name">
-                </div>
-            </div>
-
-        </div>
-
         <hr>
         <div id="finalText"></div>
         <br>
@@ -2324,6 +2101,7 @@
     var instrumentNames = [];
     var bookLevelValues = [];
     var bookLevelNames = [];
+    var codesDictionary = {};
 
     // student information text
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=56981838&single=true",
@@ -2421,7 +2199,7 @@
                 instrumentValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
             }
         });
-    // book options
+    /*// book options
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=1224050231&single=true",
         function(data, status) {
             var coursesData = getTableData(data);
@@ -2438,6 +2216,26 @@
                 bookLevelNames.push(coursesData[i][0]);
                 bookLevelValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
             }
+        });*/
+    // codes dictionary
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=1739389938&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var dict = [];
+            for (var i = 1; i < textTable.length; i ++) {
+                var name = textTable[i][0];
+                var bookLevels = textTable[i][1];
+                var books = textTable[i][2];
+                var codes = textTable[i][3];
+                var titles = textTable[i][4];
+                var movements = textTable[i][5];
+                dict[name] = {bookOptions: bookLevels,
+                    bookList: books.split(","),
+                    codeList: codes.split(","),
+                    titleList: titles.split(","),
+                    movementsList: movements.split(",")};
+            }
+            codeDictionary = dict;
         });
     // enrichment classes options
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=189728833&single=true",
@@ -2517,7 +2315,7 @@
                     document.getElementById("student1Information").style.visibility = "visible";
                     pageNumber = 2;
                     if (parseInt(globalStudentCount) === 1) {
-                      document.getElementById("next-1").innerHTML = '<button onclick="goToLastPage(1)" class="btn btn-success">Next</button>';
+                      document.getElementById("next-1").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                     }
 
                 }
@@ -2532,13 +2330,14 @@
                         document.getElementById("student2Information").style.display = "inherit";
                         document.getElementById("student2Information").style.visibility = "visible";
                         showInputAccompanied(2);
+                        changeBookLevels(2);
                         pageNumber = 3;
                         if (parseInt(globalStudentCount) === 2) {
-                            document.getElementById("next-2").innerHTML = '<button onclick="goToLastPage(2)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-2").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(2);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2552,13 +2351,14 @@
                         document.getElementById("student3Information").style.display = "inherit";
                         document.getElementById("student3Information").style.visibility = "visible";
                         showInputAccompanied(3);
+                        changeBookLevels(3);
                         pageNumber = 4;
                         if (parseInt(globalStudentCount) === 3) {
-                            document.getElementById("next-3").innerHTML = '<button onclick="goToLastPage(3)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-3").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(3);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2572,13 +2372,14 @@
                         document.getElementById("student4Information").style.display = "inherit";
                         document.getElementById("student4Information").style.visibility = "visible";
                         showInputAccompanied(4);
+                        changeBookLevels(4);
                         pageNumber = 5;
                         if (parseInt(globalStudentCount) === 4) {
-                            document.getElementById("next-4").innerHTML = '<button onclick="goToLastPage(4)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-4").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(4);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2592,13 +2393,14 @@
                         document.getElementById("student5Information").style.display = "inherit";
                         document.getElementById("student5Information").style.visibility = "visible";
                         showInputAccompanied(5);
+                        changeBookLevels(5);
                         pageNumber = 6;
                         if (parseInt(globalStudentCount) === 5) {
-                            document.getElementById("next-5").innerHTML = '<button onclick="goToLastPage(5)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-5").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(5);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2612,13 +2414,14 @@
                         document.getElementById("student6Information").style.display = "inherit";
                         document.getElementById("student6Information").style.visibility = "visible";
                         showInputAccompanied(6);
+                        changeBookLevels(6);
                         pageNumber = 7;
                         if (parseInt(globalStudentCount) === 6) {
-                            document.getElementById("next-6").innerHTML = '<button onclick="goToLastPage(6)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-6").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(6);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2632,13 +2435,14 @@
                         document.getElementById("student7Information").style.display = "inherit";
                         document.getElementById("student7Information").style.visibility = "visible";
                         showInputAccompanied(7);
+                        changeBookLevels(7);
                         pageNumber = 8;
                         if (parseInt(globalStudentCount) === 7) {
-                            document.getElementById("next-7").innerHTML = '<button onclick="goToLastPage(7)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-7").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(7);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2652,13 +2456,14 @@
                         document.getElementById("student8Information").style.display = "inherit";
                         document.getElementById("student8Information").style.visibility = "visible";
                         showInputAccompanied(8);
+                        changeBookLevels(8);
                         pageNumber = 9;
                         if (parseInt(globalStudentCount) === 8) {
-                            document.getElementById("next-8").innerHTML = '<button onclick="goToLastPage(8)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-8").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(8);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2672,13 +2477,14 @@
                         document.getElementById("student9Information").style.display = "inherit";
                         document.getElementById("student9Information").style.visibility = "visible";
                         showInputAccompanied(9);
+                        changeBookLevels(9);
                         pageNumber = 10;
                         if (parseInt(globalStudentCount) === 9) {
-                            document.getElementById("next-9").innerHTML = '<button onclick="goToLastPage(9)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-9").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(9);
+                        submit();
                     }
                 }
                 goToTop();
@@ -2692,20 +2498,21 @@
                         document.getElementById("student10Information").style.display = "inherit";
                         document.getElementById("student10Information").style.visibility = "visible";
                         showInputAccompanied(10);
+                        changeBookLevels(10);
                         pageNumber = 11;
                         if (parseInt(globalStudentCount) === 10) {
-                            document.getElementById("next-10").innerHTML = '<button onclick="goToLastPage(10)" class="btn btn-success">Next</button>';
+                            document.getElementById("next-10").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
                         }
                     }
                     else {
-                        goToLastPage(10);
+                        submit();
                     }
                 }
                 goToTop();
             }
             else if (pageNumber === 11) {
                 goToTop();
-                goToLastPage(11);
+                submit();
             }
         }
         </script>
@@ -2728,6 +2535,7 @@
                 document.getElementById("student1Information").style.display = "inherit";
                 document.getElementById("student1Information").style.visibility = "visible";
                 showInputAccompanied(1);
+                changeBookLevels(1);
                 pageNumber = 2;
                 goToTop();
             }
@@ -2738,6 +2546,7 @@
                 document.getElementById("student2Information").style.display = "inherit";
                 document.getElementById("student2Information").style.visibility = "visible";
                 showInputAccompanied(2);
+                changeBookLevels(2);
                 pageNumber = 3;
                 goToTop();
             }
@@ -2748,6 +2557,7 @@
                 document.getElementById("student3Information").style.display = "inherit";
                 document.getElementById("student3Information").style.visibility = "visible";
                 showInputAccompanied(3);
+                changeBookLevels(3);
                 pageNumber = 4;
                 goToTop();
             }
@@ -2758,6 +2568,7 @@
                 document.getElementById("student4Information").style.display = "inherit";
                 document.getElementById("student4Information").style.visibility = "visible";
                 showInputAccompanied(4);
+                changeBookLevels(4);
                 pageNumber = 5;
                 goToTop();
             }
@@ -2768,6 +2579,7 @@
                 document.getElementById("student5Information").style.display = "inherit";
                 document.getElementById("student5Information").style.visibility = "visible";
                 showInputAccompanied(5);
+                changeBookLevels(5);
                 pageNumber = 6;
                 goToTop();
             }
@@ -2778,6 +2590,7 @@
                 document.getElementById("student6Information").style.display = "inherit";
                 document.getElementById("student6Information").style.visibility = "visible";
                 showInputAccompanied(6);
+                changeBookLevels(6);
                 pageNumber = 7;
                 goToTop();
             }
@@ -2788,6 +2601,7 @@
                 document.getElementById("student7Information").style.display = "inherit";
                 document.getElementById("student7Information").style.visibility = "visible";
                 showInputAccompanied(7);
+                changeBookLevels(7);
                 pageNumber = 8;
                 goToTop();
             }
@@ -2798,6 +2612,7 @@
                 document.getElementById("student8Information").style.display = "inherit";
                 document.getElementById("student8Information").style.visibility = "visible";
                 showInputAccompanied(8);
+                changeBookLevels(8);
                 pageNumber = 9;
                 goToTop();
             }
@@ -2808,54 +2623,22 @@
                 document.getElementById("student9Information").style.display = "inherit";
                 document.getElementById("student9Information").style.visibility = "visible";
                 showInputAccompanied(9);
+                changeBookLevels(9);
                 pageNumber = 10;
-                goToTop();
-            }
-            // last page
-            else if (pageNumber === 12) {
-                var number = globalStudentCount;
-                document.getElementById("lastPage").style.display = "none";
-                document.getElementById("lastPage").style.visibility = "hidden";
-                document.getElementById("studentNumber").innerHTML = "&mdash; Student " + number;
-                document.getElementById("student" + number + "Information").style.display = "inherit";
-                document.getElementById("student" + number + "Information").style.visibility = "visible";
-                showInputAccompanied(number);
-                pageNumber = parseInt(number) + 1;
                 goToTop();
             }
         }
         </script>
     <script>
         function goToLastPage(number) {
-            if (validateStudentInfo(number)) {
-                clearValidateFeedback();
-                document.getElementById("student" + number + "Information").style.display = "none";
-                document.getElementById("student" + number + "Information").style.visibility = "hidden";
-                document.getElementById("studentNumber").innerHTML = "";
-                makeNamesToDisplay();
-                document.getElementById("lastPage").style.display = "inherit";
-                document.getElementById("lastPage").style.visibility = "visible";
-                pageNumber = 12;
-                goToTop();
-            }
-            else {
-                goToTop();
-            }
-        }
-        function makeNamesToDisplay() {
-            var nameList = [];
-            for (var i = 1; i <= globalStudentCount; i++) {
-                var firstName = $('input[id=inputStudentFirstName-' + i + ']').val();
-                var lastName = $('input[id=inputStudentLastName-' + i + ']').val();
-                nameList.push(firstName + " " + lastName);
-            }
-            document.getElementById("studentsRegisteredList").innerHTML = "";
-            for (var i = 0; i < nameList.length; i ++) {
-                var node = document.createElement("li");                 // Create a <li> node
-                var textnode = document.createTextNode(nameList[i]);         // Create a text node
-                node.appendChild(textnode);                              // Append the text to <li>
-                document.getElementById("studentsRegisteredList").appendChild(node);    // Append <li> to <ul>
-            }
+            clearValidateFeedback();
+            document.getElementById("student" + number + "Information").style.display = "none";
+            document.getElementById("student" + number + "Information").style.visibility = "hidden";
+            document.getElementById("studentNumber").innerHTML = "";
+            document.getElementById("lastPage").style.display = "inherit";
+            document.getElementById("lastPage").style.visibility = "visible";
+            pageNumber = 12;
+            goToTop();
         }
     </script>
     <script>
@@ -2889,6 +2672,46 @@
                 }
                 document.getElementById("enrichmentClassesDiv-" + number).style.display = "none";
                 document.getElementById("enrichmentClassesDiv-" + number).style.visibility = "hidden";
+            }
+        }
+    </script>
+    <script>
+        function changeBookLevels(number) {
+            var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
+            var bookNumbers = codeDictionary[selectedInstrument].bookOptions;
+            var bookNumbersArray = bookNumbers.split(",");
+            var select = document.getElementById("inputBookLevel-" + number);
+            select.innerHTML = "";
+            for (var i = 0; i < bookNumbersArray.length; i ++) {
+                var option = document.createElement("option");
+                option.text = bookNumbersArray[i];
+                select.add(option);
+            }
+            var selectedBookLevel = getSelectData("inputBookLevel-" + number);
+            if (selectedBookLevel !== "") {
+                changePieceCodes(number);
+            }
+        }
+        function changePieceCodes(number) {
+            var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
+            var selectedBookLevel = getSelectData("inputBookLevel-" + number);
+            var allBookNumbers = codeDictionary[selectedInstrument].bookList;
+            var allCodes = codeDictionary[selectedInstrument].codeList;
+            var allTitles = codeDictionary[selectedInstrument].titleList;
+            var pieces = [];
+            for (var i = 0; i < allBookNumbers.length; i ++) {
+                console.log(allBookNumbers[i] + " " + selectedBookLevel);
+                if (allBookNumbers[i] === selectedBookLevel) {
+                    var title = allTitles[i];
+                    pieces.push(allCodes[i] + ": " + title.substring(1, title.length-1));
+                }
+            }
+            var select = document.getElementById("inputTitle-" + number);
+            select.innerHTML = "";
+            for (var i = 0; i < pieces.length; i ++) {
+                var option = document.createElement("option");
+                option.text = pieces[i];
+                select.add(option);
             }
         }
     </script>
@@ -3039,7 +2862,7 @@
             }
             return true;
         }
-        /*function webHook(studentFirst, studentLast, course, instrument, bookLevel, id) {
+        function webHook(studentFirst, studentLast, course, instrument, bookLevel, id) {
             var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
             var firstName = $('input[id=inputFirstName]').val();
             var lastName = $('input[id=inputLastName]').val();
@@ -3052,7 +2875,7 @@
                 type: 'POST',
                 url: url
             });
-        }*/
+        }
     </script>
 
     <script>
@@ -3091,7 +2914,6 @@
         var phoneNumber = $('input[id=inputPhoneNumber]').val();
         var emailAddress = $('input[id=inputEmailAddress]').val();
         var uniqueID = $('input[id=inputID]').val();
-        var notRegisteredSiblings = makeSiblingsString();
         for (var j = 1; j <= globalStudentCount; j++) {
             var accompaniedValue = getSelectData("inputAccompanied-" + j);
             var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
@@ -3108,11 +2930,6 @@
             var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
             var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
-            var registeredSiblings = makeNamesString(j);
-            var siblings = registeredSiblings;
-            if (notRegisteredSiblings !== "") {
-                siblings = siblings + ", " + notRegisteredSiblings;
-            }
             var formData = {
                 'entry.2039036389': firstName,
                 'entry.305040084': lastName,
@@ -3139,16 +2956,18 @@
                 'entry.429624467': instrumentName,
                 'entry.1295208958': bookLevelName,
                 'entry.1431622853': $('input[id=inputTitle-' + j + ']').val(),
+                'entry.332529542': $('input[id=inputMovement-' + j + ']').val(),
+                'entry.943311597': $('input[id=inputComposer-' + j + ']').val(),
                 'entry.1581932096': $('input[id=inputTeacherFirstName-' + j + ']').val(),
                 'entry.1178481040': $('input[id=inputTeacherLastName-' + j + ']').val(),
                 'entry.846808053': $('input[id=inputTeacherPhoneNumber-' + j + ']').val(),
                 'entry.650938505': enrichmentChoice1,
                 'entry.154989671': enrichmentChoice2,
                 'entry.903246233': enrichmentChoice3,
-                'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
-                'entry.1208655369': siblings,
                 'entry.663733401': $('input[id=inputID]').val()
             }
+
+
 
             $.ajax({
                 type: 'POST',
@@ -3160,8 +2979,7 @@
                 .done(function(data) {
 
                 });
-            //webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
-
+            webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
         }
     }
 
@@ -3243,6 +3061,9 @@
     function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
     }
+    function capitalizeFLetter(string) {
+        return string[0].toUpperCase() + string.slice(1);
+    }
 
     function showInputAccompanied(number) {
         var value = getSelectData("inputAccompanied-" + number);
@@ -3302,82 +3123,6 @@
             else {
                 select.remove(3);
             }
-        }
-    </script>
-    <script>
-        function inputDetect(siblingNumber) {
-            if (siblingNumber < 15) {
-                var firstName = document.getElementById("inputSiblingFirstName-" + siblingNumber).value;
-                var lastName = document.getElementById("inputSiblingLastName-" + siblingNumber).value;
-                if (!isBlank(firstName) && !isBlank(lastName)) {
-                    var nextNumber = siblingNumber + 1;
-                    document.getElementById("siblings-" + nextNumber).style.display = "";
-                    document.getElementById("siblings-" + nextNumber).style.visibility = "visible";
-                }
-            }
-        }
-        function isBlank(str) {
-            return (!str || /^\s*$/.test(str));
-        }
-        function displaySiblingQuestion() {
-            var radioButtonValue = getRadioButtonValue("hasSiblings");
-            if (radioButtonValue === "yes") {
-                document.getElementById("siblings").style.display = "";
-                document.getElementById("siblings").style.visibility = "visible";
-            }
-            else {
-                document.getElementById("siblings").style.display = "none";
-                document.getElementById("siblings").style.visibility = "hidden";
-                // hide all fields except 1 and clear fields
-                for (var i = 2; i <= 15; i ++) {
-                    document.getElementById("siblings-" + i).style.display = "none";
-                    document.getElementById("siblings-" + i).style.visibility = "hidden";
-                    document.getElementById("inputSiblingFirstName-" + i).value = "";
-                    document.getElementById("inputSiblingLastName-" + i).value = "";
-                }
-                document.getElementById("inputSiblingFirstName-" + 1).value = "";
-                document.getElementById("inputSiblingLastName-" + 1).value = "";
-            }
-        }
-        function getRadioButtonValue(name) {
-            var radios = document.getElementsByName(name);
-            for (var i = 0, length = radios.length; i < length; i++) {
-                if (radios[i].checked) {
-                    return radios[i].value;
-                }
-            }
-            return null;
-        }
-    </script>
-    <script>
-        // names of unregistered siblings
-        function makeSiblingsString() {
-            var siblingString = "";
-            var hasSiblings = getRadioButtonValue("hasSiblings");
-            if (hasSiblings === "yes") {
-                for (var i = 1; i <= 15; i++) {
-                    var firstName = document.getElementById("inputSiblingFirstName-" + i).value;
-                    var lastName = document.getElementById("inputSiblingLastName-" + i).value;
-                    if (!isBlank(firstName) && !isBlank(lastName)) {
-                        siblingString += firstName + " " + lastName + " (N), ";
-                    }
-                }
-            }
-            siblingString = siblingString.substring(0, siblingString.length - 2);
-            return siblingString;
-        }
-        // names of registered students except for that number
-        function makeNamesString(exceptNumber) {
-            var nameString = "";
-            for (var i = 1; i <= globalStudentCount; i++) {
-                if (i !== (exceptNumber)) {
-                    var firstName = $('input[id=inputStudentFirstName-' + i + ']').val();
-                    var lastName = $('input[id=inputStudentLastName-' + i + ']').val();
-                    nameString += firstName + " " + lastName + " (R), ";
-                }
-            }
-            nameString = nameString.substring(0, nameString.length - 2);
-            return nameString;
         }
     </script>
 
