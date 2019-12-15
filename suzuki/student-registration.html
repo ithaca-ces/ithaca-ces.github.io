@@ -2838,6 +2838,9 @@
                 pageNumber = 12;
                 goToTop();
             }
+            else {
+                goToTop();
+            }
         }
         function makeNamesToDisplay() {
             var nameList = [];
@@ -3036,7 +3039,7 @@
             }
             return true;
         }
-        function webHook(studentFirst, studentLast, course, instrument, bookLevel, id) {
+        /*function webHook(studentFirst, studentLast, course, instrument, bookLevel, id) {
             var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
             var firstName = $('input[id=inputFirstName]').val();
             var lastName = $('input[id=inputLastName]').val();
@@ -3049,7 +3052,7 @@
                 type: 'POST',
                 url: url
             });
-        }
+        }*/
     </script>
 
     <script>
@@ -3106,7 +3109,10 @@
             var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
             var registeredSiblings = makeNamesString(j);
-            var siblings = registeredSiblings + ", " + notRegisteredSiblings;
+            var siblings = registeredSiblings;
+            if (notRegisteredSiblings !== "") {
+                siblings = siblings + ", " + notRegisteredSiblings;
+            }
             var formData = {
                 'entry.2039036389': firstName,
                 'entry.305040084': lastName,
@@ -3140,7 +3146,7 @@
                 'entry.154989671': enrichmentChoice2,
                 'entry.903246233': enrichmentChoice3,
                 'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
-                'entry.943311597': siblings,
+                'entry.1208655369': siblings,
                 'entry.663733401': $('input[id=inputID]').val()
             }
 
@@ -3154,7 +3160,7 @@
                 .done(function(data) {
 
                 });
-            webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
+            //webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
 
         }
     }
@@ -3360,11 +3366,11 @@
             siblingString = siblingString.substring(0, siblingString.length - 2);
             return siblingString;
         }
-        // names of registered students except for number J
+        // names of registered students except for that number
         function makeNamesString(exceptNumber) {
             var nameString = "";
             for (var i = 1; i <= globalStudentCount; i++) {
-                if (i !== (exceptNumber - 1)) {
+                if (i !== (exceptNumber)) {
                     var firstName = $('input[id=inputStudentFirstName-' + i + ']').val();
                     var lastName = $('input[id=inputStudentLastName-' + i + ']').val();
                     nameString += firstName + " " + lastName + " (R), ";
