@@ -2796,6 +2796,8 @@
             var movementDiv = document.getElementById("movementColumn-" + number);
             movementDiv.style.visibility = "hidden";
             movementDiv.style.display = "none";
+            var select = document.getElementById("inputMovement-" + number);
+            select.innerHTML = '<option style="display:none" disabled selected value></option>';
             var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
             var selectedCode = getSelectData("inputTitle-" + number);
             var allCodes = codeDictionary[selectedInstrument].codeList;
@@ -2809,8 +2811,6 @@
             }
             if (movements.length >= 1) {
                 var movementArray = movements.split("-");
-                var select = document.getElementById("inputMovement-" + number);
-                select.innerHTML = '<option style="display:none" disabled selected value></option>';
                 for (var i = 0; i < movementArray.length; i++) {
                     var option = document.createElement("option");
                     option.text = movementArray[i];
