@@ -400,7 +400,8 @@
 
         <div class="form-group">
             <label for="inputCourse-2">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-2" onchange="changeShowEnrichmentCourses(2)">
+            <select class="form-control" id="inputCourse-2" onchange="changeOnCourseSelection(2)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-2"></div>
         </div>
@@ -408,14 +409,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-2">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-2">
+                <select class="form-control" id="inputInstrument-2" onchange="changeBookLevels(2)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-2"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-2">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-2">
+                <select class="form-control" id="inputBookLevel-2" onchange="changePieceCodes(2)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-2"></div>
             </div>
@@ -423,20 +426,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-2">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-2">
+                <label for="inputTitle-2">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-2" onchange="changeOnPieceCodeSelection(2)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-2"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-2">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-2">
+            <div class="form-group col-md-3" id="movementColumn-2" style="visibility: hidden; display: none">
+                <label for="inputMovement-2">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-2">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-2"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-2">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-2" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-2">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-2">
             <div id="valid-feedback-inputCustomPiece-2"></div>
         </div>
@@ -595,7 +602,8 @@
 
         <div class="form-group">
             <label for="inputCourse-3">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-3" onchange="changeShowEnrichmentCourses(3)">
+            <select class="form-control" id="inputCourse-3" onchange="changeOnCourseSelection(3)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-3"></div>
         </div>
@@ -603,14 +611,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-3">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-3">
+                <select class="form-control" id="inputInstrument-3" onchange="changeBookLevels(3)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-3"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-3">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-3">
+                <select class="form-control" id="inputBookLevel-3" onchange="changePieceCodes(3)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-3"></div>
             </div>
@@ -618,20 +628,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-3">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-3">
+                <label for="inputTitle-3">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-3" onchange="changeOnPieceCodeSelection(3)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-3"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-3">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-3">
+            <div class="form-group col-md-3" id="movementColumn-3" style="visibility: hidden; display: none">
+                <label for="inputMovement-3">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-3">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-3"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-3">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-3" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-3">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-3">
             <div id="valid-feedback-inputCustomPiece-3"></div>
         </div>
@@ -790,7 +804,8 @@
 
         <div class="form-group">
             <label for="inputCourse-4">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-4" onchange="changeShowEnrichmentCourses(4)">
+            <select class="form-control" id="inputCourse-4" onchange="changeOnCourseSelection(4)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-4"></div>
         </div>
@@ -798,14 +813,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-4">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-4">
+                <select class="form-control" id="inputInstrument-4" onchange="changeBookLevels(4)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-4"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-4">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-4">
+                <select class="form-control" id="inputBookLevel-4" onchange="changePieceCodes(4)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-4"></div>
             </div>
@@ -813,20 +830,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-4">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-4">
+                <label for="inputTitle-4">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-4" onchange="changeOnPieceCodeSelection(4)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-4"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-4">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-4">
+            <div class="form-group col-md-3" id="movementColumn-4" style="visibility: hidden; display: none">
+                <label for="inputMovement-4">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-4">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-4"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-4">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-4" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-4">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-4">
             <div id="valid-feedback-inputCustomPiece-4"></div>
         </div>
@@ -985,7 +1006,8 @@
 
         <div class="form-group">
             <label for="inputCourse-5">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-5" onchange="changeShowEnrichmentCourses(5)">
+            <select class="form-control" id="inputCourse-5" onchange="changeOnCourseSelection(5)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-5"></div>
         </div>
@@ -993,14 +1015,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-5">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-5">
+                <select class="form-control" id="inputInstrument-5" onchange="changeBookLevels(5)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-5"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-5">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-5">
+                <select class="form-control" id="inputBookLevel-5" onchange="changePieceCodes(5)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-5"></div>
             </div>
@@ -1008,20 +1032,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-5">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-5">
+                <label for="inputTitle-5">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-5" onchange="changeOnPieceCodeSelection(5)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-5"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-5">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-5">
+            <div class="form-group col-md-3" id="movementColumn-5" style="visibility: hidden; display: none">
+                <label for="inputMovement-5">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-5">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-5"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-5">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-5" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-5">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-5">
             <div id="valid-feedback-inputCustomPiece-5"></div>
         </div>
@@ -1180,7 +1208,8 @@
 
         <div class="form-group">
             <label for="inputCourse-6">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-6" onchange="changeShowEnrichmentCourses(6)">
+            <select class="form-control" id="inputCourse-6" onchange="changeOnCourseSelection(6)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-6"></div>
         </div>
@@ -1188,14 +1217,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-6">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-6">
+                <select class="form-control" id="inputInstrument-6" onchange="changeBookLevels(6)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-6"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-6">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-6">
+                <select class="form-control" id="inputBookLevel-6" onchange="changePieceCodes(6)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-6"></div>
             </div>
@@ -1203,20 +1234,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-6">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-6">
+                <label for="inputTitle-6">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-6" onchange="changeOnPieceCodeSelection(6)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-6"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-6">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-6">
+            <div class="form-group col-md-3" id="movementColumn-6" style="visibility: hidden; display: none">
+                <label for="inputMovement-6">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-6">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-6"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-6">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-6" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-6">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-6">
             <div id="valid-feedback-inputCustomPiece-6"></div>
         </div>
@@ -1375,7 +1410,8 @@
 
         <div class="form-group">
             <label for="inputCourse-7">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-7"  onchange="changeShowEnrichmentCourses(7)">
+            <select class="form-control" id="inputCourse-7" onchange="changeOnCourseSelection(7)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-7"></div>
         </div>
@@ -1383,14 +1419,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-7">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-7">
+                <select class="form-control" id="inputInstrument-7" onchange="changeBookLevels(7)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-7"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-7">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-7">
+                <select class="form-control" id="inputBookLevel-7" onchange="changePieceCodes(7)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-7"></div>
             </div>
@@ -1398,20 +1436,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-7">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-7">
+                <label for="inputTitle-7">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-7" onchange="changeOnPieceCodeSelection(7)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-7"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-7">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-7">
+            <div class="form-group col-md-3" id="movementColumn-7" style="visibility: hidden; display: none">
+                <label for="inputMovement-7">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-7">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-7"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-7">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-7" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-7">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-7">
             <div id="valid-feedback-inputCustomPiece-7"></div>
         </div>
@@ -1570,7 +1612,8 @@
 
         <div class="form-group">
             <label for="inputCourse-8">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-8"  onchange="changeShowEnrichmentCourses(8)">
+            <select class="form-control" id="inputCourse-8" onchange="changeOnCourseSelection(8)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-8"></div>
         </div>
@@ -1578,14 +1621,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-8">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-8">
+                <select class="form-control" id="inputInstrument-8" onchange="changeBookLevels(8)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-8"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-8">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-8">
+                <select class="form-control" id="inputBookLevel-8" onchange="changePieceCodes(8)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-8"></div>
             </div>
@@ -1593,20 +1638,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-8">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-8">
+                <label for="inputTitle-8">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-8" onchange="changeOnPieceCodeSelection(8)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-8"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-8">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-8">
+            <div class="form-group col-md-3" id="movementColumn-8" style="visibility: hidden; display: none">
+                <label for="inputMovement-8">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-8">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-8"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-8">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-8" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-8">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-8">
             <div id="valid-feedback-inputCustomPiece-8"></div>
         </div>
@@ -1765,7 +1814,8 @@
 
         <div class="form-group">
             <label for="inputCourse-9">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-9" onchange="changeShowEnrichmentCourses(9)">
+            <select class="form-control" id="inputCourse-9" onchange="changeOnCourseSelection(9)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-9"></div>
         </div>
@@ -1773,14 +1823,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-9">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-9">
+                <select class="form-control" id="inputInstrument-9" onchange="changeBookLevels(9)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-9"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-9">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-9">
+                <select class="form-control" id="inputBookLevel-9" onchange="changePieceCodes(9)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-9"></div>
             </div>
@@ -1788,20 +1840,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-9">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-9">
+                <label for="inputTitle-9">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-9" onchange="changeOnPieceCodeSelection(9)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-9"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-9">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-9">
+            <div class="form-group col-md-3" id="movementColumn-9" style="visibility: hidden; display: none">
+                <label for="inputMovement-9">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-9">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-9"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-9">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-9" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-9">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-9">
             <div id="valid-feedback-inputCustomPiece-9"></div>
         </div>
@@ -1960,7 +2016,8 @@
 
         <div class="form-group">
             <label for="inputCourse-10">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-10"  onchange="changeShowEnrichmentCourses(10)">
+            <select class="form-control" id="inputCourse-10" onchange="changeOnCourseSelection(10)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-10"></div>
         </div>
@@ -1968,14 +2025,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-10">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-10">
+                <select class="form-control" id="inputInstrument-10" onchange="changeBookLevels(10)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-10"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-10">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-10">
+                <select class="form-control" id="inputBookLevel-10" onchange="changePieceCodes(10)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-10"></div>
             </div>
@@ -1983,20 +2042,24 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-10">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-10">
+                <label for="inputTitle-10">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-10" onchange="changeOnPieceCodeSelection(10)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-10"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-10">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-10">
+            <div class="form-group col-md-3" id="movementColumn-10" style="visibility: hidden; display: none">
+                <label for="inputMovement-10">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-10">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-10"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputCustomPiece-10">Custom Piece <span style="color: red">*</span></label>
+        <div class="form-group" id="customPieceDiv-10" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-10">Enter a custom piece to register: <span style="color: red">*</span></label>
             <input type="text" class="form-control" id="inputCustomPiece-10">
             <div id="valid-feedback-inputCustomPiece-10"></div>
         </div>
@@ -2543,7 +2606,6 @@
                 document.getElementById("student1Information").style.display = "inherit";
                 document.getElementById("student1Information").style.visibility = "visible";
                 showInputAccompanied(1);
-                changeBookLevels(1);
                 pageNumber = 2;
                 goToTop();
             }
@@ -2554,7 +2616,6 @@
                 document.getElementById("student2Information").style.display = "inherit";
                 document.getElementById("student2Information").style.visibility = "visible";
                 showInputAccompanied(2);
-                changeBookLevels(2);
                 pageNumber = 3;
                 goToTop();
             }
@@ -2565,7 +2626,6 @@
                 document.getElementById("student3Information").style.display = "inherit";
                 document.getElementById("student3Information").style.visibility = "visible";
                 showInputAccompanied(3);
-                changeBookLevels(3);
                 pageNumber = 4;
                 goToTop();
             }
@@ -2576,7 +2636,6 @@
                 document.getElementById("student4Information").style.display = "inherit";
                 document.getElementById("student4Information").style.visibility = "visible";
                 showInputAccompanied(4);
-                changeBookLevels(4);
                 pageNumber = 5;
                 goToTop();
             }
@@ -2587,7 +2646,6 @@
                 document.getElementById("student5Information").style.display = "inherit";
                 document.getElementById("student5Information").style.visibility = "visible";
                 showInputAccompanied(5);
-                changeBookLevels(5);
                 pageNumber = 6;
                 goToTop();
             }
@@ -2598,7 +2656,6 @@
                 document.getElementById("student6Information").style.display = "inherit";
                 document.getElementById("student6Information").style.visibility = "visible";
                 showInputAccompanied(6);
-                changeBookLevels(6);
                 pageNumber = 7;
                 goToTop();
             }
@@ -2609,7 +2666,6 @@
                 document.getElementById("student7Information").style.display = "inherit";
                 document.getElementById("student7Information").style.visibility = "visible";
                 showInputAccompanied(7);
-                changeBookLevels(7);
                 pageNumber = 8;
                 goToTop();
             }
@@ -2620,7 +2676,6 @@
                 document.getElementById("student8Information").style.display = "inherit";
                 document.getElementById("student8Information").style.visibility = "visible";
                 showInputAccompanied(8);
-                changeBookLevels(8);
                 pageNumber = 9;
                 goToTop();
             }
@@ -2631,7 +2686,6 @@
                 document.getElementById("student9Information").style.display = "inherit";
                 document.getElementById("student9Information").style.visibility = "visible";
                 showInputAccompanied(9);
-                changeBookLevels(9);
                 pageNumber = 10;
                 goToTop();
             }
@@ -2915,14 +2969,17 @@
             try {
                 var courseChoice = getSelectData("inputCourse-" + number);
                 if (courseChoice.includes("advancedinstitute")) {
-                    var inputField = document.getElementById("input" + "CustomPiece" + "-" + number);
-                    if (inputField.value === "") {
-                        inputField.classList.add("is-invalid");
-                        valid = false;
-                        document.getElementById("valid-feedback-input" + "CustomPiece" + "-" + number).innerHTML = "<font color='red'>Please enter the " + "name of the custom piece" + ".</>"
-                    }
-                    else {
-                        inputField.classList.add("is-valid");
+                    var pieceField = getSelectData("inputTitle-" + number);
+                    if (pieceField === "other") {
+                        var inputField = document.getElementById("input" + "CustomPiece" + "-" + number);
+                        if (inputField.value === "") {
+                            inputField.classList.add("is-invalid");
+                            valid = false;
+                            document.getElementById("valid-feedback-input" + "CustomPiece" + "-" + number).innerHTML = "<font color='red'>Please enter the " + "name of the custom piece" + ".</>"
+                        }
+                        else {
+                            inputField.classList.add("is-valid");
+                        }
                     }
                 }
             }
