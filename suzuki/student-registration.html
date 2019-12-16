@@ -198,7 +198,7 @@
 
         <div class="form-group">
             <label for="inputCourse-1">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-1" onchange="changeShowEnrichmentCourses(1)">
+            <select class="form-control" id="inputCourse-1" onchange="changeOnCourseSelection(1)">
                 <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-1"></div>
@@ -225,7 +225,7 @@
         <div class="form-row">
             <div class="form-group col-md-9">
                 <label for="inputTitle-1">Title/PIECE CODE? of Piece <span style="color: red">*</span></label>
-                <select class="form-control" id="inputTitle-1" onchange="changeMovements(1)">
+                <select class="form-control" id="inputTitle-1" onchange="changeOnPieceCodeSelection(1)">
                     <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputTitle-1"></div>
@@ -240,10 +240,10 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-1">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-1">
-            <div id="valid-feedback-inputComposer-1"></div>
+        <div class="form-group" id="customPieceDiv-1" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-1">Enter a custom piece to register: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-1">
+            <div id="valid-feedback-inputCustomPiece-1"></div>
         </div>
 
         <div class="form-row">
@@ -436,9 +436,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-2">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-2">
-            <div id="valid-feedback-inputComposer-2"></div>
+            <label for="inputCustomPiece-2">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-2">
+            <div id="valid-feedback-inputCustomPiece-2"></div>
         </div>
 
         <div class="form-row">
@@ -631,9 +631,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-3">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-3">
-            <div id="valid-feedback-inputComposer-3"></div>
+            <label for="inputCustomPiece-3">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-3">
+            <div id="valid-feedback-inputCustomPiece-3"></div>
         </div>
 
         <div class="form-row">
@@ -826,9 +826,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-4">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-4">
-            <div id="valid-feedback-inputComposer-4"></div>
+            <label for="inputCustomPiece-4">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-4">
+            <div id="valid-feedback-inputCustomPiece-4"></div>
         </div>
 
         <div class="form-row">
@@ -1021,9 +1021,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-5">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-5">
-            <div id="valid-feedback-inputComposer-5"></div>
+            <label for="inputCustomPiece-5">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-5">
+            <div id="valid-feedback-inputCustomPiece-5"></div>
         </div>
 
         <div class="form-row">
@@ -1216,9 +1216,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-6">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-6">
-            <div id="valid-feedback-inputComposer-6"></div>
+            <label for="inputCustomPiece-6">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-6">
+            <div id="valid-feedback-inputCustomPiece-6"></div>
         </div>
 
         <div class="form-row">
@@ -1411,9 +1411,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-7">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-7">
-            <div id="valid-feedback-inputComposer-7"></div>
+            <label for="inputCustomPiece-7">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-7">
+            <div id="valid-feedback-inputCustomPiece-7"></div>
         </div>
 
         <div class="form-row">
@@ -1606,9 +1606,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-8">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-8">
-            <div id="valid-feedback-inputComposer-8"></div>
+            <label for="inputCustomPiece-8">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-8">
+            <div id="valid-feedback-inputCustomPiece-8"></div>
         </div>
 
         <div class="form-row">
@@ -1801,9 +1801,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-9">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-9">
-            <div id="valid-feedback-inputComposer-9"></div>
+            <label for="inputCustomPiece-9">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-9">
+            <div id="valid-feedback-inputCustomPiece-9"></div>
         </div>
 
         <div class="form-row">
@@ -1996,9 +1996,9 @@
         </div>
 
         <div class="form-group">
-            <label for="inputComposer-10">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-10">
-            <div id="valid-feedback-inputComposer-10"></div>
+            <label for="inputCustomPiece-10">Custom Piece <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-10">
+            <div id="valid-feedback-inputCustomPiece-10"></div>
         </div>
 
         <div class="form-row">
@@ -2288,6 +2288,12 @@
     function getSelectData(name) {
         var e = document.getElementById(name);
         var value = e.options[e.selectedIndex].value;
+        return value;
+    }
+
+    function getSelectDataTitle(name) {
+        var e = document.getElementById(name);
+        var value = e.options[e.selectedIndex].text;
         return value;
     }
 
@@ -2678,19 +2684,37 @@
         }
     </script>
     <script>
+        function changeOnCourseSelection(number) {
+            changeShowEnrichmentCourses(number);
+            changeBookLevels(number);
+        }
+        function changeOnPieceCodeSelection(number) {
+            changeMovements(number);
+            changeCustomPiece(number);
+        }
+    </script>
+    <script>
         function changeBookLevels(number) {
-            var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
-            var bookNumbers = codeDictionary[selectedInstrument].bookOptions;
-            var bookNumbersArray = bookNumbers.split(",");
-            var select = document.getElementById("inputBookLevel-" + number);
-            select.innerHTML = "";
-            for (var i = 0; i < bookNumbersArray.length; i ++) {
-                var option = document.createElement("option");
-                option.text = bookNumbersArray[i];
-                select.add(option);
-            }
-            var selectedBookLevel = getSelectData("inputBookLevel-" + number);
-            if (selectedBookLevel !== "") {
+            var instrument = getSelectData("inputInstrument-" + number);
+            if (instrument !== "") {
+                var selectedInstrument = capitalizeFLetter(instrument);
+                var bookNumbers = codeDictionary[selectedInstrument].bookOptions;
+                var bookNumbersArray = bookNumbers.split(",");
+                var select = document.getElementById("inputBookLevel-" + number);
+                select.innerHTML = '<option style="display:none" disabled selected value></option>';
+                for (var i = 0; i < bookNumbersArray.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = bookNumbersArray[i];
+                    option.value = bookNumbersArray[i];
+                    select.add(option);
+                }
+                var selectedCourse = getSelectData("inputCourse-" + number);
+                if (selectedCourse.includes("advancedinstitute")) {
+                    option = document.createElement("option");
+                    option.text = "N/A";
+                    option.value = "N/A";
+                    select.add(option);
+                }
                 changePieceCodes(number);
             }
         }
@@ -2717,7 +2741,21 @@
                 option.text = pieces[i];
                 select.add(option);
             }
+            var selectedCourse = getSelectData("inputCourse-" + number);
+            if (selectedCourse.includes("advancedinstitute")) {
+                option = document.createElement("option");
+                option.text = "Other";
+                option.value = "other";
+                select.add(option);
+                if (selectedBookLevel === "N/A") {
+                    option.selected = "selected";
+                }
+            }
+            changeCustomPiece(number);
+            changeMovements(number);
         }
+    </script>
+    <script>
         function changeMovements(number) {
             var movementDiv = document.getElementById("movementColumn-" + number);
             movementDiv.style.visibility = "hidden";
@@ -2740,10 +2778,25 @@
                 for (var i = 0; i < movementArray.length; i++) {
                     var option = document.createElement("option");
                     option.text = movementArray[i];
+                    option.value = movementArray[i];
                     select.add(option);
                 }
                 movementDiv.style.visibility = "visible";
                 movementDiv.style.display = "";
+            }
+        }
+        function changeCustomPiece(number) {
+            var selectedCourse = getSelectData("inputCourse-" + number);
+            var selectedCode = getSelectData("inputTitle-" + number);
+            var customField = document.getElementById("customPieceDiv-" + number);
+            if (selectedCourse.includes("advancedinstitute") && selectedCode === "other") {
+                customField.style.visibility = "visible";
+                customField.style.display = "";
+            }
+            else {
+                customField.style.visibility = "hidden";
+                customField.style.display = "none";
+                document.getElementById("inputCustomPiece-" + number).value = "";
             }
         }
     </script>
@@ -2828,16 +2881,57 @@
                 }
             }
 
-            var selectFields = ["Course", "Instrument", "BookLevel"];
-            for (var i = 0; i < selectFields.length; i ++) {
+            var selectFields = ["Course", "Instrument", "BookLevel", "Title"];
+            var selectNames = ["course", "instrument", "book level", "piece's title and code"];
+            for (var i = 0; i < selectFields.length; i++) {
+                var selectField = document.getElementById("input" + selectFields[i] + "-" + number);
+                // if it has options
                 var selectData = getSelectData("input" + selectFields[i] + "-" + number);
                 if (selectData !== null && selectData !== "") {
-                    document.getElementById("input" + selectFields[i] + "-" + number).classList.add("is-valid");
+                    selectField.classList.add("is-valid");
+                } else {
+                    selectField.classList.add("is-invalid");
+                    valid = false;
+                    document.getElementById("valid-feedback-input" + selectFields[i] + "-" + number).innerHTML = "<font color='red'>Please select the " + selectNames[i] + ".</>"
+                }
+
+            }
+
+            // validate movement field if there is a movement field
+            var movementField = document.getElementById("inputMovement-" + number);
+            if (getCount(movementField, false) > 1) {
+                var movementData = getSelectData("inputMovement-" + number);
+                if (movementData !== null && movementData  !== "") {
+                    movementField.classList.add("is-valid");
+                }
+                else {
+                    movementField.classList.add("is-invalid");
+                    valid = false;
+                    document.getElementById("valid-feedback-inputMovement-" + number).innerHTML = "<font color='red'>Please select a movement.</>"
                 }
             }
 
-            var fields = ["Title", "Composer", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
-            var names = ["piece title", "piece's composer", "teacher's first name", "teacher's last name", "teacher's phone number"];
+            // validate custom piece field if they're advanced
+            try {
+                var courseChoice = getSelectData("inputCourse-" + number);
+                if (courseChoice.includes("advancedinstitute")) {
+                    var inputField = document.getElementById("input" + "CustomPiece" + "-" + number);
+                    if (inputField.value === "") {
+                        inputField.classList.add("is-invalid");
+                        valid = false;
+                        document.getElementById("valid-feedback-input" + "CustomPiece" + "-" + number).innerHTML = "<font color='red'>Please enter the " + "name of the custom piece" + ".</>"
+                    }
+                    else {
+                        inputField.classList.add("is-valid");
+                    }
+                }
+            }
+            catch(err) {
+
+            }
+
+            var fields = ["TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
+            var names = ["teacher's first name", "teacher's last name", "teacher's phone number"];
             for (var i = 0; i < fields.length; i ++) {
                 var inputField = document.getElementById("input" + fields[i] + "-" + number);
                 if (inputField.value === "") {
@@ -2851,7 +2945,7 @@
             }
 
             // optional fields
-            var fields = ["Gender", "Movement"];
+            var fields = ["Gender"];
             for (var i = 0; i < fields.length; i ++) {
                 var inputField = document.getElementById("input" + fields[i] + "-" + number);
                 if (inputField.value !== "") {
@@ -2956,9 +3050,11 @@
             var instrumentValue = getSelectData("inputInstrument-" + j);
             var instrumentIndex = instrumentValues.indexOf(instrumentValue);
             var instrumentName = instrumentNames[instrumentIndex];
-            var bookLevelValue = getSelectData("inputBookLevel-" + j);
-            var bookLevelIndex = bookLevelValues.indexOf(bookLevelValue);
-            var bookLevelName = bookLevelNames[bookLevelIndex];
+            var bookLevel = getSelectData("inputBookLevel-" + j);
+            var code = getSelectData("inputTitle-" + j);
+            var title = getSelectDataTitle("inputTitle-" + j).split(": ")[1];
+            var movement = getSelectData("inputMovement-" + j);
+            var customPiece = $('input[id=inputCustomPiece-' + j + ']').val();
             var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
             var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
@@ -2986,10 +3082,11 @@
                 'entry.1306504024': $('input[id=inputDesignatedAdultPhoneNumber-' + j + ']').val(),
                 'entry.616708405': courseName,
                 'entry.429624467': instrumentName,
-                'entry.1295208958': bookLevelName,
-                'entry.1431622853': $('input[id=inputTitle-' + j + ']').val(),
-                'entry.332529542': $('input[id=inputMovement-' + j + ']').val(),
-                'entry.943311597': $('input[id=inputComposer-' + j + ']').val(),
+                'entry.1295208958': bookLevel,
+                'entry.1431622853': title,
+                'entry.835452724' : code,
+                'entry.1758035001': customPiece,
+                'entry.1702328635': movement,
                 'entry.1581932096': $('input[id=inputTeacherFirstName-' + j + ']').val(),
                 'entry.1178481040': $('input[id=inputTeacherLastName-' + j + ']').val(),
                 'entry.846808053': $('input[id=inputTeacherPhoneNumber-' + j + ']').val(),
@@ -3011,7 +3108,7 @@
                 .done(function(data) {
 
                 });
-            webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
+            //webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
         }
     }
 
@@ -3067,7 +3164,7 @@
             document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
         }
         for (var j = 1; j < MAX_STUDENT_NUMBER; j ++) {
-            var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "Composer", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
+            var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
             for (var i = 0; i < studentFields.length; i++) {
                 var studentField = document.getElementById("input" + studentFields[i] + "-" + j);
                 studentField.classList.remove("is-invalid");
@@ -3155,6 +3252,18 @@
             else {
                 select.remove(3);
             }
+        }
+        window.getCount = function(parent, getChildrensChildren){
+            var relevantChildren = 0;
+            var children = parent.childNodes.length;
+            for(var i=0; i < children; i++){
+                if(parent.childNodes[i].nodeType != 3){
+                    if(getChildrensChildren)
+                        relevantChildren += getCount(parent.childNodes[i],true);
+                    relevantChildren++;
+                }
+            }
+            return relevantChildren;
         }
     </script>
 
