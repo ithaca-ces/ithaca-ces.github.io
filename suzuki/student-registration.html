@@ -2594,7 +2594,7 @@
                     document.getElementById("student1Information").style.visibility = "visible";
                     pageNumber = 2;
                     if (parseInt(globalStudentCount) === 1) {
-                      document.getElementById("next-1").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        document.getElementById("next-1").innerHTML = '<button onclick="goToLastPage(1)" class="btn btn-success">Next</button>';
                     }
 
                 }
@@ -2612,11 +2612,11 @@
                         changeBookLevels(2);
                         pageNumber = 3;
                         if (parseInt(globalStudentCount) === 2) {
-                            document.getElementById("next-2").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-2").innerHTML = '<button onclick="goToLastPage(2)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(2);
                     }
                 }
                 goToTop();
@@ -2633,11 +2633,11 @@
                         changeBookLevels(3);
                         pageNumber = 4;
                         if (parseInt(globalStudentCount) === 3) {
-                            document.getElementById("next-3").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-3").innerHTML = '<button onclick="goToLastPage(3)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(3);
                     }
                 }
                 goToTop();
@@ -2654,11 +2654,11 @@
                         changeBookLevels(4);
                         pageNumber = 5;
                         if (parseInt(globalStudentCount) === 4) {
-                            document.getElementById("next-4").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-4").innerHTML = '<button onclick="goToLastPage(4)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(4);
                     }
                 }
                 goToTop();
@@ -2675,11 +2675,11 @@
                         changeBookLevels(5);
                         pageNumber = 6;
                         if (parseInt(globalStudentCount) === 5) {
-                            document.getElementById("next-5").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-5").innerHTML = '<button onclick="goToLastPage(5)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(5);
                     }
                 }
                 goToTop();
@@ -2696,11 +2696,11 @@
                         changeBookLevels(6);
                         pageNumber = 7;
                         if (parseInt(globalStudentCount) === 6) {
-                            document.getElementById("next-6").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-6").innerHTML = '<button onclick="goToLastPage(6)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(6);
                     }
                 }
                 goToTop();
@@ -2717,11 +2717,11 @@
                         changeBookLevels(7);
                         pageNumber = 8;
                         if (parseInt(globalStudentCount) === 7) {
-                            document.getElementById("next-7").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-7").innerHTML = '<button onclick="goToLastPage(7)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(7);
                     }
                 }
                 goToTop();
@@ -2738,11 +2738,11 @@
                         changeBookLevels(8);
                         pageNumber = 9;
                         if (parseInt(globalStudentCount) === 8) {
-                            document.getElementById("next-8").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-8").innerHTML = '<button onclick="goToLastPage(8)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(8);
                     }
                 }
                 goToTop();
@@ -2759,11 +2759,11 @@
                         changeBookLevels(9);
                         pageNumber = 10;
                         if (parseInt(globalStudentCount) === 9) {
-                            document.getElementById("next-9").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-9").innerHTML = '<button onclick="goToLastPage(9)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(9);
                     }
                 }
                 goToTop();
@@ -2780,22 +2780,22 @@
                         changeBookLevels(10);
                         pageNumber = 11;
                         if (parseInt(globalStudentCount) === 10) {
-                            document.getElementById("next-10").innerHTML = '<h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-10").innerHTML = '<button onclick="goToLastPage(10)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(10);
                     }
                 }
                 goToTop();
             }
             else if (pageNumber === 11) {
                 goToTop();
-                submit();
+                goToLastPage(11);
             }
         }
-        </script>
-        <script>
+    </script>
+    <script>
         function back() {
             clearValidateFeedback();
             if (pageNumber === 2) {
@@ -2897,19 +2897,52 @@
                 pageNumber = 10;
                 goToTop();
             }
+            // last page
+            else if (pageNumber === 12) {
+                var number = globalStudentCount;
+                document.getElementById("lastPage").style.display = "none";
+                document.getElementById("lastPage").style.visibility = "hidden";
+                document.getElementById("studentNumber").innerHTML = "&mdash; Student " + number;
+                document.getElementById("student" + number + "Information").style.display = "inherit";
+                document.getElementById("student" + number + "Information").style.visibility = "visible";
+                showInputAccompanied(number);
+                pageNumber = parseInt(number) + 1;
+                goToTop();
+            }
         }
-        </script>
+    </script>
     <script>
-        function goToLastPage(number) {
-            clearValidateFeedback();
-            document.getElementById("student" + number + "Information").style.display = "none";
-            document.getElementById("student" + number + "Information").style.visibility = "hidden";
-            document.getElementById("studentNumber").innerHTML = "";
-            document.getElementById("lastPage").style.display = "inherit";
-            document.getElementById("lastPage").style.visibility = "visible";
-            pageNumber = 12;
-            goToTop();
-        }
+            function goToLastPage(number) {
+                if (validateStudentInfo(number)) {
+                    clearValidateFeedback();
+                    document.getElementById("student" + number + "Information").style.display = "none";
+                    document.getElementById("student" + number + "Information").style.visibility = "hidden";
+                    document.getElementById("studentNumber").innerHTML = "";
+                    makeNamesToDisplay();
+                    document.getElementById("lastPage").style.display = "inherit";
+                    document.getElementById("lastPage").style.visibility = "visible";
+                    pageNumber = 12;
+                    goToTop();
+                }
+                else {
+                    goToTop();
+                }
+            }
+            function makeNamesToDisplay() {
+                var nameList = [];
+                for (var i = 1; i <= globalStudentCount; i++) {
+                    var firstName = $('input[id=inputStudentFirstName-' + i + ']').val();
+                    var lastName = $('input[id=inputStudentLastName-' + i + ']').val();
+                    nameList.push(firstName + " " + lastName);
+                }
+                document.getElementById("studentsRegisteredList").innerHTML = "";
+                for (var i = 0; i < nameList.length; i ++) {
+                    var node = document.createElement("li");                 // Create a <li> node
+                    var textnode = document.createTextNode(nameList[i]);         // Create a text node
+                    node.appendChild(textnode);                              // Append the text to <li>
+                    document.getElementById("studentsRegisteredList").appendChild(node);    // Append <li> to <ul>
+                }
+            }
     </script>
     <script>
         function changeDesignatedAdult(number) {
@@ -3305,6 +3338,7 @@
         var phoneNumber = $('input[id=inputPhoneNumber]').val();
         var emailAddress = $('input[id=inputEmailAddress]').val();
         var uniqueID = $('input[id=inputID]').val();
+        var notRegisteredSiblings = makeSiblingsString();
         for (var j = 1; j <= globalStudentCount; j++) {
             var accompaniedValue = getSelectData("inputAccompanied-" + j);
             var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
@@ -3323,6 +3357,10 @@
             var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
             var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
+            var siblings = makeNamesString(j);
+            if (notRegisteredSiblings !== "") {
+                siblings = siblings + ", " + notRegisteredSiblings;
+            }
             var formData = {
                 'entry.2039036389': firstName,
                 'entry.305040084': lastName,
@@ -3358,6 +3396,8 @@
                 'entry.650938505': enrichmentChoice1,
                 'entry.154989671': enrichmentChoice2,
                 'entry.903246233': enrichmentChoice3,
+                'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
+                'entry.1208655369': siblings,
                 'entry.663733401': $('input[id=inputID]').val()
             }
 
@@ -3529,6 +3569,82 @@
                 }
             }
             return relevantChildren;
+        }
+    </script>
+    <script>
+    function inputDetect(siblingNumber) {
+        if (siblingNumber < 15) {
+            var firstName = document.getElementById("inputSiblingFirstName-" + siblingNumber).value;
+            var lastName = document.getElementById("inputSiblingLastName-" + siblingNumber).value;
+            if (!isBlank(firstName) && !isBlank(lastName)) {
+                var nextNumber = siblingNumber + 1;
+                document.getElementById("siblings-" + nextNumber).style.display = "";
+                document.getElementById("siblings-" + nextNumber).style.visibility = "visible";
+            }
+        }
+    }
+    function isBlank(str) {
+        return (!str || /^\s*$/.test(str));
+    }
+    function displaySiblingQuestion() {
+        var radioButtonValue = getRadioButtonValue("hasSiblings");
+        if (radioButtonValue === "yes") {
+            document.getElementById("siblings").style.display = "";
+            document.getElementById("siblings").style.visibility = "visible";
+        }
+        else {
+            document.getElementById("siblings").style.display = "none";
+            document.getElementById("siblings").style.visibility = "hidden";
+            // hide all fields except 1 and clear fields
+            for (var i = 2; i <= 15; i ++) {
+                document.getElementById("siblings-" + i).style.display = "none";
+                document.getElementById("siblings-" + i).style.visibility = "hidden";
+                document.getElementById("inputSiblingFirstName-" + i).value = "";
+                document.getElementById("inputSiblingLastName-" + i).value = "";
+            }
+            document.getElementById("inputSiblingFirstName-" + 1).value = "";
+            document.getElementById("inputSiblingLastName-" + 1).value = "";
+        }
+    }
+    function getRadioButtonValue(name) {
+        var radios = document.getElementsByName(name);
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                return radios[i].value;
+            }
+        }
+        return null;
+    }
+    </script>
+    <script>
+        // names of unregistered siblings
+        function makeSiblingsString() {
+            var siblingString = "";
+            var hasSiblings = getRadioButtonValue("hasSiblings");
+            if (hasSiblings === "yes") {
+                for (var i = 1; i <= 15; i++) {
+                    var firstName = document.getElementById("inputSiblingFirstName-" + i).value;
+                    var lastName = document.getElementById("inputSiblingLastName-" + i).value;
+                    if (!isBlank(firstName) && !isBlank(lastName)) {
+                        siblingString += firstName + " " + lastName + " (N), ";
+                    }
+                }
+            }
+            siblingString = siblingString.substring(0, siblingString.length - 2);
+            return siblingString;
+        }
+        // names of registered students except for that number
+        function makeNamesString(exceptNumber) {
+            var nameString = "";
+            for (var i = 1; i <= globalStudentCount; i++) {
+                if (i !== (exceptNumber)) {
+                    var firstName = $('input[id=inputStudentFirstName-' + i + ']').val();
+                    var lastName = $('input[id=inputStudentLastName-' + i + ']').val();
+                    nameString += firstName + " " + lastName + " (R), ";
+                }
+            }
+            nameString = nameString.substring(0, nameString.length - 2);
+            return nameString;
         }
     </script>
 
