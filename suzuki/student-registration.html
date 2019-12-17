@@ -102,8 +102,6 @@
 
     </div> <!-- END PARENT INFO -->
 
-
-
     <div id="student1Information" style="visibility: hidden;display:none">
 
         <h3>Student Information</h3>
@@ -292,6 +290,13 @@
                 <select class="form-control" id="inputEnrichmentChoice3-1">
                     <option value=" "></option>
                 </select>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-1"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-1" rows="2" style="width: 100%"></textarea>
             </div>
 
             <hr>
@@ -497,6 +502,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-2"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-2" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-2"></div>
@@ -699,6 +712,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-3"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-3" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-3"></div>
@@ -901,6 +922,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-4"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-4" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-4"></div>
@@ -1103,6 +1132,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-5"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-5" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-5"></div>
@@ -1305,6 +1342,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-6"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-6" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-6"></div>
@@ -1507,6 +1552,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-7"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-7" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-7"></div>
@@ -1709,6 +1762,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-8"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-8" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-8"></div>
@@ -1911,6 +1972,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-9"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-9" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-9"></div>
@@ -2113,6 +2182,14 @@
             </div>
 
             <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-10"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-10" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
+
         </div>
 
         <div id="endText-10"></div>
@@ -2124,10 +2201,159 @@
 
     <div id="lastPage" style="visibility: hidden;display: none">
 
+        <h5>You have entered information the following students:</h5>
+        <ol id="studentsRegisteredList"></ol>
         <div class="form-group">
-            <label for="inputOtherNames">Please supply the names of all additional people attending the institute. </label>
-            <input type="text" class="form-control" id="inputOtherNames">
+            <label for="hasSiblings"><h5>Are there any other people who will be attending the Suzuki Institute that you be registering for in the future or that you have registered for already?<span style="color: red">*</span></h5>Some helpful text here. The above sentence definitely need to be changed.</label><br>
+            <input type="radio" name="hasSiblings" value="yes" onclick="displaySiblingQuestion()"> &nbsp;Yes<br>
+            <input type="radio" name="hasSiblings" value="no" onclick="displaySiblingQuestion()"> &nbsp;No
         </div>
+
+        <div id="siblings" style="display: none; visibility: hidden">
+
+            <div class="form-group" id="siblings-entry">
+                <label style="font-weight: 700">Enter the names of the OTHER siblings below - REWRITE NEEDED:</label><br>
+            </div>
+
+            <div class="form-row" id="siblings-1">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-1" oninput="inputDetect(1)" placeholder="First Name">
+                    <div id="valid-feedback-inputSiblingFirstName-1"></div>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-1" oninput="inputDetect(1)" placeholder="Last Name">
+                    <div id="valid-feedback-inputSiblingLastName-1"></div>
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-2" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-2" oninput="inputDetect(2)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-2" oninput="inputDetect(2)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-3" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-3" oninput="inputDetect(3)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-3" oninput="inputDetect(3)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-4" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-4" oninput="inputDetect(4)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-4" oninput="inputDetect(4)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-5" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-5" oninput="inputDetect(5)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-5" oninput="inputDetect(5)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-6" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-6" oninput="inputDetect(6)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-6" oninput="inputDetect(6)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-7" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-7" oninput="inputDetect(7)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-7" oninput="inputDetect(7)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-8" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-8" oninput="inputDetect(8)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-8" oninput="inputDetect(8)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-9" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-9" oninput="inputDetect(9)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-9" oninput="inputDetect(9)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-10" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-10" oninput="inputDetect(10)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-10" oninput="inputDetect(10)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-11" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-11" oninput="inputDetect(11)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-11" oninput="inputDetect(11)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-12" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-12" oninput="inputDetect(12)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-12" oninput="inputDetect(12)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-13" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-13" oninput="inputDetect(13)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-13" oninput="inputDetect(13)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-14" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-14" oninput="inputDetect(14)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-14" oninput="inputDetect(14)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-15" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-15" oninput="inputDetect(15)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-15" oninput="inputDetect(15)" placeholder="Last Name">
+                </div>
+            </div>
+
+        </div>
+
         <hr>
         <div id="finalText"></div>
         <br>
