@@ -102,8 +102,6 @@
 
     </div> <!-- END PARENT INFO -->
 
-
-
     <div id="student1Information" style="visibility: hidden;display:none">
 
         <h3>Student Information</h3>
@@ -198,7 +196,8 @@
 
         <div class="form-group">
             <label for="inputCourse-1">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-1" onchange="changeShowEnrichmentCourses(1)">
+            <select class="form-control" id="inputCourse-1" onchange="changeOnCourseSelection(1)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-1"></div>
         </div>
@@ -206,14 +205,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-1">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-1">
+                <select class="form-control" id="inputInstrument-1" onchange="changeBookLevels(1)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-1"></div>
             </div>
 
             <div class="form-group col-md-6">
-                <label for="inputBookLevel-1">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-1">
+                <label for="inputBookLevel-1">Currenst Book Level <span style="color: red">*</span></label>
+                <select class="form-control" id="inputBookLevel-1" onchange="changePieceCodes(1)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-1"></div>
             </div>
@@ -221,22 +222,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-            <label for="inputTitle-1">Title of Piece <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputTitle-1">
-            <div id="valid-feedback-inputTitle-1"></div>
+                <label for="inputTitle-1">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-1" onchange="changeOnPieceCodeSelection(1)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
+                <div id="valid-feedback-inputTitle-1"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-1">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-1">
+            <div class="form-group col-md-3" id="movementColumn-1" style="visibility: hidden; display: none">
+                <label for="inputMovement-1">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-1">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-1"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-1">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-1">
-            <div id="valid-feedback-inputComposer-1"></div>
+        <div class="form-group" id="customPieceDiv-1" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-1">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-1">
+            <div id="valid-feedback-inputCustomPiece-1"></div>
         </div>
 
         <div class="form-row">
@@ -287,200 +292,15 @@
                 </select>
             </div>
 
+            <hr>
+
+            <div class="form-group">
+                <label for="inputTeacherRequests-1"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-1" rows="2" style="width: 100%"></textarea>
+            </div>
+
+            <hr>
         </div>
-
-        <hr>
-
-        <div class="form-group">
-            <label for="inputTeacherRequests-1"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-            <textarea id="inputTeacherRequests-1" rows="2" style="width: 100%"></textarea>
-        </div>
-
-        <hr>
-
-
-        <div class="form-group">
-            <label for="hasSiblings-1"><h5>QUESTION ABOUT SIBLINGS? <span style="color: red">*</span></h5>Some helpful text here.</label><br>
-            <input type="radio" name="hasSiblings-1" value="yes" onclick="displaySiblingQuestion(1)"> &nbsp;Yes<br>
-            <input type="radio" name="hasSiblings-1" value="no" onclick="displaySiblingQuestion(1)"> &nbsp;No
-        </div>
-
-        <div id="siblings-1" style="display: none; visibility: hidden">
-
-            <div class="form-group" id="siblings-entry-1">
-                <label style="font-weight: 700">Enter the names of the siblings below:</label><br>
-            </div>
-
-            <div class="form-row" id="siblings-1-1">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-1">Sibling #1 First Name <span style="color: red">*</span></label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-1" oninput="inputDetect(1, 1)">
-                    <div id="valid-feedback-inputSiblingFirstName-1-1"></div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-1">Sibling #1 Last Name <span style="color: red">*</span></label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-1" oninput="inputDetect(1, 1)">
-                    <div id="valid-feedback-inputSiblingLastName-1-1"></div>
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-2" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-2">Sibling #2 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-2" oninput="inputDetect(1, 2)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-2">Sibling #2 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-2" oninput="inputDetect(1, 2)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-3" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-3">Sibling #3 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-3" oninput="inputDetect(1, 3)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-3">Sibling #3 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-3" oninput="inputDetect(1, 3)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-4" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-4">Sibling #4 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-4" oninput="inputDetect(1, 4)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-4">Sibling #4 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-4" oninput="inputDetect(1, 4)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-5" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-5">Sibling #5 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-5" oninput="inputDetect(1, 5)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-5">Sibling #5 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-5" oninput="inputDetect(1, 5)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-6" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-6">Sibling #6 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-6" oninput="inputDetect(1, 6)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-6">Sibling #6 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-6" oninput="inputDetect(1, 6)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-7" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-7">Sibling #7 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-7" oninput="inputDetect(1, 7)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-7">Sibling #7 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-7" oninput="inputDetect(1, 7)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-8" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-8">Sibling #8 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-8" oninput="inputDetect(1, 8)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-8">Sibling #8 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-8" oninput="inputDetect(1, 8)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-9" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-9">Sibling #9 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-9" oninput="inputDetect(1, 9)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-9">Sibling #9 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-9" oninput="inputDetect(1, 9)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-10" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-10">Sibling #10 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-10" oninput="inputDetect(1, 10)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-10">Sibling #10 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-10" oninput="inputDetect(1, 10)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-11" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-11">Sibling #11 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-11" oninput="inputDetect(1, 11)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-11">Sibling #11 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-11" oninput="inputDetect(1, 11)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-12" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-12">Sibling #12 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-12" oninput="inputDetect(1, 12)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-12">Sibling #12 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-12" oninput="inputDetect(1, 12)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-13" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-13">Sibling #13 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-13" oninput="inputDetect(1, 13)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-13">Sibling #13 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-13" oninput="inputDetect(1, 13)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-14" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-14">Sibling #14 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-14" oninput="inputDetect(1, 14)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-14">Sibling #14 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-14" oninput="inputDetect(1, 14)">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-1-15" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingFirstName-1-15">Sibling #15 First Name</label>
-                    <input type="text" class="form-control" id="inputSiblingFirstName-1-15" oninput="inputDetect(1, 15)">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputSiblingLastName-1-15">Sibling #15 Last Name</label>
-                    <input type="text" class="form-control" id="inputSiblingLastName-1-15" oninput="inputDetect(1, 15)">
-                </div>
-            </div>
-
-        </div>
-
-        <hr>
 
         <div id="endText-1"></div>
 
@@ -585,7 +405,8 @@
 
         <div class="form-group">
             <label for="inputCourse-2">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-2" onchange="changeShowEnrichmentCourses(2)">
+            <select class="form-control" id="inputCourse-2" onchange="changeOnCourseSelection(2)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-2"></div>
         </div>
@@ -593,14 +414,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-2">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-2">
+                <select class="form-control" id="inputInstrument-2" onchange="changeBookLevels(2)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-2"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-2">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-2">
+                <select class="form-control" id="inputBookLevel-2" onchange="changePieceCodes(2)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-2"></div>
             </div>
@@ -608,22 +431,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-2">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-2">
+                <label for="inputTitle-2">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-2" onchange="changeOnPieceCodeSelection(2)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-2"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-2">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-2">
+            <div class="form-group col-md-3" id="movementColumn-2" style="visibility: hidden; display: none">
+                <label for="inputMovement-2">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-2">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-2"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-2">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-2">
-            <div id="valid-feedback-inputComposer-2"></div>
+        <div class="form-group" id="customPieceDiv-2" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-2">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-2">
+            <div id="valid-feedback-inputCustomPiece-2"></div>
         </div>
 
         <div class="form-row">
@@ -674,169 +501,16 @@
                 </select>
             </div>
 
-        </div>
+            <hr>
 
-        <hr>
-
-        <div class="form-group">
-            <label for="inputTeacherRequests-2"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
-            <textarea id="inputTeacherRequests-2" rows="2" style="width: 100%"></textarea>
-        </div>
-
-        <hr>
-
-        <div class="form-group">
-            <label for="hasSiblings-2"><h5>QUESTION ABOUT SIBLINGS? <span style="color: red">*</span></h5>Some helpful text here.</label><br>
-            <input type="radio" name="hasSiblings-2" value="yes" onclick="displaySiblingQuestion(2)"> &nbsp;Yes<br>
-            <input type="radio" name="hasSiblings-2" value="no" onclick="displaySiblingQuestion(2)"> &nbsp;&nbsp;No
-        </div>
-
-        <div id="siblings-2" style="display: none; visibility: hidden">
-
-            <div class="form-group" id="siblings-entry-2">
-                <label style="font-weight: 700">Enter the names of the siblings below:</label><br>
+            <div class="form-group">
+                <label for="inputTeacherRequests-2"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+                <textarea id="inputTeacherRequests-2" rows="2" style="width: 100%"></textarea>
             </div>
 
-            <div class="form-row" id="siblings-2-1">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-1" oninput="inputDetect(2, 1)" placeholder="First Name">
-                    <div id="valid-feedback-inputSiblingFirstName-2-1"></div>
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-1" oninput="inputDetect(2, 1)" placeholder="Last Name">
-                    <div id="valid-feedback-inputSiblingLastName-2-1"></div>
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-2" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-2" oninput="inputDetect(2, 2)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-2" oninput="inputDetect(2, 2)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-3" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-3" oninput="inputDetect(2, 3)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-3" oninput="inputDetect(2, 3)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-4" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-4" oninput="inputDetect(2, 4)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-4" oninput="inputDetect(2, 4)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-5" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-5" oninput="inputDetect(2, 5)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-5" oninput="inputDetect(2, 5)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-6" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-6" oninput="inputDetect(2, 6)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-6" oninput="inputDetect(2, 6)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-7" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-7" oninput="inputDetect(2, 7)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-7" oninput="inputDetect(2, 7)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-8" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-8" oninput="inputDetect(2, 8)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-8" oninput="inputDetect(2, 8)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-9" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-9" oninput="inputDetect(2, 9)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-9" oninput="inputDetect(2, 9)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-10" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-10" oninput="inputDetect(2, 10)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-10" oninput="inputDetect(2, 10)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-11" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-11" oninput="inputDetect(2, 11)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-11" oninput="inputDetect(2, 11)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-12" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-12" oninput="inputDetect(2, 12)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-12" oninput="inputDetect(2, 12)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-13" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-13" oninput="inputDetect(2, 13)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-13" oninput="inputDetect(2, 13)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-14" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-14" oninput="inputDetect(2, 14)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-14" oninput="inputDetect(2, 14)" placeholder="Last Name">
-                </div>
-            </div>
-
-            <div class="form-row" id="siblings-2-15" style="display: none; visibility: hidden">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingFirstName-2-15" oninput="inputDetect(2, 15)" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="inputSiblingLastName-2-15" oninput="inputDetect(2, 15)" placeholder="Last Name">
-                </div>
-            </div>
+            <hr>
 
         </div>
-
-        <hr>
 
         <div id="endText-2"></div>
 
@@ -941,7 +615,8 @@
 
         <div class="form-group">
             <label for="inputCourse-3">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-3" onchange="changeShowEnrichmentCourses(3)">
+            <select class="form-control" id="inputCourse-3" onchange="changeOnCourseSelection(3)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-3"></div>
         </div>
@@ -949,14 +624,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-3">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-3">
+                <select class="form-control" id="inputInstrument-3" onchange="changeBookLevels(3)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-3"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-3">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-3">
+                <select class="form-control" id="inputBookLevel-3" onchange="changePieceCodes(3)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-3"></div>
             </div>
@@ -964,22 +641,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-3">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-3">
+                <label for="inputTitle-3">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-3" onchange="changeOnPieceCodeSelection(3)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-3"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-3">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-3">
+            <div class="form-group col-md-3" id="movementColumn-3" style="visibility: hidden; display: none">
+                <label for="inputMovement-3">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-3">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-3"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-3">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-3">
-            <div id="valid-feedback-inputComposer-3"></div>
+        <div class="form-group" id="customPieceDiv-3" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-3">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-3">
+            <div id="valid-feedback-inputCustomPiece-3"></div>
         </div>
 
         <div class="form-row">
@@ -1144,7 +825,8 @@
 
         <div class="form-group">
             <label for="inputCourse-4">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-4" onchange="changeShowEnrichmentCourses(4)">
+            <select class="form-control" id="inputCourse-4" onchange="changeOnCourseSelection(4)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-4"></div>
         </div>
@@ -1152,14 +834,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-4">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-4">
+                <select class="form-control" id="inputInstrument-4" onchange="changeBookLevels(4)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-4"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-4">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-4">
+                <select class="form-control" id="inputBookLevel-4" onchange="changePieceCodes(4)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-4"></div>
             </div>
@@ -1167,22 +851,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-4">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-4">
+                <label for="inputTitle-4">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-4" onchange="changeOnPieceCodeSelection(4)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-4"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-4">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-4">
+            <div class="form-group col-md-3" id="movementColumn-4" style="visibility: hidden; display: none">
+                <label for="inputMovement-4">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-4">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-4"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-4">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-4">
-            <div id="valid-feedback-inputComposer-4"></div>
+        <div class="form-group" id="customPieceDiv-4" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-4">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-4">
+            <div id="valid-feedback-inputCustomPiece-4"></div>
         </div>
 
         <div class="form-row">
@@ -1347,7 +1035,8 @@
 
         <div class="form-group">
             <label for="inputCourse-5">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-5" onchange="changeShowEnrichmentCourses(5)">
+            <select class="form-control" id="inputCourse-5" onchange="changeOnCourseSelection(5)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-5"></div>
         </div>
@@ -1355,14 +1044,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-5">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-5">
+                <select class="form-control" id="inputInstrument-5" onchange="changeBookLevels(5)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-5"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-5">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-5">
+                <select class="form-control" id="inputBookLevel-5" onchange="changePieceCodes(5)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-5"></div>
             </div>
@@ -1370,22 +1061,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-5">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-5">
+                <label for="inputTitle-5">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-5" onchange="changeOnPieceCodeSelection(5)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-5"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-5">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-5">
+            <div class="form-group col-md-3" id="movementColumn-5" style="visibility: hidden; display: none">
+                <label for="inputMovement-5">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-5">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-5"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-5">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-5">
-            <div id="valid-feedback-inputComposer-5"></div>
+        <div class="form-group" id="customPieceDiv-5" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-5">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-5">
+            <div id="valid-feedback-inputCustomPiece-5"></div>
         </div>
 
         <div class="form-row">
@@ -1550,7 +1245,8 @@
 
         <div class="form-group">
             <label for="inputCourse-6">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-6" onchange="changeShowEnrichmentCourses(6)">
+            <select class="form-control" id="inputCourse-6" onchange="changeOnCourseSelection(6)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-6"></div>
         </div>
@@ -1558,14 +1254,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-6">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-6">
+                <select class="form-control" id="inputInstrument-6" onchange="changeBookLevels(6)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-6"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-6">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-6">
+                <select class="form-control" id="inputBookLevel-6" onchange="changePieceCodes(6)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-6"></div>
             </div>
@@ -1573,22 +1271,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-6">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-6">
+                <label for="inputTitle-6">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-6" onchange="changeOnPieceCodeSelection(6)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-6"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-6">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-6">
+            <div class="form-group col-md-3" id="movementColumn-6" style="visibility: hidden; display: none">
+                <label for="inputMovement-6">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-6">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-6"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-6">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-6">
-            <div id="valid-feedback-inputComposer-6"></div>
+        <div class="form-group" id="customPieceDiv-6" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-6">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-6">
+            <div id="valid-feedback-inputCustomPiece-6"></div>
         </div>
 
         <div class="form-row">
@@ -1753,7 +1455,8 @@
 
         <div class="form-group">
             <label for="inputCourse-7">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-7"  onchange="changeShowEnrichmentCourses(7)">
+            <select class="form-control" id="inputCourse-7" onchange="changeOnCourseSelection(7)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-7"></div>
         </div>
@@ -1761,14 +1464,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-7">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-7">
+                <select class="form-control" id="inputInstrument-7" onchange="changeBookLevels(7)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-7"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-7">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-7">
+                <select class="form-control" id="inputBookLevel-7" onchange="changePieceCodes(7)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-7"></div>
             </div>
@@ -1776,22 +1481,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-7">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-7">
+                <label for="inputTitle-7">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-7" onchange="changeOnPieceCodeSelection(7)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-7"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-7">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-7">
+            <div class="form-group col-md-3" id="movementColumn-7" style="visibility: hidden; display: none">
+                <label for="inputMovement-7">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-7">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-7"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-7">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-7">
-            <div id="valid-feedback-inputComposer-7"></div>
+        <div class="form-group" id="customPieceDiv-7" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-7">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-7">
+            <div id="valid-feedback-inputCustomPiece-7"></div>
         </div>
 
         <div class="form-row">
@@ -1956,7 +1665,8 @@
 
         <div class="form-group">
             <label for="inputCourse-8">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-8"  onchange="changeShowEnrichmentCourses(8)">
+            <select class="form-control" id="inputCourse-8" onchange="changeOnCourseSelection(8)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-8"></div>
         </div>
@@ -1964,14 +1674,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-8">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-8">
+                <select class="form-control" id="inputInstrument-8" onchange="changeBookLevels(8)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-8"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-8">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-8">
+                <select class="form-control" id="inputBookLevel-8" onchange="changePieceCodes(8)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-8"></div>
             </div>
@@ -1979,22 +1691,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-8">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-8">
+                <label for="inputTitle-8">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-8" onchange="changeOnPieceCodeSelection(8)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-8"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-8">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-8">
+            <div class="form-group col-md-3" id="movementColumn-8" style="visibility: hidden; display: none">
+                <label for="inputMovement-8">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-8">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-8"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-8">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-8">
-            <div id="valid-feedback-inputComposer-8"></div>
+        <div class="form-group" id="customPieceDiv-8" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-8">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-8">
+            <div id="valid-feedback-inputCustomPiece-8"></div>
         </div>
 
         <div class="form-row">
@@ -2159,7 +1875,8 @@
 
         <div class="form-group">
             <label for="inputCourse-9">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-9" onchange="changeShowEnrichmentCourses(9)">
+            <select class="form-control" id="inputCourse-9" onchange="changeOnCourseSelection(9)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-9"></div>
         </div>
@@ -2167,14 +1884,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-9">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-9">
+                <select class="form-control" id="inputInstrument-9" onchange="changeBookLevels(9)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-9"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-9">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-9">
+                <select class="form-control" id="inputBookLevel-9" onchange="changePieceCodes(9)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-9"></div>
             </div>
@@ -2182,22 +1901,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-9">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-9">
+                <label for="inputTitle-9">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-9" onchange="changeOnPieceCodeSelection(9)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-9"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-9">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-9">
+            <div class="form-group col-md-3" id="movementColumn-9" style="visibility: hidden; display: none">
+                <label for="inputMovement-9">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-9">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-9"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-9">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-9">
-            <div id="valid-feedback-inputComposer-9"></div>
+        <div class="form-group" id="customPieceDiv-9" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-9">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-9">
+            <div id="valid-feedback-inputCustomPiece-9"></div>
         </div>
 
         <div class="form-row">
@@ -2362,7 +2085,8 @@
 
         <div class="form-group">
             <label for="inputCourse-10">Select a course: <span style="color: red">*</span></label>
-            <select class="form-control" id="inputCourse-10"  onchange="changeShowEnrichmentCourses(10)">
+            <select class="form-control" id="inputCourse-10" onchange="changeOnCourseSelection(10)">
+                <option style="display:none" disabled selected value></option>
             </select>
             <div id="valid-feedback-inputCourse-10"></div>
         </div>
@@ -2370,14 +2094,16 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputInstrument-10">Instrument <span style="color: red">*</span></label>
-                <select class="form-control" id="inputInstrument-10">
+                <select class="form-control" id="inputInstrument-10" onchange="changeBookLevels(10)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputInstrument-10"></div>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="inputBookLevel-10">Current Book Level <span style="color: red">*</span></label>
-                <select class="form-control" id="inputBookLevel-10">
+                <select class="form-control" id="inputBookLevel-10" onchange="changePieceCodes(10)">
+                    <option style="display:none" disabled selected value></option>
                 </select>
                 <div id="valid-feedback-inputBookLevel-10"></div>
             </div>
@@ -2385,22 +2111,26 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-10">Title of Piece <span style="color: red">*</span></label>
-                <input type="text" class="form-control" id="inputTitle-10">
+                <label for="inputTitle-10">Code and Title of Piece <span style="color: red">*</span></label>
+                <select class="form-control" id="inputTitle-10" onchange="changeOnPieceCodeSelection(10)">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputTitle-10"></div>
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputMovement-10">Movement </label>
-                <input type="text" class="form-control" id="inputMovement-10">
+            <div class="form-group col-md-3" id="movementColumn-10" style="visibility: hidden; display: none">
+                <label for="inputMovement-10">Movement <span style="color: red">*</span></label>
+                <select class="form-control" id="inputMovement-10">
+                    <option style="display:none" disabled selected value></option>
+                </select>
                 <div id="valid-feedback-inputMovement-10"></div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="inputComposer-10">Composer <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputComposer-10">
-            <div id="valid-feedback-inputComposer-10"></div>
+        <div class="form-group" id="customPieceDiv-10" style="visibility: hidden; display: none">
+            <label for="inputCustomPiece-10">Enter the title of another piece: <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCustomPiece-10">
+            <div id="valid-feedback-inputCustomPiece-10"></div>
         </div>
 
         <div class="form-row">
@@ -2471,10 +2201,159 @@
 
     <div id="lastPage" style="visibility: hidden;display: none">
 
+        <h5>You have entered information the following students:</h5>
+        <ol id="studentsRegisteredList"></ol>
         <div class="form-group">
-            <label for="inputOtherNames">Please supply the names of all additional people attending the institute. </label>
-            <input type="text" class="form-control" id="inputOtherNames">
+            <label for="hasSiblings"><h5>Are there any other people who will be attending the Suzuki Institute that you be registering for in the future or that you have registered for already?<span style="color: red">*</span></h5>Some helpful text here. The above sentence definitely need to be changed.</label><br>
+            <input type="radio" name="hasSiblings" value="yes" onclick="displaySiblingQuestion()"> &nbsp;Yes<br>
+            <input type="radio" name="hasSiblings" value="no" onclick="displaySiblingQuestion()"> &nbsp;No
         </div>
+
+        <div id="siblings" style="display: none; visibility: hidden">
+
+            <div class="form-group" id="siblings-entry">
+                <label style="font-weight: 700">Enter the names of the OTHER siblings below - REWRITE NEEDED:</label><br>
+            </div>
+
+            <div class="form-row" id="siblings-1">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-1" oninput="inputDetect(1)" placeholder="First Name">
+                    <div id="valid-feedback-inputSiblingFirstName-1"></div>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-1" oninput="inputDetect(1)" placeholder="Last Name">
+                    <div id="valid-feedback-inputSiblingLastName-1"></div>
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-2" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-2" oninput="inputDetect(2)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-2" oninput="inputDetect(2)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-3" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-3" oninput="inputDetect(3)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-3" oninput="inputDetect(3)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-4" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-4" oninput="inputDetect(4)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-4" oninput="inputDetect(4)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-5" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-5" oninput="inputDetect(5)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-5" oninput="inputDetect(5)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-6" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-6" oninput="inputDetect(6)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-6" oninput="inputDetect(6)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-7" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-7" oninput="inputDetect(7)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-7" oninput="inputDetect(7)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-8" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-8" oninput="inputDetect(8)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-8" oninput="inputDetect(8)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-9" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-9" oninput="inputDetect(9)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-9" oninput="inputDetect(9)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-10" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-10" oninput="inputDetect(10)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-10" oninput="inputDetect(10)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-11" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-11" oninput="inputDetect(11)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-11" oninput="inputDetect(11)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-12" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-12" oninput="inputDetect(12)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-12" oninput="inputDetect(12)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-13" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-13" oninput="inputDetect(13)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-13" oninput="inputDetect(13)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-14" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-14" oninput="inputDetect(14)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-14" oninput="inputDetect(14)" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-row" id="siblings-15" style="display: none; visibility: hidden">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingFirstName-15" oninput="inputDetect(15)" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputSiblingLastName-15" oninput="inputDetect(15)" placeholder="Last Name">
+                </div>
+            </div>
+
+        </div>
+
         <hr>
         <div id="finalText"></div>
         <br>
@@ -2513,6 +2392,7 @@
     var instrumentNames = [];
     var bookLevelValues = [];
     var bookLevelNames = [];
+    var codesDictionary = {};
 
     // student information text
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=56981838&single=true",
@@ -2610,23 +2490,25 @@
                 instrumentValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
             }
         });
-    // book options
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=1224050231&single=true",
+    // codes dictionary
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=1739389938&single=true",
         function(data, status) {
-            var coursesData = getTableData(data);
-            for (var j = 1; j <=  MAX_STUDENT_NUMBER; j ++) {
-                var theSelect = document.getElementById("inputBookLevel-" + j);
-                for (var i = 1; i < coursesData.length; i++) {
-                    var option = document.createElement("option");
-                    option.text = coursesData[i][0];
-                    option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
-                    theSelect.add(option);
-                }
+            var textTable = getTableData(data);
+            var dict = [];
+            for (var i = 1; i < textTable.length; i ++) {
+                var name = textTable[i][0];
+                var bookLevels = textTable[i][1];
+                var books = textTable[i][2];
+                var codes = textTable[i][3];
+                var titles = textTable[i][4];
+                var movements = textTable[i][5];
+                dict[name] = {bookOptions: bookLevels,
+                    bookList: books.split(","),
+                    codeList: codes.split(","),
+                    titleList: titles.split(","),
+                    movementsList: movements.split(",")};
             }
-            for (var i = 1; i < coursesData.length; i++) {
-                bookLevelNames.push(coursesData[i][0]);
-                bookLevelValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
-            }
+            codeDictionary = dict;
         });
     // enrichment classes options
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=189728833&single=true",
@@ -2680,6 +2562,12 @@
         return value;
     }
 
+    function getSelectDataTitle(name) {
+        var e = document.getElementById(name);
+        var value = e.options[e.selectedIndex].text;
+        return value;
+    }
+
     function goToTop() {
         $('html,body').scrollTop(0);
         window.parent.postMessage("scrollTop", '*');
@@ -2706,7 +2594,7 @@
                     document.getElementById("student1Information").style.visibility = "visible";
                     pageNumber = 2;
                     if (parseInt(globalStudentCount) === 1) {
-                      document.getElementById("next-1").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                        document.getElementById("next-1").innerHTML = '<button onclick="goToLastPage(1)" class="btn btn-success">Next</button>';
                     }
 
                 }
@@ -2721,13 +2609,14 @@
                         document.getElementById("student2Information").style.display = "inherit";
                         document.getElementById("student2Information").style.visibility = "visible";
                         showInputAccompanied(2);
+                        changeBookLevels(2);
                         pageNumber = 3;
                         if (parseInt(globalStudentCount) === 2) {
-                            document.getElementById("next-2").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-2").innerHTML = '<button onclick="goToLastPage(2)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(2);
                     }
                 }
                 goToTop();
@@ -2741,13 +2630,14 @@
                         document.getElementById("student3Information").style.display = "inherit";
                         document.getElementById("student3Information").style.visibility = "visible";
                         showInputAccompanied(3);
+                        changeBookLevels(3);
                         pageNumber = 4;
                         if (parseInt(globalStudentCount) === 3) {
-                            document.getElementById("next-3").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-3").innerHTML = '<button onclick="goToLastPage(3)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(3);
                     }
                 }
                 goToTop();
@@ -2761,13 +2651,14 @@
                         document.getElementById("student4Information").style.display = "inherit";
                         document.getElementById("student4Information").style.visibility = "visible";
                         showInputAccompanied(4);
+                        changeBookLevels(4);
                         pageNumber = 5;
                         if (parseInt(globalStudentCount) === 4) {
-                            document.getElementById("next-4").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-4").innerHTML = '<button onclick="goToLastPage(4)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(4);
                     }
                 }
                 goToTop();
@@ -2781,13 +2672,14 @@
                         document.getElementById("student5Information").style.display = "inherit";
                         document.getElementById("student5Information").style.visibility = "visible";
                         showInputAccompanied(5);
+                        changeBookLevels(5);
                         pageNumber = 6;
                         if (parseInt(globalStudentCount) === 5) {
-                            document.getElementById("next-5").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-5").innerHTML = '<button onclick="goToLastPage(5)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(5);
                     }
                 }
                 goToTop();
@@ -2801,13 +2693,14 @@
                         document.getElementById("student6Information").style.display = "inherit";
                         document.getElementById("student6Information").style.visibility = "visible";
                         showInputAccompanied(6);
+                        changeBookLevels(6);
                         pageNumber = 7;
                         if (parseInt(globalStudentCount) === 6) {
-                            document.getElementById("next-6").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-6").innerHTML = '<button onclick="goToLastPage(6)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(6);
                     }
                 }
                 goToTop();
@@ -2821,13 +2714,14 @@
                         document.getElementById("student7Information").style.display = "inherit";
                         document.getElementById("student7Information").style.visibility = "visible";
                         showInputAccompanied(7);
+                        changeBookLevels(7);
                         pageNumber = 8;
                         if (parseInt(globalStudentCount) === 7) {
-                            document.getElementById("next-7").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-7").innerHTML = '<button onclick="goToLastPage(7)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(7);
                     }
                 }
                 goToTop();
@@ -2841,13 +2735,14 @@
                         document.getElementById("student8Information").style.display = "inherit";
                         document.getElementById("student8Information").style.visibility = "visible";
                         showInputAccompanied(8);
+                        changeBookLevels(8);
                         pageNumber = 9;
                         if (parseInt(globalStudentCount) === 8) {
-                            document.getElementById("next-8").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-8").innerHTML = '<button onclick="goToLastPage(8)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(8);
                     }
                 }
                 goToTop();
@@ -2861,13 +2756,14 @@
                         document.getElementById("student9Information").style.display = "inherit";
                         document.getElementById("student9Information").style.visibility = "visible";
                         showInputAccompanied(9);
+                        changeBookLevels(9);
                         pageNumber = 10;
                         if (parseInt(globalStudentCount) === 9) {
-                            document.getElementById("next-9").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-9").innerHTML = '<button onclick="goToLastPage(9)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(9);
                     }
                 }
                 goToTop();
@@ -2881,24 +2777,25 @@
                         document.getElementById("student10Information").style.display = "inherit";
                         document.getElementById("student10Information").style.visibility = "visible";
                         showInputAccompanied(10);
+                        changeBookLevels(10);
                         pageNumber = 11;
                         if (parseInt(globalStudentCount) === 10) {
-                            document.getElementById("next-10").innerHTML = '<br><br><h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br><button onclick="submit()" class="btn btn-success">Submit & Continue To Payment</button>';
+                            document.getElementById("next-10").innerHTML = '<button onclick="goToLastPage(10)" class="btn btn-success">Next</button>';
                         }
                     }
                     else {
-                        submit();
+                        goToLastPage(10);
                     }
                 }
                 goToTop();
             }
             else if (pageNumber === 11) {
                 goToTop();
-                submit();
+                goToLastPage(11);
             }
         }
-        </script>
-        <script>
+    </script>
+    <script>
         function back() {
             clearValidateFeedback();
             if (pageNumber === 2) {
@@ -3000,19 +2897,52 @@
                 pageNumber = 10;
                 goToTop();
             }
+            // last page
+            else if (pageNumber === 12) {
+                var number = globalStudentCount;
+                document.getElementById("lastPage").style.display = "none";
+                document.getElementById("lastPage").style.visibility = "hidden";
+                document.getElementById("studentNumber").innerHTML = "&mdash; Student " + number;
+                document.getElementById("student" + number + "Information").style.display = "inherit";
+                document.getElementById("student" + number + "Information").style.visibility = "visible";
+                showInputAccompanied(number);
+                pageNumber = parseInt(number) + 1;
+                goToTop();
+            }
         }
-        </script>
+    </script>
     <script>
-        function goToLastPage(number) {
-            clearValidateFeedback();
-            document.getElementById("student" + number + "Information").style.display = "none";
-            document.getElementById("student" + number + "Information").style.visibility = "hidden";
-            document.getElementById("studentNumber").innerHTML = "";
-            document.getElementById("lastPage").style.display = "inherit";
-            document.getElementById("lastPage").style.visibility = "visible";
-            pageNumber = 12;
-            goToTop();
-        }
+            function goToLastPage(number) {
+                if (validateStudentInfo(number)) {
+                    clearValidateFeedback();
+                    document.getElementById("student" + number + "Information").style.display = "none";
+                    document.getElementById("student" + number + "Information").style.visibility = "hidden";
+                    document.getElementById("studentNumber").innerHTML = "";
+                    makeNamesToDisplay();
+                    document.getElementById("lastPage").style.display = "inherit";
+                    document.getElementById("lastPage").style.visibility = "visible";
+                    pageNumber = 12;
+                    goToTop();
+                }
+                else {
+                    goToTop();
+                }
+            }
+            function makeNamesToDisplay() {
+                var nameList = [];
+                for (var i = 1; i <= globalStudentCount; i++) {
+                    var firstName = $('input[id=inputStudentFirstName-' + i + ']').val();
+                    var lastName = $('input[id=inputStudentLastName-' + i + ']').val();
+                    nameList.push(firstName + " " + lastName);
+                }
+                document.getElementById("studentsRegisteredList").innerHTML = "";
+                for (var i = 0; i < nameList.length; i ++) {
+                    var node = document.createElement("li");                 // Create a <li> node
+                    var textnode = document.createTextNode(nameList[i]);         // Create a text node
+                    node.appendChild(textnode);                              // Append the text to <li>
+                    document.getElementById("studentsRegisteredList").appendChild(node);    // Append <li> to <ul>
+                }
+            }
     </script>
     <script>
         function changeDesignatedAdult(number) {
@@ -3045,6 +2975,123 @@
                 }
                 document.getElementById("enrichmentClassesDiv-" + number).style.display = "none";
                 document.getElementById("enrichmentClassesDiv-" + number).style.visibility = "hidden";
+            }
+        }
+    </script>
+    <script>
+        function changeOnCourseSelection(number) {
+            changeShowEnrichmentCourses(number);
+            changeBookLevels(number);
+        }
+        function changeOnPieceCodeSelection(number) {
+            changeMovements(number);
+            changeCustomPiece(number);
+        }
+    </script>
+    <script>
+        function changeBookLevels(number) {
+            var instrument = getSelectData("inputInstrument-" + number);
+            if (instrument !== "") {
+                var selectedInstrument = capitalizeFLetter(instrument);
+                var bookNumbers = codeDictionary[selectedInstrument].bookOptions;
+                var bookNumbersArray = bookNumbers.split(",");
+                var select = document.getElementById("inputBookLevel-" + number);
+                select.innerHTML = '<option style="display:none" disabled selected value></option>';
+                for (var i = 0; i < bookNumbersArray.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = bookNumbersArray[i];
+                    option.value = bookNumbersArray[i];
+                    select.add(option);
+                }
+                var selectedCourse = getSelectData("inputCourse-" + number);
+                if (selectedCourse.includes("advancedinstitute")) {
+                    option = document.createElement("option");
+                    option.text = "N/A";
+                    option.value = "N/A";
+                    select.add(option);
+                }
+                changePieceCodes(number);
+            }
+        }
+        function changePieceCodes(number) {
+            var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
+            var selectedBookLevel = getSelectData("inputBookLevel-" + number);
+            var allBookNumbers = codeDictionary[selectedInstrument].bookList;
+            var allCodes = codeDictionary[selectedInstrument].codeList;
+            var allTitles = codeDictionary[selectedInstrument].titleList;
+            var pieces = [];
+            var codes = [];
+            for (var i = 0; i < allBookNumbers.length; i ++) {
+                if (allBookNumbers[i] === selectedBookLevel) {
+                    var title = allTitles[i];
+                    pieces.push(allCodes[i] + ": " + title.substring(1, title.length-1));
+                    codes.push(allCodes[i]);
+                }
+            }
+            var select = document.getElementById("inputTitle-" + number);
+            select.innerHTML = '<option style="display:none" disabled selected value></option>';
+            for (var i = 0; i < pieces.length; i ++) {
+                var option = document.createElement("option");
+                option.value = codes[i];
+                option.text = pieces[i];
+                select.add(option);
+            }
+            var selectedCourse = getSelectData("inputCourse-" + number);
+            if (selectedCourse.includes("advancedinstitute")) {
+                option = document.createElement("option");
+                option.text = "Other";
+                option.value = "other";
+                select.add(option);
+                if (selectedBookLevel === "N/A") {
+                    option.selected = "selected";
+                }
+            }
+            changeCustomPiece(number);
+            changeMovements(number);
+        }
+    </script>
+    <script>
+        function changeMovements(number) {
+            var movementDiv = document.getElementById("movementColumn-" + number);
+            movementDiv.style.visibility = "hidden";
+            movementDiv.style.display = "none";
+            var select = document.getElementById("inputMovement-" + number);
+            select.innerHTML = '<option style="display:none" disabled selected value></option>';
+            var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
+            var selectedCode = getSelectData("inputTitle-" + number);
+            var allCodes = codeDictionary[selectedInstrument].codeList;
+            var allMovements = codeDictionary[selectedInstrument].movementsList;
+            var movements = [];
+            for (var i = 0; i < allCodes.length; i ++) {
+                if (allCodes[i] === selectedCode) {
+                    var movements = allMovements[i];
+                    break;
+                }
+            }
+            if (movements.length >= 1) {
+                var movementArray = movements.split("-");
+                for (var i = 0; i < movementArray.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = movementArray[i];
+                    option.value = movementArray[i];
+                    select.add(option);
+                }
+                movementDiv.style.visibility = "visible";
+                movementDiv.style.display = "";
+            }
+        }
+        function changeCustomPiece(number) {
+            var selectedCourse = getSelectData("inputCourse-" + number);
+            var selectedCode = getSelectData("inputTitle-" + number);
+            var customField = document.getElementById("customPieceDiv-" + number);
+            if (selectedCourse.includes("advancedinstitute") && selectedCode === "other") {
+                customField.style.visibility = "visible";
+                customField.style.display = "";
+            }
+            else {
+                customField.style.visibility = "hidden";
+                customField.style.display = "none";
+                document.getElementById("inputCustomPiece-" + number).value = "";
             }
         }
     </script>
@@ -3129,16 +3176,60 @@
                 }
             }
 
-            var selectFields = ["Course", "Instrument", "BookLevel"];
-            for (var i = 0; i < selectFields.length; i ++) {
+            var selectFields = ["Course", "Instrument", "BookLevel", "Title"];
+            var selectNames = ["course", "instrument", "book level", "piece's code and title"];
+            for (var i = 0; i < selectFields.length; i++) {
+                var selectField = document.getElementById("input" + selectFields[i] + "-" + number);
+                // if it has options
                 var selectData = getSelectData("input" + selectFields[i] + "-" + number);
                 if (selectData !== null && selectData !== "") {
-                    document.getElementById("input" + selectFields[i] + "-" + number).classList.add("is-valid");
+                    selectField.classList.add("is-valid");
+                } else {
+                    selectField.classList.add("is-invalid");
+                    valid = false;
+                    document.getElementById("valid-feedback-input" + selectFields[i] + "-" + number).innerHTML = "<font color='red'>Please select the " + selectNames[i] + ".</>"
+                }
+
+            }
+
+            // validate movement field if there is a movement field
+            var movementField = document.getElementById("inputMovement-" + number);
+            if (getCount(movementField, false) > 1) {
+                var movementData = getSelectData("inputMovement-" + number);
+                if (movementData !== null && movementData  !== "") {
+                    movementField.classList.add("is-valid");
+                }
+                else {
+                    movementField.classList.add("is-invalid");
+                    valid = false;
+                    document.getElementById("valid-feedback-inputMovement-" + number).innerHTML = "<font color='red'>Please select a movement.</>"
                 }
             }
 
-            var fields = ["Title", "Composer", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
-            var names = ["piece title", "piece's composer", "teacher's first name", "teacher's last name", "teacher's phone number"];
+            // validate custom piece field if they're advanced
+            try {
+                var courseChoice = getSelectData("inputCourse-" + number);
+                if (courseChoice.includes("advancedinstitute")) {
+                    var pieceField = getSelectData("inputTitle-" + number);
+                    if (pieceField === "other") {
+                        var inputField = document.getElementById("input" + "CustomPiece" + "-" + number);
+                        if (inputField.value === "") {
+                            inputField.classList.add("is-invalid");
+                            valid = false;
+                            document.getElementById("valid-feedback-input" + "CustomPiece" + "-" + number).innerHTML = "<font color='red'>Please enter the " + "name of the other piece" + ".</>"
+                        }
+                        else {
+                            inputField.classList.add("is-valid");
+                        }
+                    }
+                }
+            }
+            catch(err) {
+
+            }
+
+            var fields = ["TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
+            var names = ["teacher's first name", "teacher's last name", "teacher's phone number"];
             for (var i = 0; i < fields.length; i ++) {
                 var inputField = document.getElementById("input" + fields[i] + "-" + number);
                 if (inputField.value === "") {
@@ -3152,7 +3243,7 @@
             }
 
             // optional fields
-            var fields = ["Gender", "Movement"];
+            var fields = ["Gender"];
             for (var i = 0; i < fields.length; i ++) {
                 var inputField = document.getElementById("input" + fields[i] + "-" + number);
                 if (inputField.value !== "") {
@@ -3247,6 +3338,7 @@
         var phoneNumber = $('input[id=inputPhoneNumber]').val();
         var emailAddress = $('input[id=inputEmailAddress]').val();
         var uniqueID = $('input[id=inputID]').val();
+        var notRegisteredSiblings = makeSiblingsString();
         for (var j = 1; j <= globalStudentCount; j++) {
             var accompaniedValue = getSelectData("inputAccompanied-" + j);
             var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
@@ -3257,14 +3349,18 @@
             var instrumentValue = getSelectData("inputInstrument-" + j);
             var instrumentIndex = instrumentValues.indexOf(instrumentValue);
             var instrumentName = instrumentNames[instrumentIndex];
-            var bookLevelValue = getSelectData("inputBookLevel-" + j);
-            var bookLevelIndex = bookLevelValues.indexOf(bookLevelValue);
-            var bookLevelName = bookLevelNames[bookLevelIndex];
+            var bookLevel = getSelectData("inputBookLevel-" + j);
+            var code = getSelectData("inputTitle-" + j);
+            var title = getSelectDataTitle("inputTitle-" + j).split(": ")[1];
+            var movement = getSelectData("inputMovement-" + j);
+            var customPiece = $('input[id=inputCustomPiece-' + j + ']').val();
             var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
             var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
-            var siblings = makeSiblingsString(j);
-
+            var siblings = makeNamesString(j);
+            if (notRegisteredSiblings !== "") {
+                siblings = siblings + ", " + notRegisteredSiblings;
+            }
             var formData = {
                 'entry.2039036389': firstName,
                 'entry.305040084': lastName,
@@ -3289,8 +3385,11 @@
                 'entry.1306504024': $('input[id=inputDesignatedAdultPhoneNumber-' + j + ']').val(),
                 'entry.616708405': courseName,
                 'entry.429624467': instrumentName,
-                'entry.1295208958': bookLevelName,
-                'entry.1431622853': $('input[id=inputTitle-' + j + ']').val(),
+                'entry.1295208958': bookLevel,
+                'entry.1431622853': title,
+                'entry.835452724' : code,
+                'entry.1758035001': customPiece,
+                'entry.1702328635': movement,
                 'entry.1581932096': $('input[id=inputTeacherFirstName-' + j + ']').val(),
                 'entry.1178481040': $('input[id=inputTeacherLastName-' + j + ']').val(),
                 'entry.846808053': $('input[id=inputTeacherPhoneNumber-' + j + ']').val(),
@@ -3298,9 +3397,11 @@
                 'entry.154989671': enrichmentChoice2,
                 'entry.903246233': enrichmentChoice3,
                 'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
-                'entry.943311597': siblings,
+                'entry.1208655369': siblings,
                 'entry.663733401': $('input[id=inputID]').val()
             }
+
+
 
             $.ajax({
                 type: 'POST',
@@ -3312,8 +3413,7 @@
                 .done(function(data) {
 
                 });
-            webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
-
+            //webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
         }
     }
 
@@ -3369,7 +3469,7 @@
             document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
         }
         for (var j = 1; j < MAX_STUDENT_NUMBER; j ++) {
-            var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "Composer", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
+            var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
             for (var i = 0; i < studentFields.length; i++) {
                 var studentField = document.getElementById("input" + studentFields[i] + "-" + j);
                 studentField.classList.remove("is-invalid");
@@ -3394,6 +3494,9 @@
 
     function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
+    }
+    function capitalizeFLetter(string) {
+        return string[0].toUpperCase() + string.slice(1);
     }
 
     function showInputAccompanied(number) {
@@ -3455,67 +3558,93 @@
                 select.remove(3);
             }
         }
-    </script>
-    <script>
-        function inputDetect(registrationNumber, siblingNumber) {
-            if (siblingNumber < 15) {
-                var firstName = document.getElementById("inputSiblingFirstName-" + registrationNumber + "-" + siblingNumber).value;
-                var lastName = document.getElementById("inputSiblingLastName-" + registrationNumber + "-" + siblingNumber).value;
-                if (!isBlank(firstName) && !isBlank(lastName)) {
-                    var nextNumber = siblingNumber + 1;
-                    document.getElementById("siblings-" + registrationNumber + "-" + nextNumber).style.display = "";
-                    document.getElementById("siblings-" + registrationNumber + "-" + nextNumber).style.visibility = "visible";
+        window.getCount = function(parent, getChildrensChildren){
+            var relevantChildren = 0;
+            var children = parent.childNodes.length;
+            for(var i=0; i < children; i++){
+                if(parent.childNodes[i].nodeType != 3){
+                    if(getChildrensChildren)
+                        relevantChildren += getCount(parent.childNodes[i],true);
+                    relevantChildren++;
                 }
             }
-        }
-        function isBlank(str) {
-            return (!str || /^\s*$/.test(str));
-        }
-        function displaySiblingQuestion(number) {
-            var radioButtonValue = getRadioButtonValue("hasSiblings-" + number);
-            if (radioButtonValue === "yes") {
-                document.getElementById("siblings-" + number).style.display = "";
-                document.getElementById("siblings-" + number).style.visibility = "visible";
-            }
-            else {
-                document.getElementById("siblings-" + number).style.display = "none";
-                document.getElementById("siblings-" + number).style.visibility = "hidden";
-                // hide all fields except 1 and clear fields
-                for (var i = 2; i <= 15; i ++) {
-                    document.getElementById("siblings-" + number + "-" + i).style.display = "none";
-                    document.getElementById("siblings-" + number + "-" + i).style.visibility = "hidden";
-                    document.getElementById("inputSiblingFirstName-" + number + "-" + i).value = "";
-                    document.getElementById("inputSiblingLastName-" + number + "-" + i).value = "";
-                }
-                document.getElementById("inputSiblingFirstName-" + number + "-" + 1).value = "";
-                document.getElementById("inputSiblingLastName-" + number + "-" + 1).value = "";
-            }
-        }
-        function getRadioButtonValue(name) {
-            var radios = document.getElementsByName(name);
-            for (var i = 0, length = radios.length; i < length; i++) {
-                if (radios[i].checked) {
-                    return radios[i].value;
-                }
-            }
-            return null;
+            return relevantChildren;
         }
     </script>
     <script>
-        function makeSiblingsString(number) {
+    function inputDetect(siblingNumber) {
+        if (siblingNumber < 15) {
+            var firstName = document.getElementById("inputSiblingFirstName-" + siblingNumber).value;
+            var lastName = document.getElementById("inputSiblingLastName-" + siblingNumber).value;
+            if (!isBlank(firstName) && !isBlank(lastName)) {
+                var nextNumber = siblingNumber + 1;
+                document.getElementById("siblings-" + nextNumber).style.display = "";
+                document.getElementById("siblings-" + nextNumber).style.visibility = "visible";
+            }
+        }
+    }
+    function isBlank(str) {
+        return (!str || /^\s*$/.test(str));
+    }
+    function displaySiblingQuestion() {
+        var radioButtonValue = getRadioButtonValue("hasSiblings");
+        if (radioButtonValue === "yes") {
+            document.getElementById("siblings").style.display = "";
+            document.getElementById("siblings").style.visibility = "visible";
+        }
+        else {
+            document.getElementById("siblings").style.display = "none";
+            document.getElementById("siblings").style.visibility = "hidden";
+            // hide all fields except 1 and clear fields
+            for (var i = 2; i <= 15; i ++) {
+                document.getElementById("siblings-" + i).style.display = "none";
+                document.getElementById("siblings-" + i).style.visibility = "hidden";
+                document.getElementById("inputSiblingFirstName-" + i).value = "";
+                document.getElementById("inputSiblingLastName-" + i).value = "";
+            }
+            document.getElementById("inputSiblingFirstName-" + 1).value = "";
+            document.getElementById("inputSiblingLastName-" + 1).value = "";
+        }
+    }
+    function getRadioButtonValue(name) {
+        var radios = document.getElementsByName(name);
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                return radios[i].value;
+            }
+        }
+        return null;
+    }
+    </script>
+    <script>
+        // names of unregistered siblings
+        function makeSiblingsString() {
             var siblingString = "";
-            var hasSiblings = getRadioButtonValue("hasSiblings-" + number);
+            var hasSiblings = getRadioButtonValue("hasSiblings");
             if (hasSiblings === "yes") {
                 for (var i = 1; i <= 15; i++) {
-                    var firstName = document.getElementById("inputSiblingFirstName-" + number + "-" + i).value;
-                    var lastName = document.getElementById("inputSiblingLastName-" + number + "-" + i).value;
+                    var firstName = document.getElementById("inputSiblingFirstName-" + i).value;
+                    var lastName = document.getElementById("inputSiblingLastName-" + i).value;
                     if (!isBlank(firstName) && !isBlank(lastName)) {
-                        siblingString += firstName + " " + lastName + ", ";
+                        siblingString += firstName + " " + lastName + " (N), ";
                     }
                 }
             }
             siblingString = siblingString.substring(0, siblingString.length - 2);
             return siblingString;
+        }
+        // names of registered students except for that number
+        function makeNamesString(exceptNumber) {
+            var nameString = "";
+            for (var i = 1; i <= globalStudentCount; i++) {
+                if (i !== (exceptNumber)) {
+                    var firstName = $('input[id=inputStudentFirstName-' + i + ']').val();
+                    var lastName = $('input[id=inputStudentLastName-' + i + ']').val();
+                    nameString += firstName + " " + lastName + " (R), ";
+                }
+            }
+            nameString = nameString.substring(0, nameString.length - 2);
+            return nameString;
         }
     </script>
 
