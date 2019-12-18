@@ -3371,7 +3371,10 @@
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
             var siblings = makeNamesString(j);
             if (notRegisteredSiblings !== "") {
-                siblings = siblings + ", " + notRegisteredSiblings;
+                siblings += notRegisteredSiblings;
+            }
+            if (siblings.length > 1) {
+                siblings = siblings.substring(0, siblings.length - 2);
             }
             var formData = {
                 'entry.2039036389': firstName,
@@ -3643,7 +3646,6 @@
                     }
                 }
             }
-            siblingString = siblingString.substring(0, siblingString.length - 2);
             return siblingString;
         }
         // names of registered students except for that number
@@ -3656,7 +3658,6 @@
                     nameString += firstName + " " + lastName + " (R), ";
                 }
             }
-            nameString = nameString.substring(0, nameString.length - 2);
             return nameString;
         }
     </script>
