@@ -2205,8 +2205,9 @@
         <ol id="studentsRegisteredList"></ol>
         <div class="form-group">
             <label for="hasSiblings"><h5>Are there any other people who will be attending the Suzuki Institute that you be registering for in the future or that you have registered for already?<span style="color: red">*</span></h5>Some helpful text here. The above sentence definitely need to be changed.</label><br>
-            <input type="radio" name="hasSiblings" value="yes" onclick="displaySiblingQuestion()"> &nbsp;Yes<br>
-            <input type="radio" name="hasSiblings" value="no" onclick="displaySiblingQuestion()"> &nbsp;No
+            <input type="radio" name="hasSiblings" value="yes" onclick="displaySiblingQuestion()"> &nbsp;<span id="hasSiblings-yes">Yes</span><br>
+            <input type="radio" name="hasSiblings" value="no" onclick="displaySiblingQuestion()"> &nbsp;<span id="hasSiblings-no">No</span><br>
+            <div id="valid-feedback-inputHasSiblings"></div>
         </div>
 
         <div id="siblings" style="display: none; visibility: hidden">
@@ -2218,11 +2219,11 @@
             <div class="form-row" id="siblings-1">
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control" id="inputSiblingFirstName-1" oninput="inputDetect(1)" placeholder="First Name">
-                    <div id="valid-feedback-inputSiblingFirstName-1"></div>
+                    <div id="valid-feedback-inputSiblingFirstName"></div>
                 </div>
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control" id="inputSiblingLastName-1" oninput="inputDetect(1)" placeholder="Last Name">
-                    <div id="valid-feedback-inputSiblingLastName-1"></div>
+                    <div id="valid-feedback-inputSiblingLastName"></div>
                 </div>
             </div>
 
@@ -2378,7 +2379,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
+    <script>
     var pageNumber = 1;
     var MAX_STUDENT_NUMBER = 10;
     var globalStudentCount = 1;
@@ -3141,7 +3142,7 @@
         }
         </script>
 
-        <script>
+    <script>
         function validateStudentInfo(number) {
             clearValidateFeedback();
             var valid = true;
@@ -3251,7 +3252,6 @@
                 }
             }
 
-
             if (!valid) {
                 document.getElementById("errorMessage").innerHTML = "<h3 style='color:red'>Please correct the issue(s) indicated below in order to complete your form submission!</h3><hr>";
             }
@@ -3269,6 +3269,7 @@
                 document.getElementById("student" + globalStudentCount + "Information").style.visibility = "hidden";
                 document.getElementById("parentInformation").style.display = "inherit";
                 document.getElementById("parentInformation").style.visibility = "visible";
+                goToTop();
                 return false;
             }
             for (var i = 1; i <= globalStudentCount; i ++) {
@@ -3281,8 +3282,19 @@
                     document.getElementById("student" + i + "Information").style.visibility = "visible";
                     showInputAccompanied(i);
                     pageNumber = i + 1;
+                    goToTop();
                     return false;
                 }
+            }
+            var siblingsValidate = validateSiblings();
+            if (!siblingsValidate) {
+                document.getElementById("errorMessage").innerHTML = "<h3 style='color:red'>Please correct the issue(s) indicated below in order to complete your form submission!</h3><hr>";
+                document.getElementById("container").style.display = "inherit";
+                document.getElementById("container").style.visibility = "visible";
+                document.getElementById("post").style.display = "none";
+                document.getElementById("post").style.visibility = "hidden";
+                goToTop();
+                return false;
             }
             return true;
         }
@@ -3484,6 +3496,7 @@
             }
             document.getElementById("enrichmentError-" + j).innerHTML = "";*/
         }
+        clearValidateFeedbackForSiblings();
         document.getElementById("errorMessage").innerHTML = "";
     }
 
@@ -3645,6 +3658,51 @@
             }
             nameString = nameString.substring(0, nameString.length - 2);
             return nameString;
+        }
+    </script>
+    <script>
+        function validateSiblings() {
+            var valid = true;
+            var hasSiblings = getRadioButtonValue("hasSiblings");
+            // if question not answered
+            if (hasSiblings == null) {
+                valid = false;
+                document.getElementById("valid-feedback-inputHasSiblings").innerHTML = "<br><font color='red'>Please select a choice.</font>"
+                document.getElementById("hasSiblings-yes").style.color = "red";
+                document.getElementById("hasSiblings-no").style.color = "red";
+            }
+            else {
+                // if they chose yes
+                if (hasSiblings === "yes") {
+                    var siblingsFields = ["SiblingFirstName", "SiblingLastName"];
+                    var nameFields = ["first name", "last name"];
+                    for (var i = 0; i < siblingsFields.length; i ++) {
+                        var siblingField = document.getElementById("input" + siblingsFields[i] + "-1");
+                        // if valid
+                        if (siblingField.value !== "") {
+                            siblingField.classList.add("is-valid");
+                        }
+                        // if not valid
+                        else {
+                            valid = false;
+                            document.getElementById("valid-feedback-input" + siblingsFields[i]).innerHTML = "<font color='red'>Please enter a " + nameFields[i] + ".</>"
+                        }
+                    }
+                }
+            }
+            return valid;
+        }
+        function clearValidateFeedbackForSiblings() {
+            var fields = ["SiblingFirstName", "SiblingLastName"];
+            for (var i = 0; i < fields.length; i ++) {
+                var inputField = document.getElementById("input" + fields[i] + "-1");
+                inputField.classList.remove("is-invalid");
+                inputField.classList.remove("is-valid");
+                document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
+            }
+            document.getElementById("valid-feedback-inputHasSiblings").innerHTML = "";
+            document.getElementById("hasSiblings-yes").style.color = "";
+            document.getElementById("hasSiblings-no").style.color = "";
         }
     </script>
 
