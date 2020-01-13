@@ -3353,6 +3353,9 @@
             var instrumentIndex = instrumentValues.indexOf(instrumentValue);
             var instrumentName = instrumentNames[instrumentIndex];
             var bookLevel = getSelectData("inputBookLevel-" + j);
+            if (bookLevel !== "N/A") {
+                bookLevel = "Book " + bookLevel;
+            }
             var code = getSelectData("inputTitle-" + j);
             var title = getSelectDataTitle("inputTitle-" + j).split(": ")[1];
             var movement = getSelectData("inputMovement-" + j);
