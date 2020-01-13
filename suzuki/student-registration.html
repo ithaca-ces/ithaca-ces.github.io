@@ -3442,7 +3442,11 @@
         };
         function makeUniqueID(firstName, lastName, courseName, instrumentName, bookLevel, title, code, teacherName, teacherPhoneNumber) {
             var string = firstName + lastName + courseName + instrumentName + bookLevel + title + code + teacherName + teacherPhoneNumber;
-            return string.hashCode();
+            var hashCode = string.hashCode().toString();
+            if (hashCode.charAt(0) === '-') {
+                hashCode = hashCode.substring(1, hashCode.length);
+            }
+            return hashCode;
         }
     </script>
     <script>
