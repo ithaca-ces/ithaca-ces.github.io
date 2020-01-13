@@ -3352,6 +3352,8 @@
         var uniqueID = $('input[id=inputID]').val();
         var notRegisteredSiblings = makeSiblingsString();
         for (var j = 1; j <= globalStudentCount; j++) {
+            var incFirstName = $('input[id=inputStudentFirstName-' + j + ']').val();
+            var incLastName = $('input[id=inputStudentLastName-' + j + ']').val();
             var accompaniedValue = getSelectData("inputAccompanied-" + j);
             var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
             var accompaniedName = accompanyNames[accompaniedIndex];
@@ -3366,6 +3368,9 @@
             var title = getSelectDataTitle("inputTitle-" + j).split(": ")[1];
             var movement = getSelectData("inputMovement-" + j);
             var customPiece = $('input[id=inputCustomPiece-' + j + ']').val();
+            var teacherFirstName = $('input[id=inputTeacherFirstName-' + j + ']').val();
+            var teacherLastName = $('input[id=inputTeacherLastName-' + j + ']').val();
+            var teacherPhoneNumber = $('input[id=inputTeacherPhoneNumber' + j + ']').val();
             var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
             var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
             var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
@@ -3376,6 +3381,8 @@
             if (siblings.length > 1) {
                 siblings = siblings.substring(0, siblings.length - 2);
             }
+            var incUniqueID = makeUniqueID(incFirstName, incLastName, courseName, instrumentName, bookLevel, title, code, teacherFirstName + teacherLastName, teacherPhoneNumber);
+            var registrationID = uniqueID.substring(0, 8) + j + incUniqueID.toString().substring(0, 8);
             var formData = {
                 'entry.2039036389': firstName,
                 'entry.305040084': lastName,
@@ -3385,8 +3392,8 @@
                 'entry.2043889500': zip,
                 'entry.1770398499': phoneNumber,
                 'entry.303292725': emailAddress,
-                'entry.456678140': $('input[id=inputStudentFirstName-' + j + ']').val(),
-                'entry.1052902752': $('input[id=inputStudentLastName-' + j + ']').val(),
+                'entry.456678140': incFirstName,
+                'entry.1052902752': incLastName,
                 'entry.991750866': $('input[id=inputGender-' + j + ']').val(),
                 'entry.778338538': $('input[id=inputAge-' + j + ']').val(),
                 'entry.1849563826': $('input[id=inputGraduation-' + j + ']').val(),
@@ -3405,15 +3412,16 @@
                 'entry.835452724' : code,
                 'entry.1758035001': customPiece,
                 'entry.1702328635': movement,
-                'entry.1581932096': $('input[id=inputTeacherFirstName-' + j + ']').val(),
-                'entry.1178481040': $('input[id=inputTeacherLastName-' + j + ']').val(),
-                'entry.846808053': $('input[id=inputTeacherPhoneNumber-' + j + ']').val(),
+                'entry.1581932096': teacherFirstName,
+                'entry.1178481040': teacherLastName,
+                'entry.846808053': teacherPhoneNumber,
                 'entry.650938505': enrichmentChoice1,
                 'entry.154989671': enrichmentChoice2,
                 'entry.903246233': enrichmentChoice3,
                 'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
                 'entry.1208655369': siblings,
-                'entry.663733401': $('input[id=inputID]').val()
+                'entry.663733401': $('input[id=inputID]').val(),
+                'entry.2097352746': registrationID
             }
 
 
@@ -3444,8 +3452,8 @@
             }
             return hash;
         };
-        function makeUniqueID(firstName, lastName, address, city, state, zip, phoneNumber, emailAddress) {
-            var string = new Date().toDateString() + new Date().toTimeString() + firstName + lastName + address + city + state + zip + phoneNumber + emailAddress;
+        function makeUniqueID(firstName, lastName, courseName, instrumentName, bookLevel, title, code, teacherName, teacherPhoneNumber) {
+            var string = firstName + lastName + courseName + instrumentName + bookLevel + title + code + teacherName + teacherPhoneNumber;
             return string.hashCode();
         }
     </script>
@@ -3453,15 +3461,33 @@
 
     function submitPaymentForm() {
         var formInputs = "";
+        var uniqueID = $('input[id=inputID]').val();
         for (var i = 1; i <= globalStudentCount; i ++) {
             var value = getSelectData("inputCourse-" + i);
             if (value !== "") {
                 var index = courseValues.indexOf(value);
                 var name = courseNames[index];
                 var price = coursePrices[index];
+                var incFirstName = $('input[id=inputStudentFirstName-' + i + ']').val();
+                var incLastName = $('input[id=inputStudentLastName-' + i + ']').val();
+                var courseValue = getSelectData("inputCourse-" + i);
+                var courseIndex = courseValues.indexOf(courseValue);
+                var courseName = courseNames[courseIndex];
+                var instrumentValue = getSelectData("inputInstrument-" + i);
+                var instrumentIndex = instrumentValues.indexOf(instrumentValue);
+                var instrumentName = instrumentNames[instrumentIndex];
+                var bookLevel = getSelectData("inputBookLevel-" + i);
+                var code = getSelectData("inputTitle-" + i);
+                var title = getSelectDataTitle("inputTitle-" + i).split(": ")[1];
+                var teacherFirstName = $('input[id=inputTeacherFirstName-' + i + ']').val();
+                var teacherLastName = $('input[id=inputTeacherLastName-' + i + ']').val();
+                var teacherPhoneNumber = $('input[id=inputTeacherPhoneNumber' + i + ']').val();
+                var incUniqueID = makeUniqueID(incFirstName, incLastName, courseName, instrumentName, bookLevel, title, code, teacherFirstName + teacherLastName, teacherPhoneNumber);
+                var registrationID = uniqueID.substring(0, 8) + i + incUniqueID.toString().substring(0, 8);
+                var desc = "Suzuki Student Registration (ID " + registrationID + ")";
                 var line0 = "<div id=\"payform_" + value + "\">";
-                var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + name + "\">";
-                var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + name + "\">";
+                var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + desc + "\">";
+                var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + desc + "\">";
                 var line3 = "<input id=\"qty_payform_" + value + "\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
                 var line4 = "<input type=\"hidden\" name=\"Price\" value=" + price + ">";
                 var line5 = "</div>";
