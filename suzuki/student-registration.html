@@ -23,7 +23,10 @@
         <div class="progress progress-striped active" style="height: 35px">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:0%"></div>
         </div>
-</center></div>
+    <br>
+    <h4>Please wait...You are being directed to the payment portal.</h4>
+    <h3>Your registration HAS NOT been completed until you fully complete the payment process.</h3>
+    </center></div>
 <body>
 <div  id="container" class="container" style="display:none;visibility:hidden">
     <br>
@@ -3298,20 +3301,6 @@
             }
             return true;
         }
-        function webHook(studentFirst, studentLast, course, instrument, bookLevel, id) {
-            var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
-            var firstName = $('input[id=inputFirstName]').val();
-            var lastName = $('input[id=inputLastName]').val();
-            var text = "<b>STUDENT REGISTRATION FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a student registration form for " + studentFirst + " " + studentLast + " for " + course + " (" + instrument + ", " + bookLevel + ").<br><i>(ID # " + id + ")</i>";
-            $.ajax({
-                data: JSON.stringify({
-                    "text": text
-                }),
-                dataType: 'json',
-                type: 'POST',
-                url: url
-            });
-        }
     </script>
 
     <script>
@@ -3436,8 +3425,7 @@
                 .done(function(data) {
 
                 });
-            //webHook($('input[id=inputStudentFirstName-' + j + ']').val(), $('input[id=inputStudentLastName-' + j + ']').val(), courseName, instrumentName, bookLevelName, uniqueID);
-        }
+            }
     }
 
     </script>
