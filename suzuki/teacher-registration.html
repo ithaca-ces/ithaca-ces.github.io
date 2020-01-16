@@ -574,7 +574,7 @@
         if (desc.indexOf("(") > -1) {
             desc = desc.split("(")[0].trim();
         }
-        var idLength = 51 - 6 - desc.length;
+        var idLength = 50 - 6 - desc.length;
         var substringID = inputID.substring(0, idLength);
         desc = desc + " (ID " + substringID + ")";
         var line0 = "<div id=\"payform_" + value + "\">";
