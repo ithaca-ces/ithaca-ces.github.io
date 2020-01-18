@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Suzuki Institutes Registration</title>
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            opacity: 1;
+        }
+        .progress.active .progress-bar {
+            -webkit-transition: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+<div id="pre" class="container"><br><br><br><br><center><i style="font-size: 8em" class="fas fa-sync fa-spin"></i></center></div>
+<div id="post" style="display: none; visibility: hidden" class="container"><br><br><br><br>
+    <center>
+        <i style="font-size: 8em" class="fas fa-sync fa-spin"></i>
+        <br><br>
+        <div class="progress progress-striped active" style="height: 35px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:0%"></div>
+        </div>
+        <br>
+        <h4>Please wait...You are being directed to the payment portal.</h4>
+        <h3>Your registration HAS NOT been finalized until you fully complete the payment process.</h3>
+    </center>
+</div>
+<body>
+<div  id="container" class="container" style="display:none;visibility:hidden">
+    <br>
+    <h1>Purchase A Teen Residence Hall Room</h1>
+    <div id="dateTitle"></div>
+    <hr>
+    <div id="errorMessage"></div>
+
+    <h3>Parent/Guardian Contact Information</h3>
+
+    <br>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputFirstName">First Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputFirstName">
+            <div id="valid-feedback-inputFirstName"></div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputLastName">
+            <div id="valid-feedback-inputLastName"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Address <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputAddress">
+        <div id="valid-feedback-inputAddress"></div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="inputCity">City <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCity">
+            <div id="valid-feedback-inputCity"></div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">State/Province <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputState">
+            <div id="valid-feedback-inputState"></div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputZip">Zip Code <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputZip">
+            <div id="valid-feedback-inputZip"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPhoneNumber">Phone Number <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputPhoneNumber">
+        <div id="valid-feedback-inputPhoneNumber"></div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmailAddress">Email Address <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputEmailAddress">
+        <div id="valid-feedback-inputEmailAddress"></div>
+    </div>
+
+    <hr>
+
+    <h3>Student Information</h3>
+
+    <div id="aboveText"></div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputStudentFirstName">First Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputStudentFirstName">
+            <div id="valid-feedback-inputStudentFirstName"></div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputStudentLastName">Last Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputStudentLastName">
+            <div id="valid-feedback-inputStudentLastName"></div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputGender">Gender </label>
+            <input type="text" class="form-control" id="inputGender">
+            <div id="valid-feedback-inputGender"></div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="inputAge">Age As Of July 1,
+                <script>document.write(new Date().getFullYear())</script>
+                <span style="color: red">*</span></label>
+            <input type="number" min="0" class="form-control" id="inputAge">
+            <div id="valid-feedback-inputAge"></div>
+        </div>
+    </div>
+    <div class="form-group">
+            <label for="inputGraduation">Anticipated High School Graduation Date <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputGraduation">
+            <div id="valid-feedback-inputGraduation"></div>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <label for="inputAccommodations"><b>Individuals with disabilities requiring accommodations should list them below or contact us at (607) 274-3702. We ask that requests for accommodations be made as soon as possible.</b></label><br>
+        <textarea id="inputAccommodations" rows="4" style="width: 100%"></textarea>
+    </div>
+
+    <hr>
+
+    <div id="belowText"></div>
+
+    <hr>
+
+    <div style="visibility: hidden;display:none"><input id="inputID" type="text"></div>
+
+    <h5>Please check that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br>
+
+    <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
+    <br><br>
+
+    <div id="paymentFormDiv" style="visibility: hidden; display: none">
+        <form target="_parent" id="payform" method="post" action="https://shoppingcartsecure.com/cart32.exe/6072743313-AddItem">
+            <div id="payFormInputs" style="visibility: hidden; display: none"></div>
+        </form>
+    </div>
+
+</div>
+<div id="hidden" style="display: none; visibility: hidden;"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var price = 0;
+    var count = 0;
+    // dates
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vREtU3aso5YQevwxYncCh60Cwn55X6PuCOuNv1UVHHsLr4G9TJevUa4lPjodkOBM3vUfllVyyEbhmRg/pubhtml?gid=0&single=true",
+        function (data, status) {
+            var textTable = getTableData(data);
+            var week1 = textTable[3][1];
+            document.getElementById("dateTitle").innerHTML = "<h2><i>" + week1 + "</i></h2>";
+    });
+    // price
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vS-FjJI5LsjIFJKEeNmcOlOfiy3EWVeN6My_sk6HpU-PZD66QQlI2eoMc-8ABBaMf9JiRV8RTp-X5J7/pubhtml?gid=256271385&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            price = textTable[1][1];
+            count = textTable[1][4];
+        });
+    // above text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vS-FjJI5LsjIFJKEeNmcOlOfiy3EWVeN6My_sk6HpU-PZD66QQlI2eoMc-8ABBaMf9JiRV8RTp-X5J7/pubhtml?gid=869859262&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("aboveText").innerHTML = sumString;
+        });
+    // below text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vS-FjJI5LsjIFJKEeNmcOlOfiy3EWVeN6My_sk6HpU-PZD66QQlI2eoMc-8ABBaMf9JiRV8RTp-X5J7/pubhtml?gid=1470376021&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("belowText").innerHTML = sumString;
+        }).done(function() {
+        makeID();
+        document.getElementById("container").style.display = "inherit";
+        document.getElementById("container").style.visibility = "visible";
+        document.getElementById("pre").style.display = "none";
+        document.getElementById("pre").style.visibility = "hidden";
+    })
+    </script>
+    <script>
+
+    function getTableData(inputData) {
+        var array1 = inputData.toString().split("<table");
+        var array2 = array1[1].split("</table>");
+        var string = "<table" + array2[0] + "</table>";
+        document.getElementById("hidden").innerHTML = string;
+        var myTableArray = [];
+        $("table tr").each(function() {
+            var arrayOfThisRow = [];
+            var tableData = $(this).find('td');
+            if (tableData.length > 0) {
+                tableData.each(function() { arrayOfThisRow.push($(this).text()); });
+                myTableArray.push(arrayOfThisRow);
+            }
+        });
+        return myTableArray;
+    }
+    function makeID() {
+        var value = document.getElementById("inputID").value;
+        if (value === "") {
+            document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
+        }
+    }
+    </script>
+    <script>
+
+    function submit() {
+        document.getElementById("container").style.display = "none";
+        document.getElementById("container").style.visibility = "hidden";
+        document.getElementById("post").style.display = "inherit";
+        document.getElementById("post").style.visibility = "visible";
+        $('html,body').scrollTop(0);
+        window.parent.postMessage("scrollTop", '*');
+        if (validate()) {
+            $(".progress-bar").animate({
+                width: "100%"
+            }, 10000);
+            submitGoogleForm();
+            webHook();
+            setTimeout(function(){
+                submitPaymentForm();
+            }, 10000);
+        }
+        else {
+            document.getElementById("errorMessage").innerHTML = "<h3 style='color:red'>Please correct the issue(s) indicated below in order to complete your form submission!</h3><hr>";
+            document.getElementById("container").style.display = "inherit";
+            document.getElementById("container").style.visibility = "visible";
+            document.getElementById("post").style.display = "none";
+            document.getElementById("post").style.visibility = "hidden"
+        }
+    }
+
+    function webHook() {
+        var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+        var firstName = $('input[id=inputFirstName]').val();
+        var lastName = $('input[id=inputLastName]').val();
+        var studentFirst = $('input[id=inputStudentFirstName]').val();
+        var studentLast = $('input[id=inputStudentLastName]').val();
+        var id = $('input[id=inputID]').val();
+        var text = "<b>TEEN RESIDENCE HALL FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a teen housing registration form for " + studentFirst + " " + studentLast + ".<br><i>(ID # " + id + ")</i>";
+        $.ajax({
+            data: JSON.stringify({
+                "text": text
+            }),
+            dataType: 'json',
+            type: 'POST',
+            url: url
+        });
+    }
+
+    function submitGoogleForm() {
+
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'entry.2039036389': $('input[id=inputFirstName]').val(),
+            'entry.305040084': $('input[id=inputLastName]').val(),
+            'entry.1583950870': $('input[id=inputAddress]').val(),
+            'entry.1741944776': $('input[id=inputCity]').val(),
+            'entry.1449597621': $('input[id=inputState]').val(),
+            'entry.2043889500': $('input[id=inputZip]').val(),
+            'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
+            'entry.303292725': $('input[id=inputEmailAddress]').val(),
+            'entry.1732838863': $('input[id=inputStudentFirstName]').val(),
+            'entry.1942983930': $('input[id=inputStudentLastName]').val(),
+            'entry.1145530928': $('input[id=inputGender]').val(),
+            'entry.507636254': $('input[id=inputAge]').val(),
+            'entry.788277188': $('input[id=inputGraduation]').val(),
+            'entry.1448907684': document.getElementById('inputAccommodations').value,
+            'entry.310480582': $('input[id=inputID]').val()
+
+
+        }
+        // process the form
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : 'https://docs.google.com/forms/d/e/1FAIpQLSdhZQe0Ji_BIqBAt-PDaqM4cPgw18blXGvvWgrVxmHHJPzTWQ/formResponse', // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode          : true,
+        })
+        // using the done promise callback
+            .done(function(data) {
+
+            });
+    }
+
+    </script>
+    <script>
+
+    function submitPaymentForm() {
+
+        var line0 = "<div id=\"" + "teen_dorm" + "\">";
+        var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "Teen Residence Hall Room" + "\">";
+        var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "Teen Residence Hall Room" + "\">";
+        var line3 = "<input id=\"qty_teen_dorm\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
+        var line4 = "<input type=\"hidden\" name=\"Price\" value=" + price + ">";
+        var line5 = "</div>";
+        var formInputs = line0 + line1 + line2 + line3 + line4 + line5;
+
+        document.getElementById("payFormInputs").innerHTML = formInputs;
+        document.getElementById("payform").submit();
+    }
+    </script>
+    <script>
+
+    function validate() {
+        clearValidateFeedback();
+        var valid = true;
+
+        // checks contact information
+        var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+        var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address"];
+        for (var i = 0; i < fields.length; i ++) {
+            var inputField = document.getElementById("input" + fields[i]);
+            if (inputField.value === "") {
+                inputField.classList.add("is-invalid");
+                valid = false;
+                document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "<font color='red'>Please enter your " + names[i] + ".</>"
+            }
+            else {
+                inputField.classList.add("is-valid");
+            }
+        }
+
+        var emailField = document.getElementById("inputEmailAddress");
+        var result = validateEmail(emailField.value);
+        if(emailField.value !== "" && !result) {
+            document.getElementById("valid-feedback-inputEmailAddress").innerHTML = "<font color='red'>Please enter a valid email address.</font>";
+            emailField.classList.add("is-invalid");
+            valid = false;
+        }
+
+        // checks contact information
+        var fields = ["StudentFirstName", "StudentLastName", "Age", "Graduation"];
+        var names = ["first name", "last name", "age as of July 1, " + new Date().getFullYear(), "anticipated high school graduation date"];
+        for (var i = 0; i < fields.length; i ++) {
+            var inputField = document.getElementById("input" + fields[i]);
+            if (inputField.value === "") {
+                inputField.classList.add("is-invalid");
+                valid = false;
+                document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "<font color='red'>Please enter your student's " + names[i] + ".</>"
+            }
+            else {
+                inputField.classList.add("is-valid");
+            }
+        }
+
+        var inputField = document.getElementById("inputGender");
+        if (inputField.value !== "") {
+            inputField.classList.add("is-valid");
+        }
+
+        var inputAge = document.getElementById("inputAge");
+        if (inputAge.value !== "" && inputAge.value < 13) {
+            valid = false;
+            document.getElementById("valid-feedback-inputAge").innerHTML = "<font color='red'>Your student must be at least 13 to be housed in the teen residence hall.</>";
+            inputAge.classList.remove("is-valid");
+            inputAge.classList.add("is-invalid");
+        }
+
+
+
+        return valid;
+    }
+
+    </script>
+
+    <script>
+
+    function clearValidateFeedback() {
+        var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress", "StudentFirstName", "StudentLastName", "Age", "Gender", "Graduation"];
+        for (var i = 0; i < fields.length; i ++) {
+            var inputField = document.getElementById("input" + fields[i]);
+            inputField.classList.remove("is-invalid");
+            inputField.classList.remove("is-valid");
+            document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
+        }
+        document.getElementById("errorMessage").innerHTML = "";
+    }
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    </script>
+
+</body>
+</html>
