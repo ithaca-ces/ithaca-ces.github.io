@@ -32,3 +32,35 @@ function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+
+/** get value of selected choice **/
+function getSelectData(name) {
+    var e = document.getElementById(name);
+    var value = e.options[e.selectedIndex].value;
+    return value;
+}
+
+/** get title of selected choice **/
+function getSelectDataTitle(name) {
+    var e = document.getElementById(name);
+    var value = e.options[e.selectedIndex].text;
+    return value;
+}
+
+/** go to top of page **/
+function goToTop() {
+    $('html,body').scrollTop(0);
+    window.parent.postMessage("scrollTop", '*');
+}
+
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
+function capitalizeFLetter(string) {
+    return string[0].toUpperCase() + string.slice(1);
+}
+
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
+}
