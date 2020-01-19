@@ -349,7 +349,7 @@ function submitGoogleForm() {
             'entry.429624467': instrumentName,
             'entry.1295208958': bookLevel,
             'entry.1431622853': title,
-            'entry.835452724' : code,
+            'entry.835452724': code,
             'entry.1758035001': customPiece,
             'entry.1702328635': movement,
             'entry.1581932096': teacherFirstName,
@@ -371,9 +371,10 @@ function submitGoogleForm() {
             dataType: 'json',
             encode: true
         })
-            .done(function(data) {
+            .done(function (data) {
 
             });
+        webHook(incFirstName, incLastName, courseName, instrumentName, bookLevel, registrationID);
     }
 }
 
@@ -436,4 +437,20 @@ function submitPaymentForm() {
     }
     document.getElementById("payFormInputs").innerHTML = formInputs;
     document.getElementById("payform").submit();
+}
+
+/** web hook **/
+function webHook(studentFirst, studentLast, course, instrument, bookLevel, id) {
+    var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+    var firstName = $('input[id=inputFirstName]').val();
+    var lastName = $('input[id=inputLastName]').val();
+    var text = "<b>STUDENT REGISTRATION FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a Student Registration form for " + studentFirst + " " + studentLast + " for " + course + " (" + instrument + ", " + bookLevel + ").<br><i>(ID # " + id + ")</i>";
+    $.ajax({
+        data: JSON.stringify({
+            "text": text
+        }),
+        dataType: 'json',
+        type: 'POST',
+        url: url
+    });
 }

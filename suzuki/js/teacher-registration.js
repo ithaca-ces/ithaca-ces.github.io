@@ -66,6 +66,7 @@ function submit() {
             width: "100%"
         }, 10000);
         submitGoogleForm(uniqueID);
+        webHook(uniqueID);
         setTimeout(function(){
             submitPaymentForm(uniqueID);
         }, 10000);
@@ -268,4 +269,46 @@ function makePayFormInputString(value, name, price, inputID) {
     var line4 = "<input type=\"hidden\" name=\"Price\" value=" + price + ">";
     var line5 = "</div>";
     return line0 + line1 + line2 + line3 + line4 + line5;
+}
+
+/** webhook **/
+function webHook(id) {
+    var eccValue = getRadioButtonValue("everyChildCan");
+    var violinUnit1Value = getRadioButtonValue("violinUnit1");
+    var week1Course = getSelectData("week1Courses");
+    var week2Course = getSelectData("week2Courses");
+    var nameArray = [];
+    if (eccValue === "yes") {
+        nameArray.push(eccName);
+    }
+    if (violinUnit1Value === "yes") {
+        nameArray.push(violinUnit1Name);
+    }
+    if (week1Course !== " ") {
+        var index = week1CoursesIDs.indexOf(week1Course);
+        var name = week1CoursesNames[index];
+        nameArray.push(name);
+    }
+    if (week2Course !== " ") {
+        var index = week2CoursesIDs.indexOf(week2Course);
+        var name = week2CoursesNames[index];
+        nameArray.push(name);
+    }
+    var text = nameArray[0];
+    if (nameArray.length > 1) {
+        text += " and " + nameArray[1];
+    }
+
+    var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+    var firstName = $('input[id=inputFirstName]').val();
+    var lastName = $('input[id=inputLastName]').val();
+    var text = "<b>TEACHER REGISTRATION FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a Teacher Registration Form for " + text + ".<br><i>(ID # " + id + ")</i>";
+    $.ajax({
+        data: JSON.stringify({
+            "text": text
+        }),
+        dataType: 'json',
+        type: 'POST',
+        url: url
+    });
 }
