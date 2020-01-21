@@ -58,7 +58,7 @@ function submit() {
     document.getElementById("container").style.visibility = "hidden";
     document.getElementById("post").style.display = "inherit";
     document.getElementById("post").style.visibility = "visible";
-    var uniqueID = makeID().substring(0, 18);
+    var uniqueID = makeID().substring(0, 16);
     $('html,body').scrollTop(0);
     window.parent.postMessage("scrollTop", '*');
     if (validate()) {
