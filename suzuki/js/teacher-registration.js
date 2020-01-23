@@ -58,7 +58,7 @@ function submit() {
     document.getElementById("container").style.visibility = "hidden";
     document.getElementById("post").style.display = "inherit";
     document.getElementById("post").style.visibility = "visible";
-    var uniqueID = makeID();
+    var uniqueID = makeID().substring(0, 16);
     $('html,body').scrollTop(0);
     window.parent.postMessage("scrollTop", '*');
     if (validate()) {
@@ -139,27 +139,34 @@ function submitPaymentForm(uniqueID) {
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
 
-    var formInputs = "";
+    var fullPrice = 0;
 
     if (eccValue === "yes") {
-        formInputs += makePayFormInputString("ecc", eccName, eccPrice, uniqueID);
+        fullPrice += parseFloat(eccPrice);
     }
     if (violinUnit1Value === "yes") {
-        formInputs += makePayFormInputString("ecc", violinUnit1Name, violinUnit1Price, uniqueID);
+        fullPrice += parseFloat(violinUnit1Price);
     }
 
     if (week1Course !== " ") {
         var index = week1CoursesIDs.indexOf(week1Course);
-        var name = week1CoursesNames[index] + " (" + week1 + ")";
         var price = week1CoursesPrices[index];
-        formInputs += makePayFormInputString(week1Course, name, price, uniqueID);
+        fullPrice += parseFloat(price);
     }
     if (week2Course !== " ") {
         var index = week2CoursesIDs.indexOf(week2Course);
-        var name = week2CoursesNames[index] + " (" + week2 + ")";
         var price = week2CoursesPrices[index];
-        formInputs += makePayFormInputString(week2Course, name, price, uniqueID);
+        fullPrice += parseFloat(price);
     }
+
+    var desc = "Suzuki Teacher Registration (ID " + uniqueID + ")";
+    var line0 = "<div id=\"payform_" + "suzuki_teacher" + "\">";
+    var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + desc + "\">";
+    var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + desc + "\">";
+    var line3 = "<input id=\"qty_payform_" + "suzuki_teacher" + "\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
+    var line4 = "<input type=\"hidden\" name=\"Price\" value=" + fullPrice + ">";
+    var line5 = "</div>";
+    var formInputs = line0 + line1 + line2 + line3 + line4 + line5;
 
     document.getElementById("payFormInputs").innerHTML = formInputs;
     document.getElementById("payform").submit();
@@ -250,25 +257,6 @@ function clearValidateFeedback() {
     }
     document.getElementById("errorMessage").innerHTML = "";
     document.getElementById("noItemsErrorMessage").innerHTML = "";
-}
-
-
-/** make payment form HTML **/
-function makePayFormInputString(value, name, price, inputID) {
-    var desc = "Suzuki " + name;
-    if (desc.indexOf("(") > -1) {
-        desc = desc.split("(")[0].trim();
-    }
-    var idLength = 50 - 6 - desc.length;
-    var substringID = inputID.substring(0, idLength);
-    desc = desc + " (ID " + substringID + ")";
-    var line0 = "<div id=\"payform_" + value + "\">";
-    var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + desc + "\">";
-    var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + desc + "\">";
-    var line3 = "<input id=\"qty_payform_" + value + "\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
-    var line4 = "<input type=\"hidden\" name=\"Price\" value=" + price + ">";
-    var line5 = "</div>";
-    return line0 + line1 + line2 + line3 + line4 + line5;
 }
 
 /** webhook **/
