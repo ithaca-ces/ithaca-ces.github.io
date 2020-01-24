@@ -102,8 +102,8 @@ function validateStudentInfo(number) {
         }
     }
 
-    var selectFields = ["Course", "Instrument", "BookLevel", "Title"];
-    var selectNames = ["course", "instrument", "book level", "piece's code and title"];
+    var selectFields = ["Course", "Instrument", "BookLevel", "Title", "TShirt"];
+    var selectNames = ["course", "instrument", "book level", "piece's code and title", "t-shirt size"];
     for (var i = 0; i < selectFields.length; i++) {
         var selectField = document.getElementById("input" + selectFields[i] + "-" + number);
         // if it has options
@@ -113,7 +113,7 @@ function validateStudentInfo(number) {
         } else {
             selectField.classList.add("is-invalid");
             valid = false;
-            document.getElementById("valid-feedback-input" + selectFields[i] + "-" + number).innerHTML = "<font color='red'>Please select the " + selectNames[i] + ".</>"
+            document.getElementById("valid-feedback-input" + selectFields[i] + "-" + number).innerHTML = "<font color='red'>Please select a " + selectNames[i] + ".</>"
         }
 
     }
@@ -194,7 +194,7 @@ function clearValidateFeedback() {
         document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
     }
     for (var j = 1; j < MAX_STUDENT_NUMBER; j ++) {
-        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
+        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TShirt"];
         for (var i = 0; i < studentFields.length; i++) {
             var studentField = document.getElementById("input" + studentFields[i] + "-" + j);
             studentField.classList.remove("is-invalid");
@@ -314,6 +314,7 @@ function submitGoogleForm() {
         var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
         var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
         var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
+        var tShirtSize = getSelectData("inputTShirt-" + j).replace('_', ' ');
         var siblings = makeNamesString(j);
         if (notRegisteredSiblings !== "") {
             siblings += notRegisteredSiblings;
@@ -352,12 +353,12 @@ function submitGoogleForm() {
             'entry.835452724': code,
             'entry.1758035001': customPiece,
             'entry.1702328635': movement,
-            'entry.1581932096': teacherFirstName,
-            'entry.1178481040': teacherLastName,
+            'entry.1581932096': teacherFirstName + " " + teacherLastName,
             'entry.846808053': teacherPhoneNumber,
             'entry.650938505': enrichmentChoice1,
             'entry.154989671': enrichmentChoice2,
             'entry.903246233': enrichmentChoice3,
+            'entry.1178481040': tShirtSize,
             'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
             'entry.1208655369': siblings,
             'entry.663733401': $('input[id=inputID]').val(),
