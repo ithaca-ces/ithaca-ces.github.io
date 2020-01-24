@@ -86,6 +86,7 @@ function submitGoogleForm(uniqueID) {
     var violinUnit1Value = getRadioButtonValue("violinUnit1");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
+    var tShirtSize = getSelectData("inputTShirt");
 
 
     // get the form data
@@ -99,6 +100,7 @@ function submitGoogleForm(uniqueID) {
         'entry.2043889500': $('input[id=inputZip]').val(),
         'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
         'entry.303292725': $('input[id=inputEmailAddress]').val(),
+        'entry.728439401': tShirtSize,
         'entry.26805010': uniqueID
     }
     if (eccValue === "yes") {
@@ -178,8 +180,8 @@ function validate() {
     var valid = true;
 
     // checks contact information
-    var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
-    var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address"];
+    var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress", "TShirt"];
+    var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address", "t-shirt size"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i]);
         if (inputField.value === "") {
@@ -248,7 +250,7 @@ function validate() {
 
 /** clear red and text from validate function **/
 function clearValidateFeedback() {
-    var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+    var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress", "TShirt"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i]);
         inputField.classList.remove("is-invalid");
