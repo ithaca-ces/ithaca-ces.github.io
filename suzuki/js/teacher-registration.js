@@ -86,7 +86,7 @@ function submitGoogleForm(uniqueID) {
     var violinUnit1Value = getRadioButtonValue("violinUnit1");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
-    var tShirtSize = getSelectData("inputTShirt");
+    var tShirtSize = getSelectData("inputTShirt").replace('_', ' ');
 
 
     // get the form data

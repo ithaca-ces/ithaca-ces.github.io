@@ -2629,7 +2629,7 @@
                 for (var i = 1; i < tShirtData.length; i++) {
                     var option = document.createElement("option");
                     option.text = tShirtData[i][0];
-                    option.value = tShirtData[i][0].toLowerCase().replace(/ /g, '');
+                    option.value = tShirtData[i][0].replace(/ /g, '_');
                     theSelect.add(option);
                 }
             }

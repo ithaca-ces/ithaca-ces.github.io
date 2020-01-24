@@ -314,7 +314,7 @@ function submitGoogleForm() {
         var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
         var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
         var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
-        var tShirtSize = getSelectData("inputTShirt-" + j);
+        var tShirtSize = getSelectData("inputTShirt-" + j).replace('_', ' ');
         var siblings = makeNamesString(j);
         if (notRegisteredSiblings !== "") {
             siblings += notRegisteredSiblings;
