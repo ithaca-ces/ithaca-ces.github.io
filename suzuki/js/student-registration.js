@@ -315,6 +315,7 @@ function submitGoogleForm() {
         var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
         var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
         var tShirtSize = getSelectData("inputTShirt-" + j).replace('_', ' ');
+        var teacherRequests = document.getElementById("inputTeacherRequests-" + j).value;
         var siblings = makeNamesString(j);
         if (notRegisteredSiblings !== "") {
             siblings += notRegisteredSiblings;
@@ -359,7 +360,7 @@ function submitGoogleForm() {
             'entry.154989671': enrichmentChoice2,
             'entry.903246233': enrichmentChoice3,
             'entry.1178481040': tShirtSize,
-            'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
+            'entry.332529542': teacherRequests,
             'entry.1208655369': siblings,
             'entry.663733401': $('input[id=inputID]').val(),
             'entry.2097352746': registrationID
