@@ -119,7 +119,7 @@ function submitPaymentForm(registrationID) {
         hasMealPlans = true;
     }
 
-    var title = "Suzuki Weeks 1 and 2 ";
+    var title = "Suzuki Weeks 1 & 2 ";
     var totalPrice = 0;
     if (hasHousing && hasMealPlans) {
         title += "Housing & Meals";

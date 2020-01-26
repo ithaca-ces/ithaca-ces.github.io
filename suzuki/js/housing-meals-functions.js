@@ -55,45 +55,6 @@ function submit() {
     }
 }
 
-/** submits payment form **/
-/**function submitPaymentForm() {
-    var formInputs = "";
-
-    var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
-    if (mealPlanCount > 0) {
-        var line0 = "<div id=\"" + "meal_plan" + "\">";
-        var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "Meal Plan" + "\">";
-        var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "Meal Plan" + "\">";
-        var line3 = "<input id=\"qty_meal_plan\" type=\"hidden\" name=\"Qty\" value=" + mealPlanCount + ">";
-        var line4 = "<input type=\"hidden\" name=\"Price\" value=" + document.getElementById("mealPrice").innerText + ">";
-        var line5 = "</div>";
-        formInputs = line0 + line1 + line2 + line3 + line4 + line5;
-    }
-
-    var housingString = document.getElementById("housingList").innerText;
-    var housingList = housingString.split(";;;");
-    var nameString = document.getElementById("nameList").innerText;
-    var nameList = nameString.split(";;;");
-    var priceString = document.getElementById("priceList").innerText;
-    var priceList = priceString.split(";;;");
-    for (var i = 0; i < housingList.length - 1; i ++) {
-        if (document.getElementById("input" + housingList[i]) != null) {
-            var count = parseInt(document.getElementById("input" + housingList[i]).value);
-            if (count > 0) {
-                var line0 = "<div id=\"" + housingList[i] + "\">";
-                var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + nameList[i] + "\">";
-                var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + nameList[i] + "\">";
-                var line3 = "<input id=\"qty_" + housingList[i] + "\" type=\"hidden\" name=\"Qty\" value=" + count + ">";
-                var line4 = "<input type=\"hidden\" name=\"Price\" value=" + priceList[i] + ">";
-                var line5 = "</div>";
-                formInputs += line0 + line1 + line2 + line3 + line4 + line5;
-            }
-        }
-    }
-    document.getElementById("payFormInputs").innerHTML = formInputs;
-    document.getElementById("payform").submit();
-}**/
-
 /** validates inputs on form **/
 function validate() {
     clearValidateFeedback();
