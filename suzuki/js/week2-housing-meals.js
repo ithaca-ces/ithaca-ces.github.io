@@ -1,5 +1,5 @@
 /** submit google form **/
-function submitGoogleForm() {
+function submitGoogleForm(registrationID) {
     var housingString = document.getElementById("housingList").innerText;
     var housingList = housingString.split(";;;");
     var dataArray = "";
@@ -32,7 +32,7 @@ function submitGoogleForm() {
         'entry.2015316342': document.getElementById('inputAccommodations').value,
         'entry.616708405': dataArray,
         'entry.2006159302': mealPlanDataArray,
-        'entry.849343002': $('input[id=inputID]').val()
+        'entry.849343002': registrationID
     }
     // process the form
     $.ajax({
@@ -49,11 +49,10 @@ function submitGoogleForm() {
 }
 
 /** web hook to Microsoft Teams **/
-function webHook() {
+function webHook(registrationID) {
     var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
     var firstName = $('input[id=inputFirstName]').val();
     var lastName = $('input[id=inputLastName]').val();
-    var id = $('input[id=inputID]').val();
     var list = "";
     var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
     if (mealPlanCount > 0) {
@@ -79,7 +78,7 @@ function webHook() {
             }
         }
     }
-    var text = "<b>WEEK 2 HOUSING & MEALS SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a Week 2 Housing & Meals Form:<br><ul>" + list + "</ul><i>(ID # " + id + ")</i>";
+    var text = "<b>WEEK 2 HOUSING & MEALS SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a Week 2 Housing & Meals Form:<br><ul>" + list + "</ul><i>(ID # " + registrationID + ")</i>";
     $.ajax({
         data: JSON.stringify({
             "text": text
@@ -88,4 +87,62 @@ function webHook() {
         type: 'POST',
         url: url
     });
+}
+
+/** submits payment form **/
+function submitPaymentForm(registrationID) {
+    var hasHousing = false;
+    var hasMealPlans = false;
+
+    var housingString = document.getElementById("housingList").innerText;
+    var housingList = housingString.split(";;;");
+    var priceString = document.getElementById("priceList").innerText;
+    var priceList = priceString.split(";;;");
+
+    var housingTotal = 0;
+    for (var i = 0; i < housingList.length - 1; i ++) {
+        if (document.getElementById("input" + housingList[i]) != null) {
+            var count = parseInt(document.getElementById("input" + housingList[i]).value);
+            if (count > 0) {
+                hasHousing = true;
+                housingTotal += count * parseInt(priceList[i]);
+            }
+        }
+    }
+
+    var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
+    var mealPlanPrice = parseInt(document.getElementById("mealPrice").innerText);
+    var mealPlanTotal = 0;
+
+    if (mealPlanCount > 0) {
+        mealPlanTotal = mealPlanCount * mealPlanPrice;
+        hasMealPlans = true;
+    }
+
+    var title = "Suzuki Week 2 ";
+    var totalPrice = 0;
+    if (hasHousing && hasMealPlans) {
+        title += "Housing & Meals";
+        totalPrice = mealPlanTotal + housingTotal;
+    }
+    else if (hasHousing) {
+        title += "Housing";
+        totalPrice = housingTotal;
+    }
+    else if (hasMealPlans) {
+        title += "Meals";
+        totalPrice = mealPlanTotal;
+    }
+    title += " (ID " + registrationID + ")";
+
+    var line0 = "<div id=housing_meals>";
+    var line1 = '<input type=hidden name=PartNo value="' + title + '">';
+    var line2 = '<input type=hidden name=Item value="' + title + '">';
+    var line3 = '<input id=qty_housing_meals type=hidden name=Qty value="1">';
+    var line4 = '<input type=hidden name=Price value="' + totalPrice + '">';
+    var line5 = '</div>';
+    var formInputs = line0 + line1 + line2 + line3 + line4 + line5;
+
+    document.getElementById("payFormInputs").innerHTML = formInputs;
+    document.getElementById("payform").submit();
 }

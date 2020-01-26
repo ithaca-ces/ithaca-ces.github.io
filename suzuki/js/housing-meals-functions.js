@@ -19,10 +19,12 @@ function makeMealPlanInputs() {
 
 /** generates unique ID for housing & meals **/
 function makeID() {
-    var value = document.getElementById("inputID").value;
-    if (value === "") {
-        document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
-    }
+    var d = new Date();
+    var n = d.getTime().toString();
+    var lastSix = n.substr(n.length - 6);
+    var randomID = Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2);
+    var id = lastSix + randomID;
+    return id.substring(0, 15);
 }
 
 /** main submit function, which triggers google & payment form submissions **/
@@ -37,10 +39,11 @@ function submit() {
         $(".progress-bar").animate({
             width: "100%"
         }, 10000);
-        submitGoogleForm();
-        webHook();
+        var registrationID = makeID();
+        submitGoogleForm(registrationID);
+        webHook(registrationID);
         setTimeout(function(){
-            submitPaymentForm();
+            submitPaymentForm(registrationID);
         }, 10000);
     }
     else {
@@ -53,7 +56,7 @@ function submit() {
 }
 
 /** submits payment form **/
-function submitPaymentForm() {
+/**function submitPaymentForm() {
     var formInputs = "";
 
     var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
@@ -89,7 +92,7 @@ function submitPaymentForm() {
     }
     document.getElementById("payFormInputs").innerHTML = formInputs;
     document.getElementById("payform").submit();
-}
+}**/
 
 /** validates inputs on form **/
 function validate() {
