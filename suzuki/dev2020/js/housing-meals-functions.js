@@ -19,10 +19,12 @@ function makeMealPlanInputs() {
 
 /** generates unique ID for housing & meals **/
 function makeID() {
-    var value = document.getElementById("inputID").value;
-    if (value === "") {
-        document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
-    }
+    var d = new Date();
+    var n = d.getTime().toString();
+    var lastSix = n.substr(n.length - 6);
+    var randomID = Math.random().toString(32).substr(2) + Math.random().toString(32).substr(2);
+    var id = lastSix + randomID;
+    return id.substring(0, 15);
 }
 
 /** main submit function, which triggers google & payment form submissions **/
@@ -37,10 +39,11 @@ function submit() {
         $(".progress-bar").animate({
             width: "100%"
         }, 10000);
-        submitGoogleForm();
-        webHook();
+        var registrationID = makeID();
+        submitGoogleForm(registrationID);
+        webHook(registrationID);
         setTimeout(function(){
-            submitPaymentForm();
+            submitPaymentForm(registrationID);
         }, 10000);
     }
     else {
@@ -50,45 +53,6 @@ function submit() {
         document.getElementById("post").style.display = "none";
         document.getElementById("post").style.visibility = "hidden";
     }
-}
-
-/** submits payment form **/
-function submitPaymentForm() {
-    var formInputs = "";
-
-    var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
-    if (mealPlanCount > 0) {
-        var line0 = "<div id=\"" + "meal_plan" + "\">";
-        var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "Meal Plan" + "\">";
-        var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "Meal Plan" + "\">";
-        var line3 = "<input id=\"qty_meal_plan\" type=\"hidden\" name=\"Qty\" value=" + mealPlanCount + ">";
-        var line4 = "<input type=\"hidden\" name=\"Price\" value=" + document.getElementById("mealPrice").innerText + ">";
-        var line5 = "</div>";
-        formInputs = line0 + line1 + line2 + line3 + line4 + line5;
-    }
-
-    var housingString = document.getElementById("housingList").innerText;
-    var housingList = housingString.split(";;;");
-    var nameString = document.getElementById("nameList").innerText;
-    var nameList = nameString.split(";;;");
-    var priceString = document.getElementById("priceList").innerText;
-    var priceList = priceString.split(";;;");
-    for (var i = 0; i < housingList.length - 1; i ++) {
-        if (document.getElementById("input" + housingList[i]) != null) {
-            var count = parseInt(document.getElementById("input" + housingList[i]).value);
-            if (count > 0) {
-                var line0 = "<div id=\"" + housingList[i] + "\">";
-                var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + nameList[i] + "\">";
-                var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + nameList[i] + "\">";
-                var line3 = "<input id=\"qty_" + housingList[i] + "\" type=\"hidden\" name=\"Qty\" value=" + count + ">";
-                var line4 = "<input type=\"hidden\" name=\"Price\" value=" + priceList[i] + ">";
-                var line5 = "</div>";
-                formInputs += line0 + line1 + line2 + line3 + line4 + line5;
-            }
-        }
-    }
-    document.getElementById("payFormInputs").innerHTML = formInputs;
-    document.getElementById("payform").submit();
 }
 
 /** validates inputs on form **/
