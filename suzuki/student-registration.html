@@ -3,8 +3,12 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="194x194" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-194x194.png"/>
+    <link rel="icon" type="image/png" sizes="192x192" href="https://www.ithaca.edu/sites/default/files/favicons/android-chrome-192x192.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-16x16.png"/>
     <meta charset="UTF-8">
-    <title>Suzuki Institutes Registration</title>
+    <title>Suzuki Institutes Student Registration</title>
     <style>
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
@@ -26,13 +30,13 @@
         </div>
     <br>
     <h4>Please wait...You are being directed to the payment portal.</h4>
-    <h3>Your registration HAS NOT been finalized until you fully complete the payment process.</h3>
+    <h3>Your registration HAS NOT been finalized until you fully complete the payment process.  You will receive a confirmation email once your registration is complete.</h3>
     </center>
 </div>
 <body>
 <div  id="container" class="container" style="display:none;visibility:hidden">
     <br>
-    <h1>Student Registration <span id="studentNumber"></span></h1>
+    <h1>Suzuki Institutes Student Registration <span id="studentNumber"></span></h1>
     <hr>
     <div id="errorMessage"></div>
 
@@ -227,7 +231,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-1">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-1">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-1" onchange="changeOnPieceCodeSelection(1)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -251,24 +255,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-1">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-1">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-1">
-                <div id="valid-feedback-inputTeacherFirstName-1"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-1">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-1">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-1">
-                <div id="valid-feedback-inputTeacherLastName-1"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-1">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-1">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-1">
-            <div id="valid-feedback-inputTeacherPhoneNumber-1"></div>
         </div>
-
-
 
         <hr>
 
@@ -277,10 +276,11 @@
             <div id="enrichmentText-1"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-1"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-1"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-1">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-1"></div>
             </div>
 
             <div class="form-group">
@@ -311,7 +311,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-1"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-1"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-1" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -446,7 +446,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-2">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-2">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-2" onchange="changeOnPieceCodeSelection(2)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -470,24 +470,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-2">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-2">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-2">
-                <div id="valid-feedback-inputTeacherFirstName-2"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-2">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-2">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-2">
-                <div id="valid-feedback-inputTeacherLastName-2"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-2">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-2">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-2">
-            <div id="valid-feedback-inputTeacherPhoneNumber-2"></div>
         </div>
-
-
 
         <hr>
 
@@ -496,10 +491,11 @@
             <div id="enrichmentText-2"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-2"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-2"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-2">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-2"></div>
             </div>
 
             <div class="form-group">
@@ -531,7 +527,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-2"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-2"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-2" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -666,7 +662,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-3">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-3">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-3" onchange="changeOnPieceCodeSelection(3)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -690,24 +686,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-3">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-3">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-3">
-                <div id="valid-feedback-inputTeacherFirstName-3"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-3">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-3">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-3">
-                <div id="valid-feedback-inputTeacherLastName-3"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-3">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-3">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-3">
-            <div id="valid-feedback-inputTeacherPhoneNumber-3"></div>
         </div>
-
-
 
         <hr>
 
@@ -716,10 +707,11 @@
             <div id="enrichmentText-3"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-3"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-3"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-3">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-3"></div>
             </div>
 
             <div class="form-group">
@@ -751,7 +743,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-3"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-3"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-3" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -886,7 +878,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-4">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-4">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-4" onchange="changeOnPieceCodeSelection(4)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -910,24 +902,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-4">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-4">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-4">
-                <div id="valid-feedback-inputTeacherFirstName-4"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-4">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-4">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-4">
-                <div id="valid-feedback-inputTeacherLastName-4"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-4">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-4">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-4">
-            <div id="valid-feedback-inputTeacherPhoneNumber-4"></div>
         </div>
-
-
 
         <hr>
 
@@ -936,10 +923,11 @@
             <div id="enrichmentText-4"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-4"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-4"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-4">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-4"></div>
             </div>
 
             <div class="form-group">
@@ -971,7 +959,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-4"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-4"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-4" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -1106,7 +1094,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-5">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-5">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-5" onchange="changeOnPieceCodeSelection(5)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -1130,24 +1118,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-5">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-5">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-5">
-                <div id="valid-feedback-inputTeacherFirstName-5"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-5">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-5">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-5">
-                <div id="valid-feedback-inputTeacherLastName-5"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-5">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-5">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-5">
-            <div id="valid-feedback-inputTeacherPhoneNumber-5"></div>
         </div>
-
-
 
         <hr>
 
@@ -1156,10 +1139,11 @@
             <div id="enrichmentText-5"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-5"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-5"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-5">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-5"></div>
             </div>
 
             <div class="form-group">
@@ -1191,7 +1175,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-5"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-5"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-5" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -1326,7 +1310,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-6">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-6">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-6" onchange="changeOnPieceCodeSelection(6)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -1350,24 +1334,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-6">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-6">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-6">
-                <div id="valid-feedback-inputTeacherFirstName-6"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-6">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-6">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-6">
-                <div id="valid-feedback-inputTeacherLastName-6"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-6">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-6">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-6">
-            <div id="valid-feedback-inputTeacherPhoneNumber-6"></div>
         </div>
-
-
 
         <hr>
 
@@ -1376,10 +1355,11 @@
             <div id="enrichmentText-6"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-6"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-6"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-6">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-6"></div>
             </div>
 
             <div class="form-group">
@@ -1411,7 +1391,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-6"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-6"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-6" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -1546,7 +1526,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-7">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-7">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-7" onchange="changeOnPieceCodeSelection(7)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -1570,24 +1550,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-7">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-7">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-7">
-                <div id="valid-feedback-inputTeacherFirstName-7"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-7">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-7">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-7">
-                <div id="valid-feedback-inputTeacherLastName-7"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-7">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-7">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-7">
-            <div id="valid-feedback-inputTeacherPhoneNumber-7"></div>
         </div>
-
-
 
         <hr>
 
@@ -1596,10 +1571,11 @@
             <div id="enrichmentText-7"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-7"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-7"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-7">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-7"></div>
             </div>
 
             <div class="form-group">
@@ -1631,7 +1607,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-7"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-7"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-7" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -1766,7 +1742,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-8">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-8">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-8" onchange="changeOnPieceCodeSelection(8)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -1790,24 +1766,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-8">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-8">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-8">
-                <div id="valid-feedback-inputTeacherFirstName-8"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-8">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-8">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-8">
-                <div id="valid-feedback-inputTeacherLastName-8"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-8">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-8">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-8">
-            <div id="valid-feedback-inputTeacherPhoneNumber-8"></div>
         </div>
-
-
 
         <hr>
 
@@ -1816,10 +1787,11 @@
             <div id="enrichmentText-8"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-8"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-8"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-8">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-8"></div>
             </div>
 
             <div class="form-group">
@@ -1841,7 +1813,7 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-8"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-8"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-8" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -1986,7 +1958,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-9">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-9">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-9" onchange="changeOnPieceCodeSelection(9)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -2010,24 +1982,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-9">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-9">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-9">
-                <div id="valid-feedback-inputTeacherFirstName-9"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-9">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-9">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-9">
-                <div id="valid-feedback-inputTeacherLastName-9"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-9">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-9">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-9">
-            <div id="valid-feedback-inputTeacherPhoneNumber-9"></div>
         </div>
-
-
 
         <hr>
 
@@ -2036,10 +2003,11 @@
             <div id="enrichmentText-9"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-9"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-9"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-9">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-9"></div>
             </div>
 
             <div class="form-group">
@@ -2071,7 +2039,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-9"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-9"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-9" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -2206,7 +2174,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-9">
-                <label for="inputTitle-10">Code and Title of Piece <span style="color: red">*</span></label>
+                <label for="inputTitle-10">Code and title of your newest piece <span style="color: red">*</span></label>
                 <select class="form-control" id="inputTitle-10" onchange="changeOnPieceCodeSelection(10)">
                     <option style="display:none" disabled selected value></option>
                 </select>
@@ -2230,24 +2198,19 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputTeacherFirstName-10">Teacher First Name <span style="color: red">*</span></label>
+                <label for="inputTeacherFirstName-10">Teacher First Name</label>
                 <input type="text" class="form-control" id="inputTeacherFirstName-10">
-                <div id="valid-feedback-inputTeacherFirstName-10"></div>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputTeacherLastName-10">Teacher Last Name <span style="color: red">*</span></label>
+                <label for="inputTeacherLastName-10">Teacher Last Name</label>
                 <input type="text" class="form-control" id="inputTeacherLastName-10">
-                <div id="valid-feedback-inputTeacherLastName-10"></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-10">Teacher Phone Number <span style="color: red">*</span></label>
+            <label for="inputTeacherPhoneNumber-10">Teacher Phone Number</label>
             <input type="text" class="form-control" id="inputTeacherPhoneNumber-10">
-            <div id="valid-feedback-inputTeacherPhoneNumber-10"></div>
         </div>
-
-
 
         <hr>
 
@@ -2256,10 +2219,12 @@
             <div id="enrichmentText-10"></div>
 
             <div class="form-group">
-                <label for="inputEnrichmentChoice1-10"><strong>Enrichment Class Choice #1</strong></label>
+                <label for="inputEnrichmentChoice1-10"><strong>Enrichment Class Choice #1</strong> <span style="color: red">*</span></label>
                 <select class="form-control" id="inputEnrichmentChoice1-10">
-                    <option value=" "></option>
+                    <option style="display:none" disabled selected value></option>
                 </select>
+                <div id="valid-feedback-inputEnrichmentChoice1-10"></div>
+
             </div>
 
             <div class="form-group">
@@ -2291,7 +2256,7 @@
         <hr>
 
         <div class="form-group">
-            <label for="inputTeacherRequests-10"><h5>Do you have a specific teacher that you would like to request?</h5>Other requests will not be honored.</label>
+            <label for="inputTeacherRequests-10"><h5>Any additional musical comments:</h5></label>
             <textarea id="inputTeacherRequests-10" rows="2" style="width: 100%"></textarea>
         </div>
 
@@ -2306,10 +2271,10 @@
 
     <div id="lastPage" style="visibility: hidden;display: none">
 
-        <h5>You have entered information the following students:</h5>
+        <h5>You have entered information about the following students:</h5>
         <ol id="studentsRegisteredList"></ol>
         <div class="form-group">
-            <label for="hasSiblings"><h5>Are there any other people who will be attending the Suzuki Institute that you be registering for in the future or that you have registered for already?<span style="color: red">*</span></h5>Some helpful text here. The above sentence definitely need to be changed.</label><br>
+            <label for="hasSiblings"><h5>Have you registered another student prior to this registration?<span style="color: red">*</span></h5></label><br>
             <input type="radio" name="hasSiblings" value="yes" onclick="displaySiblingQuestion()"> &nbsp;<span id="hasSiblings-yes">Yes</span><br>
             <input type="radio" name="hasSiblings" value="no" onclick="displaySiblingQuestion()"> &nbsp;<span id="hasSiblings-no">No</span><br>
             <div id="valid-feedback-inputHasSiblings"></div>
@@ -2318,7 +2283,7 @@
         <div id="siblings" style="display: none; visibility: hidden">
 
             <div class="form-group" id="siblings-entry">
-                <label style="font-weight: 700">Enter the names of the OTHER siblings below - REWRITE NEEDED:</label><br>
+                <label style="font-weight: 700">Please provide the names of the other registered students:</label><br>
             </div>
 
             <div class="form-row" id="siblings-1">
@@ -2462,7 +2427,8 @@
 
         <hr>
         <div id="finalText"></div>
-        <br>
+        <h5>Please ensure that all of the information that you have filled out in this form is correct.  You will not be able to change any of this information after you continue to payment.</h5>
+        <h5>NOTE: Your registration is not complete until your payment is processed and approved.</h5> <br>
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <button onclick="submit()" class ="btn btn-success">Submit & Continue To Payment</button>
 
