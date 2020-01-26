@@ -1,24 +1,57 @@
 /** runs when a user selects a course (per page) **/
 function changeOnCourseSelection(number) {
+    changeInstruments(number);
+    var bookLevelSelect = document.getElementById("inputBookLevel-" + number);
+    bookLevelSelect.innerHTML = '<option style="display:none" disabled selected value></option>';
+    var titleSelect = document.getElementById("inputTitle-" + number);
+    titleSelect.innerHTML = '<option style="display:none" disabled selected value></option>';
     changeShowEnrichmentCourses(number);
-    changeBookLevels(number);
+    changeMovements(number, false);
+    changeCustomPiece(number);
 }
 
 /** runs when a user selects a piece code (per page) **/
 function changeOnPieceCodeSelection(number) {
-    changeMovements(number);
+    changeMovements(number, true);
     changeCustomPiece(number);
 }
+
+/** changes options on instrument field (per page) **/
+function changeInstruments(number) {
+    var selectedCourse = getSelectData("inputCourse-" + number);
+    var select = document.getElementById("inputInstrument-" + number);
+    select.innerHTML = '<option style="display:none" disabled selected value></option>';
+    if (selectedCourse === firstCourseOptionValue) {
+        for (var i = 0; i < instrumentNames.length; i ++) {
+            var option = document.createElement("option");
+            option.text = instrumentNames[i];
+            option.value = instrumentValues[i];
+            select.add(option);
+        }
+    }
+    else {
+        for (var i = 0; i < instrumentNames.length; i ++) {
+            if (instrumentValues[i] !== "viola") {
+                var option = document.createElement("option");
+                option.text = instrumentNames[i];
+                option.value = instrumentValues[i];
+                select.add(option);
+            }
+        }
+
+    }
+}
+
 
 /** changes options on book level field (per page) **/
 function changeBookLevels(number) {
     var instrument = getSelectData("inputInstrument-" + number);
+    var select = document.getElementById("inputBookLevel-" + number);
+    select.innerHTML = '<option style="display:none" disabled selected value></option>';
     if (instrument !== "") {
         var selectedInstrument = capitalizeFLetter(instrument);
         var bookNumbers = codeDictionary[selectedInstrument].bookOptions;
         var bookNumbersArray = bookNumbers.split(",");
-        var select = document.getElementById("inputBookLevel-" + number);
-        select.innerHTML = '<option style="display:none" disabled selected value></option>';
         for (var i = 0; i < bookNumbersArray.length; i++) {
             var option = document.createElement("option");
             option.text = bookNumbersArray[i];
@@ -40,6 +73,8 @@ function changeBookLevels(number) {
 function changePieceCodes(number) {
     var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
     var selectedBookLevel = getSelectData("inputBookLevel-" + number);
+    var select = document.getElementById("inputTitle-" + number);
+    select.innerHTML = '<option style="display:none" disabled selected value></option>';
     var allBookNumbers = codeDictionary[selectedInstrument].bookList;
     var allCodes = codeDictionary[selectedInstrument].codeList;
     var allTitles = codeDictionary[selectedInstrument].titleList;
@@ -52,8 +87,6 @@ function changePieceCodes(number) {
             codes.push(allCodes[i]);
         }
     }
-    var select = document.getElementById("inputTitle-" + number);
-    select.innerHTML = '<option style="display:none" disabled selected value></option>';
     for (var i = 0; i < pieces.length; i ++) {
         var option = document.createElement("option");
         option.value = codes[i];
@@ -71,37 +104,39 @@ function changePieceCodes(number) {
         }
     }
     changeCustomPiece(number);
-    changeMovements(number);
+    changeMovements(number, true);
 }
 
 /** changes options on piece code field (per page) **/
-function changeMovements(number) {
+function changeMovements(number, shouldRun) {
     var movementDiv = document.getElementById("movementColumn-" + number);
     movementDiv.style.visibility = "hidden";
     movementDiv.style.display = "none";
     var select = document.getElementById("inputMovement-" + number);
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
-    var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
-    var selectedCode = getSelectData("inputTitle-" + number);
-    var allCodes = codeDictionary[selectedInstrument].codeList;
-    var allMovements = codeDictionary[selectedInstrument].movementsList;
-    var movements = [];
-    for (var i = 0; i < allCodes.length; i ++) {
-        if (allCodes[i] === selectedCode) {
-            var movements = allMovements[i];
-            break;
+    if (shouldRun) {
+        var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
+        var selectedCode = getSelectData("inputTitle-" + number);
+        var allCodes = codeDictionary[selectedInstrument].codeList;
+        var allMovements = codeDictionary[selectedInstrument].movementsList;
+        var movements = [];
+        for (var i = 0; i < allCodes.length; i++) {
+            if (allCodes[i] === selectedCode) {
+                var movements = allMovements[i];
+                break;
+            }
         }
-    }
-    if (movements.length >= 1) {
-        var movementArray = movements.split("-");
-        for (var i = 0; i < movementArray.length; i++) {
-            var option = document.createElement("option");
-            option.text = movementArray[i];
-            option.value = movementArray[i];
-            select.add(option);
+        if (movements.length >= 1) {
+            var movementArray = movements.split("-");
+            for (var i = 0; i < movementArray.length; i++) {
+                var option = document.createElement("option");
+                option.text = movementArray[i];
+                option.value = movementArray[i];
+                select.add(option);
+            }
+            movementDiv.style.visibility = "visible";
+            movementDiv.style.display = "";
         }
-        movementDiv.style.visibility = "visible";
-        movementDiv.style.display = "";
     }
 }
 

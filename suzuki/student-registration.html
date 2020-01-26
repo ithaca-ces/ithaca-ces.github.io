@@ -2470,6 +2470,7 @@
     var bookLevelValues = [];
     var bookLevelNames = [];
     var codesDictionary = {};
+    var firstCourseOptionValue = "";
 
     /** get student information text from Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=56981838&single=true",
@@ -2545,6 +2546,9 @@
                     courseNames.push(coursesData[i][0]);
                     courseValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
                     coursePrices.push(coursesData[i][1]);
+                    if (i === 1) {
+                        firstCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                    }
                 }
             }
         });
@@ -2552,15 +2556,6 @@
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=1604383475&single=true",
         function(data, status) {
             var coursesData = getTableData(data);
-            for (var j = 1; j <=  MAX_STUDENT_NUMBER; j ++) {
-                var theSelect = document.getElementById("inputInstrument-" + j);
-                for (var i = 1; i < coursesData.length; i++) {
-                    var option = document.createElement("option");
-                    option.text = coursesData[i][0];
-                    option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
-                    theSelect.add(option);
-                }
-            }
             for (var i = 1; i < coursesData.length; i++) {
                 instrumentNames.push(coursesData[i][0]);
                 instrumentValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
