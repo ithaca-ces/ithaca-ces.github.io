@@ -154,7 +154,7 @@ function validateStudentInfo(number) {
 
     }
 
-    var fields = ["TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
+    /*var fields = ["TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
     var names = ["teacher's first name", "teacher's last name", "teacher's phone number"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i] + "-" + number);
@@ -166,10 +166,10 @@ function validateStudentInfo(number) {
         else {
             inputField.classList.add("is-valid");
         }
-    }
+    }*/
 
     // optional fields
-    var fields = ["Gender"];
+    var fields = ["Gender", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TeacherRequests"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i] + "-" + number);
         if (inputField.value !== "") {
@@ -194,7 +194,7 @@ function clearValidateFeedback() {
         document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
     }
     for (var j = 1; j < MAX_STUDENT_NUMBER; j ++) {
-        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TShirt"];
+        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TeacherRequests", "TShirt", "EnrichmentChoice1", "EnrichmentChoice2", "EnrichmentChoice3"];
         for (var i = 0; i < studentFields.length; i++) {
             var studentField = document.getElementById("input" + studentFields[i] + "-" + j);
             studentField.classList.remove("is-invalid");
