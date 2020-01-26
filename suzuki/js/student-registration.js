@@ -169,20 +169,6 @@ function validateStudentInfo(number) {
 
     }
 
-    /*var fields = ["TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
-    var names = ["teacher's first name", "teacher's last name", "teacher's phone number"];
-    for (var i = 0; i < fields.length; i ++) {
-        var inputField = document.getElementById("input" + fields[i] + "-" + number);
-        if (inputField.value === "") {
-            inputField.classList.add("is-invalid");
-            valid = false;
-            document.getElementById("valid-feedback-input" + fields[i] + "-" + number).innerHTML = "<font color='red'>Please enter the " + names[i] + ".</>"
-        }
-        else {
-            inputField.classList.add("is-valid");
-        }
-    }*/
-
     // optional fields
     var fields = ["Gender", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TeacherRequests"];
     for (var i = 0; i < fields.length; i ++) {
