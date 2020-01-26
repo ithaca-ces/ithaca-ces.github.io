@@ -103,7 +103,7 @@ function validateStudentInfo(number) {
     }
 
     var selectFields = ["Course", "Instrument", "BookLevel", "Title", "TShirt"];
-    var selectNames = ["course", "instrument", "book level", "piece's code and title", "t-shirt size"];
+    var selectNames = ["a course", "an instrument", "a book level", "the code and title of your newest piece", "a t-shirt size"];
     for (var i = 0; i < selectFields.length; i++) {
         var selectField = document.getElementById("input" + selectFields[i] + "-" + number);
         // if it has options
@@ -113,7 +113,7 @@ function validateStudentInfo(number) {
         } else {
             selectField.classList.add("is-invalid");
             valid = false;
-            document.getElementById("valid-feedback-input" + selectFields[i] + "-" + number).innerHTML = "<font color='red'>Please select a " + selectNames[i] + ".</>"
+            document.getElementById("valid-feedback-input" + selectFields[i] + "-" + number).innerHTML = "<font color='red'>Please select " + selectNames[i] + ".</>"
         }
 
     }
@@ -148,6 +148,21 @@ function validateStudentInfo(number) {
                     inputField.classList.add("is-valid");
                 }
             }
+        }
+        // if they're not advanced, validate enrichment courses
+        else {
+            selectField = document.getElementById("input" + "EnrichmentChoice1" + "-" + number);
+            // if it has options
+            selectData = getSelectData("input" + "EnrichmentChoice1" + "-" + number);
+            if (selectData !== null && selectData !== "") {
+                selectField.classList.add("is-valid");
+            }
+            else {
+                selectField.classList.add("is-invalid");
+                valid = false;
+                document.getElementById("valid-feedback-input" + "EnrichmentChoice1" + "-" + number).innerHTML = "<font color='red'>Please select your first enrichment course choice." + "</>";
+            }
+
         }
     }
     catch(err) {
@@ -203,11 +218,6 @@ function clearValidateFeedback() {
                 document.getElementById("valid-feedback-input" + studentFields[i] + "-" + j).innerHTML = "";
             }
         }
-        /*for (var i = 0; i < enrichmentIds.length; i ++) {
-            document.getElementById("input" + enrichmentIds[i] + "-" + j).classList.remove("is-invalid");
-            document.getElementById("input" + enrichmentIds[i] + "-" + j).classList.remove("is-valid");
-        }
-        document.getElementById("enrichmentError-" + j).innerHTML = "";*/
     }
     clearValidateFeedbackForSiblings();
     document.getElementById("errorMessage").innerHTML = "";
