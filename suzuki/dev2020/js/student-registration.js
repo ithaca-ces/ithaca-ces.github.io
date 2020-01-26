@@ -102,8 +102,8 @@ function validateStudentInfo(number) {
         }
     }
 
-    var selectFields = ["Course", "Instrument", "BookLevel", "Title"];
-    var selectNames = ["course", "instrument", "book level", "piece's code and title"];
+    var selectFields = ["Course", "Instrument", "BookLevel", "Title", "TShirt"];
+    var selectNames = ["a course", "an instrument", "a book level", "the code and title of your newest piece", "a t-shirt size"];
     for (var i = 0; i < selectFields.length; i++) {
         var selectField = document.getElementById("input" + selectFields[i] + "-" + number);
         // if it has options
@@ -113,7 +113,7 @@ function validateStudentInfo(number) {
         } else {
             selectField.classList.add("is-invalid");
             valid = false;
-            document.getElementById("valid-feedback-input" + selectFields[i] + "-" + number).innerHTML = "<font color='red'>Please select the " + selectNames[i] + ".</>"
+            document.getElementById("valid-feedback-input" + selectFields[i] + "-" + number).innerHTML = "<font color='red'>Please select " + selectNames[i] + ".</>"
         }
 
     }
@@ -149,27 +149,28 @@ function validateStudentInfo(number) {
                 }
             }
         }
+        // if they're not advanced, validate enrichment courses
+        else {
+            selectField = document.getElementById("input" + "EnrichmentChoice1" + "-" + number);
+            // if it has options
+            selectData = getSelectData("input" + "EnrichmentChoice1" + "-" + number);
+            if (selectData !== null && selectData !== "") {
+                selectField.classList.add("is-valid");
+            }
+            else {
+                selectField.classList.add("is-invalid");
+                valid = false;
+                document.getElementById("valid-feedback-input" + "EnrichmentChoice1" + "-" + number).innerHTML = "<font color='red'>Please select your first enrichment course choice." + "</>";
+            }
+
+        }
     }
     catch(err) {
 
     }
 
-    var fields = ["TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
-    var names = ["teacher's first name", "teacher's last name", "teacher's phone number"];
-    for (var i = 0; i < fields.length; i ++) {
-        var inputField = document.getElementById("input" + fields[i] + "-" + number);
-        if (inputField.value === "") {
-            inputField.classList.add("is-invalid");
-            valid = false;
-            document.getElementById("valid-feedback-input" + fields[i] + "-" + number).innerHTML = "<font color='red'>Please enter the " + names[i] + ".</>"
-        }
-        else {
-            inputField.classList.add("is-valid");
-        }
-    }
-
     // optional fields
-    var fields = ["Gender"];
+    var fields = ["Gender", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TeacherRequests"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i] + "-" + number);
         if (inputField.value !== "") {
@@ -194,7 +195,7 @@ function clearValidateFeedback() {
         document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
     }
     for (var j = 1; j < MAX_STUDENT_NUMBER; j ++) {
-        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber"];
+        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TeacherRequests", "TShirt", "EnrichmentChoice1", "EnrichmentChoice2", "EnrichmentChoice3"];
         for (var i = 0; i < studentFields.length; i++) {
             var studentField = document.getElementById("input" + studentFields[i] + "-" + j);
             studentField.classList.remove("is-invalid");
@@ -203,11 +204,6 @@ function clearValidateFeedback() {
                 document.getElementById("valid-feedback-input" + studentFields[i] + "-" + j).innerHTML = "";
             }
         }
-        /*for (var i = 0; i < enrichmentIds.length; i ++) {
-            document.getElementById("input" + enrichmentIds[i] + "-" + j).classList.remove("is-invalid");
-            document.getElementById("input" + enrichmentIds[i] + "-" + j).classList.remove("is-valid");
-        }
-        document.getElementById("enrichmentError-" + j).innerHTML = "";*/
     }
     clearValidateFeedbackForSiblings();
     document.getElementById("errorMessage").innerHTML = "";
@@ -314,6 +310,8 @@ function submitGoogleForm() {
         var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
         var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
         var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
+        var tShirtSize = getSelectData("inputTShirt-" + j).replace('_', ' ');
+        var teacherRequests = document.getElementById("inputTeacherRequests-" + j).value;
         var siblings = makeNamesString(j);
         if (notRegisteredSiblings !== "") {
             siblings += notRegisteredSiblings;
@@ -352,13 +350,13 @@ function submitGoogleForm() {
             'entry.835452724': code,
             'entry.1758035001': customPiece,
             'entry.1702328635': movement,
-            'entry.1581932096': teacherFirstName,
-            'entry.1178481040': teacherLastName,
+            'entry.1581932096': teacherFirstName + " " + teacherLastName,
             'entry.846808053': teacherPhoneNumber,
             'entry.650938505': enrichmentChoice1,
             'entry.154989671': enrichmentChoice2,
             'entry.903246233': enrichmentChoice3,
-            'entry.332529542': $('input[id=inputTeacherRequests-' + j + ']').val(),
+            'entry.1178481040': tShirtSize,
+            'entry.332529542': teacherRequests,
             'entry.1208655369': siblings,
             'entry.663733401': $('input[id=inputID]').val(),
             'entry.2097352746': registrationID
