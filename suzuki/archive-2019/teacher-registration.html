@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Suzuki Institutes Registration</title>
+    <style>
+        .progress.active .progress-bar {
+            -webkit-transition: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+</head>
+<body>
+<div id="pre" class="container"><br><br><br><br><center><i style="font-size: 8em" class="fas fa-sync fa-spin"></i></center></div>
+<div id="post" style="display: none; visibility: hidden" class="container"><br><br><br><br><center>
+    <i style="font-size: 8em" class="fas fa-sync fa-spin"></i>
+    <br><br>
+    <div class="progress progress-striped active" style="height: 35px">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:0%"></div>
+    </div>
+</center></div>
+<div  id="container" class="container" style="display:none;visibility:hidden">
+    <br>
+    <h1>Teacher Registration</h1>
+    <hr>
+    <div id="errorMessage"></div>
+
+    <h3>Contact Information</h3>
+    <br>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputFirstName">First Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputFirstName">
+            <div id="valid-feedback-inputFirstName"></div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputLastName">
+            <div id="valid-feedback-inputLastName"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Address <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputAddress">
+        <div id="valid-feedback-inputAddress"></div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="inputCity">City <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCity">
+            <div id="valid-feedback-inputCity"></div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">State/Province <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputState">
+            <div id="valid-feedback-inputState"></div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputZip">Zip Code <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputZip">
+            <div id="valid-feedback-inputZip"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPhoneNumber">Phone Number <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputPhoneNumber">
+        <div id="valid-feedback-inputPhoneNumber"></div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmailAddress">Email Address <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputEmailAddress">
+        <div id="valid-feedback-inputEmailAddress"></div>
+    </div>
+
+
+
+    <hr>
+
+    <div id="noItemsErrorMessage"></div>
+
+
+    <h3>Course Selection</h3>
+    <div id="aboveText"></div>
+
+    <div id="courseRadios">
+        <div class="form-group">
+            <b>Would you like to register for <span id="eccName"></span>  &mdash; $<span id="eccPrice"></span>?</b> <span style="color: red">*</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="everyChildCan" id="radio1" value="yes">
+                <label class="form-check-label" for="radio1">Yes</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="everyChildCan" id="radio2" value="no">
+                <label class="form-check-label" for="radio2">No</label>
+            </div>
+        </div>
+
+        <div id="violin1Text"></div>
+
+        <div class="form-group">
+            <b>Would you like to register for <span id="violinUnit1Name"></span>  &mdash; $<span id="violinUnit1Price"></span>?</b> <span style="color: red">*</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="violinUnit1" id="radio3" value="yes">
+                <label class="form-check-label" for="radio3">Yes</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="violinUnit1" id="radio4" value="no">
+                <label class="form-check-label" for="radio4">No</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="courseSelects">
+        <span><b>Select a week 1 course (<span id="week1DateSpan"></span>):</b></span> <span style="color: red">*</span>
+        <select class="form-control" id="week1Courses" onchange="changeLogicCourses()">
+            <option value=" "></option>
+        </select>
+        <br>
+        <span><b>Select a week 2 course (<span id="week2DateSpan"></span>):</b></span> <span style="color: red">*</span>
+        <select class="form-control" id="week2Courses" onchange="changeLogicCourses()">
+            <option value=" "></option>
+        </select>
+        <br>
+
+    </div>
+
+    <div id="belowText"></div>
+
+    <hr>
+
+    <div id="coursesList" style="visibility: hidden; display: none"></div>
+    <div id="nameList" style="visibility: hidden; display: none"></div>
+    <div id="priceList" style="visibility: hidden; display: none"></div>
+    <div id="auditPriceList" style="visibility: hidden; display: none"></div>
+    <div id="registrationFee" style="visibility: hidden; display: none"></div>
+    <div id="SAAFee" style="visibility: hidden; display: none"></div>
+
+    <div style="visibility: hidden;display:none"><input id="inputID" type="text"></div>
+
+    <h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br>
+
+    <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
+    <br><br>
+
+    <div id="paymentFormDiv" style="visibility: hidden; display: none">
+        <form target="_parent" id="payform" method="post" action="https://shoppingcartsecure.com/cart32.exe/6072743313-AddItem">
+            <div id="payFormInputs" style="visibility: hidden; display: none"></div>
+        </form>
+    </div>
+
+</div>
+<div id="hidden" style="display: none; visibility: hidden;"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var eccName = "";
+    var eccPrice = "";
+    var violinUnit1Name = "";
+    var violinUnit1Price = "";
+    var week1CoursesNames = [];
+    var week1CoursesPrices = [];
+    var week1CoursesIDs = [];
+    var week2CoursesNames = [];
+    var week2CoursesPrices = [];
+    var week2CoursesIDs = [];
+    var week1 = "";
+    var week2 = "";
+</script>
+<script>
+    // dates
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vREtU3aso5YQevwxYncCh60Cwn55X6PuCOuNv1UVHHsLr4G9TJevUa4lPjodkOBM3vUfllVyyEbhmRg/pubhtml?gid=0&single=true",
+        function (data, status) {
+            var textTable = getTableData(data);
+            week1 = textTable[1][2];
+            week2 = textTable[2][2];
+            document.getElementById("week1DateSpan").innerText = week1;
+            document.getElementById("week2DateSpan").innerText = week2;
+        });
+    // above text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=56981838&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("aboveText").innerHTML = sumString;
+        });
+    // violin unit 1 text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=477216062&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("violin1Text").innerHTML = sumString;
+        });
+    // below text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=869859262&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("belowText").innerHTML = sumString;
+        });
+    // ecc
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=2053198402&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var name = coursesData[1][0];
+            var price = coursesData[1][1];
+            eccName = name;
+            eccPrice = price;
+            document.getElementById("eccName").innerText = name;
+            document.getElementById("eccPrice").innerText = price;
+    });
+    // violin unit 1
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1644261533&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var name = coursesData[1][0];
+            var price = coursesData[1][1];
+            violinUnit1Name = name;
+            violinUnit1Price = price;
+            document.getElementById("violinUnit1Name").innerText = name;
+            document.getElementById("violinUnit1Price").innerText = price;
+        });
+    // week 1 courses
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=256271385&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var theSelect = document.getElementById("week1Courses");
+            for (var i = 1; i < coursesData.length; i ++) {
+                var option = document.createElement("option");
+                option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                theSelect.add(option);
+                week1CoursesNames.push(coursesData[i][0]);
+                week1CoursesPrices.push(coursesData[i][1]);
+                week1CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+            }
+        });
+    // week 2 courses
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=2109480798&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var theSelect = document.getElementById("week2Courses");
+            for (var i = 1; i < coursesData.length; i ++) {
+                var option = document.createElement("option");
+                option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                theSelect.add(option);
+                week2CoursesNames.push(coursesData[i][0]);
+                week2CoursesPrices.push(coursesData[i][1]);
+                week2CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+            }
+        }).done(function() {
+            makeID();
+            document.getElementById("container").style.display = "inherit";
+            document.getElementById("container").style.visibility = "visible";
+            document.getElementById("pre").style.display = "none";
+            document.getElementById("pre").style.visibility = "hidden";
+        })
+
+   </script>
+    <script>
+
+    function getTableData(inputData) {
+        var array1 = inputData.toString().split("<table");
+        var array2 = array1[1].split("</table>");
+        var string = "<table" + array2[0] + "</table>";
+        document.getElementById("hidden").innerHTML = string;
+        var myTableArray = [];
+        $("table tr").each(function() {
+            var arrayOfThisRow = [];
+            var tableData = $(this).find('td');
+            if (tableData.length > 0) {
+                tableData.each(function() { arrayOfThisRow.push($(this).text()); });
+                myTableArray.push(arrayOfThisRow);
+            }
+        });
+        return myTableArray;
+    }
+
+    function getSelectData(name) {
+        var e = document.getElementById(name);
+        var value = e.options[e.selectedIndex].value;
+        return value;
+    }
+
+    function makeID() {
+        var value = document.getElementById("inputID").value;
+        if (value === "") {
+            document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
+        }
+    }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#radio1").click(function(){
+                changeLogicECC();
+            });
+            $("#radio2").click(function(){
+                changeLogicECC();
+            });
+            $("#radio3").click(function(){
+                changeLogicECC();
+            });
+            $("#radio4").click(function(){
+                changeLogicECC();
+            });
+        });
+        function changeLogicECC() {
+            var eccValue = getRadioButtonValue("everyChildCan");
+            var violinUnit1Value = getRadioButtonValue("violinUnit1");
+            if (eccValue === "yes" || violinUnit1Value === "yes") {
+                document.getElementById("courseSelects").style.display = "none";
+                document.getElementById("courseSelects").style.visibility = "hidden";
+                document.getElementById("week1Courses").value = " ";
+                document.getElementById("week2Courses").value = " ";
+            }
+            else {
+                document.getElementById("courseSelects").style.display = "inherit";
+                document.getElementById("courseSelects").style.visibility = "visible";
+            }
+        }
+        function changeLogicCourses() {
+            var week1Course = getSelectData("week1Courses");
+            var week2Course = getSelectData("week2Courses");
+            if (week1Course !== " " || week2Course !== " ") {
+                document.getElementById("courseRadios").style.display = "none";
+                document.getElementById("courseRadios").style.visibility = "hidden";
+                document.getElementById("radio1").checked = false;
+                document.getElementById("radio2").checked = false;
+                document.getElementById("radio3").checked = false;
+                document.getElementById("radio4").checked = false;
+            }
+            else {
+                document.getElementById("courseRadios").style.display = "inherit";
+                document.getElementById("courseRadios").style.visibility = "visible";
+            }
+        }
+
+    </script>
+    <script>
+    function submit() {
+        document.getElementById("container").style.display = "none";
+        document.getElementById("container").style.visibility = "hidden";
+        document.getElementById("post").style.display = "inherit";
+        document.getElementById("post").style.visibility = "visible";
+        $('html,body').scrollTop(0);
+        window.parent.postMessage("scrollTop", '*');
+        if (validate()) {
+            $(".progress-bar").animate({
+                width: "100%"
+            }, 10000);
+            submitGoogleForm();
+            webHook();
+            setTimeout(function(){
+                submitPaymentForm();
+            }, 10000);
+        }
+        else {
+            document.getElementById("errorMessage").innerHTML = "<h3 style='color:red'>Please correct the issue(s) indicated below in order to complete your form submission!</h3><hr>";
+            document.getElementById("container").style.display = "inherit";
+            document.getElementById("container").style.visibility = "visible";
+            document.getElementById("post").style.display = "none";
+            document.getElementById("post").style.visibility = "hidden";
+        }
+    }
+    </script>
+    <script>
+    function webHook() {
+        var eccValue = getRadioButtonValue("everyChildCan");
+        var violinUnit1Value = getRadioButtonValue("violinUnit1");
+        var week1Course = getSelectData("week1Courses");
+        var week2Course = getSelectData("week2Courses");
+        var nameArray = [];
+        if (eccValue === "yes") {
+            nameArray.push(eccName);
+        }
+        if (violinUnit1Value === "yes") {
+            nameArray.push(violinUnit1Name);
+        }
+        if (week1Course !== " ") {
+            var index = week1CoursesIDs.indexOf(week1Course);
+            var name = week1CoursesNames[index];
+            nameArray.push(name);
+        }
+        if (week2Course !== " ") {
+            var index = week2CoursesIDs.indexOf(week2Course);
+            var name = week2CoursesNames[index];
+            nameArray.push(name);
+        }
+        var text = nameArray[0];
+        if (nameArray.length > 1) {
+            text += " and " + nameArray[1];
+        }
+
+        var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+        var firstName = $('input[id=inputFirstName]').val();
+        var lastName = $('input[id=inputLastName]').val();
+        var id = document.getElementById("inputID").value;
+        var text = "<b>TEACHER REGISTRATION FORM SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a teacher registration form for " + text + ".<br><i>(ID # " + id + ")</i>";
+        $.ajax({
+            data: JSON.stringify({
+                "text": text
+            }),
+            dataType: 'json',
+            type: 'POST',
+            url: url
+        });
+    }
+    </script>
+    <script>
+
+    function submitGoogleForm() {
+        var eccValue = getRadioButtonValue("everyChildCan");
+        var violinUnit1Value = getRadioButtonValue("violinUnit1");
+        var week1Course = getSelectData("week1Courses");
+        var week2Course = getSelectData("week2Courses");
+
+
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'entry.2039036389': $('input[id=inputFirstName]').val(),
+            'entry.305040084': $('input[id=inputLastName]').val(),
+            'entry.1583950870': $('input[id=inputAddress]').val(),
+            'entry.1741944776': $('input[id=inputCity]').val(),
+            'entry.1449597621': $('input[id=inputState]').val(),
+            'entry.2043889500': $('input[id=inputZip]').val(),
+            'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
+            'entry.303292725': $('input[id=inputEmailAddress]').val(),
+            'entry.26805010': $('input[id=inputID]').val()
+        }
+        if (eccValue === "yes") {
+            formData["entry.616708405"] = eccName;
+        }
+        if (violinUnit1Value === "yes") {
+            formData["entry.1477180920"] = violinUnit1Name;
+        }
+        if (week1Course !== " ") {
+            var index = week1CoursesIDs.indexOf(week1Course);
+            var name = week1CoursesNames[index];
+            formData["entry.645715329"] = name;
+        }
+        if (week2Course !== " ") {
+            var index = week2CoursesIDs.indexOf(week2Course);
+            var name = week2CoursesNames[index];
+            formData["entry.1404295443"] = name;
+        }
+
+        // process the form
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : 'https://docs.google.com/forms/d/e/1FAIpQLScNZYR6vPubFntj1Mj9C2T77teW-HSduAjD1vvFtbQfPO-A1g/formResponse', // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode          : true
+        })
+        // using the done promise callback
+            .done(function(data) {
+
+            });
+    }
+    </script>
+    <script>
+
+    function submitPaymentForm() {
+        var eccValue = getRadioButtonValue("everyChildCan");
+        var violinUnit1Value = getRadioButtonValue("violinUnit1");
+        var week1Course = getSelectData("week1Courses");
+        var week2Course = getSelectData("week2Courses");
+
+        var formInputs = "";
+
+        if (eccValue === "yes") {
+            formInputs += makePayFormInputString("ecc", eccName, eccPrice);
+        }
+        if (violinUnit1Value === "yes") {
+            formInputs += makePayFormInputString("ecc", violinUnit1Name, violinUnit1Price);
+        }
+
+        if (week1Course !== " ") {
+            var index = week1CoursesIDs.indexOf(week1Course);
+            var name = week1CoursesNames[index] + " (" + week1 + ")";
+            var price = week1CoursesPrices[index];
+            formInputs += makePayFormInputString(week1Course, name, price);
+        }
+        if (week2Course !== " ") {
+            var index = week2CoursesIDs.indexOf(week2Course);
+            var name = week2CoursesNames[index] + " (" + week2 + ")";
+            var price = week2CoursesPrices[index];
+            formInputs += makePayFormInputString(week2Course, name, price);
+        }
+
+        document.getElementById("payFormInputs").innerHTML = formInputs;
+        document.getElementById("payform").submit();
+    }
+    </script>
+
+    <script>
+
+    function validate() {
+        clearValidateFeedback();
+        var valid = true;
+
+        // checks contact information
+        var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+        var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address"];
+        for (var i = 0; i < fields.length; i ++) {
+            var inputField = document.getElementById("input" + fields[i]);
+            if (inputField.value === "") {
+                inputField.classList.add("is-invalid");
+                valid = false;
+                document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "<font color='red'>Please enter your " + names[i] + ".</>"
+            }
+            else {
+                inputField.classList.add("is-valid");
+            }
+        }
+
+        var emailField = document.getElementById("inputEmailAddress");
+        var result = validateEmail(emailField.value);
+        if(emailField.value !== "" && !result) {
+            document.getElementById("valid-feedback-inputEmailAddress").innerHTML = "<font color='red'>Please enter a valid email address.</font>";
+            emailField.classList.add("is-invalid");
+            valid = false;
+        }
+
+        var hasCourses = false;
+        var validCourses = false;
+
+        var eccValue = getRadioButtonValue("everyChildCan");
+        var violinUnit1Value = getRadioButtonValue("violinUnit1");
+        var week1Course = getSelectData("week1Courses");
+        var week2Course = getSelectData("week2Courses");
+        if (eccValue == null && violinUnit1Value == null && week1Course === " " && week2Course === " ") {
+            hasCourses = false;
+        }
+        else {
+            hasCourses = true;
+        }
+        if (eccValue === "yes" || violinUnit1Value === "yes") {
+            if (week1Course !== " " || week2Course !== " ") {
+                validCourses = false;
+                alert("not valid here");
+            }
+        }
+        else {
+            validCourses = true;
+        }
+        if (week1Course !== " " || week2Course !== " ") {
+            if (eccValue != null || violinUnit1Value != null) {
+                validCourses = false;
+            }
+        }
+        else {
+            validCourses = true;
+        }
+        if (((eccValue === "no" && violinUnit1Value == null) || (eccValue == null && violinUnit1Value === "no") || (eccValue === "no" && violinUnit1Value === "no")) && (week1Course !== " " || week2Course !== "")) {
+            hasCourses = false;
+        }
+
+
+        if (!hasCourses) {
+            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please register for a course!</h4><hr>";
+            valid = false;
+        }
+        else if (!validCourses) {
+            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix your course registration choices!</h4><hr>";
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    </script>
+
+    <script>
+
+    function clearValidateFeedback() {
+        var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+        for (var i = 0; i < fields.length; i ++) {
+            var inputField = document.getElementById("input" + fields[i]);
+            inputField.classList.remove("is-invalid");
+            inputField.classList.remove("is-valid");
+            document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
+        }
+        document.getElementById("errorMessage").innerHTML = "";
+        document.getElementById("noItemsErrorMessage").innerHTML = "";
+    }
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    function getRadioButtonValue(name) {
+        var radios = document.getElementsByName(name);
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                return radios[i].value;
+            }
+        }
+        return null;
+    }
+    function makePayFormInputString(value, name, price) {
+        var line0 = "<div id=\"payform_" + value + "\">";
+        var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + name + "\">";
+        var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + name + "\">";
+        var line3 = "<input id=\"qty_payform_" + value + "\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
+        var line4 = "<input type=\"hidden\" name=\"Price\" value=" + price + ">";
+        var line5 = "</div>";
+        return line0 + line1 + line2 + line3 + line4 + line5;
+    }
+
+</script>
+</body>
+</html>
