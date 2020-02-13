@@ -2502,6 +2502,8 @@
     var bookLevelNames = [];
     var codesDictionary = {};
     var firstCourseOptionValue = "";
+    var accompanyValues = ["oneParent", "bothParents", "designatedAdult", "noone"];
+    var accompanyNames = ["One Parent/Guardian", "Both Parents/Guardian", "Adult Designated by Parent/Guardian", "No One (student will be 13 by July 1, " +  new Date().getFullYear() + " and will stay with an Ithaca Host Family)"];
 
     /** get student information text from Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=56981838&single=true",

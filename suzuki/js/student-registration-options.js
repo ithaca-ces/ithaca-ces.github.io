@@ -270,8 +270,6 @@ function changeShowEnrichmentCourses(number) {
 
 function changeAccompanyOptions(number) {
     // put in base values
-    var accompanyValues = ["oneParent", "bothParents", "designatedAdult", "noone"];
-    var accompanyNames = ["One Parent/Guardian", "Both Parents/Guardian", "Adult Designated by Parent/Guardian", "No One (student will be 13 by July 1, " +  new Date().getFullYear() + " and will stay with an Ithaca Host Family)"];
     var theSelect = document.getElementById("inputAccompanied-" + number);
     theSelect.innerHTML = '<option style="display:none" disabled selected value></option>';
     for (var i = 0; i < accompanyNames.length - 1; i++) {
@@ -291,4 +289,5 @@ function changeAccompanyOptions(number) {
         option.value = "noone";
         theSelect.add(option);
     }
+    changeDesignatedAdult(number);
 }
