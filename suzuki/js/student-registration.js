@@ -73,7 +73,7 @@ function validateStudentInfo(number) {
     var valid = true;
     // checks contact information
     var fields = ["StudentFirstName", "StudentLastName", "Age", "Graduation", "Accompanied"];
-    var names = ["first name", "last name", "age as of July 1, " + new Date().getFullYear(), "anticipated high school graduation date"];
+    var names = ["first name", "last name", "age as of July 1, " + new Date().getFullYear(), "anticipated high school graduation date", "accompaniment choice"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i] + "-" + number);
         if (inputField.value === "") {
@@ -194,7 +194,7 @@ function clearValidateFeedback() {
         inputField.classList.remove("is-valid");
         document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
     }
-    for (var j = 1; j < MAX_STUDENT_NUMBER; j ++) {
+    for (var j = 1; j <= MAX_STUDENT_NUMBER; j ++) {
         var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TeacherRequests", "TShirt", "EnrichmentChoice1", "EnrichmentChoice2", "EnrichmentChoice3"];
         for (var i = 0; i < studentFields.length; i++) {
             var studentField = document.getElementById("input" + studentFields[i] + "-" + j);
