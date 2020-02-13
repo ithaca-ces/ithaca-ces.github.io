@@ -2,7 +2,7 @@
 function makeID() {
     var value = document.getElementById("inputID").value;
     if (value === "") {
-        document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
+        document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "0" + Math.random().toString(32).substr(2);
     }
 }
 
@@ -282,7 +282,7 @@ function submitGoogleForm() {
     var zip = $('input[id=inputZip]').val();
     var phoneNumber = $('input[id=inputPhoneNumber]').val();
     var emailAddress = $('input[id=inputEmailAddress]').val();
-    var uniqueID = $('input[id=inputID]').val();
+    var uniqueID = $('input[id=inputID]').val().substring(0, 16);
     var notRegisteredSiblings = makeSiblingsString();
     for (var j = 1; j <= globalStudentCount; j++) {
         var incFirstName = $('input[id=inputStudentFirstName-' + j + ']').val();
@@ -320,7 +320,7 @@ function submitGoogleForm() {
             siblings = siblings.substring(0, siblings.length - 2);
         }
         var incUniqueID = makeUniqueID(incFirstName, incLastName, courseName, instrumentName, bookLevel, title, code, teacherFirstName + teacherLastName, teacherPhoneNumber);
-        var registrationID = uniqueID.substring(0, 8) + j + incUniqueID.toString().substring(0, 8);
+        var registrationID = uniqueID + "_" + j + "_" + incUniqueID.toString().substring(0, 8);
         var formData = {
             'entry.2039036389': firstName,
             'entry.305040084': lastName,
@@ -358,7 +358,7 @@ function submitGoogleForm() {
             'entry.1178481040': tShirtSize,
             'entry.332529542': teacherRequests,
             'entry.1208655369': siblings,
-            'entry.663733401': $('input[id=inputID]').val(),
+            'entry.663733401': uniqueID,
             'entry.2097352746': registrationID
         }
 
@@ -398,41 +398,24 @@ function makeUniqueID(firstName, lastName, courseName, instrumentName, bookLevel
 
 /** submits payment form **/
 function submitPaymentForm() {
-    var formInputs = "";
-    var uniqueID = $('input[id=inputID]').val();
+    var uniqueID = $('input[id=inputID]').val().substring(0, 16);
+    var totalPrice = 0;
     for (var i = 1; i <= globalStudentCount; i ++) {
         var value = getSelectData("inputCourse-" + i);
         if (value !== "") {
             var index = courseValues.indexOf(value);
-            var name = courseNames[index];
             var price = coursePrices[index];
-            var incFirstName = $('input[id=inputStudentFirstName-' + i + ']').val();
-            var incLastName = $('input[id=inputStudentLastName-' + i + ']').val();
-            var courseValue = getSelectData("inputCourse-" + i);
-            var courseIndex = courseValues.indexOf(courseValue);
-            var courseName = courseNames[courseIndex];
-            var instrumentValue = getSelectData("inputInstrument-" + i);
-            var instrumentIndex = instrumentValues.indexOf(instrumentValue);
-            var instrumentName = instrumentNames[instrumentIndex];
-            var bookLevel = getSelectData("inputBookLevel-" + i);
-            var code = getSelectData("inputTitle-" + i);
-            var title = getSelectDataTitle("inputTitle-" + i).split(": ")[1];
-            var teacherFirstName = $('input[id=inputTeacherFirstName-' + i + ']').val();
-            var teacherLastName = $('input[id=inputTeacherLastName-' + i + ']').val();
-            var teacherPhoneNumber = $('input[id=inputTeacherPhoneNumber' + i + ']').val();
-            var incUniqueID = makeUniqueID(incFirstName, incLastName, courseName, instrumentName, bookLevel, title, code, teacherFirstName + teacherLastName, teacherPhoneNumber);
-            var registrationID = uniqueID.substring(0, 8) + i + incUniqueID.toString().substring(0, 8);
-            var desc = "Suzuki Student Registration (ID " + registrationID + ")";
-            var line0 = "<div id=\"payform_" + value + "\">";
-            var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + desc + "\">";
-            var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + desc + "\">";
-            var line3 = "<input id=\"qty_payform_" + value + "\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
-            var line4 = "<input type=\"hidden\" name=\"Price\" value=" + price + ">";
-            var line5 = "</div>";
-            formInputs += line0 + line1 + line2 + line3 + line4 + line5;
+            totalPrice += parseFloat(price);
         }
-
     }
+    var desc = "Suzuki Student Registration (ID " + uniqueID + ")";
+    var line0 = "<div id=\"payform_" + "student_registration" + "\">";
+    var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + desc + "\">";
+    var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + desc + "\">";
+    var line3 = "<input id=\"qty_payform_" + "student_registration" + "\" type=\"hidden\" name=\"Qty\" value=" + 1 + ">";
+    var line4 = "<input type=\"hidden\" name=\"Price\" value=" + totalPrice + ">";
+    var line5 = "</div>";
+    var formInputs = line0 + line1 + line2 + line3 + line4 + line5;
     document.getElementById("payFormInputs").innerHTML = formInputs;
     document.getElementById("payform").submit();
 }
