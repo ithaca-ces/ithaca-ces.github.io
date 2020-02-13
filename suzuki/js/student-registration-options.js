@@ -8,6 +8,7 @@ function changeOnCourseSelection(number) {
     changeShowEnrichmentCourses(number);
     changeMovements(number, false);
     changeCustomPiece(number);
+    changeAccompanyOptions(number);
 }
 
 /** runs when a user selects a piece code (per page) **/
@@ -199,34 +200,34 @@ window.getCount = function(parent, getChildrensChildren){
 
 $(document).ready(function(){
     $("#inputAge-1").change(function(){
-        updateAccompanyDropDown(1);
+        changeAccompanyOptions(1);
     });
     $("#inputAge-2").change(function(){
-        updateAccompanyDropDown(2);
+        changeAccompanyOptions(2);
     });
     $("#inputAge-3").change(function(){
-        updateAccompanyDropDown(3);
+        changeAccompanyOptions(3);
     });
     $("#inputAge-4").change(function(){
-        updateAccompanyDropDown(4);
+        changeAccompanyOptions(4);
     });
     $("#inputAge-5").change(function(){
-        updateAccompanyDropDown(5);
+        changeAccompanyOptions(5);
     });
     $("#inputAge-6").change(function(){
-        updateAccompanyDropDown(6);
+        changeAccompanyOptions(6);
     });
     $("#inputAge-7").change(function(){
-        updateAccompanyDropDown(7);
+        changeAccompanyOptions(7);
     });
     $("#inputAge-8").change(function(){
-        updateAccompanyDropDown(8);
+        changeAccompanyOptions(8);
     });
     $("#inputAge-9").change(function(){
-        updateAccompanyDropDown(9);
+        changeAccompanyOptions(9);
     });
     $("#inputAge-10").change(function(){
-        updateAccompanyDropDown(10);
+        changeAccompanyOptions(10);
     });
 
 });
@@ -264,5 +265,30 @@ function changeShowEnrichmentCourses(number) {
         }
         document.getElementById("enrichmentClassesDiv-" + number).style.display = "none";
         document.getElementById("enrichmentClassesDiv-" + number).style.visibility = "hidden";
+    }
+}
+
+function changeAccompanyOptions(number) {
+    // put in base values
+    var accompanyValues = ["oneParent", "bothParents", "designatedAdult", "noone"];
+    var accompanyNames = ["One Parent/Guardian", "Both Parents/Guardian", "Adult Designated by Parent/Guardian", "No One (student will be 13 by July 1, " +  new Date().getFullYear() + " and will stay with an Ithaca Host Family)"];
+    var theSelect = document.getElementById("inputAccompanied-" + number);
+    theSelect.innerHTML = '<option style="display:none" disabled selected value></option>';
+    for (var i = 0; i < accompanyNames.length - 1; i++) {
+        var option = document.createElement("option");
+        option.text = accompanyNames[i];
+        option.value = accompanyValues[i];
+        theSelect.add(option);
+    }
+    // get course
+    var courseValue = getSelectData("inputCourse-" + number);
+    // get age
+    var ageValue = document.getElementById("inputAge-" + number).value;
+    // if course is advanced and age is >= 13, then show the fourth option
+    if (courseValue.toLowerCase().includes("advanced") && ageValue >= 13) {
+        option = document.createElement("option");
+        option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will reside in the teen residence hall)";
+        option.value = "noone";
+        theSelect.add(option);
     }
 }
