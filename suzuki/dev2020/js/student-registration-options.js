@@ -173,7 +173,7 @@ function updateAccompanyDropDown(number) {
     if (value >= 13) {
         if (select.length < 4) {
             var option = document.createElement("option");
-            option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will reside in the teen residence hall)";
+            option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will stay with an Ithaca Host Family)";
             option.value = "noone";
             select.add(option);
         }
@@ -285,7 +285,7 @@ function changeAccompanyOptions(number) {
     // if course is advanced and age is >= 13, then show the fourth option
     if (courseValue.toLowerCase().includes("advanced") && ageValue >= 13) {
         option = document.createElement("option");
-        option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will reside in the teen residence hall)";
+        option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will stay with an Ithaca Host Family)";
         option.value = "noone";
         theSelect.add(option);
     }
