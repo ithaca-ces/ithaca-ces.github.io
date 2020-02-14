@@ -105,13 +105,13 @@ function submitPaymentForm(registrationID) {
             var count = parseInt(document.getElementById("input" + housingList[i]).value);
             if (count > 0) {
                 hasHousing = true;
-                housingTotal += count * parseInt(priceList[i]);
+                housingTotal += count * parseFloat(priceList[i]);
             }
         }
     }
 
     var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
-    var mealPlanPrice = parseInt(document.getElementById("mealPrice").innerText);
+    var mealPlanPrice = parseFloat(document.getElementById("mealPrice").innerText);
     var mealPlanTotal = 0;
 
     if (mealPlanCount > 0) {
