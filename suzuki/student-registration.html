@@ -321,8 +321,6 @@
 
         <hr>
 
-        <div id="endText-1"></div>
-
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-1"><button onclick="next()" class="btn btn-success">Next</button></span>
 
@@ -539,8 +537,6 @@
         </div>
 
         <hr>
-
-        <div id="endText-2"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-2"><button onclick="next()" class="btn btn-success">Next</button></span>
@@ -759,8 +755,6 @@
 
         <hr>
 
-        <div id="endText-3"></div>
-
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-3"><button onclick="next()" class="btn btn-success">Next</button></span>
 
@@ -977,8 +971,6 @@
         </div>
 
         <hr>
-
-        <div id="endText-4"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-4"><button onclick="next()" class="btn btn-success">Next</button></span>
@@ -1197,8 +1189,6 @@
 
         <hr>
 
-        <div id="endText-5"></div>
-
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-5"><button onclick="next()" class="btn btn-success">Next</button></span>
 
@@ -1415,8 +1405,6 @@
         </div>
 
         <hr>
-
-        <div id="endText-6"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-6"><button onclick="next()" class="btn btn-success">Next</button></span>
@@ -1635,8 +1623,6 @@
 
         <hr>
 
-        <div id="endText-7"></div>
-
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-7"><button onclick="next()" class="btn btn-success">Next</button></span>
 
@@ -1853,8 +1839,6 @@
         </div>
 
         <hr>
-
-        <div id="endText-8"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-8"><button onclick="next()" class="btn btn-success">Next</button></span>
@@ -2073,8 +2057,6 @@
 
         <hr>
 
-        <div id="endText-9"></div>
-
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-9"><button onclick="next()" class="btn btn-success">Next</button></span>
 
@@ -2292,8 +2274,6 @@
         </div>
 
         <hr>
-
-        <div id="endText-10"></div>
 
         <button onclick="back()" class="btn btn-warning">Back</button> &nbsp; &nbsp; &nbsp;
         <span id="next-10"><button onclick="next()" class="btn btn-success">Next</button></span>
@@ -2539,18 +2519,6 @@
             }
             for (var j = 1; j <=  MAX_STUDENT_NUMBER; j ++) {
                 document.getElementById("enrichmentText-" + j).innerHTML = sumString;
-            }
-        });
-    /** get end text from Google Spreadsheet **/
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=755707586&single=true",
-        function(data, status) {
-            var textTable = getTableData(data);
-            var sumString = "";
-            for (var i = 1; i < textTable.length; i ++) {
-                sumString += "<p>" + textTable[i][0] + "</p>";
-            }
-            for (var j = 1; j <=  MAX_STUDENT_NUMBER; j ++) {
-                document.getElementById("endText-" + j).innerHTML = sumString;
             }
         });
     /** get courses options from Google Spreadsheet **/
