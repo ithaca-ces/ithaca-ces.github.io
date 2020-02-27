@@ -50,7 +50,7 @@ function submitGoogleForm(registrationID) {
 
 /** web hook to Microsoft Teams **/
 function webHook(registrationID) {
-    var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+    var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/1fcbfd4673c04aaeb026b119a3d68f73/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
     var firstName = $('input[id=inputFirstName]').val();
     var lastName = $('input[id=inputLastName]').val();
     var list = "";
