@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Suzuki Institutes Registration</title>
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            opacity: 1;
+        }
+        .progress.active .progress-bar {
+            -webkit-transition: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+<div id="pre" class="container"><br><br><br><br><center><i style="font-size: 8em" class="fas fa-sync fa-spin"></i></center></div>
+<div id="post" style="display: none; visibility: hidden" class="container"><br><br><br><br><center>
+    <i style="font-size: 8em" class="fas fa-sync fa-spin"></i>
+    <br><br>
+        <div class="progress progress-striped active" style="height: 35px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:0%"></div>
+        </div>
+</center></div>
+<body>
+<div  id="container" class="container" style="display:none;visibility:hidden">
+    <br>
+    <h1>Purchase Week 1 Housing & Meals</h1>
+    <div id="dateTitle"></div>
+    <hr>
+    <div id="errorMessage"></div>
+
+    <h3>Parent/Guardian Contact Information</h3>
+
+    <br>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputFirstName">First Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputFirstName">
+            <div id="valid-feedback-inputFirstName"></div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputLastName">
+            <div id="valid-feedback-inputLastName"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Address <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputAddress">
+        <div id="valid-feedback-inputAddress"></div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="inputCity">City <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCity">
+            <div id="valid-feedback-inputCity"></div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">State/Province <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputState">
+            <div id="valid-feedback-inputState"></div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputZip">Zip Code <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputZip">
+            <div id="valid-feedback-inputZip"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPhoneNumber">Phone Number <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputPhoneNumber">
+        <div id="valid-feedback-inputPhoneNumber"></div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmailAddress">Email Address <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputEmailAddress">
+        <div id="valid-feedback-inputEmailAddress"></div>
+    </div>
+
+
+
+    <hr>
+
+    <div id="noItemsErrorMessage"></div>
+
+
+    <h3>Housing</h3>
+    <div id="housingText"></div>
+    <div id="housingInputs">
+    </div>
+
+    <hr>
+
+    <h3>Meal Plans</h3>
+    <div id="mealPlanText"></div>
+    <div class="form-group form-inline ">
+        <label for="inputMealPlanCount"><b>Number Of Meal Plans:</b></label> &nbsp;&nbsp;
+        <input style="max-width: 400px" min="0" type="number" class="form-control" id="inputMealPlanCount" value="0" onchange="changeMealPlanFields()">
+    </div>
+    <h5 id="mealPlanInputsTitle" style="visibility: hidden;display:none">Please list the names of all people who will be on a meal plan:</h5>
+    <div id="mealPlanInputs">
+
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <label for="inputAccommodations"><b>Individuals with disabilities requiring accommodations should list them below or contact us at (607) 274-3702. We ask that requests for accommodations be made as soon as possible.</b></label><br>
+        <textarea id="inputAccommodations" rows="4" style="width: 100%"></textarea>
+    </div>
+
+    <hr>
+
+    <div id="housingList" style="visibility: hidden; display: none"></div>
+    <div id="nameList" style="visibility: hidden; display: none"></div>
+    <div id="priceList" style="visibility: hidden; display: none"></div>
+    <div id="mealPrice" style="visibility: hidden; display: none"></div>
+    <div id="quantityList" style="visibility: hidden; display: none"></div>
+
+    <div style="visibility: hidden;display:none"><input id="inputID" type="text"></div>
+
+    <h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5> <br>
+
+    <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
+    <br><br>
+
+    <div id="paymentFormDiv" style="visibility: hidden; display: none">
+        <form target="_parent" id="payform" method="post" action="https://shoppingcartsecure.com/cart32.exe/6072743313-AddItem">
+            <div id="payFormInputs" style="visibility: hidden; display: none"></div>
+        </form>
+    </div>
+
+</div>
+<div id="hidden" style="display: none; visibility: hidden;"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function makeMealPlanInputs() {
+        var string = "";
+        for (var i = 1; i < MEAL_PLAN_MAX; i ++) {
+            string += '<div class="form-row" id="mealPlanName-' + i + '" style="display: none;visibility: hidden">';
+            string += '<div class="form-group col-md-6">';
+            string += '<label for="inputFirstNameMealPlan-' + i + '"><strong>Meal Plan #' + i + '</strong> - First Name <span style="color: red">*</span></label>';
+            string += ' <input type="text" class="form-control" id="inputFirstNameMealPlan-' + i + '">';
+            string += '<div id="valid-feedback-inputFirstNameMealPlan-' + i + '"></div>';
+            string += '</div>';
+            string += '<div class="form-group col-md-6">';
+            string += '<label for="inputLastNameMealPlan-' + i + '"><strong>Meal Plan #' + i + '</strong> - Last Name <span style="color: red">*</span></label>';
+            string += '<input type="text" class="form-control" id="inputLastNameMealPlan-' + i + '">';
+            string += '<div id="valid-feedback-inputLastNameMealPlan-' + i + '"></div>';
+            string += '</div></div>';
+        }
+        document.getElementById("mealPlanInputs").innerHTML = string;
+
+    }
+    var MEAL_PLAN_MAX = 50;
+    makeMealPlanInputs();
+</script>
+<script>
+    // dates
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vREtU3aso5YQevwxYncCh60Cwn55X6PuCOuNv1UVHHsLr4G9TJevUa4lPjodkOBM3vUfllVyyEbhmRg/pubhtml?gid=0&single=true",
+        function (data, status) {
+            var textTable = getTableData(data);
+            var week1 = textTable[1][1];
+            document.getElementById("dateTitle").innerHTML = "<h2><i>" + week1 + "</i></h2>";
+    });
+    // meal text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRmvtTepOd7KLF6QYjegI-wsp-ZDAuT-JOaykqhScyUEbS731qerv_AM6SNIQX84Evz_VtLut66rxGb/pubhtml?gid=56981838&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("mealPlanText").innerHTML = sumString;
+        });
+    // meal data
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRmvtTepOd7KLF6QYjegI-wsp-ZDAuT-JOaykqhScyUEbS731qerv_AM6SNIQX84Evz_VtLut66rxGb/pubhtml?gid=1223661694&single=true",
+        function(data, status) {
+        document.getElementById("mealPrice").innerText = getTableData(data)[1][1];
+    });
+    // housing text
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRmvtTepOd7KLF6QYjegI-wsp-ZDAuT-JOaykqhScyUEbS731qerv_AM6SNIQX84Evz_VtLut66rxGb/pubhtml?gid=869859262&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("housingText").innerHTML = sumString;
+        });
+    // housing data
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRmvtTepOd7KLF6QYjegI-wsp-ZDAuT-JOaykqhScyUEbS731qerv_AM6SNIQX84Evz_VtLut66rxGb/pubhtml?gid=256271385&single=true",
+        function(data, status) {
+            var housingData = getTableData(data);
+            var housingInputs = "";
+            var housingList = "";
+            var nameList = "";
+            var priceList = "";
+            var quantityList = "";
+            for (var i = 1; i < housingData.length; i++) {
+                housingList += housingData[i][0].toLowerCase().replace(/ /g, '') + ";;;";
+                nameList += housingData[i][0] + ";;;";
+                priceList += housingData[i][1] + ";;;";
+                quantityList += housingData[i][4] + ";;;";
+                if (parseInt(housingData[i][4]) > 0) {
+                    var firstLine = "<div class=\"form-group\">";
+                    var secondLine = "<label for=\"input" + housingData[i][0].toLowerCase().replace(/ /g, '') + "\"><b>" + housingData[i][0] + " - $" + housingData[i][1] + "</b></label> &nbsp;&nbsp;";
+                    var thirdLine = "<input style=\"max-width: 400px\" type=\"number\" min=\"0\" max=\"" + housingData[i][4] + "\" class=\"form-control\" value='0' id=\"input" + housingData[i][0].toLowerCase().replace(/ /g, '') + "\">";
+                    var fourthLine = "<small id=\"emailHelp\" class=\"form-text text-muted\">" + housingData[i][4] + " remaining </small>";
+                    var fifthLine = "<div id=\"valid-feedback-input" + housingData[i][0].toLowerCase().replace(/ /g, '')  + "\"></div>";
+                    var sixthLine = "</div>";
+                    housingInputs += firstLine + secondLine + thirdLine + fourthLine + fifthLine + sixthLine;
+                }
+            }
+            document.getElementById("housingInputs").innerHTML = housingInputs;
+            document.getElementById("housingList").innerText = housingList;
+            document.getElementById("nameList").innerText = nameList;
+            document.getElementById("priceList").innerText = priceList;
+            document.getElementById("quantityList").innerText = quantityList;
+        }).done(function() {
+        makeID();
+            document.getElementById("container").style.display = "inherit";
+            document.getElementById("container").style.visibility = "visible";
+            document.getElementById("pre").style.display = "none";
+            document.getElementById("pre").style.visibility = "hidden";
+        })
+    </script>
+    <script>
+
+    function getTableData(inputData) {
+        var array1 = inputData.toString().split("<table");
+        var array2 = array1[1].split("</table>");
+        var string = "<table" + array2[0] + "</table>";
+        document.getElementById("hidden").innerHTML = string;
+        var myTableArray = [];
+        $("table tr").each(function() {
+            var arrayOfThisRow = [];
+            var tableData = $(this).find('td');
+            if (tableData.length > 0) {
+                tableData.each(function() { arrayOfThisRow.push($(this).text()); });
+                myTableArray.push(arrayOfThisRow);
+            }
+        });
+        return myTableArray;
+    }
+
+    function makeID() {
+        var value = document.getElementById("inputID").value;
+        if (value === "") {
+            document.getElementById("inputID").value = Math.random().toString(32).substr(2) + "_" + Math.random().toString(32).substr(2);
+        }
+    }
+
+    </script>
+    <script>
+
+    function submit() {
+        document.getElementById("container").style.display = "none";
+        document.getElementById("container").style.visibility = "hidden";
+        document.getElementById("post").style.display = "inherit";
+        document.getElementById("post").style.visibility = "visible";
+        $('html,body').scrollTop(0);
+        window.parent.postMessage("scrollTop", '*');
+        if (validate()) {
+            $(".progress-bar").animate({
+                width: "100%"
+            }, 10000);
+            submitGoogleForm();
+            webHook();
+            setTimeout(function(){
+                submitPaymentForm();
+            }, 10000);
+        }
+        else {
+            document.getElementById("errorMessage").innerHTML = "<h3 style='color:red'>Please correct the issue(s) indicated below in order to complete your form submission!</h3><hr>";
+            document.getElementById("container").style.display = "inherit";
+            document.getElementById("container").style.visibility = "visible";
+            document.getElementById("post").style.display = "none";
+            document.getElementById("post").style.visibility = "hidden"
+        }
+    }
+
+    function submitGoogleForm() {
+        var housingString = document.getElementById("housingList").innerText;
+        var housingList = housingString.split(";;;");
+        var dataArray = "";
+        for (var i = 0; i < housingList.length - 1; i ++) {
+            if (document.getElementById("input" + housingList[i]) != null) {
+                dataArray += document.getElementById("input" + housingList[i]).value + ";;;;;;";
+            }
+            else {
+                dataArray += "0;;;;;;";
+            }
+        }
+        var mealPlanCount = document.getElementById("inputMealPlanCount").value;
+        var mealPlanDataArray = "";
+        for (var i = 1; i <= mealPlanCount; i ++) {
+            mealPlanDataArray += document.getElementById("inputFirstNameMealPlan-" + i).value + " " + document.getElementById("inputLastNameMealPlan-" + i).value + ", ";
+        }
+        mealPlanDataArray = mealPlanDataArray.substring(0, mealPlanDataArray.length - 2);
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'entry.2039036389': $('input[id=inputFirstName]').val(),
+            'entry.305040084': $('input[id=inputLastName]').val(),
+            'entry.1583950870': $('input[id=inputAddress]').val(),
+            'entry.1741944776': $('input[id=inputCity]').val(),
+            'entry.1449597621': $('input[id=inputState]').val(),
+            'entry.2043889500': $('input[id=inputZip]').val(),
+            'entry.1770398499': $('input[id=inputPhoneNumber]').val(),
+            'entry.303292725': $('input[id=inputEmailAddress]').val(),
+            'entry.975589451': $('input[id=inputMealPlanCount]').val(),
+            'entry.2015316342': document.getElementById('inputAccommodations').value,
+            'entry.616708405': dataArray,
+            'entry.1271883661': mealPlanDataArray,
+            'entry.55548226': $('input[id=inputID]').val()
+        }
+        // process the form
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : 'https://docs.google.com/forms/d/e/1FAIpQLSdrotzMctO4vAOOtdsr16hHvL05yOif2tVb8Pgb8STiFlJHdQ/formResponse', // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode          : true,
+        })
+        // using the done promise callback
+            .done(function(data) {
+
+            });
+    }
+
+    </script>
+    <script>
+        function webHook() {
+            var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+            var firstName = $('input[id=inputFirstName]').val();
+            var lastName = $('input[id=inputLastName]').val();
+            var id = $('input[id=inputID]').val();
+            var list = "";
+            var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
+            if (mealPlanCount > 0) {
+                list += "<li><b>Meal Plans ($" + document.getElementById("mealPrice").innerText + "):</b> " + mealPlanCount + "</li>";
+                var mealPlanDataArray = "";
+                for (var i = 1; i <= mealPlanCount; i ++) {
+                    mealPlanDataArray += document.getElementById("inputFirstNameMealPlan-" + i).value + " " + document.getElementById("inputLastNameMealPlan-" + i).value + ", ";
+                }
+                mealPlanDataArray = mealPlanDataArray.substring(0, mealPlanDataArray.length - 2);
+                list += "<li><b>Meal Plan People:</b> " + mealPlanDataArray + "</li>";
+            }
+            var housingString = document.getElementById("housingList").innerText;
+            var housingList = housingString.split(";;;");
+            var nameString = document.getElementById("nameList").innerText;
+            var nameList = nameString.split(";;;");
+            var priceString = document.getElementById("priceList").innerText;
+            var priceList = priceString.split(";;;");
+            for (var i = 0; i < housingList.length - 1; i++) {
+                if (document.getElementById("input" + housingList[i]) != null) {
+                    var count = parseInt(document.getElementById("input" + housingList[i]).value);
+                    if (count > 0) {
+                        list += "<li><b>" + nameList[i] + " ($" + priceList[i] + ")</b>: " + count + "</li>";
+                    }
+                }
+            }
+            var text = "<b>WEEK 1 HOUSING & MEALS SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a Week 1 Housing & Meals Form:<br><ul>" + list + "</ul><i>(ID # " + id + ")</i>";
+            $.ajax({
+                data: JSON.stringify({
+                    "text": text
+                }),
+                dataType: 'json',
+                type: 'POST',
+                url: url
+            });
+        }
+        </script>
+        <script>
+
+    function submitPaymentForm() {
+        var formInputs = "";
+
+        var mealPlanCount = parseInt(document.getElementById("inputMealPlanCount").value);
+        if (mealPlanCount > 0) {
+            var line0 = "<div id=\"" + "meal_plan" + "\">";
+            var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + "Meal Plan" + "\">";
+            var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + "Meal Plan" + "\">";
+            var line3 = "<input id=\"qty_meal_plan\" type=\"hidden\" name=\"Qty\" value=" + mealPlanCount + ">";
+            var line4 = "<input type=\"hidden\" name=\"Price\" value=" + document.getElementById("mealPrice").innerText + ">";
+            var line5 = "</div>";
+            formInputs = line0 + line1 + line2 + line3 + line4 + line5;
+        }
+
+        var housingString = document.getElementById("housingList").innerText;
+        var housingList = housingString.split(";;;");
+        var nameString = document.getElementById("nameList").innerText;
+        var nameList = nameString.split(";;;");
+        var priceString = document.getElementById("priceList").innerText;
+        var priceList = priceString.split(";;;");
+        for (var i = 0; i < housingList.length - 1; i ++) {
+            if (document.getElementById("input" + housingList[i]) != null) {
+                var count = parseInt(document.getElementById("input" + housingList[i]).value);
+                if (count > 0) {
+                    var line0 = "<div id=\"" + housingList[i] + "\">";
+                    var line1 = "<input type=\"hidden\" name=\"PartNo\" value=\"" + nameList[i] + "\">";
+                    var line2 = "<input type=\"hidden\" name=\"Item\" value=\"" + nameList[i] + "\">";
+                    var line3 = "<input id=\"qty_" + housingList[i] + "\" type=\"hidden\" name=\"Qty\" value=" + count + ">";
+                    var line4 = "<input type=\"hidden\" name=\"Price\" value=" + priceList[i] + ">";
+                    var line5 = "</div>";
+                    formInputs += line0 + line1 + line2 + line3 + line4 + line5;
+                }
+            }
+        }
+        document.getElementById("payFormInputs").innerHTML = formInputs;
+        document.getElementById("payform").submit();
+    }
+    </script>
+    <script>
+
+    function validate() {
+        clearValidateFeedback();
+        var valid = true;
+
+        // checks contact information
+        var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+        var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address"];
+        for (var i = 0; i < fields.length; i ++) {
+            var inputField = document.getElementById("input" + fields[i]);
+            if (inputField.value === "") {
+                inputField.classList.add("is-invalid");
+                valid = false;
+                document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "<font color='red'>Please enter your " + names[i] + ".</>"
+            }
+            else {
+                inputField.classList.add("is-valid");
+            }
+        }
+
+        var emailField = document.getElementById("inputEmailAddress");
+        var result = validateEmail(emailField.value);
+        if(emailField.value !== "" && !result) {
+            document.getElementById("valid-feedback-inputEmailAddress").innerHTML = "<font color='red'>Please enter a valid email address.</font>";
+            emailField.classList.add("is-invalid");
+            valid = false;
+        }
+
+
+        var hasMeals = false;
+        var hasHousing = false;
+        var badHousing = false;
+        var badCount = 0;
+
+        var mealCount = $('input[id=inputMealPlanCount]').val();
+        if (mealCount > 0) {
+            hasMeals = true;
+        }
+
+        for (var j = 1; j <= parseInt(mealCount); j ++) {
+            var firstName = document.getElementById("inputFirstNameMealPlan-" + j);
+            var lastName = document.getElementById("inputLastNameMealPlan-" + j);
+            if (firstName.value === "") {
+                valid = false;
+                firstName.classList.add("is-invalid");
+                document.getElementById("valid-feedback-inputFirstNameMealPlan-" + j).innerHTML = "<font color='red'>Please enter a first name.</>";
+            }
+            else {
+                firstName.classList.add("is-valid");
+            }
+            if (lastName.value === "") {
+                valid = false;
+                lastName.classList.add("is-invalid");
+                document.getElementById("valid-feedback-inputLastNameMealPlan-" + j).innerHTML = "<font color='red'>Please enter a last name.</>";
+            }
+            else {
+                lastName.classList.add("is-valid");
+            }
+        }
+
+        var housingString = document.getElementById("housingList").innerText;
+        var housingList = housingString.split(";;;");
+        var quantityString = document.getElementById("quantityList").innerHTML;
+        var quantityList = quantityString.split(";;;");
+        for (var i = 0; i < housingList.length - 1; i ++) {
+            var inputField = document.getElementById("input" + housingList[i]);
+            if (inputField != null) {
+                var count = parseInt(inputField.value);
+                if (count > 0) {
+                    hasHousing = true;
+                    if (count > parseInt(quantityList[i])) {
+                        badHousing = true;
+                        badCount ++;
+                        inputField.classList.add("is-invalid");
+                        valid = false;
+                        document.getElementById("valid-feedback-input" + housingList[i]).innerHTML = "<font color='red'>Please enter a number below " + (parseInt(quantityList[i]) + 1) + ".</>";
+                    }
+                    else {
+                        inputField.classList.add("is-valid");
+                    }
+                }
+
+            }
+        }
+
+
+        if (!hasMeals && !hasHousing) {
+            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please select housing and/or a meal plan to purchase!</h4><hr>";
+            valid = false;
+        }
+        if (badHousing && badCount === 1) {
+            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix the issue indicated below with your housing choice!</h4><hr>";
+            valid = false;
+        }
+        if (badHousing && badCount > 1) {
+            document.getElementById("noItemsErrorMessage").innerHTML = "<h4 style='color:red'>Please fix the issues indicated below with your housing choice!</h4><hr>";
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    </script>
+
+    <script>
+
+    function clearValidateFeedback() {
+        var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+        for (var i = 0; i < fields.length; i ++) {
+            var inputField = document.getElementById("input" + fields[i]);
+            inputField.classList.remove("is-invalid");
+            inputField.classList.remove("is-valid");
+            document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
+        }
+        var housingString = document.getElementById("housingList").innerText;
+        var housingList = housingString.split(";;;");
+        for (var i = 0; i < housingList.length - 1; i ++) {
+            var inputField = document.getElementById("input" + housingList[i]);
+            if (inputField != null) {
+            inputField.classList.remove("is-invalid");
+            inputField.classList.remove("is-valid");
+            document.getElementById("valid-feedback-input" + housingList[i]).innerHTML = "";
+            }
+        }
+        for (var i = 1; i <= MEAL_PLAN_MAX; i ++) {
+            var inputFieldFirst = document.getElementById("inputFirstNameMealPlan-" + i);
+            var inputFieldLast = document.getElementById("inputLastNameMealPlan-" + i);
+            if (inputFieldFirst != null) {
+                inputFieldFirst.classList.remove("is-invalid");
+                inputFieldFirst.classList.remove("is-valid");
+                document.getElementById("valid-feedback-inputFirstNameMealPlan-" + i).innerHTML = "";
+            }
+            if (inputFieldLast != null) {
+                inputFieldLast.classList.remove("is-invalid");
+                inputFieldLast.classList.remove("is-valid");
+                document.getElementById("valid-feedback-inputLastNameMealPlan-" + i).innerHTML = "";
+            }
+        }
+        document.getElementById("errorMessage").innerHTML = "";
+        document.getElementById("noItemsErrorMessage").innerHTML = "";
+    }
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    </script>
+
+    <script>
+        function changeMealPlanFields() {
+            var mealPlanCount = document.getElementById("inputMealPlanCount").value;
+            if (mealPlanCount >= 1) {
+                document.getElementById("mealPlanInputsTitle").style.visibility = "visible";
+                document.getElementById("mealPlanInputsTitle").style.display = "";
+            }
+            else {
+                document.getElementById("mealPlanInputsTitle").style.visibility = "hidden";
+                document.getElementById("mealPlanInputsTitle").style.display = "none";
+            }
+            for (var i = 1; i < MEAL_PLAN_MAX; i++) {
+                if (i <= mealPlanCount) {
+                    document.getElementById("mealPlanName-" + i).style.visibility = "visible";
+                    document.getElementById("mealPlanName-" + i).style.display = "";
+                }
+                else {
+                    document.getElementById("mealPlanName-" + i).style.visibility = "hidden";
+                    document.getElementById("mealPlanName-" + i).style.display = "none";
+                }
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>
