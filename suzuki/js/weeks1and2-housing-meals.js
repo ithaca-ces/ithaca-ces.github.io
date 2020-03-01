@@ -31,13 +31,13 @@ function submitGoogleForm(registrationID) {
         'entry.975589451': $('input[id=inputMealPlanCount]').val(),
         'entry.2015316342': document.getElementById('inputAccommodations').value,
         'entry.616708405': dataArray,
-        'entry.2006159302': mealPlanDataArray,
-        'entry.849343002': registrationID
+        'entry.255990349': mealPlanDataArray,
+        'entry.834943981': registrationID.substring(0, 10)
     }
     // process the form
     $.ajax({
         type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url         : 'https://docs.google.com/forms/d/e/1FAIpQLSd5u4SJWIZ0tf6LpJdERVQ-We2dX7QZyfODnDy_oEiQLpyAxg/formResponse', // the url where we want to POST
+        url         : 'https://docs.google.com/forms/d/e/1FAIpQLSdprLZmFgZ-rVDSkVSZPI0r5hEx_EFLO7eW7FhH2dQeU0csWw/formResponse', // the url where we want to POST
         data        : formData, // our data object
         dataType    : 'json', // what type of data do we expect back from the server
         encode          : true
@@ -50,7 +50,7 @@ function submitGoogleForm(registrationID) {
 
 /** web hook to Microsoft Teams **/
 function webHook(registrationID) {
-    var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/a2a3b5bb0d8b48179df41574149a5e6c/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
+    var url = "https://outlook.office.com/webhook/26a7efc0-83ae-498b-9804-aadcf71f0f6c@fa1ac8f6-5e54-4857-9f0b-4aa422c09689/IncomingWebhook/1fcbfd4673c04aaeb026b119a3d68f73/e4ae9ca5-eeac-4c99-ad5c-3fc1c29bece1";
     var firstName = $('input[id=inputFirstName]').val();
     var lastName = $('input[id=inputLastName]').val();
     var list = "";
@@ -78,7 +78,7 @@ function webHook(registrationID) {
             }
         }
     }
-    var text = "<b>WEEK 2 HOUSING & MEALS SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a Week 2 Housing & Meals Form:<br><ul>" + list + "</ul><i>(ID # " + registrationID + ")</i>";
+    var text = "<b>WEEKS 1 AND 2 HOUSING & MEALS SUBMISSION</b><br>" + firstName + " " + lastName + " has submitted a Weeks 1 and 2 Housing & Meals Form:<br><ul>" + list + "</ul><i>(ID # " + registrationID.substring(0, 10) + ")</i>";
     $.ajax({
         data: JSON.stringify({
             "text": text
@@ -119,7 +119,7 @@ function submitPaymentForm(registrationID) {
         hasMealPlans = true;
     }
 
-    var title = "Suzuki Week 2 ";
+    var title = "Suzuki Weeks 1 & 2 ";
     var totalPrice = 0;
     if (hasHousing && hasMealPlans) {
         title += "Housing & Meals";
@@ -133,7 +133,7 @@ function submitPaymentForm(registrationID) {
         title += "Meals";
         totalPrice = mealPlanTotal;
     }
-    title += " (ID " + registrationID + ")";
+    title += " (ID " + registrationID.substring(0, 10) + ")";
 
     var line0 = "<div id=housing_meals>";
     var line1 = '<input type=hidden name=PartNo value="' + title + '">';
