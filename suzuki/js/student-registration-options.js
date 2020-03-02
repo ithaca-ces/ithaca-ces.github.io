@@ -22,7 +22,7 @@ function changeInstruments(number) {
     var selectedCourse = getSelectData("inputCourse-" + number);
     var select = document.getElementById("inputInstrument-" + number);
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
-    if (selectedCourse === firstCourseOptionValue) {
+    if (selectedCourse === firstCourseOptionValue || selectedCourse === lastCourseOptionValue) {
         for (var i = 0; i < instrumentNames.length; i ++) {
             var option = document.createElement("option");
             option.text = instrumentNames[i];

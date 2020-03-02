@@ -2482,6 +2482,7 @@
     var bookLevelNames = [];
     var codesDictionary = {};
     var firstCourseOptionValue = "";
+    var lastCourseOptionValue = "";
     var accompanyValues = ["oneParent", "bothParents", "designatedAdult", "noone"];
     var accompanyNames = ["One Parent/Guardian", "Both Parents/Guardian", "Adult Designated by Parent/Guardian", "No One (student will be 13 by July 1, " +  new Date().getFullYear() + " and will stay with an Ithaca Host Family)"];
 
@@ -2537,6 +2538,9 @@
                     coursePrices.push(coursesData[i][1]);
                     if (i === 1) {
                         firstCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                    }
+                    if (i === (coursesData.length - 1)) {
+                        lastCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
                     }
                 }
             }
