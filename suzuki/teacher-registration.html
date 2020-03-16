@@ -121,6 +121,19 @@
                 <label class="form-check-label" for="radio4">No</label>
             </div>
         </div>
+
+        <div class="form-group">
+            <b>Would you like to register for <span id="celloUnit1Name"></span>  &mdash; $<span id="celloUnit1Price"></span>?</b> <span style="color: red">*</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="celloUnit1" id="radio5" value="yes">
+                <label class="form-check-label" for="radio5">Yes</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="celloUnit1" id="radio6" value="no">
+                <label class="form-check-label" for="radio6">No</label>
+            </div>
+        </div>
+
     </div>
 
     <div id="courseSelects">
@@ -182,6 +195,8 @@
     var eccPrice = "";
     var violinUnit1Name = "";
     var violinUnit1Price = "";
+    var celloUnit1Name = "";
+    var celloUnit1Price = "";
     var week1CoursesNames = [];
     var week1CoursesPrices = [];
     var week1CoursesIDs = [];
@@ -264,6 +279,17 @@
             violinUnit1Price = price;
             document.getElementById("violinUnit1Name").innerText = name;
             document.getElementById("violinUnit1Price").innerText = price;
+        });
+    /** get Cello Unit 1 name and price from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1644261533&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var name = coursesData[2][0];
+            var price = coursesData[2][1];
+            celloUnit1Name = name;
+            celloUnit1Price = price;
+            document.getElementById("celloUnit1Name").innerText = name;
+            document.getElementById("celloUnit1Price").innerText = price;
         });
     /** get week 1 courses names and prices from Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=256271385&single=true",
