@@ -221,7 +221,7 @@ function validate() {
     else {
         hasCourses = true;
     }
-    if (eccValue === "yes" || violinUnit1Value === "yes") {
+    if (eccValue === "yes" || twoWeekCourse !== " ") {
         if (week1Course !== " " || week2Course !== " ") {
             validCourses = false;
         }
@@ -230,14 +230,14 @@ function validate() {
         validCourses = true;
     }
     if (week1Course !== " " || week2Course !== " ") {
-        if (eccValue != null || violinUnit1Value != null) {
+        if (eccValue != null || twoWeekCourse !== " ") {
             validCourses = false;
         }
     }
     else {
         validCourses = true;
     }
-    if (((eccValue === "no" && violinUnit1Value == null) || (eccValue == null && violinUnit1Value === "no") || (eccValue === "no" && violinUnit1Value === "no")) && (week1Course !== " " || week2Course !== "")) {
+    if (((eccValue === "no" && twoWeekCourse === " ") || (eccValue == null && twoWeekCourse === " ") || (eccValue === "no" && twoWeekCourse === " ")) && (week1Course !== " " || week2Course !== "")) {
         hasCourses = false;
     }
 
@@ -270,15 +270,17 @@ function clearValidateFeedback() {
 /** webhook **/
 function webHook(id) {
     var eccValue = getRadioButtonValue("everyChildCan");
-    var violinUnit1Value = getRadioButtonValue("violinUnit1");
+    var twoWeekCourse = getRadioButtonValue("twoWeekCourses");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
     var nameArray = [];
     if (eccValue === "yes") {
         nameArray.push(eccName);
     }
-    if (violinUnit1Value === "yes") {
-        nameArray.push(violinUnit1Name);
+    if (twoWeekCourse !== " ") {
+        var index = twoWeekCoursesIDs.indexOf(twoWeekCourse);
+        var name = twoWeekCoursesNames[index];
+        nameArray.push(name);
     }
     if (week1Course !== " ") {
         var index = week1CoursesIDs.indexOf(week1Course);
