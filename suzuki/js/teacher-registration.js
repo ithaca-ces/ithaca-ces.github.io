@@ -85,7 +85,7 @@ function submit() {
 /** submit google form **/
 function submitGoogleForm(uniqueID) {
     var eccValue = getRadioButtonValue("everyChildCan");
-    var twoWeekCourse = getSelectData("twoWeekCourse")
+    var twoWeekCourse = getSelectData("twoWeekCourses")
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
     var tShirtSize = getSelectData("inputTShirt").replace('_', ' ');
@@ -141,7 +141,7 @@ function submitGoogleForm(uniqueID) {
 /** submit payment form **/
 function submitPaymentForm(uniqueID) {
     var eccValue = getRadioButtonValue("everyChildCan");
-    var twoWeekCourse = getSelectData("twoWeekCourses");;
+    var twoWeekCourse = getSelectData("twoWeekCourses");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
 
@@ -151,11 +151,10 @@ function submitPaymentForm(uniqueID) {
         fullPrice += parseFloat(eccPrice);
     }
     if (twoWeekCourse !== " ") {
-        var index = twoWeekCourseIDs.indexOf(week1Course);
-        var price = twoWeekCoursesPricesPrices[index];
+        var index = twoWeekCoursesIDs.indexOf(twoWeekCourse);
+        var price = twoWeekCoursesPrices[index];
         fullPrice += parseFloat(price);
     }
-
     if (week1Course !== " ") {
         var index = week1CoursesIDs.indexOf(week1Course);
         var price = week1CoursesPrices[index];
@@ -270,7 +269,7 @@ function clearValidateFeedback() {
 /** webhook **/
 function webHook(id) {
     var eccValue = getRadioButtonValue("everyChildCan");
-    var twoWeekCourse = getRadioButtonValue("twoWeekCourses");
+    var twoWeekCourse = getSelectData("twoWeekCourses");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
     var nameArray = [];
