@@ -20,10 +20,17 @@ $(document).ready(function () {
 
 /** changes what fields display if they select ECC and Violin Unit 1 **/
 function changeLogicECC() {
+    changeUpperLogic();
+}
+
+function changeLogicTwoWeek() {
+    changeUpperLogic();
+}
+
+function changeUpperLogic() {
     var eccValue = getRadioButtonValue("everyChildCan");
-    var violinUnit1Value = getRadioButtonValue("violinUnit1");
-    var celloUnit1Value = getRadioButtonValue("celloUnit1");
-    if (eccValue === "yes" || violinUnit1Value === "yes" || celloUnit1Value === "yes") {
+    var twoWeekCourse = getSelectData("twoWeekCourses");
+    if (eccValue === "yes" || twoWeekCourse.trim() !== "") {
         document.getElementById("courseSelects").style.display = "none";
         document.getElementById("courseSelects").style.visibility = "hidden";
         document.getElementById("week1Courses").value = " ";
@@ -33,7 +40,6 @@ function changeLogicECC() {
         document.getElementById("courseSelects").style.display = "inherit";
         document.getElementById("courseSelects").style.visibility = "visible";
     }
-    // duplicate if together
 }
 
 /** change what fields display if they select week 1 and week 2 courses **/
@@ -45,10 +51,8 @@ function changeLogicCourses() {
         document.getElementById("courseRadios").style.visibility = "hidden";
         document.getElementById("radio1").checked = false;
         document.getElementById("radio2").checked = false;
-        document.getElementById("radio3").checked = false;
-        document.getElementById("radio4").checked = false;
-        document.getElementById("radio5").checked = false;
-        document.getElementById("radio6").checked = false;
+        document.getElementById("twoWeekCourses").value = " ";
+
     }
     else {
         document.getElementById("courseRadios").style.display = "inherit";
