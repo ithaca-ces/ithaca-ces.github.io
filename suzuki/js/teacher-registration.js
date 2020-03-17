@@ -22,7 +22,8 @@ $(document).ready(function () {
 function changeLogicECC() {
     var eccValue = getRadioButtonValue("everyChildCan");
     var violinUnit1Value = getRadioButtonValue("violinUnit1");
-    if (eccValue === "yes" || violinUnit1Value === "yes") {
+    var celloUnit1Value = getRadioButtonValue("celloUnit1");
+    if (eccValue === "yes" || violinUnit1Value === "yes" || celloUnit1Value === "yes") {
         document.getElementById("courseSelects").style.display = "none";
         document.getElementById("courseSelects").style.visibility = "hidden";
         document.getElementById("week1Courses").value = " ";
@@ -32,6 +33,7 @@ function changeLogicECC() {
         document.getElementById("courseSelects").style.display = "inherit";
         document.getElementById("courseSelects").style.visibility = "visible";
     }
+    // duplicate if together
 }
 
 /** change what fields display if they select week 1 and week 2 courses **/
@@ -45,6 +47,8 @@ function changeLogicCourses() {
         document.getElementById("radio2").checked = false;
         document.getElementById("radio3").checked = false;
         document.getElementById("radio4").checked = false;
+        document.getElementById("radio5").checked = false;
+        document.getElementById("radio6").checked = false;
     }
     else {
         document.getElementById("courseRadios").style.display = "inherit";
