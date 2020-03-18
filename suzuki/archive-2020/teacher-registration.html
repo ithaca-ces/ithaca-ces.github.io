@@ -108,25 +108,28 @@
             </div>
         </div>
 
+        <div id="violin1Text"></div>
 
         <div class="form-group">
-            <span><b>Select a Two-Week Unit One Course (<span id="twoWeekDateSpan"></span>):</b></span> <span style="color: red">*</span>
-            <p style="color: #646464; font-style: italic; margin-bottom: 0;">In order to take a Unit 1 course, you must take the prerequisite ECC course and pass the audition required by the SAA. Please visit the link posted above for requirements. Please email <a href='mailto:ithacainstitute@gmail.com'>ithacainstitute@gmail.com</a> with any further questions.</p>
-            <select class="form-control" id="twoWeekCourses" onchange="changeLogicTwoWeek()">
-                <option value=" "></option>
-            </select>
+            <b>Would you like to register for <span id="violinUnit1Name"></span>  &mdash; $<span id="violinUnit1Price"></span>?</b> <span style="color: red">*</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="violinUnit1" id="radio3" value="yes">
+                <label class="form-check-label" for="radio3">Yes</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="violinUnit1" id="radio4" value="no">
+                <label class="form-check-label" for="radio4">No</label>
+            </div>
         </div>
-
-
     </div>
 
     <div id="courseSelects">
-        <span><b>Select a Week 1 Course (<span id="week1DateSpan"></span>):</b></span> <span style="color: red">*</span>
+        <span><b>Select a week 1 course (<span id="week1DateSpan"></span>):</b></span> <span style="color: red">*</span>
         <select class="form-control" id="week1Courses" onchange="changeLogicCourses()">
             <option value=" "></option>
         </select>
         <br>
-        <span><b>Select a Week 2 Course (<span id="week2DateSpan"></span>):</b></span> <span style="color: red">*</span>
+        <span><b>Select a week 2 course (<span id="week2DateSpan"></span>):</b></span> <span style="color: red">*</span>
         <select class="form-control" id="week2Courses" onchange="changeLogicCourses()">
             <option value=" "></option>
         </select>
@@ -172,14 +175,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="dev2020/js/utils.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
 <script type="text/javascript" src="js/teacher-registration.js"></script>
 <script>
     var eccName = "";
     var eccPrice = "";
-    var twoWeekCoursesNames = [];
-    var twoWeekCoursesPrices = [];
-    var twoWeekCoursesIDs = [];
+    var violinUnit1Name = "";
+    var violinUnit1Price = "";
     var week1CoursesNames = [];
     var week1CoursesPrices = [];
     var week1CoursesIDs = [];
@@ -188,7 +190,6 @@
     var week2CoursesIDs = [];
     var week1 = "";
     var week2 = "";
-    var twoWeek = "";
 </script>
 <script>
     /** get dates from Google Spreadsheet **/
@@ -197,10 +198,8 @@
             var textTable = getTableData(data);
             week1 = textTable[1][2];
             week2 = textTable[2][2];
-            twoWeek = textTable[4][2];
             document.getElementById("week1DateSpan").innerText = week1;
             document.getElementById("week2DateSpan").innerText = week2;
-            document.getElementById("twoWeekDateSpan").innerText = twoWeek;
         });
     /** get above text from Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=56981838&single=true",
@@ -211,6 +210,16 @@
                 sumString += "<p>" + textTable[i][0] + "</p>";
             }
             document.getElementById("aboveText").innerHTML = sumString;
+        });
+    /** get text about Violin Unit 1 from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=477216062&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("violin1Text").innerHTML = sumString;
         });
     /** get below text from Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=869859262&single=true",
@@ -245,20 +254,16 @@
             document.getElementById("eccName").innerText = name;
             document.getElementById("eccPrice").innerText = price;
     });
-    /** get two week names and prices from Google Spreadsheet **/
+    /** get Violin Unit 1 name and price from Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1644261533&single=true",
         function(data, status) {
             var coursesData = getTableData(data);
-            var theSelect = document.getElementById("twoWeekCourses");
-            for (var i = 1; i < coursesData.length; i ++) {
-                var option = document.createElement("option");
-                option.text = coursesData[i][0] + " - $" + coursesData[i][1];
-                option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
-                theSelect.add(option);
-                twoWeekCoursesNames.push(coursesData[i][0]);
-                twoWeekCoursesPrices.push(coursesData[i][1]);
-                twoWeekCoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
-            }
+            var name = coursesData[1][0];
+            var price = coursesData[1][1];
+            violinUnit1Name = name;
+            violinUnit1Price = price;
+            document.getElementById("violinUnit1Name").innerText = name;
+            document.getElementById("violinUnit1Price").innerText = price;
         });
     /** get week 1 courses names and prices from Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=256271385&single=true",
