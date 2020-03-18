@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="194x194" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-194x194.png"/>
+    <link rel="icon" type="image/png" sizes="192x192" href="https://www.ithaca.edu/sites/default/files/favicons/android-chrome-192x192.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-16x16.png"/>
+    <meta charset="UTF-8">
+    <title>Suzuki Institutes Teacher Registration</title>
+    <style>
+        .progress.active .progress-bar {
+            -webkit-transition: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+</head>
+<body>
+<div id="pre" class="container"><br><br><br><br><center><i style="font-size: 8em" class="fas fa-sync fa-spin"></i></center></div>
+<div id="post" style="display: none; visibility: hidden" class="container"><br><br><br><br>
+    <center>
+        <i style="font-size: 8em" class="fas fa-sync fa-spin"></i>
+        <br><br>
+        <div class="progress progress-striped active" style="height: 35px">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:0%"></div>
+        </div>
+        <br>
+        <h4>Please wait...You are being directed to the payment portal.</h4>
+        <h3>Your registration HAS NOT been finalized until you fully complete the payment process.  You will receive a confirmation email once your registration is complete.</h3>
+    </center>
+</div>
+<div  id="container" class="container" style="display:none;visibility:hidden">
+    <br>
+    <h1>Suzuki Institutes Teacher Registration</h1>
+    <hr>
+    <div id="errorMessage"></div>
+
+    <h3>Contact Information</h3>
+    <br>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputFirstName">First Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputFirstName">
+            <div id="valid-feedback-inputFirstName"></div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName">Last Name <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputLastName">
+            <div id="valid-feedback-inputLastName"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Address <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputAddress">
+        <div id="valid-feedback-inputAddress"></div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="inputCity">City <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputCity">
+            <div id="valid-feedback-inputCity"></div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">State/Province <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputState">
+            <div id="valid-feedback-inputState"></div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputZip">Zip Code <span style="color: red">*</span></label>
+            <input type="text" class="form-control" id="inputZip">
+            <div id="valid-feedback-inputZip"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPhoneNumber">Phone Number <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputPhoneNumber">
+        <div id="valid-feedback-inputPhoneNumber"></div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmailAddress">Email Address <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="inputEmailAddress">
+        <div id="valid-feedback-inputEmailAddress"></div>
+    </div>
+
+
+
+    <hr>
+
+    <div id="noItemsErrorMessage"></div>
+
+
+    <h3>Course Selection</h3>
+    <div id="aboveText"></div>
+
+    <div id="courseRadios">
+        <div class="form-group">
+            <b>Would you like to register for <span id="eccName"></span>  &mdash; $<span id="eccPrice"></span>?</b> <span style="color: red">*</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="everyChildCan" id="radio1" value="yes">
+                <label class="form-check-label" for="radio1">Yes</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="everyChildCan" id="radio2" value="no">
+                <label class="form-check-label" for="radio2">No</label>
+            </div>
+        </div>
+
+        <div id="violin1Text"></div>
+
+        <div class="form-group">
+            <b>Would you like to register for <span id="violinUnit1Name"></span>  &mdash; $<span id="violinUnit1Price"></span>?</b> <span style="color: red">*</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="violinUnit1" id="radio3" value="yes">
+                <label class="form-check-label" for="radio3">Yes</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="violinUnit1" id="radio4" value="no">
+                <label class="form-check-label" for="radio4">No</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="courseSelects">
+        <span><b>Select a week 1 course (<span id="week1DateSpan"></span>):</b></span> <span style="color: red">*</span>
+        <select class="form-control" id="week1Courses" onchange="changeLogicCourses()">
+            <option value=" "></option>
+        </select>
+        <br>
+        <span><b>Select a week 2 course (<span id="week2DateSpan"></span>):</b></span> <span style="color: red">*</span>
+        <select class="form-control" id="week2Courses" onchange="changeLogicCourses()">
+            <option value=" "></option>
+        </select>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <label for="inputTShirt"><h5>Please select your t-shirt size: <span style="color: red">*</span></h5></label>
+        <select class="form-control" id="inputTShirt">
+            <option style="display:none" disabled selected value></option>
+        </select>
+        <div id="valid-feedback-inputTShirt"></div>
+    </div>
+
+    <hr>
+
+    <div id="belowText"></div>
+
+    <hr>
+
+    <div id="coursesList" style="visibility: hidden; display: none"></div>
+    <div id="nameList" style="visibility: hidden; display: none"></div>
+    <div id="priceList" style="visibility: hidden; display: none"></div>
+    <div id="auditPriceList" style="visibility: hidden; display: none"></div>
+    <div id="registrationFee" style="visibility: hidden; display: none"></div>
+    <div id="SAAFee" style="visibility: hidden; display: none"></div>
+
+    <h5>Please ensure that all of the information that you have filled out above is correct.  You will not be able to change any of this information after you continue to payment.</h5>
+    <h5>NOTE: Your registration is not complete until your payment is processed and approved.</h5> <br>
+    <button onclick="submit()" class="btn btn-success">Continue To Payment</button>
+    <br><br>
+
+    <div id="paymentFormDiv" style="visibility: hidden; display: none">
+        <form target="_parent" id="payform" method="post" action="https://shoppingcartsecure.com/cart32.exe/6072743313-AddItem">
+            <div id="payFormInputs" style="visibility: hidden; display: none"></div>
+        </form>
+    </div>
+
+</div>
+<div id="hidden" style="display: none; visibility: hidden;"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/utils.js"></script>
+<script type="text/javascript" src="js/teacher-registration.js"></script>
+<script>
+    var eccName = "";
+    var eccPrice = "";
+    var violinUnit1Name = "";
+    var violinUnit1Price = "";
+    var week1CoursesNames = [];
+    var week1CoursesPrices = [];
+    var week1CoursesIDs = [];
+    var week2CoursesNames = [];
+    var week2CoursesPrices = [];
+    var week2CoursesIDs = [];
+    var week1 = "";
+    var week2 = "";
+</script>
+<script>
+    /** get dates from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vREtU3aso5YQevwxYncCh60Cwn55X6PuCOuNv1UVHHsLr4G9TJevUa4lPjodkOBM3vUfllVyyEbhmRg/pubhtml?gid=0&single=true",
+        function (data, status) {
+            var textTable = getTableData(data);
+            week1 = textTable[1][2];
+            week2 = textTable[2][2];
+            document.getElementById("week1DateSpan").innerText = week1;
+            document.getElementById("week2DateSpan").innerText = week2;
+        });
+    /** get above text from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=56981838&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("aboveText").innerHTML = sumString;
+        });
+    /** get text about Violin Unit 1 from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=477216062&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("violin1Text").innerHTML = sumString;
+        });
+    /** get below text from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=869859262&single=true",
+        function(data, status) {
+            var textTable = getTableData(data);
+            var sumString = "";
+            for (var i = 1; i < textTable.length; i ++) {
+                sumString += "<p>" + textTable[i][0] + "</p>";
+            }
+            document.getElementById("belowText").innerHTML = sumString;
+        });
+    /** get t-shirt sizes from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1568226199&single=true",
+        function(data, status) {
+            var tShirtData = getTableData(data);
+            var theSelect = document.getElementById("inputTShirt");
+            for (var i = 1; i < tShirtData.length; i++) {
+                var option = document.createElement("option");
+                option.text = tShirtData[i][0];
+                option.value = tShirtData[i][0].replace(/ /g, '_');
+                theSelect.add(option);
+            }
+        });
+    /** get ECC name and price from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=2053198402&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var name = coursesData[1][0];
+            var price = coursesData[1][1];
+            eccName = name;
+            eccPrice = price;
+            document.getElementById("eccName").innerText = name;
+            document.getElementById("eccPrice").innerText = price;
+    });
+    /** get Violin Unit 1 name and price from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1644261533&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var name = coursesData[1][0];
+            var price = coursesData[1][1];
+            violinUnit1Name = name;
+            violinUnit1Price = price;
+            document.getElementById("violinUnit1Name").innerText = name;
+            document.getElementById("violinUnit1Price").innerText = price;
+        });
+    /** get week 1 courses names and prices from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=256271385&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var theSelect = document.getElementById("week1Courses");
+            for (var i = 1; i < coursesData.length; i ++) {
+                var option = document.createElement("option");
+                option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                theSelect.add(option);
+                week1CoursesNames.push(coursesData[i][0]);
+                week1CoursesPrices.push(coursesData[i][1]);
+                week1CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+            }
+        });
+    /** get week 2 courses names and prices from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=2109480798&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var theSelect = document.getElementById("week2Courses");
+            for (var i = 1; i < coursesData.length; i ++) {
+                var option = document.createElement("option");
+                option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                theSelect.add(option);
+                week2CoursesNames.push(coursesData[i][0]);
+                week2CoursesPrices.push(coursesData[i][1]);
+                week2CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+            }
+        }).done(function() {
+            document.getElementById("container").style.display = "inherit";
+            document.getElementById("container").style.visibility = "visible";
+            document.getElementById("pre").style.display = "none";
+            document.getElementById("pre").style.visibility = "hidden";
+        })
+
+</script>
+
+</body>
+</html>
