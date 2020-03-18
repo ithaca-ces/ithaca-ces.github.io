@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-16x16.png"/>
     <meta charset="UTF-8">
     <title>Suzuki Institutes</title>
-    <meta http-equiv="refresh" content="10;url=https://www.ithaca.edu/suzuki-institutes/" />
+    <meta http-equiv="refresh" content="10;url=https://www.ithaca.edu/suzuki-institutes/teacher-institute/" />
 </head>
 <body>
 <div id="container" style="width: 90%" class="container">
@@ -17,7 +17,7 @@
     <h2>Suzuki Institute Teacher Registration will resume at 8:00 a.m. on Wednesday, March 18.</h2>
     <br>
     <h4>Please visit <a href="https://www.ithaca.edu/suzuki-institutes/teacher-institute">ithaca.edu/suzuki-institutes/teacher-institute</a> for information about the Suzuki Teacher Institute.</h4>
-    <p id="timer">You will automatically be redirected in <span id="seconds">10</span> seconds.</p>
+    <p id="timer">You will automatically be redirected in <span id="seconds">10 seconds</span>.</p>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -33,10 +33,10 @@
         }
         else {
             if (timeleft === 1) {
-                document.getElementById("timer").innerHTML = "You will automatically be directed in 1 second."
+                document.getElementById("seconds").innerHTML = "1 second"
             }
             else {
-                document.getElementById("seconds").innerHTML = timeleft;
+                document.getElementById("seconds").innerHTML = timeleft + " seconds"
             }
         }
         timeleft -= 1;
