@@ -2610,15 +2610,15 @@
                 for (var k = 1; k <= 3; k++) {
                     var theSelect = document.getElementById("inputEnrichmentChoice" + k + "-" + j);
                     for (var c = 1; c < coursesData.length; c++) {
-                        var option = document.createElement("option");
-                        option.text = coursesData[c][0];
-                        option.value = coursesData[c][0];
-                        theSelect.add(option);
+                        if (!coursesData[c][0].startsWith("INVALID_")) {
+                            var option = document.createElement("option");
+                            option.text = coursesData[c][0];
+                            option.value = coursesData[c][0];
+                            theSelect.add(option);
+                        }
                     }
-
                 }
             }
-
         }).done(function() {
         makeID();
         document.getElementById("container").style.display = "inherit";
