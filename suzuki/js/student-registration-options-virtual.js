@@ -79,6 +79,7 @@ function changePieceCodes(number, inputInstrument) {
     }
     var selectedBookLevel = getSelectData("inputBookLevel-" + number);
     var select = document.getElementById("inputTitle-" + number);
+    select.disabled = false;
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
     var allBookNumbers = codeDictionary[selectedInstrument].bookList;
     var allCodes = codeDictionary[selectedInstrument].codeList;
@@ -106,6 +107,7 @@ function changePieceCodes(number, inputInstrument) {
         select.add(option);
         if (selectedBookLevel === "N/A") {
             option.selected = "selected";
+            select.disabled = true;
         }
     }
     changeCustomPiece(number);
