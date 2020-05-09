@@ -29,23 +29,26 @@ function changeInstruments(number) {
             option.value = instrumentValues[i];
             select.add(option);
         }
+        select.disabled = false;
     }
     if (selectedCourse === heifetzViolinProgramOptionValue) {
-        for (var i = 0; i < instrumentNames.length; i ++) {
-            if (instrumentValues[i] === "violin") {
-                var option = document.createElement("option");
-                option.text = instrumentNames[i];
-                option.value = instrumentValues[i];
-                select.add(option);
-            }
-        }
+        select.innerHTML = '<option selected value="violin">Violin</option>';
+        select.disabled = true;
+        setTimeout(() => { changeBookLevels(number, "violin") }, 100);
     }
 }
 
 
 /** changes options on book level field (per page) **/
-function changeBookLevels(number) {
-    var instrument = getSelectData("inputInstrument-" + number);
+function changeBookLevels(number, inputInstrument) {
+    var instrument = inputInstrument;
+    if (instrument === "") {
+        instrument = getSelectData("inputInstrument-" + number);
+    }
+    var selectedCourse = getSelectData("inputCourse-" + number);
+    if (selectedCourse.includes("heifetzviolinprogram")) {
+        instrument = "violin";
+    }
     var select = document.getElementById("inputBookLevel-" + number);
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
     if (instrument !== "") {
@@ -58,20 +61,22 @@ function changeBookLevels(number) {
             option.value = bookNumbersArray[i];
             select.add(option);
         }
-        var selectedCourse = getSelectData("inputCourse-" + number);
         if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) {
             option = document.createElement("option");
             option.text = "N/A";
             option.value = "N/A";
             select.add(option);
         }
-        changePieceCodes(number);
+        changePieceCodes(number, "");
     }
 }
 
 /** changes options on piece code field (per page) **/
-function changePieceCodes(number) {
-    var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
+function changePieceCodes(number, inputInstrument) {
+    var selectedInstrument = inputInstrument;
+    if (selectedInstrument === "") {
+        selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
+    }
     var selectedBookLevel = getSelectData("inputBookLevel-" + number);
     var select = document.getElementById("inputTitle-" + number);
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
