@@ -22,7 +22,7 @@ function changeInstruments(number) {
     var selectedCourse = getSelectData("inputCourse-" + number);
     var select = document.getElementById("inputInstrument-" + number);
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
-    if (selectedCourse === firstCourseOptionValue || selectedCourse === lastCourseOptionValue) {
+    if (selectedCourse === anyInstrumentLevelOptionValue || selectedCourse === advancedInstituteOptionValue) {
         for (var i = 0; i < instrumentNames.length; i ++) {
             var option = document.createElement("option");
             option.text = instrumentNames[i];
@@ -30,16 +30,15 @@ function changeInstruments(number) {
             select.add(option);
         }
     }
-    else {
+    if (selectedCourse === heifetzViolinProgramOptionValue) {
         for (var i = 0; i < instrumentNames.length; i ++) {
-            if (instrumentValues[i] !== "viola") {
+            if (instrumentValues[i] === "violin") {
                 var option = document.createElement("option");
                 option.text = instrumentNames[i];
                 option.value = instrumentValues[i];
                 select.add(option);
             }
         }
-
     }
 }
 
@@ -60,7 +59,7 @@ function changeBookLevels(number) {
             select.add(option);
         }
         var selectedCourse = getSelectData("inputCourse-" + number);
-        if (selectedCourse.includes("advancedinstitute")) {
+        if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) {
             option = document.createElement("option");
             option.text = "N/A";
             option.value = "N/A";
@@ -95,7 +94,7 @@ function changePieceCodes(number) {
         select.add(option);
     }
     var selectedCourse = getSelectData("inputCourse-" + number);
-    if (selectedCourse.includes("advancedinstitute")) {
+    if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) {
         option = document.createElement("option");
         option.text = "Other";
         option.value = "other";
@@ -146,7 +145,7 @@ function changeCustomPiece(number) {
     var selectedCourse = getSelectData("inputCourse-" + number);
     var selectedCode = getSelectData("inputTitle-" + number);
     var customField = document.getElementById("customPieceDiv-" + number);
-    if (selectedCourse.includes("advancedinstitute") && selectedCode === "other") {
+    if ((selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) && selectedCode === "other") {
         customField.style.visibility = "visible";
         customField.style.display = "";
     }
@@ -253,7 +252,7 @@ function changeDesignatedAdult(number) {
 /** shows enrichment fields if criteria is met (per page) **/
 function changeShowEnrichmentCourses(number) {
     var selectedOption = getSelectData("inputCourse-" + number);
-    if (!selectedOption.toLowerCase().includes("advanced")) {
+    if (!selectedOption.toLowerCase().includes("advancedinstitute") && !selectedOption.toLowerCase().includes("heifetzviolinprogram")) {
         document.getElementById("enrichmentClassesDiv-" + number).style.display = "inherit";
         document.getElementById("enrichmentClassesDiv-" + number).style.visibility = "visible";
     }
@@ -283,7 +282,7 @@ function changeAccompanyOptions(number) {
     // get age
     var ageValue = document.getElementById("inputAge-" + number).value;
     // if course is advanced and age is >= 13, then show the fourth option
-    if (courseValue.toLowerCase().includes("advanced") && ageValue >= 13) {
+    if (courseValue.toLowerCase().includes("advancedinstitute") && ageValue >= 13) {
         option = document.createElement("option");
         option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will stay with an Ithaca Host Family)";
         option.value = "noone";

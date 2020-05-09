@@ -2501,6 +2501,9 @@
     var codesDictionary = {};
     var firstCourseOptionValue = "";
     var lastCourseOptionValue = "";
+    var anyInstrumentLevelOptionValue = "";
+    var advancedInstituteOptionValue = "";
+    var heifetzViolinProgramOptionValue = "";
     var accompanyValues = ["oneParent", "bothParents", "designatedAdult", "noone"];
     var accompanyNames = ["One Parent/Guardian", "Both Parents/Guardian", "Adult Designated by Parent/Guardian", "No One (student will be 13 by July 1, " +  new Date().getFullYear() + " and will stay with an Ithaca Host Family)"];
 
@@ -2541,24 +2544,37 @@
             }
         });
     /** get courses options from Google Spreadsheet **/
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=256271385&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vTCHn33p08jhYglJACxGm-wjvopz-FSdYqH1lkpE0MTxnbZSNw0BHXsJ1cOo5M0HqaHpl8KBfxRS0di/pubhtml?gid=397518458&single=true",
         function(data, status) {
             var coursesData = getTableData(data);
             for (var j = 1; j <=  MAX_STUDENT_NUMBER; j ++) {
                 var theSelect = document.getElementById("inputCourse-" + j);
+                var count = 0;
                 for (var i = 1; i < coursesData.length; i++) {
-                    var option = document.createElement("option");
-                    option.text = coursesData[i][0] + " - $" + coursesData[i][1];
-                    option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
-                    theSelect.add(option);
-                    courseNames.push(coursesData[i][0]);
-                    courseValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
-                    coursePrices.push(coursesData[i][1]);
-                    if (i === 1) {
-                        firstCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
-                    }
-                    if (i === (coursesData.length - 1)) {
-                        lastCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                    if (!coursesData[i][0].startsWith("INVALID_")) {
+                        var option = document.createElement("option");
+                        option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                        option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                        theSelect.add(option);
+                        courseNames.push(coursesData[i][0]);
+                        courseValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+                        coursePrices.push(coursesData[i][1]);
+                        /*if (i === 1) {
+                            firstCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                        }
+                        if (i === (coursesData.length - 1)) {
+                            lastCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                        }*/
+                        count ++;
+                        if (count === 1) {
+                            anyInstrumentLevelOptionValue = coursesData[i][0].toLowerCase().toLowerCase().replace(/ /g, '');
+                        }
+                        if (count === 2) {
+                            advancedInstituteOptionValue = coursesData[i][0].toLowerCase().toLowerCase().replace(/ /g, '');
+                        }
+                        if (count === 3) {
+                            heifetzViolinProgramOptionValue = coursesData[i][0].toLowerCase().toLowerCase().replace(/ /g, '');
+                        }
                     }
                 }
             }
