@@ -195,8 +195,8 @@
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vREtU3aso5YQevwxYncCh60Cwn55X6PuCOuNv1UVHHsLr4G9TJevUa4lPjodkOBM3vUfllVyyEbhmRg/pubhtml?gid=0&single=true",
         function (data, status) {
             var textTable = getTableData(data);
-            week1 = textTable[1][2];
-            week2 = textTable[2][2];
+            week1 = textTable[5][2];
+            week2 = textTable[6][2];
             twoWeek = textTable[4][2];
             document.getElementById("week1DateSpan").innerText = week1;
             document.getElementById("week2DateSpan").innerText = week2;
