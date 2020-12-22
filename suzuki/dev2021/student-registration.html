@@ -18,13 +18,13 @@
             -webkit-transition: none !important;
             transition: none !important;
         }
-        .VIRTUAL-t-shirt-hidden {
-            visibility: hidden;
-            display: none;
+        .VIRTUAL-t-shirt-block {
+            /** visibility: hidden;
+            display: none; **/
         }
-        .VIRTUAL-accompanied-hidden {
-            visibility: hidden;
-            display: none;
+        .VIRTUAL-accompanied-block {
+            /** visibility: hidden;
+            display: none; **/
         }
     </style>
 </head>
@@ -94,10 +94,10 @@
         </div>
         <div class="form-group">
             <label for="inputEmailAddress">Email Address <span style="color: red">*</span></label>
-            <input type="text" class="form-control" id="inputEmailAddress">
+            <input type="text" class="form-control" id="inputEmailAddress" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Some help text from Peter will be put here regarding people using their primary email address.</small>
             <div id="valid-feedback-inputEmailAddress"></div>
         </div>
-
         <div class="form-group" id="studentCount">
             <label for="inputStudentCount">For how many students are you registering? <span style="color: red">*</span></label>
             <select class="form-control" id="inputStudentCount" style="max-width: 200px">
@@ -224,8 +224,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-1">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-1">
+            <label for="inputTeacherEmailAddress-1">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-1">
         </div>
 
         <hr>
@@ -259,7 +259,7 @@
             <hr>
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-1"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-1" onchange="changeDesignatedAdult(1)">
                 <option style="display:none" disabled selected value></option>
@@ -312,11 +312,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-1"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-1">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-1"></div>
         </div>
@@ -441,8 +440,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-2">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-2">
+            <label for="inputTeacherEmailAddress-2">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-2">
         </div>
 
         <hr>
@@ -477,7 +476,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-2"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-2" onchange="changeDesignatedAdult(2)">
                 <option style="display:none" disabled selected value></option>
@@ -530,11 +529,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-2"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-2">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-2"></div>
         </div>
@@ -659,8 +657,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-3">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-3">
+            <label for="inputTeacherEmailAddress-3">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-3">
         </div>
 
         <hr>
@@ -695,7 +693,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-3"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-3" onchange="changeDesignatedAdult(3)">
                 <option style="display:none" disabled selected value></option>
@@ -748,11 +746,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-3"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-3">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-3"></div>
         </div>
@@ -877,8 +874,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-4">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-4">
+            <label for="inputTeacherEmailAddress-4">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-4">
         </div>
 
         <hr>
@@ -913,7 +910,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-4"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-4" onchange="changeDesignatedAdult(4)">
                 <option style="display:none" disabled selected value></option>
@@ -966,11 +963,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-4"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-4">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-4"></div>
         </div>
@@ -1095,8 +1091,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-5">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-5">
+            <label for="inputTeacherEmailAddress-5">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-5">
         </div>
 
         <hr>
@@ -1131,7 +1127,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-5"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-5" onchange="changeDesignatedAdult(5)">
                 <option style="display:none" disabled selected value></option>
@@ -1184,11 +1180,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-5"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-5">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-5"></div>
         </div>
@@ -1313,8 +1308,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-6">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-6">
+            <label for="inputTeacherEmailAddress-6">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-6">
         </div>
 
         <hr>
@@ -1349,7 +1344,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-6"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-6" onchange="changeDesignatedAdult(6)">
                 <option style="display:none" disabled selected value></option>
@@ -1402,11 +1397,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-6"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-6">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-6"></div>
         </div>
@@ -1531,8 +1525,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-7">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-7">
+            <label for="inputTeacherEmailAddress-7">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-7">
         </div>
 
         <hr>
@@ -1567,7 +1561,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-7"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-7" onchange="changeDesignatedAdult(7)">
                 <option style="display:none" disabled selected value></option>
@@ -1620,11 +1614,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-7"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-7">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-7"></div>
         </div>
@@ -1749,8 +1742,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-8">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-8">
+            <label for="inputTeacherEmailAddress-8">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-8">
         </div>
 
         <hr>
@@ -1785,7 +1778,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-8"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-8" onchange="changeDesignatedAdult(8)">
                 <option style="display:none" disabled selected value></option>
@@ -1838,11 +1831,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-8"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-8">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-8"></div>
         </div>
@@ -1967,8 +1959,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-9">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-9">
+            <label for="inputTeacherEmailAddress-9">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-9">
         </div>
 
         <hr>
@@ -2003,7 +1995,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-9"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-9" onchange="changeDesignatedAdult(9)">
                 <option style="display:none" disabled selected value></option>
@@ -2056,11 +2048,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-9"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-9">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-9"></div>
         </div>
@@ -2185,8 +2176,8 @@
         </div>
 
         <div class="form-group">
-            <label for="inputTeacherPhoneNumber-10">Teacher Phone Number</label>
-            <input type="text" class="form-control" id="inputTeacherPhoneNumber-10">
+            <label for="inputTeacherEmailAddress-10">Teacher Email Address</label>
+            <input type="text" class="form-control" id="inputTeacherEmailAddress-10">
         </div>
 
         <hr>
@@ -2222,7 +2213,7 @@
 
         </div>
 
-        <div class="form-group VIRTUAL-accompanied-hidden">
+        <div class="form-group VIRTUAL-accompanied-block">
             <label for="inputAccompanied-10"><h5>Student will be accompanied by: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputAccompanied-10" onchange="changeDesignatedAdult(10)">
                 <option style="display:none" disabled selected value></option>
@@ -2275,11 +2266,10 @@
 
         <!--<hr>-->
 
-        <div class="form-group VIRTUAL-t-shirt-hidden">
+        <div class="form-group VIRTUAL-t-shirt-block">
             <label for="inputTShirt-10"><h5>Please select a t-shirt size for this student: <span style="color: red">*</span></h5></label>
             <select class="form-control" id="inputTShirt-10">
                 <option style="display:none" disabled selected value></option>
-                <option value="none" selected></option>
             </select>
             <div id="valid-feedback-inputTShirt-10"></div>
         </div>
@@ -2480,9 +2470,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
-<script type="text/javascript" src="js/student-registration-virtual.js"></script>
-<script type="text/javascript" src="js/student-registration-navigation-virtual.js"></script>
-<script type="text/javascript" src="js/student-registration-options-virtual.js"></script>
+<script type="text/javascript" src="js/student-registration.js"></script>
+<script type="text/javascript" src="js/student-registration-navigation.js"></script>
+<script type="text/javascript" src="js/student-registration-options.js"></script>
 <script type="text/javascript" src="js/student-registration-siblings.js"></script>
 <script>
     /** CODE FOR ENDING **/
@@ -2510,7 +2500,7 @@
     var lastCourseOptionValue = "";
     var anyInstrumentLevelOptionValue = "";
     var advancedInstituteOptionValue = "";
-    var heifetzViolinProgramOptionValue = "";
+    var preludioViolinProgramOptionValue = "";
     var accompanyValues = ["oneParent", "bothParents", "designatedAdult", "noone"];
     var accompanyNames = ["One Parent/Guardian", "Both Parents/Guardian", "Adult Designated by Parent/Guardian", "No One (student will be 13 by July 1, " +  new Date().getFullYear() + " and will stay with an Ithaca Host Family)"];
 
@@ -2566,12 +2556,6 @@
                         courseNames.push(coursesData[i][0]);
                         courseValues.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
                         coursePrices.push(coursesData[i][1]);
-                        /*if (i === 1) {
-                            firstCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
-                        }
-                        if (i === (coursesData.length - 1)) {
-                            lastCourseOptionValue = coursesData[i][0].toLowerCase().replace(/ /g, '');
-                        }*/
                         count ++;
                         if (count === 1) {
                             anyInstrumentLevelOptionValue = coursesData[i][0].toLowerCase().toLowerCase().replace(/ /g, '');
@@ -2580,7 +2564,7 @@
                             advancedInstituteOptionValue = coursesData[i][0].toLowerCase().toLowerCase().replace(/ /g, '');
                         }
                         if (count === 3) {
-                            heifetzViolinProgramOptionValue = coursesData[i][0].toLowerCase().toLowerCase().replace(/ /g, '');
+                            preludioViolinProgramOptionValue = coursesData[i][0].toLowerCase().toLowerCase().replace(/ /g, '');
                         }
                     }
                 }

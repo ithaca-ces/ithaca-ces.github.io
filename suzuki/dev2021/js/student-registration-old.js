@@ -128,14 +128,14 @@ function validateStudentInfo(number) {
         else {
             movementField.classList.add("is-invalid");
             valid = false;
-            document.getElementById("valid-feedback-inputMovement-" + number).innerHTML = "<font color='red'>Please select a movement.</font>"
+            document.getElementById("valid-feedback-inputMovement-" + number).innerHTML = "<font color='red'>Please select a movement.</>"
         }
     }
 
-    // validate custom piece field if they're advanced or heifetz
+    // validate custom piece field if they're advanced
     try {
         var courseChoice = getSelectData("inputCourse-" + number);
-        if (courseChoice.includes("advancedinstitute") || courseChoice.includes("heifetzviolinprogram")) {
+        if (courseChoice.includes("advancedinstitute")) {
             var pieceField = getSelectData("inputTitle-" + number);
             if (pieceField === "other") {
                 var inputField = document.getElementById("input" + "CustomPiece" + "-" + number);
@@ -170,7 +170,7 @@ function validateStudentInfo(number) {
     }
 
     // optional fields
-    var fields = ["Gender", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TeacherRequests"];
+    var fields = ["Gender", "TeacherFirstName", "TeacherLastName", "TeacherEmailAddress", "TeacherRequests"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i] + "-" + number);
         if (inputField.value !== "") {
@@ -195,7 +195,7 @@ function clearValidateFeedback() {
         document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
     }
     for (var j = 1; j <= MAX_STUDENT_NUMBER; j ++) {
-        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherPhoneNumber", "TeacherRequests", "TShirt", "EnrichmentChoice1", "EnrichmentChoice2", "EnrichmentChoice3"];
+        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherEmailAddress", "TeacherRequests", "TShirt", "EnrichmentChoice1", "EnrichmentChoice2", "EnrichmentChoice3"];
         for (var i = 0; i < studentFields.length; i++) {
             var studentField = document.getElementById("input" + studentFields[i] + "-" + j);
             studentField.classList.remove("is-invalid");
@@ -287,10 +287,9 @@ function submitGoogleForm() {
     for (var j = 1; j <= globalStudentCount; j++) {
         var incFirstName = $('input[id=inputStudentFirstName-' + j + ']').val();
         var incLastName = $('input[id=inputStudentLastName-' + j + ']').val();
-        //var accompaniedValue = getSelectData("inputAccompanied-" + j);
-        //var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
-        //var accompaniedName = accompanyNames[accompaniedIndex];
-        var accompaniedName = "none";
+        var accompaniedValue = getSelectData("inputAccompanied-" + j);
+        var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
+        var accompaniedName = accompanyNames[accompaniedIndex];
         var courseValue = getSelectData("inputCourse-" + j);
         var courseIndex = courseValues.indexOf(courseValue);
         var courseName = courseNames[courseIndex];
@@ -307,7 +306,7 @@ function submitGoogleForm() {
         var customPiece = $('input[id=inputCustomPiece-' + j + ']').val();
         var teacherFirstName = $('input[id=inputTeacherFirstName-' + j + ']').val();
         var teacherLastName = $('input[id=inputTeacherLastName-' + j + ']').val();
-        var teacherPhoneNumber = $('input[id=inputTeacherPhoneNumber-' + j + ']').val();
+        var teacherEmailAddress = $('input[id=inputTeacherEmailAddress-' + j + ']').val();
         var enrichmentChoice1 = getSelectData("inputEnrichmentChoice1-" + j);
         var enrichmentChoice2 = getSelectData("inputEnrichmentChoice2-" + j);
         var enrichmentChoice3 = getSelectData("inputEnrichmentChoice3-" + j);
@@ -320,7 +319,7 @@ function submitGoogleForm() {
         if (siblings.length > 1) {
             siblings = siblings.substring(0, siblings.length - 2);
         }
-        var incUniqueID = makeUniqueID(incFirstName, incLastName, courseName, instrumentName, bookLevel, title, code, teacherFirstName + teacherLastName, teacherPhoneNumber);
+        var incUniqueID = makeUniqueID(incFirstName, incLastName, courseName, instrumentName, bookLevel, title, code, teacherFirstName + teacherLastName, TeacherEmailAddress);
         var registrationID = uniqueID + "_" + j + "_" + incUniqueID.toString().substring(0, 8);
         var formData = {
             'entry.2039036389': firstName,
@@ -352,7 +351,7 @@ function submitGoogleForm() {
             'entry.1758035001': customPiece,
             'entry.1702328635': movement,
             'entry.1581932096': teacherFirstName + " " + teacherLastName,
-            'entry.846808053': teacherPhoneNumber,
+            'entry.846808053': teacherEmailAddress,
             'entry.650938505': enrichmentChoice1,
             'entry.154989671': enrichmentChoice2,
             'entry.903246233': enrichmentChoice3,
@@ -388,8 +387,8 @@ String.prototype.hashCode = function() {
     return hash;
 };
 
-function makeUniqueID(firstName, lastName, courseName, instrumentName, bookLevel, title, code, teacherName, teacherPhoneNumber) {
-    var string = firstName + lastName + courseName + instrumentName + bookLevel + title + code + teacherName + teacherPhoneNumber;
+function makeUniqueID(firstName, lastName, courseName, instrumentName, bookLevel, title, code, teacherName, TeacherEmailAddress) {
+    var string = firstName + lastName + courseName + instrumentName + bookLevel + title + code + teacherName + TeacherEmailAddress;
     var hashCode = string.hashCode().toString();
     if (hashCode.charAt(0) === '-') {
         hashCode = hashCode.substring(1, hashCode.length);

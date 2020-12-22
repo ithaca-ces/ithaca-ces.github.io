@@ -22,33 +22,31 @@ function changeInstruments(number) {
     var selectedCourse = getSelectData("inputCourse-" + number);
     var select = document.getElementById("inputInstrument-" + number);
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
-    if (selectedCourse === anyInstrumentLevelOptionValue || selectedCourse === advancedInstituteOptionValue) {
+    if (selectedCourse === firstCourseOptionValue || selectedCourse === lastCourseOptionValue) {
         for (var i = 0; i < instrumentNames.length; i ++) {
             var option = document.createElement("option");
             option.text = instrumentNames[i];
             option.value = instrumentValues[i];
             select.add(option);
         }
-        select.disabled = false;
     }
-    if (selectedCourse === heifetzViolinProgramOptionValue) {
-        select.innerHTML = '<option selected value="violin">Violin</option>';
-        select.disabled = true;
-        setTimeout(() => { changeBookLevels(number, "violin") }, 100);
+    else {
+        for (var i = 0; i < instrumentNames.length; i ++) {
+            if (instrumentValues[i] !== "viola") {
+                var option = document.createElement("option");
+                option.text = instrumentNames[i];
+                option.value = instrumentValues[i];
+                select.add(option);
+            }
+        }
+
     }
 }
 
 
 /** changes options on book level field (per page) **/
-function changeBookLevels(number, inputInstrument) {
-    var instrument = inputInstrument;
-    if (instrument === "") {
-        instrument = getSelectData("inputInstrument-" + number);
-    }
-    var selectedCourse = getSelectData("inputCourse-" + number);
-    if (selectedCourse.includes("heifetzviolinprogram")) {
-        instrument = "violin";
-    }
+function changeBookLevels(number) {
+    var instrument = getSelectData("inputInstrument-" + number);
     var select = document.getElementById("inputBookLevel-" + number);
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
     if (instrument !== "") {
@@ -61,25 +59,22 @@ function changeBookLevels(number, inputInstrument) {
             option.value = bookNumbersArray[i];
             select.add(option);
         }
-        if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) {
+        var selectedCourse = getSelectData("inputCourse-" + number);
+        if (selectedCourse.includes("advancedinstitute")) {
             option = document.createElement("option");
             option.text = "N/A";
             option.value = "N/A";
             select.add(option);
         }
-        changePieceCodes(number, "");
+        changePieceCodes(number);
     }
 }
 
 /** changes options on piece code field (per page) **/
-function changePieceCodes(number, inputInstrument) {
-    var selectedInstrument = inputInstrument;
-    if (selectedInstrument === "") {
-        selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
-    }
+function changePieceCodes(number) {
+    var selectedInstrument = capitalizeFLetter(getSelectData("inputInstrument-" + number));
     var selectedBookLevel = getSelectData("inputBookLevel-" + number);
     var select = document.getElementById("inputTitle-" + number);
-    select.disabled = false;
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
     var allBookNumbers = codeDictionary[selectedInstrument].bookList;
     var allCodes = codeDictionary[selectedInstrument].codeList;
@@ -100,14 +95,13 @@ function changePieceCodes(number, inputInstrument) {
         select.add(option);
     }
     var selectedCourse = getSelectData("inputCourse-" + number);
-    if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) {
+    if (selectedCourse.includes("advancedinstitute")) {
         option = document.createElement("option");
         option.text = "Other";
         option.value = "other";
         select.add(option);
         if (selectedBookLevel === "N/A") {
             option.selected = "selected";
-            select.disabled = true;
         }
     }
     changeCustomPiece(number);
@@ -152,7 +146,7 @@ function changeCustomPiece(number) {
     var selectedCourse = getSelectData("inputCourse-" + number);
     var selectedCode = getSelectData("inputTitle-" + number);
     var customField = document.getElementById("customPieceDiv-" + number);
-    if ((selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) && selectedCode === "other") {
+    if (selectedCourse.includes("advancedinstitute") && selectedCode === "other") {
         customField.style.visibility = "visible";
         customField.style.display = "";
     }
@@ -259,7 +253,7 @@ function changeDesignatedAdult(number) {
 /** shows enrichment fields if criteria is met (per page) **/
 function changeShowEnrichmentCourses(number) {
     var selectedOption = getSelectData("inputCourse-" + number);
-    if (!selectedOption.toLowerCase().includes("advancedinstitute") && !selectedOption.toLowerCase().includes("heifetzviolinprogram")) {
+    if (!selectedOption.toLowerCase().includes("advanced")) {
         document.getElementById("enrichmentClassesDiv-" + number).style.display = "inherit";
         document.getElementById("enrichmentClassesDiv-" + number).style.visibility = "visible";
     }
@@ -277,8 +271,8 @@ function changeShowEnrichmentCourses(number) {
 function changeAccompanyOptions(number) {
     // put in base values
     var theSelect = document.getElementById("inputAccompanied-" + number);
-    theSelect.innerHTML = '<option style="display:none" disabled selected value="none"></option>';
-    /*for (var i = 0; i < accompanyNames.length - 1; i++) {
+    theSelect.innerHTML = '<option style="display:none" disabled selected value></option>';
+    for (var i = 0; i < accompanyNames.length - 1; i++) {
         var option = document.createElement("option");
         option.text = accompanyNames[i];
         option.value = accompanyValues[i];
@@ -289,11 +283,11 @@ function changeAccompanyOptions(number) {
     // get age
     var ageValue = document.getElementById("inputAge-" + number).value;
     // if course is advanced and age is >= 13, then show the fourth option
-    if (courseValue.toLowerCase().includes("advancedinstitute") && ageValue >= 13) {
+    if (courseValue.toLowerCase().includes("advanced") && ageValue >= 13) {
         option = document.createElement("option");
         option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will stay with an Ithaca Host Family)";
         option.value = "noone";
         theSelect.add(option);
     }
-    changeDesignatedAdult(number);*/
+    changeDesignatedAdult(number);
 }

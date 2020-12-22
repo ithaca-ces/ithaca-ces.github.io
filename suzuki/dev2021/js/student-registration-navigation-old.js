@@ -26,7 +26,7 @@ function next() {
                 document.getElementById("student2Information").style.display = "inherit";
                 document.getElementById("student2Information").style.visibility = "visible";
                 showInputAccompanied(2);
-                changeBookLevels(2, "");
+                changeBookLevels(2);
                 pageNumber = 3;
                 if (parseInt(globalStudentCount) === 2) {
                     document.getElementById("next-2").innerHTML = '<button onclick="goToLastPage(2)" class="btn btn-success">Next</button>';
@@ -47,7 +47,7 @@ function next() {
                 document.getElementById("student3Information").style.display = "inherit";
                 document.getElementById("student3Information").style.visibility = "visible";
                 showInputAccompanied(3);
-                changeBookLevels(3, "");
+                changeBookLevels(3);
                 pageNumber = 4;
                 if (parseInt(globalStudentCount) === 3) {
                     document.getElementById("next-3").innerHTML = '<button onclick="goToLastPage(3)" class="btn btn-success">Next</button>';
@@ -68,7 +68,7 @@ function next() {
                 document.getElementById("student4Information").style.display = "inherit";
                 document.getElementById("student4Information").style.visibility = "visible";
                 showInputAccompanied(4);
-                changeBookLevels(4, "");
+                changeBookLevels(4);
                 pageNumber = 5;
                 if (parseInt(globalStudentCount) === 4) {
                     document.getElementById("next-4").innerHTML = '<button onclick="goToLastPage(4)" class="btn btn-success">Next</button>';
@@ -89,7 +89,7 @@ function next() {
                 document.getElementById("student5Information").style.display = "inherit";
                 document.getElementById("student5Information").style.visibility = "visible";
                 showInputAccompanied(5);
-                changeBookLevels(5, "");
+                changeBookLevels(5);
                 pageNumber = 6;
                 if (parseInt(globalStudentCount) === 5) {
                     document.getElementById("next-5").innerHTML = '<button onclick="goToLastPage(5)" class="btn btn-success">Next</button>';
@@ -110,7 +110,7 @@ function next() {
                 document.getElementById("student6Information").style.display = "inherit";
                 document.getElementById("student6Information").style.visibility = "visible";
                 showInputAccompanied(6);
-                changeBookLevels(6, "");
+                changeBookLevels(6);
                 pageNumber = 7;
                 if (parseInt(globalStudentCount) === 6) {
                     document.getElementById("next-6").innerHTML = '<button onclick="goToLastPage(6)" class="btn btn-success">Next</button>';
@@ -131,7 +131,7 @@ function next() {
                 document.getElementById("student7Information").style.display = "inherit";
                 document.getElementById("student7Information").style.visibility = "visible";
                 showInputAccompanied(7);
-                changeBookLevels(7, "");
+                changeBookLevels(7);
                 pageNumber = 8;
                 if (parseInt(globalStudentCount) === 7) {
                     document.getElementById("next-7").innerHTML = '<button onclick="goToLastPage(7)" class="btn btn-success">Next</button>';
@@ -152,7 +152,7 @@ function next() {
                 document.getElementById("student8Information").style.display = "inherit";
                 document.getElementById("student8Information").style.visibility = "visible";
                 showInputAccompanied(8);
-                changeBookLevels(8, "");
+                changeBookLevels(8);
                 pageNumber = 9;
                 if (parseInt(globalStudentCount) === 8) {
                     document.getElementById("next-8").innerHTML = '<button onclick="goToLastPage(8)" class="btn btn-success">Next</button>';
@@ -173,7 +173,7 @@ function next() {
                 document.getElementById("student9Information").style.display = "inherit";
                 document.getElementById("student9Information").style.visibility = "visible";
                 showInputAccompanied(9);
-                changeBookLevels(9, "");
+                changeBookLevels(9);
                 pageNumber = 10;
                 if (parseInt(globalStudentCount) === 9) {
                     document.getElementById("next-9").innerHTML = '<button onclick="goToLastPage(9)" class="btn btn-success">Next</button>';
@@ -194,7 +194,7 @@ function next() {
                 document.getElementById("student10Information").style.display = "inherit";
                 document.getElementById("student10Information").style.visibility = "visible";
                 showInputAccompanied(10);
-                changeBookLevels(10, "");
+                changeBookLevels(10);
                 pageNumber = 11;
                 if (parseInt(globalStudentCount) === 10) {
                     document.getElementById("next-10").innerHTML = '<button onclick="goToLastPage(10)" class="btn btn-success">Next</button>';
