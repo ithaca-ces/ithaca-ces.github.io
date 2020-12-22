@@ -132,10 +132,10 @@ function validateStudentInfo(number) {
         }
     }
 
-    // validate custom piece field if they're advanced or heifetz
+    // validate custom piece field if they're advanced or preludio
     try {
         var courseChoice = getSelectData("inputCourse-" + number);
-        if (courseChoice.includes("advancedinstitute") || courseChoice.includes("heifetzviolinprogram")) {
+        if (courseChoice.includes("advancedinstitute") || courseChoice.includes("preludioviolinprogram")) {
             var pieceField = getSelectData("inputTitle-" + number);
             if (pieceField === "other") {
                 var inputField = document.getElementById("input" + "CustomPiece" + "-" + number);
@@ -149,7 +149,7 @@ function validateStudentInfo(number) {
                 }
             }
         }
-        // if they're not advanced, validate enrichment courses
+        // if they're not advanced or preludio, validate enrichment courses
         else {
             selectField = document.getElementById("input" + "EnrichmentChoice1" + "-" + number);
             // if it has options
@@ -287,10 +287,9 @@ function submitGoogleForm() {
     for (var j = 1; j <= globalStudentCount; j++) {
         var incFirstName = $('input[id=inputStudentFirstName-' + j + ']').val();
         var incLastName = $('input[id=inputStudentLastName-' + j + ']').val();
-        //var accompaniedValue = getSelectData("inputAccompanied-" + j);
-        //var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
-        //var accompaniedName = accompanyNames[accompaniedIndex];
-        var accompaniedName = "none";
+        var accompaniedValue = getSelectData("inputAccompanied-" + j);
+        var accompaniedIndex = accompanyValues.indexOf(accompaniedValue);
+        var accompaniedName = accompanyNames[accompaniedIndex];
         var courseValue = getSelectData("inputCourse-" + j);
         var courseIndex = courseValues.indexOf(courseValue);
         var courseName = courseNames[courseIndex];

@@ -31,7 +31,7 @@ function changeInstruments(number) {
         }
         select.disabled = false;
     }
-    if (selectedCourse === heifetzViolinProgramOptionValue) {
+    if (selectedCourse === preludioViolinProgramOptionValue) {
         select.innerHTML = '<option selected value="violin">Violin</option>';
         select.disabled = true;
         setTimeout(() => { changeBookLevels(number, "violin") }, 100);
@@ -46,7 +46,7 @@ function changeBookLevels(number, inputInstrument) {
         instrument = getSelectData("inputInstrument-" + number);
     }
     var selectedCourse = getSelectData("inputCourse-" + number);
-    if (selectedCourse.includes("heifetzviolinprogram")) {
+    if (selectedCourse.includes("preludioviolinprogram")) {
         instrument = "violin";
     }
     var select = document.getElementById("inputBookLevel-" + number);
@@ -61,7 +61,7 @@ function changeBookLevels(number, inputInstrument) {
             option.value = bookNumbersArray[i];
             select.add(option);
         }
-        if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) {
+        if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("preludioviolinprogram")) {
             option = document.createElement("option");
             option.text = "N/A";
             option.value = "N/A";
@@ -100,7 +100,7 @@ function changePieceCodes(number, inputInstrument) {
         select.add(option);
     }
     var selectedCourse = getSelectData("inputCourse-" + number);
-    if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) {
+    if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("preludioviolinprogram")) {
         option = document.createElement("option");
         option.text = "Other";
         option.value = "other";
@@ -152,7 +152,7 @@ function changeCustomPiece(number) {
     var selectedCourse = getSelectData("inputCourse-" + number);
     var selectedCode = getSelectData("inputTitle-" + number);
     var customField = document.getElementById("customPieceDiv-" + number);
-    if ((selectedCourse.includes("advancedinstitute") || selectedCourse.includes("heifetzviolinprogram")) && selectedCode === "other") {
+    if ((selectedCourse.includes("advancedinstitute") || selectedCourse.includes("preludioviolinprogram")) && selectedCode === "other") {
         customField.style.visibility = "visible";
         customField.style.display = "";
     }
@@ -259,7 +259,7 @@ function changeDesignatedAdult(number) {
 /** shows enrichment fields if criteria is met (per page) **/
 function changeShowEnrichmentCourses(number) {
     var selectedOption = getSelectData("inputCourse-" + number);
-    if (!selectedOption.toLowerCase().includes("advancedinstitute") && !selectedOption.toLowerCase().includes("heifetzviolinprogram")) {
+    if (!selectedOption.toLowerCase().includes("advancedinstitute") && !selectedOption.toLowerCase().includes("preludioviolinprogram")) {
         document.getElementById("enrichmentClassesDiv-" + number).style.display = "inherit";
         document.getElementById("enrichmentClassesDiv-" + number).style.visibility = "visible";
     }
@@ -277,8 +277,10 @@ function changeShowEnrichmentCourses(number) {
 function changeAccompanyOptions(number) {
     // put in base values
     var theSelect = document.getElementById("inputAccompanied-" + number);
-    theSelect.innerHTML = '<option style="display:none" disabled selected value="none"></option>';
-    /*for (var i = 0; i < accompanyNames.length - 1; i++) {
+    theSelect.innerHTML = '<option style="display:none" disabled selected value></option>';
+    /** USE THIS COMMENTED OUT LINE FOR VIRTUAL, and comment out the rest **/
+    //theSelect.innerHTML = '<option style="display:none" disabled selected value="none"></option>';
+    for (var i = 0; i < accompanyNames.length - 1; i++) {
         var option = document.createElement("option");
         option.text = accompanyNames[i];
         option.value = accompanyValues[i];
@@ -289,11 +291,11 @@ function changeAccompanyOptions(number) {
     // get age
     var ageValue = document.getElementById("inputAge-" + number).value;
     // if course is advanced and age is >= 13, then show the fourth option
-    if (courseValue.toLowerCase().includes("advancedinstitute") && ageValue >= 13) {
+    if ((courseValue.toLowerCase().includes("advancedinstitute") || courseValue.toLowerCase().includes("preludioviolinprogram")) && ageValue >= 13) {
         option = document.createElement("option");
         option.text = "No One (student will be 13 by July 1, " + new Date().getFullYear() + " and will stay with an Ithaca Host Family)";
         option.value = "noone";
         theSelect.add(option);
     }
-    changeDesignatedAdult(number);*/
+    changeDesignatedAdult(number);
 }
