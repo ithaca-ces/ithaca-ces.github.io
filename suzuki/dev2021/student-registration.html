@@ -2550,7 +2550,7 @@
                 for (var i = 1; i < coursesData.length; i++) {
                     if (!coursesData[i][0].startsWith("INVALID_")) {
                         var option = document.createElement("option");
-                        option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                        option.innerHTML = coursesData[i][0] + " &ndash; $" + coursesData[i][1];
                         option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
                         theSelect.add(option);
                         courseNames.push(coursesData[i][0]);
