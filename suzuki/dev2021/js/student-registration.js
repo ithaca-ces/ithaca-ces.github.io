@@ -72,8 +72,12 @@ function validateStudentInfo(number) {
     clearValidateFeedback();
     var valid = true;
     // checks contact information
-    var fields = ["StudentFirstName", "StudentLastName", "Age", "Graduation", "Accompanied"];
-    var names = ["first name", "last name", "age as of July 1, " + new Date().getFullYear(), "anticipated high school graduation date", "accompaniment choice"];
+    var fields = ["StudentFirstName", "StudentLastName", "Age", "Graduation"];
+    /** REMOVE ABOVE LINE AND UNCOMMENT LINE BELOW FOR IN-PERSON (and t-shirt and accompanied fields) **/
+    //var fields = ["StudentFirstName", "StudentLastName", "Age", "Graduation", "Accompanied"];
+    var names = ["first name", "last name", "age as of July 1, " + new Date().getFullYear(), "anticipated high school graduation date"];
+    /** REMOVE ABOVE LINE AND UNCOMMENT LINE BELOW FOR IN-PERSON (and t-shirt and accompanied fields) **/
+    //var names = ["first name", "last name", "age as of July 1, " + new Date().getFullYear(), "anticipated high school graduation date", "accompaniment choice"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i] + "-" + number);
         if (inputField.value === "") {
@@ -86,7 +90,8 @@ function validateStudentInfo(number) {
         }
     }
 
-    if (getSelectData("inputAccompanied-" + number) === "designatedAdult") {
+    /** UNCOMMENT IF WE'RE IN PERSON **/
+    /**if (getSelectData("inputAccompanied-" + number) === "designatedAdult") {
         var fields = ["DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber"];
         var names = ["first name", "last name", "address", "city", "state/province", "zip code", "phone number"];
         for (var i = 0; i < fields.length; i ++) {
@@ -100,10 +105,14 @@ function validateStudentInfo(number) {
                 inputField.classList.add("is-valid");
             }
         }
-    }
+    }**/
 
-    var selectFields = ["Course", "Instrument", "BookLevel", "Title", "TShirt"];
-    var selectNames = ["a course", "an instrument", "a book level", "the code and title of your newest piece", "a t-shirt size"];
+    var selectFields = ["Course", "Instrument", "BookLevel", "Title"];
+    /** REMOVE ABOVE LINE AND UNCOMMENT LINE BELOW FOR IN-PERSON (and t-shirt and accompanied fields) **/
+    //var selectFields = ["Course", "Instrument", "BookLevel", "Title", "TShirt"];
+    var selectNames = ["a course", "an instrument", "a book level", "the code and title of your newest piece"];
+    /** REMOVE ABOVE LINE AND UNCOMMENT LINE BELOW FOR IN-PERSON (and t-shirt and accompanied fields) **/
+    //var selectNames = ["a course", "an instrument", "a book level", "the code and title of your newest piece", "a t-shirt size"];
     for (var i = 0; i < selectFields.length; i++) {
         var selectField = document.getElementById("input" + selectFields[i] + "-" + number);
         // if it has options
@@ -195,7 +204,9 @@ function clearValidateFeedback() {
         document.getElementById("valid-feedback-input" + fields[i]).innerHTML = "";
     }
     for (var j = 1; j <= MAX_STUDENT_NUMBER; j ++) {
-        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherEmailAddress", "TeacherRequests", "TShirt", "EnrichmentChoice1", "EnrichmentChoice2", "EnrichmentChoice3"];
+        var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherEmailAddress", "TeacherRequests", "EnrichmentChoice1", "EnrichmentChoice2", "EnrichmentChoice3"];
+        /** REMOVE ABOVE LINE AND UNCOMMENT LINE BELOW FOR IN-PERSON (and t-shirt and accompanied fields) **/
+        //var studentFields = ["StudentFirstName", "StudentLastName", "Gender", "Age", "Graduation", "Accompanied", "DesignatedAdultFirstName", "DesignatedAdultLastName", "DesignatedAdultAddress", "DesignatedAdultCity", "DesignatedAdultState", "DesignatedAdultZip", "DesignatedAdultPhoneNumber", "Course", "Instrument", "BookLevel", "Title", "Movement", "CustomPiece", "TeacherFirstName", "TeacherLastName", "TeacherEmailAddress", "TeacherRequests", "TShirt", "EnrichmentChoice1", "EnrichmentChoice2", "EnrichmentChoice3"];
         for (var i = 0; i < studentFields.length; i++) {
             var studentField = document.getElementById("input" + studentFields[i] + "-" + j);
             studentField.classList.remove("is-invalid");
