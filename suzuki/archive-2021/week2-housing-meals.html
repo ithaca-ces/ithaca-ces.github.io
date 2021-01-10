@@ -36,7 +36,7 @@
 <body>
 <div  id="container" class="container" style="display:none;visibility:hidden">
     <br>
-    <h1>Suzuki Institutes: Purchase Weeks 1 and 2 Housing & Meals</h1>
+    <h1>Suzuki Institutes: Purchase Week 2 Housing & Meals</h1>
     <div id="dateTitle"></div>
     <hr>
     <div id="errorMessage"></div>
@@ -85,8 +85,7 @@
     </div>
     <div class="form-group">
         <label for="inputEmailAddress">Email Address <span style="color: red">*</span></label>
-        <input type="text" class="form-control" id="inputEmailAddress" aria-describedby="emailHelp">
-        <small id="emailHelp" class="form-text text-muted">Some help text from Peter will be put here regarding people using their primary email address.</small>
+        <input type="text" class="form-control" id="inputEmailAddress">
         <div id="valid-feedback-inputEmailAddress"></div>
     </div>
 
@@ -152,18 +151,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/housing-meals-functions.js"></script>
-<script type="text/javascript" src="js/weeks1and2-housing-meals.js"></script>
+<script type="text/javascript" src="js/week2-housing-meals.js"></script>
 <script>
     var MEAL_PLAN_MAX = 50;
     /** get dates from date Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vREtU3aso5YQevwxYncCh60Cwn55X6PuCOuNv1UVHHsLr4G9TJevUa4lPjodkOBM3vUfllVyyEbhmRg/pubhtml?gid=0&single=true",
         function (data, status) {
             var textTable = getTableData(data);
-            var weeks1and2 = textTable[3][1];
-            document.getElementById("dateTitle").innerHTML = "<h2><i>" + weeks1and2 + "</i></h2>";
+            var week2 = textTable[2][1];
+            document.getElementById("dateTitle").innerHTML = "<h2><i>" + week2 + "</i></h2>";
         });
     /** get text about meal plan from Google Spreadsheet **/
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vSf-V3piBXMoBhIb9_ZpLpaik4j00dKgoUTKYeOzEwPOT3JVzYBnF2BJP4FMHFEFr5H1gjFbag_CAgr/pubhtml?gid=56981838&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRHG6-N01AF0rfyVkTGNWvLG4uztSIphcB_qDt8dztRc2jx1C4SMh4QvM_-7YjLCMbI-Z0xlt6JUL1t/pubhtml?gid=56981838&single=true",
         function(data, status) {
             var textTable = getTableData(data);
             var sumString = "";
@@ -173,12 +172,12 @@
             document.getElementById("mealPlanText").innerHTML = sumString;
         });
     /** get meal plan price from Google Spreadsheet **/
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vSf-V3piBXMoBhIb9_ZpLpaik4j00dKgoUTKYeOzEwPOT3JVzYBnF2BJP4FMHFEFr5H1gjFbag_CAgr/pubhtml?gid=1223661694&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRHG6-N01AF0rfyVkTGNWvLG4uztSIphcB_qDt8dztRc2jx1C4SMh4QvM_-7YjLCMbI-Z0xlt6JUL1t/pubhtml?gid=1223661694&single=true",
         function(data, status) {
         document.getElementById("mealPrice").innerText = getTableData(data)[1][1];
     });
     /** get text about housing from Google Spreadsheet **/
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vSf-V3piBXMoBhIb9_ZpLpaik4j00dKgoUTKYeOzEwPOT3JVzYBnF2BJP4FMHFEFr5H1gjFbag_CAgr/pubhtml?gid=869859262&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRHG6-N01AF0rfyVkTGNWvLG4uztSIphcB_qDt8dztRc2jx1C4SMh4QvM_-7YjLCMbI-Z0xlt6JUL1t/pubhtml?gid=869859262&single=true",
         function(data, status) {
             var textTable = getTableData(data);
             var sumString = "";
@@ -188,7 +187,7 @@
             document.getElementById("housingText").innerHTML = sumString;
         });
     /** get housing type, price, and amount remaining from Google Spreadsheet **/
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vSf-V3piBXMoBhIb9_ZpLpaik4j00dKgoUTKYeOzEwPOT3JVzYBnF2BJP4FMHFEFr5H1gjFbag_CAgr/pubhtml?gid=256271385&single=true",
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vRHG6-N01AF0rfyVkTGNWvLG4uztSIphcB_qDt8dztRc2jx1C4SMh4QvM_-7YjLCMbI-Z0xlt6JUL1t/pubhtml?gid=256271385&single=true",
         function(data, status) {
             var housingData = getTableData(data);
             var housingInputs = "";
