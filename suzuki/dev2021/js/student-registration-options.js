@@ -55,12 +55,66 @@ function changeBookLevels(number, inputInstrument) {
         var selectedInstrument = capitalizeFLetter(instrument);
         var bookNumbers = codeDictionary[selectedInstrument].bookOptions;
         var bookNumbersArray = bookNumbers.split(",");
-        for (var i = 0; i < bookNumbersArray.length; i++) {
-            var option = document.createElement("option");
-            option.text = bookNumbersArray[i];
-            option.value = bookNumbersArray[i];
-            select.add(option);
+        // add book level options for ANY INSTRUMENT OR LEVEL
+        if (selectedCourse.includes("anyinstrumentorlevel")) {
+            for (var i = 0; i < bookNumbersArray.length; i++) {
+                var option = document.createElement("option");
+                option.text = bookNumbersArray[i];
+                option.value = bookNumbersArray[i];
+                select.add(option);
+            }
         }
+        // add book level options for ADVANCED INSTITUTE
+        else if (selectedCourse.includes("advancedinstitute")) {
+            // add book level options for ADVANCED INSTITUTE - VIOLIN
+            if (instrument === "violin") {
+                for (var i = 0; i < bookNumbersArray.length; i++) {
+                    if (bookNumbersArray[i] >= 7) {
+                        var option = document.createElement("option");
+                        option.text = bookNumbersArray[i];
+                        option.value = bookNumbersArray[i];
+                        select.add(option);
+                    }
+
+                }
+            }
+            // add book level options for ADVANCED INSTITUTE - VIOLA
+            else if (instrument === "viola") {
+                for (var i = 0; i < bookNumbersArray.length; i++) {
+                    if (bookNumbersArray[i] >= 5) {
+                        var option = document.createElement("option");
+                        option.text = bookNumbersArray[i];
+                        option.value = bookNumbersArray[i];
+                        select.add(option);
+                    }
+
+                }
+            }
+            // add book level options for ADVANCED INSTITUTE - CELLO
+            else if (instrument === "cello") {
+                for (var i = 0; i < bookNumbersArray.length; i++) {
+                    if (bookNumbersArray[i] >= 6) {
+                        var option = document.createElement("option");
+                        option.text = bookNumbersArray[i];
+                        option.value = bookNumbersArray[i];
+                        select.add(option);
+                    }
+
+                }
+            }
+        }
+        // add book level options for PRELUDIO VIOLIN PROGRAM
+        else if (selectedCourse.includes("preludioviolinprogram")) {
+            for (var i = 0; i < bookNumbersArray.length; i++) {
+                if (bookNumbersArray[i] >= 9) {
+                    var option = document.createElement("option");
+                    option.text = bookNumbersArray[i];
+                    option.value = bookNumbersArray[i];
+                    select.add(option);
+                }
+            }
+        }
+
         if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("preludioviolinprogram")) {
             option = document.createElement("option");
             option.text = "N/A";
