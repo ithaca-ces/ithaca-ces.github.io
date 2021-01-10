@@ -223,7 +223,7 @@
             document.getElementById("belowText").innerHTML = sumString;
         });
     /** get t-shirt sizes from Google Spreadsheet **/
-    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1568226199&single=true",
+    /**$.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=1568226199&single=true",
         function(data, status) {
             var tShirtData = getTableData(data);
             var theSelect = document.getElementById("inputTShirt");
@@ -233,7 +233,7 @@
                 option.value = tShirtData[i][0].replace(/ /g, '_');
                 theSelect.add(option);
             }
-        });
+        });**/
     /** get ECC name and price from Google Spreadsheet **/
     $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=2053198402&single=true",
         function(data, status) {
