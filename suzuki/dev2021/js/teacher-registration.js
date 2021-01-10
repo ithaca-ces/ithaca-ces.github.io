@@ -185,8 +185,11 @@ function validate() {
     var valid = true;
 
     // checks contact information
-    var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress", "TShirt"];
-    var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address", "t-shirt size"];
+    var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+    var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address"];
+    /** REMOVE ABOVE 2 LINES AND UNCOMMENT THESE FOR IN-PERSON (and t-shirt) **/
+     //var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress", "TShirt"];
+    //var names = ["first name", "last name", "street address", "city", "state/province", "zip code", "phone number", "email address", "t-shirt size"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i]);
         if (inputField.value === "") {
@@ -255,7 +258,9 @@ function validate() {
 
 /** clear red and text from validate function **/
 function clearValidateFeedback() {
-    var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress", "TShirt"];
+    var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress"];
+    /** REMOVE ABOVE LINE AND UNCOMMENT LINE BELOW FOR IN-PERSON (and t-shirt) **/
+    //var fields = ["FirstName", "LastName", "Address", "City", "State", "Zip", "PhoneNumber", "EmailAddress", "TShirt"];
     for (var i = 0; i < fields.length; i ++) {
         var inputField = document.getElementById("input" + fields[i]);
         inputField.classList.remove("is-invalid");
