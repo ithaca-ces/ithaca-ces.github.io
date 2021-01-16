@@ -30,14 +30,18 @@ function changeInstruments(number) {
             select.add(option);
         }
         select.disabled = false;
+        // make course book level and code and title of your newest piece select fields enabled
+        var bookLevelSelect = document.getElementById("inputBookLevel-" + number);
+        bookLevelSelect.disabled = false;
+        var coursePieceTitleSelect = document.getElementById("inputTitle-" + number);
+        coursePieceTitleSelect.disabled = false;
     }
-    if (selectedCourse === preludioViolinProgramOptionValue) {
+    else if (selectedCourse === preludioViolinProgramOptionValue) {
         select.innerHTML = '<option selected value="violin">Violin</option>';
         select.disabled = true;
         setTimeout(() => { changeBookLevels(number, "violin") }, 100);
     }
 }
-
 
 /** changes options on book level field (per page) **/
 function changeBookLevels(number, inputInstrument) {
@@ -62,6 +66,7 @@ function changeBookLevels(number, inputInstrument) {
                 option.text = bookNumbersArray[i];
                 option.value = bookNumbersArray[i];
                 select.add(option);
+                select.disabled = false;
             }
         }
         // add book level options for ADVANCED INSTITUTE
@@ -102,24 +107,16 @@ function changeBookLevels(number, inputInstrument) {
 
                 }
             }
-        }
-        // add book level options for PRELUDIO VIOLIN PROGRAM
-        else if (selectedCourse.includes("preludioviolinprogram")) {
-            for (var i = 0; i < bookNumbersArray.length; i++) {
-                if (bookNumbersArray[i] >= 9) {
-                    var option = document.createElement("option");
-                    option.text = bookNumbersArray[i];
-                    option.value = bookNumbersArray[i];
-                    select.add(option);
-                }
-            }
-        }
-
-        if (selectedCourse.includes("advancedinstitute") || selectedCourse.includes("preludioviolinprogram")) {
             option = document.createElement("option");
             option.text = "N/A";
             option.value = "N/A";
             select.add(option);
+            select.disabled = false;
+        }
+        // add book level options for PRELUDIO VIOLIN PROGRAM
+        else if (selectedCourse.includes("preludioviolinprogram")) {
+            select.innerHTML = '<option selected value="N/A">N/A</option>';
+            select.disabled = true;
         }
         changePieceCodes(number, "");
     }
@@ -133,8 +130,8 @@ function changePieceCodes(number, inputInstrument) {
     }
     var selectedBookLevel = getSelectData("inputBookLevel-" + number);
     var select = document.getElementById("inputTitle-" + number);
-    select.disabled = false;
     select.innerHTML = '<option style="display:none" disabled selected value></option>';
+    select.disabled = false;
     var allBookNumbers = codeDictionary[selectedInstrument].bookList;
     var allCodes = codeDictionary[selectedInstrument].codeList;
     var allTitles = codeDictionary[selectedInstrument].titleList;
@@ -162,6 +159,9 @@ function changePieceCodes(number, inputInstrument) {
         if (selectedBookLevel === "N/A") {
             option.selected = "selected";
             select.disabled = true;
+        }
+        else {
+            select.disabled = false;
         }
     }
     changeCustomPiece(number);
