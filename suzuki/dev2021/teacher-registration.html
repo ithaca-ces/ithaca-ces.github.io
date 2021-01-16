@@ -130,6 +130,11 @@
         <select class="form-control" id="week2Courses" onchange="changeLogicCourses()">
             <option value=" "></option>
         </select>
+        <br>
+        <span><b>Select a Short Supplementary Course:</b></span> <span style="color: red">*</span>
+        <select class="form-control" id="shortSupplementaryCourses" onchange="changeLogicCourses()">
+            <option value=" "></option>
+        </select>
     </div>
 
     <hr style="visibility: hidden;display: none">
@@ -186,6 +191,9 @@
     var week2CoursesNames = [];
     var week2CoursesPrices = [];
     var week2CoursesIDs = [];
+    var shortSupplementaryCoursesNames = [];
+    var shortSupplementaryCoursesPrices = [];
+    var shortSupplementaryCoursesIDs = [];
     var week1 = "";
     var week2 = "";
     var twoWeek = "";
@@ -280,7 +288,7 @@
         function(data, status) {
             var coursesData = getTableData(data);
             var theSelect = document.getElementById("week2Courses");
-            for (var i = 1; i < coursesData.length; i ++) {
+            for (var i = 1; i < coursesData.length; i++) {
                 var option = document.createElement("option");
                 option.text = coursesData[i][0] + " - $" + coursesData[i][1];
                 option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
@@ -288,6 +296,21 @@
                 week2CoursesNames.push(coursesData[i][0]);
                 week2CoursesPrices.push(coursesData[i][1]);
                 week2CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+            }
+        });
+    /** get short supplementary courses names and prices from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=585218886&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var theSelect = document.getElementById("shortSupplementaryCourses");
+            for (var i = 1; i < coursesData.length; i ++) {
+                var option = document.createElement("option");
+                option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                theSelect.add(option);
+                shortSupplementaryCoursesNames.push(coursesData[i][0]);
+                shortSupplementaryCoursesPrices.push(coursesData[i][1]);
+                shortSupplementaryCoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
             }
         }).done(function() {
             document.getElementById("container").style.display = "inherit";

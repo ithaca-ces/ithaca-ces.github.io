@@ -29,6 +29,7 @@ function changeUpperLogic() {
         document.getElementById("courseSelects").style.visibility = "hidden";
         document.getElementById("week1Courses").value = " ";
         document.getElementById("week2Courses").value = " ";
+        document.getElementById("shortSupplementaryCourses").value = " ";
     }
     else {
         document.getElementById("courseSelects").style.display = "inherit";
@@ -46,7 +47,6 @@ function changeLogicCourses() {
         document.getElementById("radio1").checked = false;
         document.getElementById("radio2").checked = false;
         document.getElementById("twoWeekCourses").value = " ";
-
     }
     else {
         document.getElementById("courseRadios").style.display = "inherit";
@@ -88,8 +88,8 @@ function submitGoogleForm(uniqueID) {
     var twoWeekCourse = getSelectData("twoWeekCourses")
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
+    var shortSupplementaryCourse = getSelectData("shortSupplementaryCourses")
     var tShirtSize = getSelectData("inputTShirt").replace('_', ' ');
-
 
     // get the form data
     // there are many ways to get this data using jQuery (you can use the class or id also)
@@ -123,6 +123,11 @@ function submitGoogleForm(uniqueID) {
         var name = week2CoursesNames[index];
         formData["entry.1404295443"] = name;
     }
+    if (shortSupplementaryCourse !== " ") {
+        var index = shortSupplementaryCoursesIDs.indexOf(shortSupplementaryCourse);
+        var name = shortSupplementaryCoursesNames[index];
+        formData["entry.1201626552"] = name;
+    }
 
     // process the form
     $.ajax({
@@ -144,6 +149,7 @@ function submitPaymentForm(uniqueID) {
     var twoWeekCourse = getSelectData("twoWeekCourses");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
+    var shortSupplementaryCourse = getSelectData("shortSupplementaryCourses")
 
     var fullPrice = 0;
 
@@ -163,6 +169,11 @@ function submitPaymentForm(uniqueID) {
     if (week2Course !== " ") {
         var index = week2CoursesIDs.indexOf(week2Course);
         var price = week2CoursesPrices[index];
+        fullPrice += parseFloat(price);
+    }
+    if (shortSupplementaryCourse !== " ") {
+        var index = shortSupplementaryCoursesIDs.indexOf(shortSupplementaryCourse);
+        var price = shortSupplementaryCoursesPrices[index];
         fullPrice += parseFloat(price);
     }
 
@@ -210,14 +221,15 @@ function validate() {
         valid = false;
     }
 
-    var hasCourses = false;
+    var hasCourses;
     var validCourses = false;
 
     var eccValue = getRadioButtonValue("everyChildCan");
     var twoWeekCourse = getSelectData("twoWeekCourses");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
-    if (eccValue == null && twoWeekCourse === " " && week1Course === " " && week2Course === " ") {
+    var shortSupplementaryCourse = getSelectData("shortSupplementaryCourses");
+    if (eccValue == null && twoWeekCourse === " " && week1Course === " " && week2Course === " " && shortSupplementaryCourse === " ") {
         hasCourses = false;
     }
     else {
@@ -240,7 +252,7 @@ function validate() {
         validCourses = true;
     }
     if (((eccValue === "no" && twoWeekCourse === " ") || (eccValue == null && twoWeekCourse === " ") || (eccValue === "no" && twoWeekCourse === " ")) && (week1Course !== " " || week2Course !== "")) {
-        hasCourses = false;
+       // hasCourses = false;
     }
 
 
@@ -277,6 +289,7 @@ function webHook(id) {
     var twoWeekCourse = getSelectData("twoWeekCourses");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
+    var shortSupplementaryCourse = getSelectData("shortSupplementaryCourses")
     var nameArray = [];
     if (eccValue === "yes") {
         nameArray.push(eccName);
@@ -294,6 +307,11 @@ function webHook(id) {
     if (week2Course !== " ") {
         var index = week2CoursesIDs.indexOf(week2Course);
         var name = week2CoursesNames[index];
+        nameArray.push(name);
+    }
+    if (shortSupplementaryCourse !== " ") {
+        var index = shortSupplementaryCoursesIDs.indexOf(week2Course);
+        var name = shortSupplementaryCoursesNames[index];
         nameArray.push(name);
     }
     var text = nameArray[0];
