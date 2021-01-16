@@ -96,7 +96,7 @@
     <div id="aboveText"></div>
 
     <div id="courseRadios">
-        <div class="form-group">
+        <div class="form-group" id="everyChildCanDiv">
             <b>Would you like to register for <span id="eccName"></span>  &mdash; $<span id="eccPrice"></span>?</b> <span style="color: red">*</span>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="everyChildCan" id="radio1" value="yes">
@@ -109,7 +109,7 @@
         </div>
 
 
-        <div class="form-group">
+        <div class="form-group" id="twoWeekCoursesDiv">
             <span><b>Select a Two-Week Unit One Course (<span id="twoWeekDateSpan"></span>):</b></span> <span style="color: red">*</span>
             <p style="color: #646464; font-style: italic; margin-bottom: 0;">In order to take a Unit 1 course, you must take the prerequisite ECC course and pass the audition required by the SAA. Please visit the link posted above for requirements. Please email <a href='mailto:ithacainstitute@gmail.com'>ithacainstitute@gmail.com</a> with any further questions.</p>
             <select class="form-control" id="twoWeekCourses" onchange="changeLogicTwoWeek()">
@@ -121,15 +121,26 @@
     </div>
 
     <div id="courseSelects">
-        <span><b>Select a Week 1 Course (<span id="week1DateSpan"></span>):</b></span> <span style="color: red">*</span>
-        <select class="form-control" id="week1Courses" onchange="changeLogicCourses()">
-            <option value=" "></option>
-        </select>
-        <br>
-        <span><b>Select a Week 2 Course (<span id="week2DateSpan"></span>):</b></span> <span style="color: red">*</span>
-        <select class="form-control" id="week2Courses" onchange="changeLogicCourses()">
-            <option value=" "></option>
-        </select>
+        <div id="week1CoursesDiv">
+            <span><b>Select a Week 1 Course (<span id="week1DateSpan"></span>):</b></span> <span style="color: red">*</span>
+            <select class="form-control" id="week1Courses" onchange="changeLogicCourses()">
+                <option value=" "></option>
+            </select>
+            <br>
+        </div>
+        <div id="week2CoursesDiv">
+            <span><b>Select a Week 2 Course (<span id="week2DateSpan"></span>):</b></span> <span style="color: red">*</span>
+            <select class="form-control" id="week2Courses" onchange="changeLogicCourses()">
+                <option value=" "></option>
+            </select>
+            <br>
+        </div>
+        <div id="shortSupplementaryCourseDiv">
+            <span><b>Select a Short Supplementary Course:</b></span> <span style="color: red">*</span>
+            <select class="form-control" id="shortSupplementaryCourses" onchange="changeLogicCoursesShortSupplementary()">
+                <option value=" "></option>
+            </select>
+        </div>
     </div>
 
     <hr style="visibility: hidden;display: none">
@@ -186,6 +197,9 @@
     var week2CoursesNames = [];
     var week2CoursesPrices = [];
     var week2CoursesIDs = [];
+    var shortSupplementaryCoursesNames = [];
+    var shortSupplementaryCoursesPrices = [];
+    var shortSupplementaryCoursesIDs = [];
     var week1 = "";
     var week2 = "";
     var twoWeek = "";
@@ -280,7 +294,7 @@
         function(data, status) {
             var coursesData = getTableData(data);
             var theSelect = document.getElementById("week2Courses");
-            for (var i = 1; i < coursesData.length; i ++) {
+            for (var i = 1; i < coursesData.length; i++) {
                 var option = document.createElement("option");
                 option.text = coursesData[i][0] + " - $" + coursesData[i][1];
                 option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
@@ -288,6 +302,21 @@
                 week2CoursesNames.push(coursesData[i][0]);
                 week2CoursesPrices.push(coursesData[i][1]);
                 week2CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+            }
+        });
+    /** get short supplementary courses names and prices from Google Spreadsheet **/
+    $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vQC3V8TiLle_6fOMNkG0u_9li6Avpo0Jy4nLZZJW3N-PFOxI0dthVHRF1QTbqSLbDzld7q8b080inR3/pubhtml?gid=585218886&single=true",
+        function(data, status) {
+            var coursesData = getTableData(data);
+            var theSelect = document.getElementById("shortSupplementaryCourses");
+            for (var i = 1; i < coursesData.length; i ++) {
+                var option = document.createElement("option");
+                option.text = coursesData[i][0] + " - $" + coursesData[i][1];
+                option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
+                theSelect.add(option);
+                shortSupplementaryCoursesNames.push(coursesData[i][0]);
+                shortSupplementaryCoursesPrices.push(coursesData[i][1]);
+                shortSupplementaryCoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
             }
         }).done(function() {
             document.getElementById("container").style.display = "inherit";
