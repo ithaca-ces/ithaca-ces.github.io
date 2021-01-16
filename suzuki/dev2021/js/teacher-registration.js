@@ -35,12 +35,26 @@ function changeUpperLogic() {
         document.getElementById("courseSelects").style.display = "inherit";
         document.getElementById("courseSelects").style.visibility = "visible";
     }
+
 }
 
 /** change what fields display if they select week 1 and week 2 courses **/
 function changeLogicCourses() {
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
+    var twoWeekCourse = getSelectData("twoWeekCourses");
+
+    // if week 2 course or two week course is selected, then hide the short supplementary courses
+    if (week2Course !== " " || twoWeekCourse !== " ") {
+        document.getElementById("shortSupplementaryCourseDiv").style.display = "none";
+        document.getElementById("shortSupplementaryCourseDiv").style.visibility = "hidden";
+        document.getElementById("shortSupplementaryCourses").value = " ";
+    }
+    else {
+        document.getElementById("shortSupplementaryCourseDiv").style.display = "inherit";
+        document.getElementById("shortSupplementaryCourseDiv").style.visibility = "visible";
+    }
+
     if (week1Course !== " " || week2Course !== " ") {
         document.getElementById("courseRadios").style.display = "none";
         document.getElementById("courseRadios").style.visibility = "hidden";
@@ -51,6 +65,33 @@ function changeLogicCourses() {
     else {
         document.getElementById("courseRadios").style.display = "inherit";
         document.getElementById("courseRadios").style.visibility = "visible";
+    }
+
+    changeLogicCoursesShortSupplementary();
+}
+/** change what fields display if they a short supplementary course **/
+function changeLogicCoursesShortSupplementary() {
+    var shortSupplementaryCourse = getSelectData("shortSupplementaryCourses");
+
+    if (shortSupplementaryCourse !== " ") {
+        document.getElementById("week2CoursesDiv").style.display = "none";
+        document.getElementById("week2CoursesDiv").style.visibility = "hidden";
+
+        document.getElementById("everyChildCanDiv").style.display = "none";
+        document.getElementById("everyChildCanDiv").style.visibility = "hidden";
+        document.getElementById("twoWeekCoursesDiv").style.display = "none";
+        document.getElementById("twoWeekCoursesDiv").style.visibility = "hidden";
+    }
+    else {
+        document.getElementById("week2CoursesDiv").style.display = "inherit";
+        document.getElementById("week2CoursesDiv").style.visibility = "visible";
+
+        if (document.getElementById("courseRadios").style.visibility !== "hidden") {
+            document.getElementById("twoWeekCoursesDiv").style.display = "inherit";
+            document.getElementById("twoWeekCoursesDiv").style.visibility = "visible";
+            document.getElementById("everyChildCanDiv").style.display = "inherit";
+            document.getElementById("everyChildCanDiv").style.visibility = "visible";
+        }
     }
 }
 
@@ -221,38 +262,51 @@ function validate() {
         valid = false;
     }
 
-    var hasCourses;
-    var validCourses = false;
+    var hasCourses = false;
+    var validCourses = true;
 
     var eccValue = getRadioButtonValue("everyChildCan");
     var twoWeekCourse = getSelectData("twoWeekCourses");
     var week1Course = getSelectData("week1Courses");
     var week2Course = getSelectData("week2Courses");
     var shortSupplementaryCourse = getSelectData("shortSupplementaryCourses");
-    if (eccValue == null && twoWeekCourse === " " && week1Course === " " && week2Course === " " && shortSupplementaryCourse === " ") {
-        hasCourses = false;
-    }
-    else {
+
+    // check that at least one course has been registered for
+    if (eccValue != null && eccValue === "yes") {
         hasCourses = true;
     }
+    if (twoWeekCourse != null && twoWeekCourse !== " ") {
+        hasCourses = true;
+    }
+    if (week1Course != null && week1Course !== " ") {
+        hasCourses = true;
+    }
+    if (week2Course != null && week2Course !== " ") {
+        hasCourses = true;
+    }
+    if (shortSupplementaryCourse != null && shortSupplementaryCourse !== " ") {
+        hasCourses = true;
+    }
+
+    // if they select ECC or two-week unit one course, they can have nothing else selected
     if (eccValue === "yes" || twoWeekCourse !== " ") {
         if (week1Course !== " " || week2Course !== " ") {
             validCourses = false;
         }
     }
-    else {
-        validCourses = true;
-    }
+
+    // if they select either a week 1 course or week 2 course, they cannot choose ECC or a two-week course
     if (week1Course !== " " || week2Course !== " ") {
-        if (eccValue != null || twoWeekCourse !== " ") {
+        if ((eccValue != null && eccValue !== "no") || twoWeekCourse !== " ") {
             validCourses = false;
         }
     }
-    else {
-        validCourses = true;
-    }
-    if (((eccValue === "no" && twoWeekCourse === " ") || (eccValue == null && twoWeekCourse === " ") || (eccValue === "no" && twoWeekCourse === " ")) && (week1Course !== " " || week2Course !== "")) {
-       // hasCourses = false;
+
+    // if they select a short supplementary course, they cannot choose ECC, a two-week course, or a week 2 course
+    if (shortSupplementaryCourse !== " ") {
+        if ((eccValue != null && eccValue !== "no") || twoWeekCourse !== " " ||  twoWeekCourse !== " ") {
+            validCourses = false;
+        }
     }
 
 
@@ -310,7 +364,7 @@ function webHook(id) {
         nameArray.push(name);
     }
     if (shortSupplementaryCourse !== " ") {
-        var index = shortSupplementaryCoursesIDs.indexOf(week2Course);
+        var index = shortSupplementaryCoursesIDs.indexOf(shortSupplementaryCourse);
         var name = shortSupplementaryCoursesNames[index];
         nameArray.push(name);
     }
