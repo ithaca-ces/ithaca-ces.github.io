@@ -12,7 +12,7 @@ $(document).ready(function () {
     });
 });
 
-/** changes what fields display if they select ECC and Violin Unit 1 **/
+/** changes what fields display if they select ECC and Violin Unit One **/
 function changeLogicECC() {
     changeUpperLogic();
 }
