@@ -298,10 +298,12 @@
                 var option = document.createElement("option");
                 option.text = coursesData[i][0] + " - $" + coursesData[i][1];
                 option.value = coursesData[i][0].toLowerCase().replace(/ /g, '');
-                theSelect.add(option);
-                week2CoursesNames.push(coursesData[i][0]);
-                week2CoursesPrices.push(coursesData[i][1]);
-                week2CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+                if (option.value !== "violinunit9/10") {
+                    theSelect.add(option);
+                    week2CoursesNames.push(coursesData[i][0]);
+                    week2CoursesPrices.push(coursesData[i][1]);
+                    week2CoursesIDs.push(coursesData[i][0].toLowerCase().replace(/ /g, ''));
+                }
             }
         });
     /** get short supplementary courses names and prices from Google Spreadsheet **/
