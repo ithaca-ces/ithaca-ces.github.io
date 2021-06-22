@@ -1,0 +1,86 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="194x194" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-194x194.png"/>
+    <link rel="icon" type="image/png" sizes="192x192" href="https://www.ithaca.edu/sites/default/files/favicons/android-chrome-192x192.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.ithaca.edu/sites/default/files/favicons/favicon-16x16.png"/>
+    <meta charset="UTF-8">
+
+    <title>Suzuki Institute Technical Support</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+        .starter-template {
+            padding: 0.5em 0.5em;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1>Suzuki Institute Technical Support</h1>
+        <p id="mainpara" class="lead"></p>
+    </div>
+    <div id="hidden" style="display: none; visibility: hidden;"></div>
+</main><!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+/** get output from Google Spreadsheet **/
+$.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vS9zIxFjU6ep_sj43a0rWhPEqwFa8HLPLHZ0D9Nf6Qo15Q9JRMPt2nRQxEKgGmeeKKSun26lzp58mpw/pubhtml?gid=1294132301&single=true",
+function(data, status) {
+var outputData = getTableData(data);
+    var finalOutput = "";
+    var onCall = outputData[0][1];
+    var name = outputData[1][1];
+    var ITEHTML = outputData[2][1];
+    var facultyHTML = outputData[3][1];
+    document.getElementById("mainpara").innerHTML = facultyHTML;
+});
+
+/** makes a table from data from Google Spreadsheet **/
+function getTableData(inputData) {
+    var array1 = inputData.toString().split("<table");
+    var array2 = array1[1].split("</table>");
+    var string = "<table" + array2[0] + "</table>";
+    document.getElementById("hidden").innerHTML = string;
+    var myTableArray = [];
+    $("table tr").each(function() {
+        var arrayOfThisRow = [];
+        var tableData = $(this).find('td');
+        if (tableData.length > 0) {
+            tableData.each(function() { arrayOfThisRow.push($(this).text()); });
+            myTableArray.push(arrayOfThisRow);
+        }
+    });
+    return myTableArray;
+}
+</script>
+</body>
+</html>
