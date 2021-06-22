@@ -56,12 +56,7 @@
 $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vS9zIxFjU6ep_sj43a0rWhPEqwFa8HLPLHZ0D9Nf6Qo15Q9JRMPt2nRQxEKgGmeeKKSun26lzp58mpw/pubhtml?gid=1294132301&single=true",
 function(data, status) {
 var outputData = getTableData(data);
-    var finalOutput = "";
-    var onCall = outputData[0][1];
-    var name = outputData[1][1];
-    var ITEHTML = outputData[2][1];
-    var facultyHTML = outputData[3][1];
-    document.getElementById("mainpara").innerHTML = facultyHTML;
+    document.getElementById("mainpara").innerHTML = outputData[3][1];
 });
 
 /** makes a table from data from Google Spreadsheet **/
