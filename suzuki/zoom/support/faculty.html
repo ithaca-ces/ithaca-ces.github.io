@@ -25,6 +25,9 @@
             padding: 0.5em 0.5em;
             text-align: center;
         }
+        .lead {
+            font-weight: 400;
+        }
     </style>
 
 </head>
@@ -34,7 +37,8 @@
 <main role="main" class="container">
 
     <div class="starter-template">
-        <h1>Suzuki Institute Technical Support</h1>
+        <h1>Suzuki Institute Technical Support for Faculty Members</h1>
+        <br>
         <p id="mainpara" class="lead"></p>
     </div>
     <div id="hidden" style="display: none; visibility: hidden;"></div>
@@ -57,6 +61,16 @@ $.get("https://docs.google.com/spreadsheets/d/e/2PACX-1vS9zIxFjU6ep_sj43a0rWhPEq
 function(data, status) {
 var outputData = getTableData(data);
     document.getElementById("mainpara").innerHTML = outputData[3][1];
+    var name = outputData[1][1];
+    if (name === "IT Service Desk") {
+        document.body.style.backgroundColor = "#a5cefa";
+    }
+    else if (name === "Joe") {
+        document.body.style.backgroundColor = "#9df5cc";
+    }
+    else if (name === "Paul") {
+        document.body.style.backgroundColor = "#f5df9d";
+    }
 });
 
 /** makes a table from data from Google Spreadsheet **/
